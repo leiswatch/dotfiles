@@ -68,6 +68,7 @@ nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
+
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
     \ quit | endif
 
@@ -87,6 +88,8 @@ inoremap <silent><expr> <TAB>
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
+
+command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport')
 
 function! s:check_back_space() abort
   let col = col('.') - 1
@@ -183,17 +186,11 @@ Plug 'jparise/vim-graphql'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'thaerkh/vim-indentguides'
-"Plug 'nathanaelkane/vim-indent-guides'
 Plug 'preservim/nerdcommenter'
 Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-" Plug 'frazrepo/vim-rainbow'
-" Plug 'luochen1990/rainbow'
 Plug 'vim-syntastic/syntastic'
-" Plug 'ctrlpvim/ctrlp.vim
-" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-" Plug 'junegunn/fzf.vim'
 Plug 'airblade/vim-rooter'
 Plug 'sonph/onehalf', { 'rtp': 'vim' }
 Plug 'chriskempson/base16-vim'
@@ -208,15 +205,28 @@ Plug 'tomasiser/vim-code-dark'
 Plug 'rafi/awesome-vim-colorschemes'
 Plug 'tjdevries/colorbuddy.vim'
 Plug 'bkegley/gloombuddy'
+Plug 'dracula/vim', { 'as': 'dracula' }
+Plug 'neovim/nvim-lspconfig'
+Plug 'folke/lsp-trouble.nvim'
+Plug 'folke/lsp-colors.nvim'
+Plug 'kabouzeid/nvim-lspinstall'
+" Plug 'frazrepo/vim-rainbow'
+" Plug 'nathanaelkane/vim-indent-guides'
+" Plug 'luochen1990/rainbow'
+" Plug 'junegunn/rainbow_parentheses.vim'
+" Plug 'ctrlpvim/ctrlp.vim
+" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
+" Plug 'junegunn/fzf.vim'
 call plug#end()
 
+let g:rainbow_active = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-tsserver', 'coc-html', 'coc-eslint', 'coc-css', 'coc-rls', 'coc-pairs', 'coc-snippets', 'coc-emmet', 'coc-highlight', 'coc-go', 'coc-toml', 'coc-prettier', 'coc-stylelint', 'coc-python', 'coc-cssmodules', 'coc-xml', 'coc-webpack', 'coc-deno', 'coc-yaml', 'coc-sql', 'coc-docker', 'coc-styled-components', 'coc-scssmodules']
 
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set background=dark
-" colorscheme gloombuddy
-" let g:airline_theme='oceanicnext'
+colorscheme gloombuddy
+let g:airline_theme='oceanicnext'
 
 if (has("termguicolors"))
   set termguicolors
@@ -235,8 +245,8 @@ endif" set termguicolors
 " colorscheme onehalfdark
 " let g:airline_theme='onehalfdark'
 
-colorscheme codedark
-let g:airline_theme = 'codedark'
+" colorscheme codedark
+" let g:airline_theme = 'codedark'
 
 " colorscheme gruvbox
 " let g:airline_theme = 'gruvbox'
@@ -245,41 +255,64 @@ let g:airline_theme = 'codedark'
 " colorscheme base16-tomorrow-night-eighties
 
 lua << EOF
-require('telescope').setup{
-  defaults = {
-    file_ignore_patterns = {"node_modules", "package-lock.json", "yarn.lock"},
+  require('telescope').setup{
+    defaults = {
+      file_ignore_patterns = {"node_modules", "package-lock.json", "yarn.lock"},
+    }
   }
-}
 EOF
 
 lua <<EOF
-require'nvim-treesitter.configs'.setup {
-  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
-  highlight = {
-    enable = true,              -- false will disable the whole extension
-  },
-}
-EOF
-
-lua <<EOF
-require "nvim-treesitter.configs".setup {
-  playground = {
-    enable = true,
-    disable = {},
-    updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
-    persist_queries = false, -- Whether the query persists across vim sessions
-    keybindings = {
-      toggle_query_editor = 'o',
-      toggle_hl_groups = 'i',
-      toggle_injected_languages = 't',
-      toggle_anonymous_nodes = 'a',
-      toggle_language_display = 'I',
-      focus_language = 'f',
-      unfocus_language = 'F',
-      update = 'R',
-      goto_node = '<cr>',
-      show_help = '?',
+  require'nvim-treesitter.configs'.setup {
+    ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+    highlight = {
+      enable = true,              -- false will disable the whole extension
     },
   }
-}
+EOF
+
+lua <<EOF
+  require "nvim-treesitter.configs".setup {
+    playground = {
+      enable = true,
+      disable = {},
+      updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+      persist_queries = false, -- Whether the query persists across vim sessions
+      keybindings = {
+        toggle_query_editor = 'o',
+        toggle_hl_groups = 'i',
+        toggle_injected_languages = 't',
+        toggle_anonymous_nodes = 'a',
+        toggle_language_display = 'I',
+        focus_language = 'f',
+        unfocus_language = 'F',
+        update = 'R',
+        goto_node = '<cr>',
+        show_help = '?',
+      },
+    }
+  }
+EOF
+
+lua << EOF
+  require("trouble").setup {
+    -- your configuration comes here
+    -- or leave it empty to use the default settings
+    -- refer to the configuration section below
+  }
+EOF
+
+lua << EOF
+  require'lspconfig'.tsserver.setup{}
+  require'lspconfig'.dockerls.setup{}
+  require'lspconfig'.graphql.setup{}
+  require'lspconfig'.jsonls.setup{}
+  require'lspconfig'.pyright.setup{}
+  require'lspconfig'.rls.setup{}
+  require'lspinstall'.setup() -- important
+
+  local servers = require'lspinstall'.installed_servers()
+  for _, server in pairs(servers) do
+    require'lspconfig'[server].setup{}
+  end
 EOF
