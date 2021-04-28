@@ -301,10 +301,13 @@ Plug 'tjdevries/colorbuddy.vim'
 Plug 'bkegley/gloombuddy'
 call plug#end()
 
+let g:airline#extensions#tabline#enabled = 1
+let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-tsserver', 'coc-html', 'coc-eslint', 'coc-css', 'coc-rls', 'coc-pairs', 'coc-snippets', 'coc-emmet', 'coc-highlight', 'coc-go', 'coc-toml', 'coc-prettier', 'coc-stylelint', 'coc-python', 'coc-cssmodules', 'coc-xml', 'coc-webpack', 'coc-deno', 'coc-yaml', 'coc-sql', 'coc-docker', 'coc-styled-components', 'coc-scssmodules']
+
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set background=dark
-colorscheme gloombuddy
-let g:airline_theme='oceanicnext'
+" colorscheme gloombuddy
+" let g:airline_theme='oceanicnext'
 
 if (has("termguicolors"))
   set termguicolors
@@ -322,8 +325,8 @@ endif" set termguicolors
 
 " colorscheme onehalfdark
 " let g:airline_theme='onehalfdark'
-" colorscheme codedark
-" let g:airline_theme = 'codedark'
+colorscheme codedark
+let g:airline_theme = 'codedark'
 
 " colorscheme gruvbox
 " let g:airline_theme = 'gruvbox'
@@ -357,7 +360,7 @@ endif" set termguicolors
 lua << EOF
 require('telescope').setup{
   defaults = {
-    file_ignore_patterns = {"node_modules"},
+    file_ignore_patterns = {"node_modules", "package-lock.json", "yarn.lock"},
   }
 }
 EOF
