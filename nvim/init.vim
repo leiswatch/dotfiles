@@ -1,18 +1,14 @@
 set nocompatible
 
-set splitbelow
-filetype plugin on
-filetype off
-
 syntax on
+" filetype plugin on
+set splitbelow
+"filetype off
 
 set cursorline
 let mapleader = ","
 
-set background=dark
-set t_Co=256
-set termguicolors
-let base16colorspace=256
+" let base16colorspace=256
 set textwidth=100
 
 set ttyfast
@@ -75,9 +71,7 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
     \ quit | endif
 
-autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
-
-let g:rainbow_active = 1
+" autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
 
 " if executable('rg')
 "   let g:ctrlp_user_command = 'rg %s --files --hidden --color=never --glob ""'
@@ -254,11 +248,29 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-call plug#begin('~/.vim/plugged')
+" let g:rainbow_active = 1
+" let g:rainbow_load_separately = [
+"     \ [ '*' , [['(', ')'], ['\[', '\]'], ['{', '}']] ],
+"     \ [ '*.tex' , [['(', ')'], ['\[', '\]']] ],
+"     \ [ '*.cpp' , [['(', ')'], ['\[', '\]'], ['{', '}']] ],
+"     \ [ '*.{html,htm}' , [['(', ')'], ['\[', '\]'], ['{', '}'], ['<\a[^>]*>', '</[^>]*>']] ],
+"     \ ]
+
+" let g:rainbow_guifgs = ['RoyalBlue3', 'DarkOrange3', 'DarkOrchid3', 'FireBrick']
+" let g:rainbow_ctermfgs = ['lightblue', 'lightgreen', 'yellow', 'red', 'magenta']
+
+call plug#begin('~/.config/nvim/plugged')
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
-Plug 'leafgarland/typescript-vim'
+Plug 'jiangmiao/auto-pairs'
+" Plug 'leafgarland/typescript-vim'
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'pangloss/vim-javascript'    " JavaScript support
+Plug 'maxmellon/vim-jsx-pretty'   " JS and JSX syntax
 Plug 'peitalin/vim-jsx-typescript'
+Plug 'nvim-treesitter/nvim-treesitter'
+Plug 'nvim-treesitter/playground'
+Plug 'jparise/vim-graphql'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'thaerkh/vim-indentguides'
@@ -267,9 +279,9 @@ Plug 'preservim/nerdcommenter'
 Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-Plug 'frazrepo/vim-rainbow'
+" Plug 'frazrepo/vim-rainbow'
+" Plug 'luochen1990/rainbow'
 Plug 'vim-syntastic/syntastic'
-Plug 'jparise/vim-graphql'
 " Plug 'ctrlpvim/ctrlp.vim
 " Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
 " Plug 'junegunn/fzf.vim'
@@ -283,53 +295,101 @@ Plug 'cespare/vim-toml'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-" Plug 'tomasiser/vim-code-dark'
-" Plug 'rafi/awesome-vim-colorschemes'
-" Plug 'mhartington/oceanic-next'
+Plug 'tomasiser/vim-code-dark'
+Plug 'rafi/awesome-vim-colorschemes'
+Plug 'tjdevries/colorbuddy.vim'
+Plug 'bkegley/gloombuddy'
 call plug#end()
+
+let $NVIM_TUI_ENABLE_TRUE_COLOR=1
+set background=dark
+colorscheme gloombuddy
+let g:airline_theme='oceanicnext'
 
 if (has("termguicolors"))
   set termguicolors
 endif
+
+if exists('+termguicolors')
+  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+endif" set termguicolors
 
 " let g:gruvbox_italic=1
 " let g:gruvbox_termcolors=16
 " let g:gruvbox_contrast_dark='medium'
 " let g:gruvbox_invert_selection=0
 
-colorscheme onehalfdark
-let g:airline_theme='onehalfdark'
+" colorscheme onehalfdark
+" let g:airline_theme='onehalfdark'
+" colorscheme codedark
+" let g:airline_theme = 'codedark'
 
 " colorscheme gruvbox
-" let g:airline_theme='gruvbox'
+" let g:airline_theme = 'gruvbox'
+
+" let g:airline_theme='base16-tomorrow-night-eighties'
+" colorscheme base16-tomorrow-night-eighties
 
 " dark red
-hi tsxTagName guifg=#E06C75
-hi tsxComponentName guifg=#E06C75
-hi tsxCloseComponentName guifg=#E06C75
+" hi tsxTagName guifg=#F99575
+" hi tsxComponentName guifg=#E06C75
+" hi tsxCloseComponentName guifg=#E06C75
 
-" orange
-hi tsxCloseString guifg=#F99575
-hi tsxCloseTag guifg=#F99575
-hi tsxCloseTagName guifg=#F99575
-hi tsxAttributeBraces guifg=#F99575
-hi tsxEqual guifg=#F99575
+" " orange
+" " hi tsxCloseString guifg=#F99575
+" " hi tsxCloseTag guifg=#F99575
+" hi tsxCloseTagName guifg=#F99575
+" " hi tsxAttributeBraces guifg=#F99575
+" " hi tsxEqual guifg=#F99575
 
-" yellow
-hi tsxAttrib guifg=#F8BD7F cterm=italic
-hi ReactState guifg=#C176A7
-hi ReactProps guifg=#D19A66
-hi ApolloGraphQL guifg=#CB886B
-hi Events ctermfg=204 guifg=#56B6C2
-hi ReduxKeywords ctermfg=204 guifg=#C678DD
-hi ReduxHooksKeywords ctermfg=204 guifg=#C176A7
-hi WebBrowser ctermfg=204 guifg=#56B6C2
-hi ReactLifeCycleMethods ctermfg=204 guifg=#D19A66
+" " yellow
+" hi tsxAttrib guifg=#F8BD7F cterm=italic
+" hi ReactState guifg=#C176A7
+" hi ReactProps guifg=#D19A66
+" hi ApolloGraphQL guifg=#CB886B
+" hi Events ctermfg=204 guifg=#56B6C2
+" hi ReduxKeywords ctermfg=204 guifg=#C678DD
+" hi ReduxHooksKeywords ctermfg=204 guifg=#C176A7
+" hi WebBrowser ctermfg=204 guifg=#56B6C2
+" hi ReactLifeCycleMethods ctermfg=204 guifg=#D19A66
 
 lua << EOF
 require('telescope').setup{
   defaults = {
     file_ignore_patterns = {"node_modules"},
+  }
+}
+EOF
+
+lua <<EOF
+require'nvim-treesitter.configs'.setup {
+  ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
+  highlight = {
+    enable = true,              -- false will disable the whole extension
+  },
+}
+EOF
+
+lua <<EOF
+require "nvim-treesitter.configs".setup {
+  playground = {
+    enable = true,
+    disable = {},
+    updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
+    persist_queries = false, -- Whether the query persists across vim sessions
+    keybindings = {
+      toggle_query_editor = 'o',
+      toggle_hl_groups = 'i',
+      toggle_injected_languages = 't',
+      toggle_anonymous_nodes = 'a',
+      toggle_language_display = 'I',
+      focus_language = 'f',
+      unfocus_language = 'F',
+      update = 'R',
+      goto_node = '<cr>',
+      show_help = '?',
+    },
   }
 }
 EOF
