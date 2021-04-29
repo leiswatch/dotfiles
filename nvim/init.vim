@@ -1,10 +1,9 @@
 set nocompatible
 
-syntax on
-" filetype plugin on
+set syntax=on
 set splitbelow
-"filetype off
-
+" filetype off
+" filetype plugin on
 set cursorline
 let mapleader = ","
 
@@ -46,10 +45,6 @@ set expandtab
 set noshiftround
 set autoindent
 
-"hi IndentGuidesOdd  ctermbg=black
-"hi IndentGuidesEven ctermbg=darkgrey
-"let g:indent_guides_enable_on_vim_startup = 1
-
 " Nerdcommenter
 let g:NERDCreateDefaultMappings = 1
 let g:NERDSpaceDelims = 1
@@ -62,6 +57,7 @@ nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
 nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
+
 " Telescope
 nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
@@ -82,7 +78,6 @@ let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
 " COC SETTINGS
-
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
@@ -166,21 +161,24 @@ nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
 
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
+
 if empty(glob(data_dir . '/autoload/plug.vim'))
   silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
+autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
+
 call plug#begin('~/.config/nvim/plugged')
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'jiangmiao/auto-pairs'
-" Plug 'leafgarland/typescript-vim'
-Plug 'HerringtonDarkholme/yats.vim'
-Plug 'pangloss/vim-javascript'    " JavaScript support
-Plug 'maxmellon/vim-jsx-pretty'   " JS and JSX syntax
+Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
-Plug 'nvim-treesitter/nvim-treesitter'
+" Plug 'HerringtonDarkholme/yats.vim'
+" Plug 'pangloss/vim-javascript'    " JavaScript support
+" Plug 'maxmellon/vim-jsx-pretty'   " JS and JSX syntax
+Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
 Plug 'jparise/vim-graphql'
 Plug 'vim-airline/vim-airline'
@@ -202,14 +200,16 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'tomasiser/vim-code-dark'
-Plug 'rafi/awesome-vim-colorschemes'
 Plug 'tjdevries/colorbuddy.vim'
 Plug 'bkegley/gloombuddy'
-Plug 'dracula/vim', { 'as': 'dracula' }
+" Plug 'dracula/vim', { 'as': 'dracula' }
 Plug 'neovim/nvim-lspconfig'
 Plug 'folke/lsp-trouble.nvim'
 Plug 'folke/lsp-colors.nvim'
 Plug 'kabouzeid/nvim-lspinstall'
+Plug 'rafi/awesome-vim-colorschemes'
+Plug 'nvim-lua/completion-nvim'
+Plug 'sheerun/vim-polyglot'
 " Plug 'frazrepo/vim-rainbow'
 " Plug 'nathanaelkane/vim-indent-guides'
 " Plug 'luochen1990/rainbow'
@@ -219,12 +219,12 @@ Plug 'kabouzeid/nvim-lspinstall'
 " Plug 'junegunn/fzf.vim'
 call plug#end()
 
-let g:rainbow_active = 1
 let g:airline#extensions#tabline#enabled = 1
 let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-tsserver', 'coc-html', 'coc-eslint', 'coc-css', 'coc-rls', 'coc-pairs', 'coc-snippets', 'coc-emmet', 'coc-highlight', 'coc-go', 'coc-toml', 'coc-prettier', 'coc-stylelint', 'coc-python', 'coc-cssmodules', 'coc-xml', 'coc-webpack', 'coc-deno', 'coc-yaml', 'coc-sql', 'coc-docker', 'coc-styled-components', 'coc-scssmodules']
 
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set background=dark
+
 colorscheme gloombuddy
 let g:airline_theme='oceanicnext'
 
@@ -233,14 +233,14 @@ if (has("termguicolors"))
 endif
 
 if exists('+termguicolors')
-  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
-  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+ let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+ let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
 endif" set termguicolors
 
-" let g:gruvbox_italic=1
-" let g:gruvbox_termcolors=16
-" let g:gruvbox_contrast_dark='medium'
-" let g:gruvbox_invert_selection=0
+let g:gruvbox_italic=1
+let g:gruvbox_termcolors=16
+let g:gruvbox_contrast_dark='dark'
+let g:gruvbox_invert_selection=0
 
 " colorscheme onehalfdark
 " let g:airline_theme='onehalfdark'
@@ -255,6 +255,19 @@ endif" set termguicolors
 " colorscheme base16-tomorrow-night-eighties
 
 lua << EOF
+  require'lspinstall'.setup() -- important
+
+  local servers = require'lspinstall'.installed_servers()
+  for _, server in pairs(servers) do
+    require'lspconfig'[server].setup{}
+  end
+EOF
+
+lua << EOF
+  require("trouble").setup {}
+EOF
+
+lua << EOF
   require('telescope').setup{
     defaults = {
       file_ignore_patterns = {"node_modules", "package-lock.json", "yarn.lock"},
@@ -263,16 +276,11 @@ lua << EOF
 EOF
 
 lua <<EOF
-  require'nvim-treesitter.configs'.setup {
+  require "nvim-treesitter.configs".setup {
     ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
     highlight = {
       enable = true,              -- false will disable the whole extension
     },
-  }
-EOF
-
-lua <<EOF
-  require "nvim-treesitter.configs".setup {
     playground = {
       enable = true,
       disable = {},
@@ -294,25 +302,3 @@ lua <<EOF
   }
 EOF
 
-lua << EOF
-  require("trouble").setup {
-    -- your configuration comes here
-    -- or leave it empty to use the default settings
-    -- refer to the configuration section below
-  }
-EOF
-
-lua << EOF
-  require'lspconfig'.tsserver.setup{}
-  require'lspconfig'.dockerls.setup{}
-  require'lspconfig'.graphql.setup{}
-  require'lspconfig'.jsonls.setup{}
-  require'lspconfig'.pyright.setup{}
-  require'lspconfig'.rls.setup{}
-  require'lspinstall'.setup() -- important
-
-  local servers = require'lspinstall'.installed_servers()
-  for _, server in pairs(servers) do
-    require'lspconfig'[server].setup{}
-  end
-EOF
