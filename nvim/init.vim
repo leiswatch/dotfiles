@@ -51,7 +51,7 @@ let g:NERDSpaceDelims = 1
 let g:NERDCompactSexyComs = 1
 let g:NERDTrimTrailingWhitespace = 1
 let g:NERDDefaultAlign = 'left'
-
+let NERDTreeShowHidden = 1
 " Nerdtree
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
@@ -59,7 +59,7 @@ nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
 
 " Telescope
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>ff <cmd>Telescope find_files hidden=true<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
@@ -270,7 +270,18 @@ EOF
 lua << EOF
   require('telescope').setup{
     defaults = {
-      file_ignore_patterns = {"node_modules", "package-lock.json", "yarn.lock"},
+      file_ignore_patterns = {"node_modules", "package-lock.json", "yarn.lock", ".git"},
+      prompt_prefix = "🔍 ",
+      prompt_position = "bottom",
+      vimgrep_arguments = {
+      'rg',
+      '--no-heading',
+      '--with-filename',
+      '--line-number',
+      '--column',
+      '--smart-case',
+      '--hidden'
+    },
     }
   }
 EOF
