@@ -2,8 +2,8 @@ set nocompatible
 
 set syntax=on
 set splitbelow
-" filetype off
-" filetype plugin on
+filetype off
+filetype plugin on
 set cursorline
 let mapleader = ","
 
@@ -45,6 +45,19 @@ set expandtab
 set noshiftround
 set autoindent
 
+noremap <leader>1 1gt
+noremap <leader>2 2gt
+noremap <leader>3 3gt
+noremap <leader>4 4gt
+noremap <leader>5 5gt
+noremap <leader>6 6gt
+noremap <leader>7 7gt
+noremap <leader>8 8gt
+noremap <leader>9 9gt
+noremap <leader>0 :tablast<cr>
+nnoremap <C-Left> :tabprevious<CR>
+nnoremap <C-Right> :tabnext<CR>
+
 " Nerdcommenter
 let g:NERDCreateDefaultMappings = 1
 let g:NERDSpaceDelims = 1
@@ -59,8 +72,8 @@ nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
 
 " Telescope
-nnoremap <leader>ff <cmd>Telescope find_files<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>ff <cmd>Telescope find_files hidden=true<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep hidden=true<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 
@@ -73,7 +86,7 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 1
+let g:syntastic_auto_loc_list = 0
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
@@ -199,6 +212,7 @@ Plug 'cespare/vim-toml'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
+" Plug 'nvim-telescope/telescope-fzy-native'
 Plug 'tomasiser/vim-code-dark'
 Plug 'tjdevries/colorbuddy.vim'
 Plug 'bkegley/gloombuddy'
@@ -221,6 +235,7 @@ call plug#end()
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
+
 let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-tsserver', 'coc-html', 'coc-eslint', 'coc-css', 'coc-rls', 'coc-pairs', 'coc-snippets', 'coc-emmet', 'coc-highlight', 'coc-go', 'coc-toml', 'coc-prettier', 'coc-stylelint', 'coc-python', 'coc-cssmodules', 'coc-xml', 'coc-webpack', 'coc-deno', 'coc-yaml', 'coc-sql', 'coc-docker', 'coc-styled-components', 'coc-scssmodules']
 
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
@@ -271,7 +286,17 @@ EOF
 lua << EOF
   require('telescope').setup{
     defaults = {
-      file_ignore_patterns = {"node_modules", "package-lock.json", "yarn.lock"},
+      file_ignore_patterns = {"node_modules", "package-lock.json", "yarn.lock", ".git", ".next"},
+      prompt_prefix = "🔍 ",
+      vimgrep_arguments = {
+      'rg',
+      '--no-heading',
+      '--hidden',
+      '--with-filename',
+      '--line-number',
+      '--column',
+      '--smart-case'
+      },
     }
   }
 EOF
