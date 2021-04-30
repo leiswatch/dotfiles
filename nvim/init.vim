@@ -1,10 +1,10 @@
 set nocompatible
-
+set colorcolumn=100
 set syntax=on
 set splitbelow
 filetype off
 filetype plugin on
-set cursorline
+" set cursorline
 let mapleader = ","
 
 " let base16colorspace=256
@@ -221,7 +221,7 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'folke/lsp-trouble.nvim'
 Plug 'folke/lsp-colors.nvim'
 Plug 'kabouzeid/nvim-lspinstall'
-Plug 'rafi/awesome-vim-colorschemes'
+" Plug 'rafi/awesome-vim-colorschemes'
 Plug 'nvim-lua/completion-nvim'
 Plug 'sheerun/vim-polyglot'
 " Plug 'frazrepo/vim-rainbow'
@@ -258,7 +258,7 @@ let g:gruvbox_italic=1
 let g:gruvbox_contrast_dark='hard'
 let g:gruvbox_invert_selection=0
 let g:gruvbox_transparent_bg=1
-
+let g:gruvbox_guisp_fallback='bg'
 " colorscheme onehalfdark
 " let g:airline_theme='onehalfdark'
 
@@ -267,7 +267,6 @@ let g:gruvbox_transparent_bg=1
 
 colorscheme gruvbox
 let g:airline_theme = 'gruvbox'
-
 " let g:airline_theme='base16-tomorrow-night-eighties'
 " colorscheme base16-tomorrow-night-eighties
 
