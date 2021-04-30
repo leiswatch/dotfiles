@@ -4,7 +4,7 @@ set syntax=on
 set splitbelow
 filetype off
 filetype plugin on
-" set cursorline
+"set cursorline
 let mapleader = ","
 
 " let base16colorspace=256
@@ -168,6 +168,8 @@ command! -nargs=0 Format :call CocAction('format')
 
 inoremap jj <esc>
 inoremap kj <esc>
+inoremap JJ <esc>
+inoremap KJ <esc>
 nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
@@ -181,6 +183,7 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
 endif
 
 autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
+autocmd BufNewFile,BufRead *.pp set filetype=puppet
 
 call plug#begin('~/.config/nvim/plugged')
 Plug 'neoclide/coc.nvim', {'branch': 'release'}

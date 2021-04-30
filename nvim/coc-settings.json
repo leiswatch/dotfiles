@@ -1,4 +1,5 @@
 {
-  "python.jediEnabled": false
+  "python.jediEnabled": false,
+  "coc.preferences.colorSupport": false
 }
 
