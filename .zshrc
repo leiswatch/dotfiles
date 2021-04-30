@@ -2,7 +2,7 @@
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
 # Path to your oh-my-zsh installation.
-export ZSH="/home/leiswatch/.oh-my-zsh"
+export ZSH="$HOME/.oh-my-zsh"
 
 # Set name of the theme to load --- if set to "random", it will
 # load a random theme each time oh-my-zsh is loaded, in which case,
@@ -68,14 +68,14 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(git npm yarn node docker docker-compose aws zsh-syntax-highlighting zsh-autosuggestions)
+plugins=(aws git npm yarn node docker docker-compose pip command-not-found you-should-use zsh-syntax-highlighting zsh-autosuggestions)
 
 source $ZSH/oh-my-zsh.sh
-
+ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#555753"
 # User configuration
 
 # export MANPATH="/usr/local/man:$MANPATH"
-export DENO_INSTALL="/home/leiswatch/.deno"
+export DENO_INSTALL="$HOME/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -128,6 +128,3 @@ load-nvmrc
 
 eval "$(starship init zsh)"
 
-if [ $TILIX_ID ] || [ $VTE_VERSION ]; then
-        source /etc/profile.d/vte.sh
-fi
