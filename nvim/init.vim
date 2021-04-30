@@ -51,7 +51,7 @@ let g:NERDSpaceDelims = 1
 let g:NERDCompactSexyComs = 1
 let g:NERDTrimTrailingWhitespace = 1
 let g:NERDDefaultAlign = 'left'
-let NERDTreeShowHidden = 1
+
 " Nerdtree
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-n> :NERDTree<CR>
@@ -59,7 +59,7 @@ nnoremap <C-t> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
 
 " Telescope
-nnoremap <leader>ff <cmd>Telescope find_files hidden=true<cr>
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
@@ -73,7 +73,7 @@ set statusline+=%#warningmsg#
 set statusline+=%{SyntasticStatuslineFlag()}
 set statusline+=%*
 let g:syntastic_always_populate_loc_list = 1
-let g:syntastic_auto_loc_list = 0
+let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_open = 1
 let g:syntastic_check_on_wq = 0
 
@@ -226,8 +226,8 @@ let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-tsserver', 'coc-html'
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set background=dark
 
-colorscheme gloombuddy
-let g:airline_theme='oceanicnext'
+" colorscheme gloombuddy
+" let g:airline_theme='oceanicnext'
 
 if (has("termguicolors"))
   set termguicolors
@@ -239,8 +239,8 @@ if exists('+termguicolors')
 endif" set termguicolors
 
 let g:gruvbox_italic=1
-let g:gruvbox_termcolors=16
-let g:gruvbox_contrast_dark='dark'
+" let g:gruvbox_termcolors=16
+let g:gruvbox_contrast_dark='hard'
 let g:gruvbox_invert_selection=0
 
 " colorscheme onehalfdark
@@ -249,8 +249,8 @@ let g:gruvbox_invert_selection=0
 " colorscheme codedark
 " let g:airline_theme = 'codedark'
 
-" colorscheme gruvbox
-" let g:airline_theme = 'gruvbox'
+colorscheme gruvbox
+let g:airline_theme = 'gruvbox'
 
 " let g:airline_theme='base16-tomorrow-night-eighties'
 " colorscheme base16-tomorrow-night-eighties
@@ -271,18 +271,7 @@ EOF
 lua << EOF
   require('telescope').setup{
     defaults = {
-      file_ignore_patterns = {"node_modules", "package-lock.json", "yarn.lock", ".git"},
-      prompt_prefix = "🔍 ",
-      prompt_position = "bottom",
-      vimgrep_arguments = {
-      'rg',
-      '--no-heading',
-      '--with-filename',
-      '--line-number',
-      '--column',
-      '--smart-case',
-      '--hidden'
-    },
+      file_ignore_patterns = {"node_modules", "package-lock.json", "yarn.lock"},
     }
   }
 EOF
