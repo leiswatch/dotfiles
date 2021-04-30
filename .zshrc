@@ -68,7 +68,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(aws git npm yarn node docker docker-compose pip command-not-found you-should-use zsh-syntax-highlighting zsh-autosuggestions)
+plugins=(aws git npm yarn node docker docker-compose pip command-not-found you-should-use zsh-syntax-highlighting zsh-autosuggestions ubuntu tmux rust rustup pyenv)
 
 source $ZSH/oh-my-zsh.sh
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#555753"
