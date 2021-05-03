@@ -57,7 +57,7 @@ noremap <leader>9 9gt
 noremap <leader>0 :tablast<cr>
 nnoremap <C-Left> :tabprevious<CR>
 nnoremap <C-Right> :tabnext<CR>
-
+nmap te :tabnew<CR>
 " Nerdcommenter
 let g:NERDCreateDefaultMappings = 1
 let g:NERDSpaceDelims = 1
@@ -174,6 +174,18 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+" Split window
+nmap ss :split<Return><C-w>w
+nmap sv :vsplit<Return><C-w>w" Move window
+
+map sh <C-w>h
+map sk <C-w>k
+map sj <C-w>j
+map sl <C-w>l
+
+" Switch tab
+nmap <S-Tab> :tabprev<Return>
+nmap <Tab> :tabnext<Return>
 
 nnoremap <leader>xx <cmd>LspTroubleToggle<cr>
 
@@ -229,6 +241,7 @@ Plug 'kabouzeid/nvim-lspinstall'
 " Plug 'rafi/awesome-vim-colorschemes'
 Plug 'nvim-lua/completion-nvim'
 Plug 'sheerun/vim-polyglot'
+Plug 'tpope/vim-surround'
 " Plug 'frazrepo/vim-rainbow'
 " Plug 'nathanaelkane/vim-indent-guides'
 " Plug 'luochen1990/rainbow'
