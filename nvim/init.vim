@@ -22,7 +22,7 @@ set matchpairs+=<:>
 set list
 set listchars=tab:›\ ,trail:•,extends:#,nbsp:.
 
-set number
+set relativenumber
 set encoding=utf-8
 set hlsearch
 set incsearch
