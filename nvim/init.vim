@@ -29,6 +29,12 @@ set incsearch
 set ignorecase
 set smartcase
 
+augroup numbertoggle
+  autocmd!
+  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
+  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
+augroup END
+
 set viminfo='100,<9999,s100
 
 set hidden
@@ -305,7 +311,6 @@ lua << EOF
   require('telescope').setup{
     defaults = {
       file_ignore_patterns = {"node_modules", "package-lock.json", "yarn.lock", ".git", ".next"},
-      prompt_prefix = "🔍 ",
       vimgrep_arguments = {
       'rg',
       '--no-heading',
