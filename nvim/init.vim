@@ -4,10 +4,9 @@ set syntax=on
 set splitbelow
 filetype off
 filetype plugin on
-"set cursorline
+set cursorline
 let mapleader = ","
 
-" let base16colorspace=256
 set textwidth=100
 
 set ttyfast
@@ -41,7 +40,7 @@ set hidden
 set nobackup
 set nowritebackup
 set encoding=utf-8
-set cmdheight=2
+set cmdheight=1
 set updatetime=300
 
 set tabstop=2
@@ -244,7 +243,7 @@ Plug 'neovim/nvim-lspconfig'
 Plug 'folke/lsp-trouble.nvim'
 Plug 'folke/lsp-colors.nvim'
 Plug 'kabouzeid/nvim-lspinstall'
-" Plug 'rafi/awesome-vim-colorschemes'
+Plug 'rafi/awesome-vim-colorschemes'
 Plug 'nvim-lua/completion-nvim'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-surround'
@@ -259,14 +258,12 @@ call plug#end()
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_powerline_fonts = 1
+let g:airline_highlighting_cache = 1
 
 let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-tsserver', 'coc-html', 'coc-eslint', 'coc-css', 'coc-rls', 'coc-pairs', 'coc-snippets', 'coc-emmet', 'coc-highlight', 'coc-go', 'coc-toml', 'coc-prettier', 'coc-stylelint', 'coc-python', 'coc-cssmodules', 'coc-xml', 'coc-webpack', 'coc-deno', 'coc-yaml', 'coc-sql', 'coc-docker', 'coc-styled-components', 'coc-scssmodules']
 
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set background=dark
-
-" colorscheme gloombuddy
-" let g:airline_theme='oceanicnext'
 
 if (has("termguicolors"))
   set termguicolors
@@ -275,24 +272,31 @@ endif
 if exists('+termguicolors')
  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-endif" set termguicolors
+endif
 
-let g:gruvbox_italic=1
+set termguicolors
+
+" let g:gruvbox_italic=1
 " let g:gruvbox_termcolors=16
-let g:gruvbox_contrast_dark='hard'
-let g:gruvbox_invert_selection=0
-let g:gruvbox_transparent_bg=1
-let g:gruvbox_guisp_fallback='bg'
+" let g:gruvbox_contrast_dark='hard'
+" let g:gruvbox_invert_selection=0
+" let g:gruvbox_transparent_bg=1
+" let g:gruvbox_guisp_fallback='bg'
+
+colorscheme gloombuddy
+let g:airline_theme='oceanicnext'
+
 " colorscheme onehalfdark
 " let g:airline_theme='onehalfdark'
 
 " colorscheme codedark
 " let g:airline_theme = 'codedark'
 
-colorscheme gruvbox
-let g:airline_theme = 'gruvbox'
-" let g:airline_theme='base16-tomorrow-night-eighties'
-" colorscheme base16-tomorrow-night-eighties
+" colorscheme gruvbox
+" let g:airline_theme = 'gruvbox'
+
+let g:airline_theme='base16_tomorrow_night'
+colorscheme base16-tomorrow-night
 
 lua << EOF
   require'lspinstall'.setup() -- important

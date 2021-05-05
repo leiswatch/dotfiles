@@ -56,8 +56,7 @@ ZSH_THEME="robbyrussell"
 # stamp shown in the history command output.
 # You can set one of the optional three formats:
 # "mm/dd/yyyy"|"dd.mm.yyyy"|"yyyy-mm-dd"
-# or set a custom format using the strftime function format specifications,
-# see 'man strftime' for details.
+# or set a custom format using the strftime function format specifications, see 'man strftime' for details.
 # HIST_STAMPS="mm/dd/yyyy"
 
 # Would you like to use another custom folder than $ZSH/custom?
@@ -68,7 +67,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(aws git npm yarn node docker docker-compose pip command-not-found you-should-use zsh-syntax-highlighting zsh-autosuggestions ubuntu tmux rust rustup pyenv)
+plugins=(aws git npm yarn node docker docker-compose pip command-not-found you-should-use zsh-syntax-highlighting zsh-autosuggestions ubuntu tmux rust rustup pyenv autojump)
 
 source $ZSH/oh-my-zsh.sh
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#555753"
