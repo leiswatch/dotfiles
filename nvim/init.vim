@@ -63,6 +63,7 @@ noremap <leader>0 :tablast<cr>
 nnoremap <C-Left> :tabprevious<CR>
 nnoremap <C-Right> :tabnext<CR>
 nmap te :tabnew<CR>
+nnoremap <leader><Space> :noh<cr>
 " Nerdcommenter
 let g:NERDCreateDefaultMappings = 1
 let g:NERDSpaceDelims = 1
@@ -171,6 +172,53 @@ endif
 " Add `:Format` command to format current buffer.
 command! -nargs=0 Format :call CocAction('format')
 
+" Applying codeAction to the selected region.
+" Example: `<leader>aap` for current paragraph
+xmap <leader>a  <Plug>(coc-codeaction-selected)
+nmap <leader>a  <Plug>(coc-codeaction-selected)
+
+" Remap keys for applying codeAction to the current buffer.
+nmap <leader>ac  <Plug>(coc-codeaction)
+" Apply AutoFix to problem on the current line.
+nmap <leader>qf  <Plug>(coc-fix-current)
+
+" Map function and class text objects
+" NOTE: Requires 'textDocument.documentSymbol' support from the language server.
+xmap if <Plug>(coc-funcobj-i)
+omap if <Plug>(coc-funcobj-i)
+xmap af <Plug>(coc-funcobj-a)
+omap af <Plug>(coc-funcobj-a)
+xmap ic <Plug>(coc-classobj-i)
+omap ic <Plug>(coc-classobj-i)
+xmap ac <Plug>(coc-classobj-a)
+omap ac <Plug>(coc-classobj-a)
+
+
+" Use CTRL-S for selections ranges.
+" Requires 'textDocument/selectionRange' support of language server.
+nmap <silent> <C-s> <Plug>(coc-range-select)
+xmap <silent> <C-s> <Plug>(coc-range-select)
+
+
+" Mappings for CoCList
+" Show all diagnostics.
+nnoremap <silent><nowait> <space>a  :<C-u>CocList diagnostics<cr>
+" Manage extensions.
+nnoremap <silent><nowait> <space>e  :<C-u>CocList extensions<cr>
+" Show commands.
+nnoremap <silent><nowait> <space>c  :<C-u>CocList commands<cr>
+" Find symbol of current document.
+nnoremap <silent><nowait> <space>o  :<C-u>CocList outline<cr>
+" Search workspace symbols.
+nnoremap <silent><nowait> <space>s  :<C-u>CocList -I symbols<cr>
+" Do default action for next item.
+nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
+" Do default action for previous item.
+nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
+" Resume latest coc list.
+nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
+nnoremap <silent><nowait> <leader>a :<C-u>CocAction<CR>
+
 inoremap jj <esc>
 inoremap kj <esc>
 inoremap JJ <esc>
@@ -203,6 +251,7 @@ endif
 
 autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
 autocmd BufNewFile,BufRead *.pp set filetype=puppet
+autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()
 
 call plug#begin('~/.config/nvim/plugged')
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -218,27 +267,23 @@ Plug 'nvim-treesitter/playground'
 Plug 'jparise/vim-graphql'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
-Plug 'thaerkh/vim-indentguides'
 Plug 'preservim/nerdcommenter'
 Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'tiagofumo/vim-nerdtree-syntax-highlight'
-" Plug 'vim-syntastic/syntastic'
 Plug 'airblade/vim-rooter'
-Plug 'sonph/onehalf', { 'rtp': 'vim' }
-Plug 'chriskempson/base16-vim'
-Plug 'morhetz/gruvbox'
+" Plug 'sonph/onehalf', { 'rtp': 'vim' }
+" Plug 'chriskempson/base16-vim'
+" Plug 'morhetz/gruvbox'
 Plug 'ryanoasis/vim-devicons'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'cespare/vim-toml'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-" Plug 'nvim-telescope/telescope-fzy-native'
-Plug 'tomasiser/vim-code-dark'
+" Plug 'tomasiser/vim-code-dark'
 Plug 'tjdevries/colorbuddy.vim'
 Plug 'bkegley/gloombuddy'
-" Plug 'dracula/vim', { 'as': 'dracula' }
+" Plug 'tjdevries/gruvbuddy.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'folke/lsp-trouble.nvim'
 Plug 'folke/lsp-colors.nvim'
@@ -247,17 +292,13 @@ Plug 'rafi/awesome-vim-colorschemes'
 Plug 'nvim-lua/completion-nvim'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-surround'
-" Plug 'frazrepo/vim-rainbow'
-" Plug 'nathanaelkane/vim-indent-guides'
-" Plug 'luochen1990/rainbow'
-" Plug 'junegunn/rainbow_parentheses.vim'
-" Plug 'ctrlpvim/ctrlp.vim
-" Plug 'junegunn/fzf', { 'do': { -> fzf#install() } }
-" Plug 'junegunn/fzf.vim'
+Plug 'kosayoda/nvim-lightbulb'
+Plug 'windwp/nvim-ts-autotag'
+Plug 'Yggdroot/indentLine'
+Plug 'lukas-reineke/indent-blankline.nvim'
 call plug#end()
 
 let g:airline#extensions#tabline#enabled = 1
-let g:airline_powerline_fonts = 1
 let g:airline_highlighting_cache = 1
 
 let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-tsserver', 'coc-html', 'coc-eslint', 'coc-css', 'coc-rls', 'coc-pairs', 'coc-snippets', 'coc-emmet', 'coc-highlight', 'coc-go', 'coc-toml', 'coc-prettier', 'coc-stylelint', 'coc-python', 'coc-cssmodules', 'coc-xml', 'coc-webpack', 'coc-deno', 'coc-yaml', 'coc-sql', 'coc-docker', 'coc-styled-components', 'coc-scssmodules']
@@ -283,8 +324,9 @@ set termguicolors
 " let g:gruvbox_transparent_bg=1
 " let g:gruvbox_guisp_fallback='bg'
 
-colorscheme gloombuddy
-let g:airline_theme='oceanicnext'
+" let g:nvcode_termcolors=256
+" colorscheme onedark
+
 
 " colorscheme onehalfdark
 " let g:airline_theme='onehalfdark'
@@ -295,8 +337,8 @@ let g:airline_theme='oceanicnext'
 " colorscheme gruvbox
 " let g:airline_theme = 'gruvbox'
 
-let g:airline_theme='base16_tomorrow_night'
-colorscheme base16-tomorrow-night
+" let g:airline_theme='base16_tomorrow_night'
+" colorscheme base16-tomorrow-night
 
 lua << EOF
   require'lspinstall'.setup() -- important
@@ -351,7 +393,17 @@ lua <<EOF
         goto_node = '<cr>',
         show_help = '?',
       },
-    }
+    },
+    autotag = {
+      enable = true,
+    },
+    rainbow = {
+      enable = false,
+      extended_mode = true, -- Highlight also non-parentheses delimiters, boolean or table: lang -> boolean
+      max_file_lines = 1000, -- Do not enable for files with more than 1000 lines, int
+  }
   }
 EOF
 
+colorscheme gloombuddy
+let g:airline_theme='oceanicnext'
