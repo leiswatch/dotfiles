@@ -251,7 +251,8 @@ endif
 
 autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
 autocmd BufNewFile,BufRead *.pp set filetype=puppet
-autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()
+" autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()
+" autocmd BufEnter * lua require'completion'.on_attach()
 
 call plug#begin('~/.config/nvim/plugged')
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
@@ -289,10 +290,11 @@ Plug 'folke/lsp-trouble.nvim'
 Plug 'folke/lsp-colors.nvim'
 Plug 'kabouzeid/nvim-lspinstall'
 Plug 'rafi/awesome-vim-colorschemes'
-Plug 'nvim-lua/completion-nvim'
+" Plug 'nvim-lua/completion-nvim'
 Plug 'sheerun/vim-polyglot'
+" Plug 'glepnir/lspsaga.nvim'
 Plug 'tpope/vim-surround'
-Plug 'kosayoda/nvim-lightbulb'
+" Plug 'kosayoda/nvim-lightbulb'
 Plug 'windwp/nvim-ts-autotag'
 Plug 'Yggdroot/indentLine'
 Plug 'lukas-reineke/indent-blankline.nvim'
@@ -407,3 +409,4 @@ EOF
 
 colorscheme gloombuddy
 let g:airline_theme='oceanicnext'
+
