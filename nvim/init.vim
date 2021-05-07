@@ -8,7 +8,6 @@ set cursorline
 let mapleader = ","
 
 set textwidth=100
-
 set ttyfast
 set scrolloff=5
 set backspace=indent,eol,start
@@ -275,8 +274,6 @@ Plug 'airblade/vim-rooter'
 " Plug 'sonph/onehalf', { 'rtp': 'vim' }
 " Plug 'chriskempson/base16-vim'
 " Plug 'morhetz/gruvbox'
-Plug 'ryanoasis/vim-devicons'
-Plug 'kyazdani42/nvim-web-devicons'
 Plug 'cespare/vim-toml'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
@@ -298,6 +295,9 @@ Plug 'tpope/vim-surround'
 Plug 'windwp/nvim-ts-autotag'
 Plug 'Yggdroot/indentLine'
 Plug 'lukas-reineke/indent-blankline.nvim'
+Plug 'RRethy/nvim-base16'
+Plug 'ryanoasis/vim-devicons'
+Plug 'kyazdani42/nvim-web-devicons'
 call plug#end()
 
 let g:airline#extensions#tabline#enabled = 1
@@ -351,6 +351,12 @@ lua << EOF
   end
 EOF
 
+lua <<EOF
+require'nvim-web-devicons'.setup{
+  default = true;
+}
+EOF
+
 lua << EOF
   require("trouble").setup {}
 EOF
@@ -368,6 +374,7 @@ lua << EOF
       '--column',
       '--smart-case'
       },
+      color_devicons = true,
     }
   }
 EOF
@@ -407,6 +414,9 @@ lua <<EOF
   }
 EOF
 
+
+set guifont=SauceCodePro\ Nerd\ Font\ Mono\ Medium\ 13
+let g:airline_powerline_fonts = 1
 colorscheme gloombuddy
 let g:airline_theme='oceanicnext'
 
