@@ -1,10 +1,10 @@
 set nocompatible
-set colorcolumn=100
+" set colorcolumn=100
 set syntax=on
 set splitbelow
 filetype off
 filetype plugin on
-set cursorline
+" set cursorline
 let mapleader = ","
 
 set textwidth=100
@@ -39,15 +39,16 @@ set hidden
 set nobackup
 set nowritebackup
 set encoding=utf-8
-set cmdheight=1
-set updatetime=300
-
-set tabstop=2
+set cmdheight=2
+set updatetime=300 
+set shortmess+=c 
+set tabstop=2 
 set shiftwidth=2
 set softtabstop=2
 set expandtab
 set noshiftround
 set autoindent
+set completeopt=menuone,noinsert,noselect
 
 noremap <leader>1 1gt
 noremap <leader>2 2gt
@@ -63,6 +64,7 @@ nnoremap <C-Left> :tabprevious<CR>
 nnoremap <C-Right> :tabnext<CR>
 nmap te :tabnew<CR>
 nnoremap <leader><Space> :noh<cr>
+
 " Nerdcommenter
 let g:NERDCreateDefaultMappings = 1
 let g:NERDSpaceDelims = 1
@@ -72,19 +74,18 @@ let g:NERDDefaultAlign = 'left'
 
 " Nerdtree
 nnoremap <leader>n :NERDTreeFocus<CR>
-nnoremap <C-n> :NERDTree<CR>
-nnoremap <C-t> :NERDTreeToggle<CR>
+nnoremap <C-t> :NERDTree<CR>
+nnoremap <C-n> :NERDTreeToggle<CR>
 nnoremap <C-f> :NERDTreeFind<CR>
+
+autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
+    \ quit | endif
 
 " Telescope
 nnoremap <leader>ff <cmd>Telescope find_files hidden=true<cr>
 nnoremap <leader>fg <cmd>Telescope live_grep hidden=true<cr>
 nnoremap <leader>fb <cmd>Telescope buffers<cr>
 nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-
-
-autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
-    \ quit | endif
 
 " Syntastic
 " set statusline+=%#warningmsg#
@@ -96,13 +97,14 @@ autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTr
 " let g:syntastic_check_on_wq = 0
 
 " COC SETTINGS
+" Use tab for trigger completion with characters ahead and navigate.
+" NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
+" other plugin before putting this into your config.
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
       \ coc#refresh()
 inoremap <expr><S-TAB> pumvisible() ? "\<C-p>" : "\<C-h>"
-
-command! -nargs=0 OR :call CocAction('runCommand', 'editor.action.organizeImport')
 
 function! s:check_back_space() abort
   let col = col('.') - 1
@@ -116,6 +118,8 @@ else
   inoremap <silent><expr> <c-@> coc#refresh()
 endif
 
+" Make <CR> auto-select the first completion item and notify coc.nvim to
+" format on enter, <cr> could be remapped by other vim plugin
 inoremap <silent><expr> <cr> pumvisible() ? coc#_select_confirm()
                               \: "\<C-g>u\<CR>\<c-r>=coc#on_enter()\<CR>"
 
@@ -145,8 +149,11 @@ endfunction
 
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
-
+" autocmd CursorHold * silent call show_documentation()
+" Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
+
+" Formatting selected code.
 xmap <leader>f  <Plug>(coc-format-selected)
 nmap <leader>f  <Plug>(coc-format-selected)
 
@@ -157,19 +164,6 @@ augroup mygroup
   " Update signature help on jump placeholder.
   autocmd User CocJumpPlaceholder call CocActionAsync('showSignatureHelp')
 augroup end
-
-" Remap <C-f> and <C-b> for scroll float windows/popups.
-if has('nvim-0.4.0') || has('patch-8.2.0750')
-  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
-  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
-  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
-  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
-endif
-
-" Add `:Format` command to format current buffer.
-command! -nargs=0 Format :call CocAction('format')
 
 " Applying codeAction to the selected region.
 " Example: `<leader>aap` for current paragraph
@@ -192,12 +186,34 @@ omap ic <Plug>(coc-classobj-i)
 xmap ac <Plug>(coc-classobj-a)
 omap ac <Plug>(coc-classobj-a)
 
+" Remap <C-f> and <C-b> for scroll float windows/popups.
+if has('nvim-0.4.0') || has('patch-8.2.0750')
+  nnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  nnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+  inoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(1)\<cr>" : "\<Right>"
+  inoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? "\<c-r>=coc#float#scroll(0)\<cr>" : "\<Left>"
+  vnoremap <silent><nowait><expr> <C-f> coc#float#has_scroll() ? coc#float#scroll(1) : "\<C-f>"
+  vnoremap <silent><nowait><expr> <C-b> coc#float#has_scroll() ? coc#float#scroll(0) : "\<C-b>"
+endif
 
 " Use CTRL-S for selections ranges.
 " Requires 'textDocument/selectionRange' support of language server.
 nmap <silent> <C-s> <Plug>(coc-range-select)
 xmap <silent> <C-s> <Plug>(coc-range-select)
 
+" Add `:Format` command to format current buffer.
+command! -nargs=0 Format :call CocAction('format')
+
+" Add `:Fold` command to fold current buffer.
+command! -nargs=? Fold :call     CocAction('fold', <f-args>)
+
+" Add `:OR` command for organize imports of the current buffer.
+command! -nargs=0 OR   :call     CocAction('runCommand', 'editor.action.organizeImport')
+
+" Add (Neo)Vim's native statusline support.
+" NOTE: Please see `:h coc-status` for integrations with external plugins that
+" provide custom statusline: lightline.vim, vim-airline.
+set statusline^=%{coc#status()}%{get(b:,'coc_current_function','')}
 
 " Mappings for CoCList
 " Show all diagnostics.
@@ -216,7 +232,7 @@ nnoremap <silent><nowait> <space>j  :<C-u>CocNext<CR>
 nnoremap <silent><nowait> <space>k  :<C-u>CocPrev<CR>
 " Resume latest coc list.
 nnoremap <silent><nowait> <space>p  :<C-u>CocListResume<CR>
-nnoremap <silent><nowait> <leader>a :<C-u>CocAction<CR>
+" nnoremap <silent><nowait> <leader>a :<C-u>CocAction<CR>
 
 inoremap jj <esc>
 inoremap kj <esc>
@@ -250,12 +266,10 @@ endif
 
 autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
 autocmd BufNewFile,BufRead *.pp set filetype=puppet
-" autocmd CursorHold,CursorHoldI * lua require'nvim-lightbulb'.update_lightbulb()
-" autocmd BufEnter * lua require'completion'.on_attach()
 
 call plug#begin('~/.config/nvim/plugged')
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+" Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'jiangmiao/auto-pairs'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
@@ -287,15 +301,11 @@ Plug 'folke/lsp-trouble.nvim'
 Plug 'folke/lsp-colors.nvim'
 Plug 'kabouzeid/nvim-lspinstall'
 Plug 'rafi/awesome-vim-colorschemes'
-" Plug 'nvim-lua/completion-nvim'
 Plug 'sheerun/vim-polyglot'
-" Plug 'glepnir/lspsaga.nvim'
 Plug 'tpope/vim-surround'
-" Plug 'kosayoda/nvim-lightbulb'
 Plug 'windwp/nvim-ts-autotag'
 Plug 'Yggdroot/indentLine'
 Plug 'lukas-reineke/indent-blankline.nvim'
-Plug 'RRethy/nvim-base16'
 Plug 'ryanoasis/vim-devicons'
 Plug 'kyazdani42/nvim-web-devicons'
 call plug#end()
@@ -303,7 +313,7 @@ call plug#end()
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_highlighting_cache = 1
 
-let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-tsserver', 'coc-html', 'coc-eslint', 'coc-css', 'coc-rls', 'coc-pairs', 'coc-snippets', 'coc-emmet', 'coc-highlight', 'coc-go', 'coc-toml', 'coc-prettier', 'coc-stylelint', 'coc-python', 'coc-cssmodules', 'coc-xml', 'coc-webpack', 'coc-deno', 'coc-yaml', 'coc-sql', 'coc-docker', 'coc-styled-components', 'coc-scssmodules']
+let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-tsserver', 'coc-html', 'coc-eslint', 'coc-css', 'coc-rls', 'coc-pairs', 'coc-snippets', 'coc-emmet', 'coc-highlight', 'coc-go', 'coc-toml', 'coc-prettier', 'coc-stylelint', 'coc-python', 'coc-cssmodules', 'coc-xml', 'coc-webpack', 'coc-deno', 'coc-yaml', 'coc-sql', 'coc-docker', 'coc-styled-components', 'coc-scssmodules', 'coc-import-cost', 'coc-marketplace', 'coc-rust-analyzer', 'coc-apollo', 'coc-vimlsp', 'coc-just-complete', 'coc-html-css-support', 'coc-tailwindcss']
 
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set background=dark
@@ -319,35 +329,21 @@ endif
 
 set termguicolors
 
-" let g:gruvbox_italic=1
-" let g:gruvbox_termcolors=16
-" let g:gruvbox_contrast_dark='hard'
-" let g:gruvbox_invert_selection=0
-" let g:gruvbox_transparent_bg=1
-" let g:gruvbox_guisp_fallback='bg'
-
-" let g:nvcode_termcolors=256
-" colorscheme onedark
-
-
-" colorscheme onehalfdark
-" let g:airline_theme='onehalfdark'
-
-" colorscheme codedark
-" let g:airline_theme = 'codedark'
-
-" colorscheme gruvbox
-" let g:airline_theme = 'gruvbox'
-
-" let g:airline_theme='base16_tomorrow_night'
-" colorscheme base16-tomorrow-night
-
 lua << EOF
-  require'lspinstall'.setup() -- important
+  local function setup_servers()
+    require'lspinstall'.setup()
+    local servers = require'lspinstall'.installed_servers()
+    for _, server in pairs(servers) do
+      require'lspconfig'[server].setup{}
+    end
+  end
 
-  local servers = require'lspinstall'.installed_servers()
-  for _, server in pairs(servers) do
-    require'lspconfig'[server].setup{}
+  setup_servers()
+
+  -- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
+  require'lspinstall'.post_install_hook = function ()
+    setup_servers() -- reload installed servers
+    vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
   end
 EOF
 
@@ -413,7 +409,6 @@ lua <<EOF
   }
   }
 EOF
-
 
 set guifont=SauceCodePro\ Nerd\ Font\ Mono\ Medium\ 13
 let g:airline_powerline_fonts = 1
