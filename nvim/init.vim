@@ -6,7 +6,6 @@ filetype off
 filetype plugin on
 " set cursorline
 let mapleader = ","
-
 set textwidth=100
 set ttyfast
 set scrolloff=5
@@ -40,15 +39,14 @@ set nobackup
 set nowritebackup
 set encoding=utf-8
 set cmdheight=2
-set updatetime=300 
-set shortmess+=c 
-set tabstop=2 
+set updatetime=300
+set shortmess+=c
+set tabstop=2
 set shiftwidth=2
 set softtabstop=2
 set expandtab
 set noshiftround
 set autoindent
-set completeopt=menuone,noinsert,noselect
 
 noremap <leader>1 1gt
 noremap <leader>2 2gt
@@ -100,6 +98,13 @@ nnoremap <leader>fh <cmd>Telescope help_tags<cr>
 " Use tab for trigger completion with characters ahead and navigate.
 " NOTE: Use command ':verbose imap <tab>' to make sure tab is not mapped by
 " other plugin before putting this into your config.
+ if has("nvim-0.5.0") || has("patch-8.1.1564")
+  " Recently vim can merge signcolumn and number column into one
+  set signcolumn=number
+else
+  set signcolumn=yes
+endif
+
 inoremap <silent><expr> <TAB>
       \ pumvisible() ? "\<C-n>" :
       \ <SID>check_back_space() ? "\<TAB>" :
@@ -149,7 +154,7 @@ endfunction
 
 " Highlight the symbol and its references when holding the cursor.
 autocmd CursorHold * silent call CocActionAsync('highlight')
-" autocmd CursorHold * silent call show_documentation()
+
 " Symbol renaming.
 nmap <leader>rn <Plug>(coc-rename)
 
@@ -264,12 +269,13 @@ if empty(glob(data_dir . '/autoload/plug.vim'))
   autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
 endif
 
-autocmd BufNewFile,BufRead *.tsx,*.jsx set filetype=typescriptreact
+autocmd BufNewFile,BufRead *.tsx set filetype=typescriptreact
+autocmd BufNewFile,BufRead *.jsx set filetype=javascriptreact
 autocmd BufNewFile,BufRead *.pp set filetype=puppet
 
 call plug#begin('~/.config/nvim/plugged')
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
-" Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'jiangmiao/auto-pairs'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
@@ -295,6 +301,9 @@ Plug 'nvim-telescope/telescope.nvim'
 " Plug 'tomasiser/vim-code-dark'
 Plug 'tjdevries/colorbuddy.vim'
 Plug 'bkegley/gloombuddy'
+Plug 'rktjmp/lush.nvim'
+Plug 'npxbr/gruvbox.nvim'
+Plug 'christianchiarulli/nvcode-color-schemes.vim'
 " Plug 'tjdevries/gruvbuddy.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'folke/lsp-trouble.nvim'
@@ -308,12 +317,17 @@ Plug 'Yggdroot/indentLine'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'kyazdani42/nvim-web-devicons'
+Plug 'mhinz/vim-startify'
+Plug 'marko-cerovac/material.nvim'
+Plug 'RRethy/nvim-base16'
+Plug 'norcalli/nvim-colorizer.lua'
+Plug 'yamatsum/nvim-cursorline'
 call plug#end()
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_highlighting_cache = 1
 
-let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-tsserver', 'coc-html', 'coc-eslint', 'coc-css', 'coc-rls', 'coc-pairs', 'coc-snippets', 'coc-emmet', 'coc-highlight', 'coc-go', 'coc-toml', 'coc-prettier', 'coc-stylelint', 'coc-python', 'coc-cssmodules', 'coc-xml', 'coc-webpack', 'coc-deno', 'coc-yaml', 'coc-sql', 'coc-docker', 'coc-styled-components', 'coc-scssmodules', 'coc-import-cost', 'coc-marketplace', 'coc-rust-analyzer', 'coc-apollo', 'coc-vimlsp', 'coc-just-complete', 'coc-html-css-support', 'coc-tailwindcss']
+let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-tsserver', 'coc-html', 'coc-eslint', 'coc-css', 'coc-pairs', 'coc-snippets', 'coc-emmet', 'coc-highlight', 'coc-go', 'coc-toml', 'coc-stylelint', 'coc-python', 'coc-cssmodules', 'coc-xml', 'coc-webpack', 'coc-yaml', 'coc-sql', 'coc-docker', 'coc-styled-components', 'coc-scssmodules', 'coc-import-cost', 'coc-marketplace', 'coc-rust-analyzer', 'coc-apollo', 'coc-vimlsp', 'coc-just-complete', 'coc-html-css-support', 'coc-tailwindcss', 'coc-prettier']
 
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set background=dark
@@ -330,20 +344,11 @@ endif
 set termguicolors
 
 lua << EOF
-  local function setup_servers()
-    require'lspinstall'.setup()
-    local servers = require'lspinstall'.installed_servers()
-    for _, server in pairs(servers) do
-      require'lspconfig'[server].setup{}
-    end
-  end
+  require'lspinstall'.setup() -- important
 
-  setup_servers()
-
-  -- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
-  require'lspinstall'.post_install_hook = function ()
-    setup_servers() -- reload installed servers
-    vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
+  local servers = require'lspinstall'.installed_servers()
+  for _, server in pairs(servers) do
+    require'lspconfig'[server].setup{}
   end
 EOF
 
@@ -411,7 +416,9 @@ lua <<EOF
 EOF
 
 set guifont=SauceCodePro\ Nerd\ Font\ Mono\ Medium\ 13
-let g:airline_powerline_fonts = 1
-colorscheme gloombuddy
 let g:airline_theme='oceanicnext'
+colorscheme gloombuddy
 
+lua <<EOF
+  require'colorizer'.setup()
+EOF
