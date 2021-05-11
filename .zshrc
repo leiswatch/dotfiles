@@ -76,6 +76,7 @@ ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#555753"
 # export MANPATH="/usr/local/man:$MANPATH"
 export DENO_INSTALL="$HOME/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
+export BAT_THEME='1337'
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
