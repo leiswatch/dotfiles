@@ -322,6 +322,7 @@ Plug 'marko-cerovac/material.nvim'
 Plug 'RRethy/nvim-base16'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'yamatsum/nvim-cursorline'
+Plug 'sainnhe/edge'
 call plug#end()
 
 let g:airline#extensions#tabline#enabled = 1
@@ -416,8 +417,12 @@ lua <<EOF
 EOF
 
 set guifont=SauceCodePro\ Nerd\ Font\ Mono\ Medium\ 13
-let g:airline_theme='oceanicnext'
-colorscheme gloombuddy
+let g:airline_theme='edge'
+let g:edge_style = 'aura'
+let g:edge_enable_italic = 0
+let g:edge_disable_italic_comment = 1
+colorscheme edge
+
 
 lua <<EOF
   require'colorizer'.setup()
