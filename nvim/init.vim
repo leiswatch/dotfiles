@@ -70,6 +70,7 @@ let g:NERDCompactSexyComs = 1
 let g:NERDTrimTrailingWhitespace = 1
 let g:NERDDefaultAlign = 'left'
 
+
 " Nerdtree
 nnoremap <leader>n :NERDTreeFocus<CR>
 nnoremap <C-t> :NERDTree<CR>
@@ -78,6 +79,9 @@ nnoremap <C-f> :NERDTreeFind<CR>
 
 autocmd BufEnter * if tabpagenr('$') == 1 && winnr('$') == 1 && exists('b:NERDTree') && b:NERDTree.isTabTree() |
     \ quit | endif
+
+let NERDTreeShowHidden=1
+let NERDTreeIgnore=['\.git$', '\.idea$', '\.vscode$', '\.history$', '\.DS_STORE$']
 
 " Telescope
 nnoremap <leader>ff <cmd>Telescope find_files hidden=true<cr>
@@ -366,7 +370,7 @@ EOF
 lua << EOF
   require('telescope').setup{
     defaults = {
-      file_ignore_patterns = {"node_modules", "package-lock.json", "yarn.lock", ".git", ".next"},
+      file_ignore_patterns = {"node_modules/", "package-lock.json", "yarn.lock", ".git/", ".next/", ".DS_STORE/"},
       vimgrep_arguments = {
       'rg',
       '--no-heading',
