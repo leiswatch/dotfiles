@@ -283,9 +283,9 @@ Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'jiangmiao/auto-pairs'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
-" Plug 'HerringtonDarkholme/yats.vim'
-" Plug 'pangloss/vim-javascript'    " JavaScript support
-" Plug 'maxmellon/vim-jsx-pretty'   " JS and JSX syntax
+Plug 'HerringtonDarkholme/yats.vim'
+Plug 'pangloss/vim-javascript'    " JavaScript support
+Plug 'maxmellon/vim-jsx-pretty'   " JS and JSX syntax
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
 Plug 'nvim-treesitter/playground'
 Plug 'jparise/vim-graphql'
@@ -302,7 +302,7 @@ Plug 'cespare/vim-toml'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-" Plug 'tomasiser/vim-code-dark'
+Plug 'tomasiser/vim-code-dark'
 Plug 'tjdevries/colorbuddy.vim'
 Plug 'bkegley/gloombuddy'
 Plug 'rktjmp/lush.nvim'
@@ -327,6 +327,8 @@ Plug 'RRethy/nvim-base16'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'yamatsum/nvim-cursorline'
 Plug 'sainnhe/edge'
+Plug 'sainnhe/everforest'
+Plug 'sainnhe/sonokai'
 call plug#end()
 
 let g:airline#extensions#tabline#enabled = 1
@@ -420,14 +422,23 @@ lua <<EOF
   }
 EOF
 
-set guifont=SauceCodePro\ Nerd\ Font\ Mono\ Medium\ 13
 let g:airline_theme='edge'
 let g:edge_style = 'aura'
 let g:edge_enable_italic = 0
 let g:edge_disable_italic_comment = 1
+let g:edge_diagnostic_text_highlight = 1
+let g:edge_diagnostic_line_highlight = 0
+let g:edge_current_word = 'bold'
 colorscheme edge
 
+" let g:airline_theme='sonokai'
+" let g:sonokai_style = 'shusia'
+" let g:sonokai_enable_italic = 0
+" let g:sonokai_disable_italic_comment = 1
+" colorscheme sonokai
 
+" let g:airline_theme='oceanicnext'
+" colorscheme gloombuddy
 lua <<EOF
   require'colorizer'.setup()
 EOF
