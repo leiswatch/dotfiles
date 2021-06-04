@@ -295,25 +295,16 @@ Plug 'preservim/nerdcommenter'
 Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'airblade/vim-rooter'
-" Plug 'sonph/onehalf', { 'rtp': 'vim' }
-" Plug 'chriskempson/base16-vim'
-" Plug 'morhetz/gruvbox'
 Plug 'cespare/vim-toml'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-Plug 'tomasiser/vim-code-dark'
 Plug 'tjdevries/colorbuddy.vim'
 Plug 'bkegley/gloombuddy'
-Plug 'rktjmp/lush.nvim'
-Plug 'npxbr/gruvbox.nvim'
-Plug 'christianchiarulli/nvcode-color-schemes.vim'
-" Plug 'tjdevries/gruvbuddy.nvim'
 Plug 'neovim/nvim-lspconfig'
 Plug 'folke/lsp-trouble.nvim'
 Plug 'folke/lsp-colors.nvim'
 Plug 'kabouzeid/nvim-lspinstall'
-Plug 'rafi/awesome-vim-colorschemes'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-surround'
 Plug 'windwp/nvim-ts-autotag'
@@ -322,17 +313,15 @@ Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'ryanoasis/vim-devicons'
 Plug 'kyazdani42/nvim-web-devicons'
 Plug 'mhinz/vim-startify'
-Plug 'marko-cerovac/material.nvim'
-Plug 'RRethy/nvim-base16'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'yamatsum/nvim-cursorline'
-Plug 'sainnhe/edge'
-Plug 'sainnhe/everforest'
-Plug 'sainnhe/sonokai'
+" Plug 'sainnhe/edge'
+Plug 'tomasiser/vim-code-dark'
 call plug#end()
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_highlighting_cache = 1
+" let g:airline_powerline_fonts = 1
 
 let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-tsserver', 'coc-html', 'coc-eslint', 'coc-css', 'coc-pairs', 'coc-snippets', 'coc-emmet', 'coc-highlight', 'coc-go', 'coc-toml', 'coc-stylelint', 'coc-python', 'coc-cssmodules', 'coc-xml', 'coc-webpack', 'coc-yaml', 'coc-sql', 'coc-docker', 'coc-styled-components', 'coc-scssmodules', 'coc-import-cost', 'coc-marketplace', 'coc-rust-analyzer', 'coc-apollo', 'coc-vimlsp', 'coc-just-complete', 'coc-html-css-support', 'coc-tailwindcss', 'coc-prettier']
 
@@ -403,8 +392,7 @@ lua <<EOF
         toggle_hl_groups = 'i',
         toggle_injected_languages = 't',
         toggle_anonymous_nodes = 'a',
-        toggle_language_display = 'I',
-        focus_language = 'f',
+        toggle_language_display = 'I', focus_language = 'f',
         unfocus_language = 'F',
         update = 'R',
         goto_node = '<cr>',
@@ -418,27 +406,16 @@ lua <<EOF
       enable = false,
       extended_mode = true, -- Highlight also non-parentheses delimiters, boolean or table: lang -> boolean
       max_file_lines = 1000, -- Do not enable for files with more than 1000 lines, int
-  }
+    }
   }
 EOF
 
-let g:airline_theme='edge'
-let g:edge_style = 'aura'
-let g:edge_enable_italic = 0
-let g:edge_disable_italic_comment = 1
-let g:edge_diagnostic_text_highlight = 1
-let g:edge_diagnostic_line_highlight = 0
-let g:edge_current_word = 'bold'
-colorscheme edge
-
-" let g:airline_theme='sonokai'
-" let g:sonokai_style = 'shusia'
-" let g:sonokai_enable_italic = 0
-" let g:sonokai_disable_italic_comment = 1
-" colorscheme sonokai
+let g:airline_theme='codedark'
+colorscheme codedark
 
 " let g:airline_theme='oceanicnext'
 " colorscheme gloombuddy
+
 lua <<EOF
   require'colorizer'.setup()
 EOF
