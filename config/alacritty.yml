@@ -7,7 +7,7 @@ window:
     lines: 40
 
   padding:
-    x: 5
+    x: 10
     y: 5
 
   dynamic_padding: true
@@ -21,25 +21,25 @@ scrolling:
 
 font:
   normal:
-    family: CaskaydiaCove Nerd Font Mono
-    style: Medium
+    family: Hack Nerd Font Mono
+    style: Regular
 
   bold:
-    family: CaskaydiaCove Nerd Font Mono
+    family: Hack Nerd Font Mono
     style: Bold
 
   italic:
-    family: CaskaydiaCove Nerd Font Mono
+    family: Hack Nerd Font Mono
     style: Italic
 
-  size: 13.0
+  size: 12.5
 
   offset:
     x: 0
     y: 0
 
 background_opacity: 1
-draw_bold_text_with_bright_colors: false
+draw_bold_text_with_bright_colors: true
 cursor:
   # Cursor style
   #
