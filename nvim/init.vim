@@ -315,7 +315,7 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'mhinz/vim-startify'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'yamatsum/nvim-cursorline'
-" Plug 'sainnhe/edge'
+Plug 'sainnhe/edge'
 Plug 'tomasiser/vim-code-dark'
 call plug#end()
 
@@ -410,8 +410,17 @@ lua <<EOF
   }
 EOF
 
-let g:airline_theme='codedark'
-colorscheme codedark
+let g:edge_enable_italic = 1
+let g:edge_disable_italic_comment = 1
+let g:airline_theme = 'edge'
+let g:edge_transparent_background = 1
+let g:edge_current_word = 'bold'
+colorscheme edge
+highlight Normal guibg=none
+highlight NonText guibg=none
+
+" let g:airline_theme='codedark'
+" colorscheme codedark
 
 " let g:airline_theme='oceanicnext'
 " colorscheme gloombuddy
