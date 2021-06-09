@@ -54,9 +54,6 @@ cursor:
   # window is not focused.
   unfocused_hollow: true
 
-shell:
-  program: /usr/bin/zsh
-
 # Colors (Tomorrow Night Bright)
 colors:
   # Default colors
