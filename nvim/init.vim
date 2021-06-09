@@ -1,5 +1,5 @@
 set nocompatible
-" set colorcolumn=100
+set colorcolumn=100
 set syntax=on
 set splitbelow
 filetype off
@@ -266,6 +266,33 @@ nmap <Tab> :tabnext<Return>
 
 nnoremap <leader>xx <cmd>LspTroubleToggle<cr>
 
+" Move to previous/next
+nnoremap <silent>    <A-,> :BufferPrevious<CR>
+nnoremap <silent>    <A-.> :BufferNext<CR>
+" Re-order to previous/next
+nnoremap <silent>    <A-<> :BufferMovePrevious<CR>
+nnoremap <silent>    <A->> :BufferMoveNext<CR>
+" Goto buffer in position...
+nnoremap <silent>    <A-1> :BufferGoto 1<CR>
+nnoremap <silent>    <A-2> :BufferGoto 2<CR>
+nnoremap <silent>    <A-3> :BufferGoto 3<CR>
+nnoremap <silent>    <A-4> :BufferGoto 4<CR>
+nnoremap <silent>    <A-5> :BufferGoto 5<CR>
+nnoremap <silent>    <A-6> :BufferGoto 6<CR>
+nnoremap <silent>    <A-7> :BufferGoto 7<CR>
+nnoremap <silent>    <A-8> :BufferGoto 8<CR>
+nnoremap <silent>    <A-9> :BufferLast<CR>
+" Close buffer
+nnoremap <silent>    <A-c> :BufferClose<CR>
+" Wipeout buffer
+"                          :BufferWipeout<CR>
+" Close commands
+"                          :BufferCloseAllButCurrent<CR>
+"                          :BufferCloseBuffersLeft<CR>
+"                          :BufferCloseBuffersRight<CR>
+" Magic buffer-picking mode
+nnoremap <silent> <C-s>    :BufferPick<CR>
+
 let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
 
 if empty(glob(data_dir . '/autoload/plug.vim'))
@@ -280,27 +307,24 @@ autocmd BufNewFile,BufRead *.pp set filetype=puppet
 call plug#begin('~/.config/nvim/plugged')
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
-Plug 'jiangmiao/auto-pairs'
 Plug 'leafgarland/typescript-vim'
 Plug 'peitalin/vim-jsx-typescript'
 Plug 'HerringtonDarkholme/yats.vim'
-Plug 'pangloss/vim-javascript'    " JavaScript support
-Plug 'maxmellon/vim-jsx-pretty'   " JS and JSX syntax
+Plug 'pangloss/vim-javascript'
+Plug 'maxmellon/vim-jsx-pretty'
 Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'nvim-treesitter/playground'
-Plug 'jparise/vim-graphql'
 Plug 'vim-airline/vim-airline'
 Plug 'vim-airline/vim-airline-themes'
 Plug 'preservim/nerdcommenter'
 Plug 'preservim/nerdtree'
 Plug 'Xuyuanp/nerdtree-git-plugin'
+Plug 'romgrk/barbar.nvim'
 Plug 'airblade/vim-rooter'
 Plug 'cespare/vim-toml'
+Plug 'jparise/vim-graphql'
 Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
-Plug 'tjdevries/colorbuddy.vim'
-Plug 'bkegley/gloombuddy'
 Plug 'neovim/nvim-lspconfig'
 Plug 'folke/lsp-trouble.nvim'
 Plug 'folke/lsp-colors.nvim'
@@ -308,6 +332,7 @@ Plug 'kabouzeid/nvim-lspinstall'
 Plug 'sheerun/vim-polyglot'
 Plug 'tpope/vim-surround'
 Plug 'windwp/nvim-ts-autotag'
+Plug 'jiangmiao/auto-pairs'
 Plug 'Yggdroot/indentLine'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'ryanoasis/vim-devicons'
@@ -315,13 +340,22 @@ Plug 'kyazdani42/nvim-web-devicons'
 Plug 'mhinz/vim-startify'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'yamatsum/nvim-cursorline'
+Plug 'f-person/git-blame.nvim'
+Plug 'karb94/neoscroll.nvim'
+Plug 'p00f/nvim-ts-rainbow'
+" Colorschemes
 Plug 'sainnhe/edge'
-Plug 'tomasiser/vim-code-dark'
+" Plug 'tjdevries/colorbuddy.vim'
+" Plug 'bkegley/gloombuddy'
+" Plug 'sainnhe/sonokai'
+" Plug 'folke/tokyonight.nvim'
+" Plug 'Th3Whit3Wolf/onebuddy'
+" Plug 'navarasu/onedark.nvim'
 call plug#end()
 
 let g:airline#extensions#tabline#enabled = 1
 let g:airline_highlighting_cache = 1
-" let g:airline_powerline_fonts = 1
+let g:airline_powerline_fonts = 1
 
 let g:coc_global_extensions = ['coc-json', 'coc-git', 'coc-tsserver', 'coc-html', 'coc-eslint', 'coc-css', 'coc-pairs', 'coc-snippets', 'coc-emmet', 'coc-highlight', 'coc-go', 'coc-toml', 'coc-stylelint', 'coc-python', 'coc-cssmodules', 'coc-xml', 'coc-webpack', 'coc-yaml', 'coc-sql', 'coc-docker', 'coc-styled-components', 'coc-scssmodules', 'coc-import-cost', 'coc-marketplace', 'coc-rust-analyzer', 'coc-apollo', 'coc-vimlsp', 'coc-just-complete', 'coc-html-css-support', 'coc-tailwindcss', 'coc-prettier']
 
@@ -332,10 +366,10 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
-if exists('+termguicolors')
- let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
- let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
-endif
+" if exists('+termguicolors')
+"  let &t_8f = "\<Esc>[38;2;%lu;%lu;%lum"
+"  let &t_8b = "\<Esc>[48;2;%lu;%lu;%lum"
+" endif
 
 set termguicolors
 
@@ -382,49 +416,37 @@ lua <<EOF
     highlight = {
       enable = true,              -- false will disable the whole extension
     },
-    playground = {
+    indent = {
       enable = true,
-      disable = {},
-      updatetime = 25, -- Debounced time for highlighting nodes in the playground from source code
-      persist_queries = false, -- Whether the query persists across vim sessions
-      keybindings = {
-        toggle_query_editor = 'o',
-        toggle_hl_groups = 'i',
-        toggle_injected_languages = 't',
-        toggle_anonymous_nodes = 'a',
-        toggle_language_display = 'I', focus_language = 'f',
-        unfocus_language = 'F',
-        update = 'R',
-        goto_node = '<cr>',
-        show_help = '?',
-      },
+    },
+    incremental_selection = {
+      enable = true
     },
     autotag = {
       enable = true,
     },
     rainbow = {
       enable = false,
-      extended_mode = true, -- Highlight also non-parentheses delimiters, boolean or table: lang -> boolean
+      extended_mode = false, -- Highlight also non-parentheses delimiters, boolean or table: lang -> boolean
       max_file_lines = 1000, -- Do not enable for files with more than 1000 lines, int
     }
   }
 EOF
 
+let g:airline_theme = 'edge'
 let g:edge_enable_italic = 1
 let g:edge_disable_italic_comment = 1
-let g:airline_theme = 'edge'
-let g:edge_transparent_background = 1
+let g:edge_transparent_background = 0
 let g:edge_current_word = 'bold'
 colorscheme edge
-highlight Normal guibg=none
-highlight NonText guibg=none
 
-" let g:airline_theme='codedark'
-" colorscheme codedark
-
-" let g:airline_theme='oceanicnext'
-" colorscheme gloombuddy
+" highlight Normal guibg=none
+" highlight NonText guibg=none
 
 lua <<EOF
   require'colorizer'.setup()
+EOF
+
+lua << EOF
+  require('neoscroll').setup()
 EOF
