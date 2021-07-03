@@ -52,6 +52,7 @@ Plug 'sainnhe/edge'
 Plug 'tjdevries/colorbuddy.vim'
 Plug 'bkegley/gloombuddy'
 Plug 'Mofiqul/vscode.nvim'
+Plug 'tjdevries/gruvbuddy.nvim'
 
 call plug#end()
 
@@ -76,6 +77,8 @@ let g:edge_disable_italic_comment = 1
 let g:edge_transparent_background = 1
 let g:vscode_style = "dark"
 colorscheme onedark
+
+" lua require('colorbuddy').colorscheme('gruvbuddy')
 
 highlight Normal guibg=none
 highlight NonText guibg=none
