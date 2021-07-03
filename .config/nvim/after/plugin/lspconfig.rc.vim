@@ -6,8 +6,7 @@ let g:completion_enable_snippet = 'vim-vsnip'
 
 lua << EOF
   require'snippets'.use_suggested_mappings()
-
-  local nvim_lsp = require('lspconfig')
+local nvim_lsp = require('lspconfig')
   local protocol = require('vim.lsp.protocol')
 
   local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -52,38 +51,23 @@ lua << EOF
     require 'completion'.on_attach(client, bufnr)
   end
 
-  nvim_lsp.tsserver.setup {
-    capabilities = capabilities;
-    on_attach = on_attach,
-    filetypes = { "javascript", "javascriptreact", "javascript.jsx", "typescript", "typescriptreact", "typescript.tsx" }
-  }
-
-  nvim_lsp.pyright.setup {
-    capabilities = capabilities;
-    on_attach = on_attach,
-  }
-
-  nvim_lsp.rust_analyzer.setup {
-    capabilities = capabilities;
-    on_attach=on_attach,
-    settings = {
-        ["rust-analyzer"] = {
-            assist = {
-                importGranularity = "module",
-                importPrefix = "by_self",
-            },
-            cargo = {
-                loadOutDirsFromCheck = true
-            },
-            procMacro = {
-                enable = true
-            },
-        }
+local function setup_servers()
+  require'lspinstall'.setup()
+  local servers = require'lspinstall'.installed_servers()
+  for _, server in pairs(servers) do
+    require'lspconfig'[server].setup{
+      capabilities = capabilities,
+      on_attach=on_attach,
     }
-  }
+  end
+end
 
-  nvim_lsp.cssls.setup {
-    capabilities = capabilities;
-    on_attach=on_attach,
-  }
+setup_servers()
+
+-- Automatically reload after `:LspInstall <server>` so we don't have to restart neovim
+require'lspinstall'.post_install_hook = function ()
+  setup_servers() -- reload installed servers
+  vim.cmd("bufdo e") -- this triggers the FileType autocmd that starts the server
+end
+
 EOF
