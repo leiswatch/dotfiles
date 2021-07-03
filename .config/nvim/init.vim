@@ -13,6 +13,7 @@ Plug 'nvim-lua/popup.nvim'
 Plug 'nvim-lua/plenary.nvim'
 Plug 'nvim-telescope/telescope.nvim'
 Plug 'kyazdani42/nvim-web-devicons'
+Plug 'ryanoasis/vim-devicons'
 Plug 'hoob3rt/lualine.nvim'
 Plug 'norcalli/nvim-colorizer.lua'
 Plug 'norcalli/snippets.nvim'
@@ -28,6 +29,8 @@ Plug 'romgrk/barbar.nvim'
 Plug 'yamatsum/nvim-cursorline'
 Plug 'lukas-reineke/indent-blankline.nvim'
 Plug 'kyazdani42/nvim-tree.lua'
+" Plug 'preservim/nerdtree'
+" Plug 'Xuyuanp/nerdtree-git-plugin'
 Plug 'f-person/git-blame.nvim'
 Plug 'lewis6991/gitsigns.nvim'
 Plug 'b3nj5m1n/kommentary'
@@ -45,16 +48,17 @@ Plug 'pangloss/vim-javascript'
 Plug 'maxmellon/vim-jsx-pretty'
 Plug 'cespare/vim-toml'
 Plug 'jparise/vim-graphql'
-" Plug 'airblade/vim-rooter'
 Plug 'mhinz/vim-startify'
 
 Plug 'wojciechkepka/vim-github-dark'
 Plug 'navarasu/onedark.nvim'
 Plug 'sainnhe/edge'
+Plug 'sainnhe/everforest'
 Plug 'tjdevries/colorbuddy.vim'
 Plug 'bkegley/gloombuddy'
 Plug 'Mofiqul/vscode.nvim'
 Plug 'tjdevries/gruvbuddy.nvim'
+Plug 'marko-cerovac/material.nvim'
 
 call plug#end()
 
@@ -74,13 +78,21 @@ endif
 
 set background=dark
 syntax on
-let g:edge_enable_italic = 1
-let g:edge_disable_italic_comment = 1
-let g:edge_transparent_background = 1
-let g:vscode_style = "dark"
-colorscheme onedark
-
-" lua require('colorbuddy').colorscheme('gruvbuddy')
+" let g:edge_enable_italic = 1
+" let g:edge_disable_italic_comment = 1
+" let g:edge_transparent_background = 1
+" let g:vscode_style = "dark"
+let g:everforest_background = 'soft'
+let g:everforest_enable_italic = 1
+let g:everforest_disable_italic_comment = 1
+let g:everforest_transparent_background = 1
+let g:everforest_sign_column_background = 'none'
+let g:everforest_diagnostic_text_highlight = 1
+let g:everforest_diagnostic_line_highlight = 1
+let g:everforest_current_word = 'bold'
+let g:everforest_diagnostic_virtual_text = 'colored'
+let g:everforest_better_performance = 1
+colorscheme everforest
 
 highlight Normal guibg=none
 highlight NonText guibg=none
