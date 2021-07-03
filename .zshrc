@@ -78,7 +78,7 @@ ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 # export MANPATH="/usr/local/man:$MANPATH"
 export DENO_INSTALL="$HOME/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
-export BAT_THEME='1337'
+export BAT_THEME='OneHalfDark'
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
