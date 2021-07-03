@@ -1,73 +1,5 @@
-call plug#begin('~/.vim/plugged')
-
-Plug 'tpope/vim-fugitive'
-Plug 'tpope/vim-rhubarb'
-Plug 'neovim/nvim-lspconfig'
-Plug 'kabouzeid/nvim-lspinstall'
-Plug 'glepnir/lspsaga.nvim'
-Plug 'nvim-treesitter/nvim-treesitter', {'do': ':TSUpdate'}
-Plug 'nvim-lua/completion-nvim'
-Plug 'nvim-treesitter/completion-treesitter'
-Plug 'steelsojka/completion-buffers'
-Plug 'nvim-lua/popup.nvim'
-Plug 'nvim-lua/plenary.nvim'
-Plug 'nvim-telescope/telescope.nvim'
-Plug 'kyazdani42/nvim-web-devicons'
-Plug 'ryanoasis/vim-devicons'
-Plug 'hoob3rt/lualine.nvim'
-Plug 'norcalli/nvim-colorizer.lua'
-Plug 'norcalli/snippets.nvim'
-Plug 'hrsh7th/vim-vsnip'
-Plug 'hrsh7th/vim-vsnip-integ'
-Plug 'rafamadriz/friendly-snippets'
-Plug 'simrat39/rust-tools.nvim'
-Plug 'folke/lsp-colors.nvim'
-Plug 'folke/trouble.nvim'
-Plug 'kosayoda/nvim-lightbulb'
-Plug 'onsails/lspkind-nvim'
-Plug 'romgrk/barbar.nvim'
-Plug 'yamatsum/nvim-cursorline'
-Plug 'lukas-reineke/indent-blankline.nvim'
-Plug 'kyazdani42/nvim-tree.lua'
-" Plug 'preservim/nerdtree'
-" Plug 'Xuyuanp/nerdtree-git-plugin'
-Plug 'f-person/git-blame.nvim'
-Plug 'lewis6991/gitsigns.nvim'
-Plug 'b3nj5m1n/kommentary'
-Plug 'karb94/neoscroll.nvim'
-Plug 'ahmedkhalf/lsp-rooter.nvim'
-Plug 'windwp/nvim-ts-autotag'
-Plug 'windwp/nvim-autopairs'
-Plug 'dense-analysis/ale'
-Plug 'hoob3rt/lualine.nvim'
-Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
-Plug 'leafgarland/typescript-vim'
-Plug 'peitalin/vim-jsx-typescript'
-Plug 'HerringtonDarkholme/yats.vim'
-Plug 'pangloss/vim-javascript'
-Plug 'maxmellon/vim-jsx-pretty'
-Plug 'cespare/vim-toml'
-Plug 'jparise/vim-graphql'
-Plug 'mhinz/vim-startify'
-
-Plug 'wojciechkepka/vim-github-dark'
-Plug 'navarasu/onedark.nvim'
-Plug 'sainnhe/edge'
-Plug 'sainnhe/everforest'
-Plug 'tjdevries/colorbuddy.vim'
-Plug 'bkegley/gloombuddy'
-Plug 'Mofiqul/vscode.nvim'
-Plug 'tjdevries/gruvbuddy.nvim'
-Plug 'marko-cerovac/material.nvim'
-
-call plug#end()
-
-let data_dir = has('nvim') ? stdpath('data') . '/site' : '~/.vim'
-
-if empty(glob(data_dir . '/autoload/plug.vim'))
-  silent execute '!curl -fLo '.data_dir.'/autoload/plug.vim --create-dirs  https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim'
-  autocmd VimEnter * PlugInstall --sync | source $MYVIMRC
-endif
+runtime ./plug.vim
+runtime ./maps.vim
 
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set background=dark
@@ -78,17 +10,13 @@ endif
 
 set background=dark
 syntax on
-" let g:edge_enable_italic = 1
-" let g:edge_disable_italic_comment = 1
-" let g:edge_transparent_background = 1
-" let g:vscode_style = "dark"
 let g:everforest_background = 'soft'
-let g:everforest_enable_italic = 1
+let g:everforest_enable_italic = 0
 let g:everforest_disable_italic_comment = 1
 let g:everforest_transparent_background = 1
 let g:everforest_sign_column_background = 'none'
-let g:everforest_diagnostic_text_highlight = 1
-let g:everforest_diagnostic_line_highlight = 1
+let g:everforest_diagnostic_text_highlight = 0
+let g:everforest_diagnostic_line_highlight = 0
 let g:everforest_current_word = 'bold'
 let g:everforest_diagnostic_virtual_text = 'colored'
 let g:everforest_better_performance = 1
@@ -144,70 +72,8 @@ set expandtab
 set noshiftround
 set autoindent
 
-noremap <leader>1 1gt
-noremap <leader>2 2gt
-noremap <leader>3 3gt
-noremap <leader>4 4gt
-noremap <leader>5 5gt
-noremap <leader>6 6gt
-noremap <leader>7 7gt
-noremap <leader>8 8gt
-noremap <leader>9 9gt
-noremap <leader>0 :tablast<cr>
-nnoremap <C-Left> :tabprevious<CR>
-nnoremap <C-Right> :tabnext<CR>
-nmap te :tabnew<CR>
-nnoremap <leader><Space> :noh<cr>
-
-inoremap jj <esc>
-inoremap kj <esc>
-inoremap JJ <esc>
-inoremap KJ <esc>
-nnoremap <C-J> <C-W><C-J>
-nnoremap <C-K> <C-W><C-K>
-nnoremap <C-L> <C-W><C-L>
-nnoremap <C-H> <C-W><C-H>
-
-" Split window
-nmap ss :split<Return><C-w>w
-nmap sv :vsplit<Return><C-w>w" Move window
-
-map sh <C-w>h
-map sk <C-w>k
-map sj <C-w>j
-map sl <C-w>l
-
-" Switch tab
-nmap <S-Tab> :tabprev<Return>
-nmap <Tab> :tabnext<Return>
-
-" Move to previous/next
-nnoremap <silent>    <A-,> :BufferPrevious<CR>
-nnoremap <silent>    <A-.> :BufferNext<CR>
-" Re-order to previous/next
-nnoremap <silent>    <A-<> :BufferMovePrevious<CR>
-nnoremap <silent>    <A->> :BufferMoveNext<CR>
-" Goto buffer in position...
-nnoremap <silent>    <A-1> :BufferGoto 1<CR>
-nnoremap <silent>    <A-2> :BufferGoto 2<CR>
-nnoremap <silent>    <A-3> :BufferGoto 3<CR>
-nnoremap <silent>    <A-4> :BufferGoto 4<CR>
-nnoremap <silent>    <A-5> :BufferGoto 5<CR>
-nnoremap <silent>    <A-6> :BufferGoto 6<CR>
-nnoremap <silent>    <A-7> :BufferGoto 7<CR>
-nnoremap <silent>    <A-8> :BufferGoto 8<CR>
-nnoremap <silent>    <A-9> :BufferLast<CR>
-
-" Close buffer
-nnoremap <silent>    <A-c> :BufferClose<CR>
-
-" Magic buffer-picking mode
-nnoremap <silent> <C-s>    :BufferPick<CR>
-
-" Sort automatically by...
-nnoremap <silent> <leader>bd :BufferOrderByDirectory<CR>
-nnoremap <silent> <leader>bl :BufferOrderByLanguage<CR>
 
 autocmd BufNewFile,BufRead *.tsx set filetype=typescriptreact
 autocmd BufNewFile,BufRead *.jsx set filetype=javascriptreact
 autocmd BufNewFile,BufRead *.pp set filetype=puppet
+
