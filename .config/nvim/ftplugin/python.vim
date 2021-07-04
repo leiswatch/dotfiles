@@ -1,4 +1,11 @@
 let g:python_recommended_style = 0
+setlocal tabstop=2
+setlocal softtabstop=2
+setlocal shiftwidth=2
+setlocal textwidth=80
+" setlocal smarttab
+" setlocal expandtab
+
 " Copyright 2019 Google LLC
 "
 " Licensed under the Apache License, Version 2.0 (the "License");
