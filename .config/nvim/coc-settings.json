@@ -13,5 +13,7 @@
     "javascriptreact": ["javascript"],
     "typescript": ["javascript"],
     "javascript": ["javscript", "typescript"]
-  }
+  },
+  "eslint.alwaysShowStatus": true,
+  "eslint.autoFixOnSave": true
 }
