@@ -1,8 +1,4 @@
-if !exists('g:loaded_nvim_treesitter')
-  finish
-endif
-
-lua << EOF
+lua <<EOF
   require "nvim-treesitter.configs".setup {
     ensure_installed = "maintained", -- one of "all", "maintained" (parsers with maintainers), or a list of languages
     highlight = {
