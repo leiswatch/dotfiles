@@ -6,7 +6,7 @@ let g:completion_enable_snippet = 'vim-vsnip'
 
 lua << EOF
   require'snippets'.use_suggested_mappings()
-local nvim_lsp = require('lspconfig')
+  local nvim_lsp = require('lspconfig')
   local protocol = require('vim.lsp.protocol')
 
   local capabilities = vim.lsp.protocol.make_client_capabilities()
@@ -19,6 +19,7 @@ local nvim_lsp = require('lspconfig')
     local opts = { noremap = true, silent = true }
 
     -- buf_set_keymap('n', 'gd', '<Cmd>lua vim.lsp.buf.definition()<CR>', opts)
+    require'completion'.on_attach(client, bufnr)
 
     protocol.CompletionItemKind = {
       '', -- Text
@@ -47,8 +48,6 @@ local nvim_lsp = require('lspconfig')
       'ﬦ', -- Operator
       '', -- TypeParameter
     }
-
-    require 'completion'.on_attach(client, bufnr)
   end
 
 local function setup_servers()
