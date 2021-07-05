@@ -104,6 +104,7 @@ export BAT_THEME='OneHalfDark'
 alias ls="exa"
 alias cat="batcat"
 alias update-kitty-terminal="curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin"
+alias set-kitty-as-default-ubuntu="sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator `which kitty` 50"
 
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
 --color=dark
