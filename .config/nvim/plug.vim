@@ -48,5 +48,6 @@ call plug#begin('~/.config/nvim/plugged')
   Plug 'tjdevries/colorbuddy.vim'
   " Plug 'bkegley/gloombuddy'
   Plug 'sainnhe/sonokai'
+  Plug 'sainnhe/edge'
   Plug 'sainnhe/everforest'
 call plug#end()

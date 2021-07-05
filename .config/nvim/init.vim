@@ -65,7 +65,11 @@ let g:everforest_enable_italic = 0
 let g:everforest_disable_italic_comment = 1
 let g:everforest_transparent_background = 1
 let g:everforest_current_word = 'bold'
-colorscheme everforest
+let g:edge_enable_italic = 0
+let g:edge_disable_italic_comment = 1
+let g:edge_transparent_background = 1
+let g:edge_current_word = 'bold'
+colorscheme onedark
 let g:airline_theme = 'onedark'
 
 let g:airline#extensions#tabline#enabled = 0

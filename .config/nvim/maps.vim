@@ -11,7 +11,6 @@ noremap <leader>0 :tablast<cr>
 nnoremap <C-Left> :tabprevious<CR>
 nnoremap <C-Right> :tabnext<CR>
 nmap te :tabnew<CR>
-nnoremap <leader><Space> :noh<cr>
 
 inoremap jj <esc>
 inoremap kj <esc>
@@ -21,6 +20,7 @@ nnoremap <C-J> <C-W><C-J>
 nnoremap <C-K> <C-W><C-K>
 nnoremap <C-L> <C-W><C-L>
 nnoremap <C-H> <C-W><C-H>
+
 " Split window
 nmap ss :split<Return><C-w>w
 nmap sv :vsplit<Return><C-w>w" Move window
@@ -33,5 +33,3 @@ map sl <C-w>l
 " Switch tab
 nmap <S-Tab> :tabprev<Return>
 nmap <Tab> :tabnext<Return>
-
-nnoremap <leader><Space> :noh<Return>
