@@ -103,6 +103,7 @@ export BAT_THEME='OneHalfDark'
 
 alias ls="exa"
 alias cat="batcat"
+alias update-kitty-terminal="curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin"
 
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
 --color=dark
