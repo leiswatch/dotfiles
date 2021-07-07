@@ -16,8 +16,7 @@ ZSH_THEME="robbyrussell"
 # If set to an empty array, this variable will have no effect.
 # ZSH_THEME_RANDOM_CANDIDATES=( "robbyrussell" "agnoster" )
 
-# Uncomment the following line to use case-sensitive completion.
-# CASE_SENSITIVE="true"
+# Uncomment the following line to use case-sensitive completion.  CASE_SENSITIVE="true"
 
 # Uncomment the following line to use hyphen-insensitive completion.
 # Case-sensitive completion must be off. _ and - will be interchangeable.
@@ -105,6 +104,8 @@ alias ls="exa"
 alias cat="batcat"
 alias update-kitty-terminal="curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin"
 alias set-kitty-as-default-ubuntu="sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator `which kitty` 50"
+
+DISABLE_AUTO_TITLE=true
 
 export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
 --color=dark
