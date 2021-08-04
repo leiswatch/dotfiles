@@ -1,29 +1,58 @@
-nnoremap <leader>ff <cmd>Telescope find_files hidden=true<cr>
-nnoremap <leader>fg <cmd>Telescope live_grep hidden=true<cr>
-nnoremap <leader>fb <cmd>Telescope buffers<cr>
-nnoremap <leader>fh <cmd>Telescope help_tags<cr>
-
 lua << EOF
-  local actions = require('telescope.actions')
-
-  require('telescope').setup{
-    defaults = {
-      mappings = {
-        n = {
-          ["q"] = actions.close
-        },
-      },
-      file_ignore_patterns = {"node_modules/", "package-lock.json", "yarn.lock", ".git/", ".next/", ".DS_STORE/"},
-      vimgrep_arguments = {
+require('telescope').setup{
+  defaults = {
+    vimgrep_arguments = {
       'rg',
+      '--color=never',
       '--no-heading',
-      '--hidden',
       '--with-filename',
       '--line-number',
       '--column',
       '--smart-case'
+    },
+    prompt_prefix = "> ",
+    selection_caret = "> ",
+    entry_prefix = "  ",
+    initial_mode = "insert",
+    selection_strategy = "reset",
+    sorting_strategy = "descending",
+    layout_strategy = "horizontal",
+    layout_config = {
+      horizontal = {
+        mirror = false,
       },
-      color_devicons = true,
-    }
+      vertical = {
+        mirror = false,
+      },
+    },
+    file_sorter =  require'telescope.sorters'.get_fuzzy_file,
+    file_ignore_patterns = {"node_modules/", "package-lock.json", "yarn.lock", ".git/", ".next/", ".DS_STORE/"},
+    generic_sorter =  require'telescope.sorters'.get_generic_fuzzy_sorter,
+    winblend = 0,
+    border = {},
+    borderchars = { '─', '│', '─', '│', '╭', '╮', '╯', '╰' },
+    color_devicons = true,
+    use_less = true,
+    path_display = {},
+    set_env = { ['COLORTERM'] = 'truecolor' }, -- default = nil,
+    file_previewer = require'telescope.previewers'.vim_buffer_cat.new,
+    grep_previewer = require'telescope.previewers'.vim_buffer_vimgrep.new,
+    qflist_previewer = require'telescope.previewers'.vim_buffer_qflist.new,
+
+    -- Developer configurations: Not meant for general override
+    buffer_previewer_maker = require'telescope.previewers'.buffer_previewer_maker
   }
+}
 EOF
+" Find files using Telescope command-line sugar.
+nnoremap <leader>ff <cmd>Telescope find_files<cr>
+nnoremap <leader>fg <cmd>Telescope live_grep<cr>
+nnoremap <leader>fb <cmd>Telescope buffers<cr>
+nnoremap <leader>fh <cmd>Telescope help_tags<cr>
+
+" Using Lua functions
+nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
+

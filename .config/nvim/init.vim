@@ -1,6 +1,7 @@
 runtime ./plug.vim
 runtime ./maps.vim
 
+set completeopt=menuone,noselect
 set nocompatible
 set syntax=on
 set splitbelow
@@ -12,7 +13,7 @@ set textwidth=100
 set ttyfast
 set scrolloff=5
 set backspace=indent,eol,start
-set laststatus=2 
+set laststatus=2
 set showmode
 set showcmd
 
@@ -38,6 +39,7 @@ set viminfo='100,<9999,s100
 
 set hidden
 set nobackup
+set nobackup
 set nowritebackup
 set encoding=utf-8
 set cmdheight=2
@@ -54,6 +56,11 @@ autocmd BufNewFile,BufRead *.tsx set filetype=typescriptreact
 autocmd BufNewFile,BufRead *.jsx set filetype=javascriptreact
 autocmd BufNewFile,BufRead *.pp set filetype=puppet
 
+let g:ale_fix_on_save = 1
+let g:ale_fixers = {
+\   '*': ['remove_trailing_lines', 'trim_whitespace'],
+\}
+
 let $NVIM_TUI_ENABLE_TRUE_COLOR=1
 set background=dark
 
@@ -61,20 +68,10 @@ if (has("termguicolors"))
   set termguicolors
 endif
 
-let g:everforest_enable_italic = 0
-let g:everforest_disable_italic_comment = 1
-let g:everforest_transparent_background = 1
-let g:everforest_current_word = 'bold'
+let g:edge_better_performance = 1
+let g:edge_current_word = 'bold'
+let g:edge_transparent_background = 1
 let g:edge_enable_italic = 0
 let g:edge_disable_italic_comment = 1
-let g:edge_transparent_background = 1
-let g:edge_current_word = 'bold'
-colorscheme onedark
-let g:airline_theme = 'onedark'
+colorscheme edge
 
-let g:airline#extensions#tabline#enabled = 0
-let g:airline_highlighting_cache = 1
-let g:airline_powerline_fonts = 1
-
-highlight Normal guibg=none
-highlight NonText guibg=none
