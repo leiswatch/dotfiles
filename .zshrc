@@ -77,6 +77,7 @@ ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 # export MANPATH="/usr/local/man:$MANPATH"
 export DENO_INSTALL="$HOME/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
+export PATH=$PATH:/usr/local/go/bin
 export BAT_THEME='OneHalfDark'
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -102,8 +103,7 @@ export BAT_THEME='OneHalfDark'
 
 alias ls="exa"
 alias cat="batcat"
-alias update-kitty-terminal="curl -L https://sw.kovidgoyal.net/kitty/installer.sh | sh /dev/stdin"
-alias set-kitty-as-default-ubuntu="sudo update-alternatives --install /usr/bin/x-terminal-emulator x-terminal-emulator `which kitty` 50"
+alias ngb-start="yarn workspace @boldpl/ngb start"
 
 DISABLE_AUTO_TITLE=true
 

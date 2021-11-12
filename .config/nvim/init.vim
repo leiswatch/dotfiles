@@ -1,77 +1,50 @@
-runtime ./plug.vim
-runtime ./maps.vim
+lua require('leiswatch')
 
-set completeopt=menuone,noselect
-set nocompatible
-set syntax=on
-set splitbelow
-filetype on
-filetype plugin on
-filetype plugin indent on
+let g:coq_settings = { 'auto_start': v:true }
 let mapleader = ","
-set textwidth=100
-set ttyfast
-set scrolloff=5
-set backspace=indent,eol,start
-set laststatus=2
-set showmode
-set showcmd
+let g:transparent_enabled = v:true
+nnoremap <leader>ff <cmd>lua require('telescope.builtin').find_files()<cr>
+nnoremap <leader>fg <cmd>lua require('telescope.builtin').live_grep()<cr>
+nnoremap <leader>fb <cmd>lua require('telescope.builtin').buffers()<cr>
+nnoremap <leader>fh <cmd>lua require('telescope.builtin').help_tags()<cr>
 
-set matchpairs+=<:>
-
-set list
-set listchars=tab:›\ ,trail:•,extends:#,nbsp:.
-
-set number relativenumber
+set completeopt=menu,menuone,noselect
 set encoding=utf-8
-set hlsearch
-set incsearch
-set ignorecase
-set smartcase
-
-augroup numbertoggle
-  autocmd!
-  autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-  autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
-augroup END
-
-set viminfo='100,<9999,s100
-
 set hidden
 set nobackup
-set nobackup
 set nowritebackup
-set encoding=utf-8
-set cmdheight=2
 set updatetime=300
 set shortmess+=c
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
-set expandtab
-set noshiftround
-set autoindent
+set signcolumn=number
+set termguicolors
 
-autocmd BufNewFile,BufRead *.tsx set filetype=typescriptreact
-autocmd BufNewFile,BufRead *.jsx set filetype=javascriptreact
-autocmd BufNewFile,BufRead *.pp set filetype=puppet
+nnoremap <silent> gh <cmd>lua require'lspsaga.provider'.lsp_finder()<CR>
+nnoremap <silent> <leader>ca <cmd>lua require('lspsaga.codeaction').code_action()<CR>
+vnoremap <silent> <leader>ca :<C-U>lua require('lspsaga.codeaction').range_code_action()<CR>
+nnoremap <silent> K <cmd>lua require('lspsaga.hover').render_hover_doc()<CR>
+nnoremap <silent> <C-f> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(1)<CR>
+nnoremap <silent> <C-b> <cmd>lua require('lspsaga.action').smart_scroll_with_saga(-1)<CR>
+nnoremap <silent> gs <cmd>lua require('lspsaga.signaturehelp').signature_help()<CR>
+nnoremap <silent> gr <cmd>lua require('lspsaga.rename').rename()<CR>
+nnoremap <silent> gd <cmd>lua require'lspsaga.provider'.preview_definition()<CR>
+nnoremap <silent> <leader>cd <cmd>lua require'lspsaga.diagnostic'.show_line_diagnostics()<CR>
+nnoremap <silent> <leader>cc <cmd>lua require'lspsaga.diagnostic'.show_cursor_diagnostics()<CR>
+nnoremap <silent> [e <cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_prev()<CR>
+nnoremap <silent> ]e <cmd>lua require'lspsaga.diagnostic'.lsp_jump_diagnostic_next()<CR>
 
-let g:ale_fix_on_save = 1
-let g:ale_fixers = {
-\   '*': ['remove_trailing_lines', 'trim_whitespace'],
-\}
+imap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
+smap <expr> <C-j>   vsnip#expandable()  ? '<Plug>(vsnip-expand)'         : '<C-j>'
+imap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
+smap <expr> <C-l>   vsnip#available(1)  ? '<Plug>(vsnip-expand-or-jump)' : '<C-l>'
+imap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
+smap <expr> <Tab>   vsnip#jumpable(1)   ? '<Plug>(vsnip-jump-next)'      : '<Tab>'
+imap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+smap <expr> <S-Tab> vsnip#jumpable(-1)  ? '<Plug>(vsnip-jump-prev)'      : '<S-Tab>'
+nmap        s   <Plug>(vsnip-select-text)
+xmap        s   <Plug>(vsnip-select-text)
+nmap        S   <Plug>(vsnip-cut-text)
+xmap        S   <Plug>(vsnip-cut-text)
 
-let $NVIM_TUI_ENABLE_TRUE_COLOR=1
-set background=dark
-
-if (has("termguicolors"))
-  set termguicolors
-endif
-
-let g:edge_better_performance = 1
-let g:edge_current_word = 'bold'
-let g:edge_transparent_background = 1
-let g:edge_enable_italic = 0
-let g:edge_disable_italic_comment = 1
-colorscheme edge
-
+nnoremap <C-n> :NvimTreeToggle<CR>
+nnoremap <leader>r :NvimTreeRefresh<CR>
+nnoremap <leader>n :NvimTreeFindFile<CR>
