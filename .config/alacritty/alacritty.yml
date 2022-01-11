@@ -6,13 +6,14 @@ window:
     columns: 140
     lines: 40
   padding:
-    x: 5
-    y: 5
+    x: 10
+    y: 10
 
   dynamic_padding: true
   decorations: full
   title: Alacritty
   dynamic_title: false
+  opacity: 0.98
 
 scrolling:
   history: 10000
@@ -20,145 +21,121 @@ scrolling:
 
 font:
   normal:
-    family: SauceCodePro Nerd Font Mono
+    family: JetBrainsMono
     style: Medium
 
   bold:
-    family: SauceCodePro Nerd Font Mono
+    family: JetBrains Mono
     style: Bold
 
   italic:
-    family: SauceCodePro Nerd Font Mono
+    family: JetBrains Mono
     style: Italic
 
-  size: 13.0
+  size: 12.5
 
   offset:
     x: 0
-    y: 0
+    y: -1
 
-background_opacity: 0.97
 draw_bold_text_with_bright_colors: true
 cursor:
-  # Cursor style
-  #
-  # Values for 'style':
-  #   - ▇ Block
-  #   - _ Underline
-  #   - | Beam
   style: Block
   blinking: Off
   blink_interval: 0
-  # If this is `true`, the cursor will be rendered as a hollow box when the
-  # window is not focused.
   unfocused_hollow: true
+  custom_cursor_colors: true
 
- # Colors (Tomorrow Night Bright)
+# Catppuccin!
 colors:
   # Default colors
   primary:
-    background: '#2d2d2d'
-    foreground: '#cccccc'
+    background: '#1E1E28'
+    foreground: '#DADAE8'
+
+  # Colors the cursor will use if `custom_cursor_colors` is true
+  cursor:
+    text: '#1E1E28'
+    cursor: '#B1E3AD'
 
   # Normal colors
   normal:
-    black:   '#000000'
-    red:     '#F27779'
-    green:   '#99CC99'
-    yellow:  '#FFCC66'
-    blue:    '#6699CC'
-    magenta: '#CC99CC'
-    cyan:    '#66CCCC'
-    white:   '#FFFEFE'
+    black:   '#6E6C7E'
+    red:     '#E38C8F'
+    green:   '#B1E3AD'
+    yellow:  '#EBDDAA'
+    blue:    '#A4B9EF'
+    magenta: '#C6AAE8'
+    cyan:    '#E5B4E2'
+    white:   '#DADAE8'
 
   # Bright colors
   bright:
-    black:   '#555753'
-    red:     '#F27779'
-    green:   '#99CC99'
-    yellow:  '#FFCC66'
-    blue:    '#6699CC'
-    magenta: '#CC99CC'
-    cyan:    '#66CCCC'
-    white:   '#FFFEFE'
-#
-# DRACULA
+    black:   '#6E6C7E'
+    red:     '#E38C8F'
+    green:   '#B1E3AD'
+    yellow:  '#EBDDAA'
+    blue:    '#A4B9EF'
+    magenta: '#C6AAE8'
+    cyan:    '#E5B4E2'
+    white:   '#DADAE8'
+
+  indexed_colors:
+    - { index: 16, color: '#F2CECF' }
+    - { index: 17, color: '#3E4058' }
+
+# Colors (Tomorrow Night Bright)
 #colors:
-# primary:
-#   background: '0x282a36'
-#   foreground: '0xf8f8f2'
-# cursor:
-#   text: CellBackground
-#   cursor: CellForeground
-# vi_mode_cursor:
-#   text: CellBackground
-#   cursor: CellForeground
-# search:
-#   matches:
-#     foreground: '0x44475a'
-#     background: '0x50fa7b'
-#   focused_match:
-#     foreground: '0x44475a'
-#     background: '0xffb86c'
-#   bar:
-#     background: '0x282a36'
-#     foreground: '0xf8f8f2'
-# line_indicator:
-#   foreground: None
-#   background: None
-# selection:
-#   text: CellForeground
-#   background: '0x44475a'
-# normal:
-#   black:   '0x000000'
-#   red:     '0xff5555'
-#   green:   '0x50fa7b'
-#   yellow:  '0xf1fa8c'
-#   blue:    '0xbd93f9'
-#   magenta: '0xff79c6'
-#   cyan:    '0x8be9fd'
-#   white:   '0xbfbfbf'
-# bright:
-#   black:   '0x4d4d4d'
-#   red:     '0xff6e67'
-#   green:   '0x5af78e'
-#   yellow:  '0xf4f99d'
-#   blue:    '0xcaa9fa'
-#   magenta: '0xff92d0'
-#   cyan:    '0x9aedfe'
-#   white:   '0xe6e6e6'
-# dim:
-#   black:   '0x14151b'
-#   red:     '0xff2222'
-#   green:   '0x1ef956'
-#   yellow:  '0xebf85b'
-#   blue:    '0x4d5b86'
-#   magenta: '0xff46b0'
-#   cyan:    '0x59dffc'
-#   white:   '0xe6e6d1'
+## Default colors
+#primary:
+#  background: '#2d2d2d'
+#  foreground: '#cccccc'
+
+## Normal colors
+#normal:
+#  black:   '#000000'
+#  red:     '#F27779'
+#  green:   '#99CC99'
+#  yellow:  '#FFCC66'
+#  blue:    '#6699CC'
+#  magenta: '#CC99CC'
+#  cyan:    '#66CCCC'
+#  white:   '#FFFEFE'
+
+ # Bright colors
+#bright:
+#  black:   '#555753'
+#  red:     '#F27779'
+#  green:   '#99CC99'
+#  yellow:  '#FFCC66'
+#  blue:    '#6699CC'
+#  magenta: '#CC99CC'
+#  cyan:    '#66CCCC'
+#  white:   '#FFFEFE'
+#
 
 # ONE DARK
 #colors:
-#primary:
-#  background: '0x282c34'
-#  foreground: '0xdcdfe4'
+# primary:
+#   background: '0x282c34'
+#   foreground: '0xdcdfe4'
 
-#normal:
-#  black: '0x282c34'
-#  red: '0xe06c75'
-#  green: '0x98c379'
-#  yellow: '0xe5c07b'
-#  blue: '0x61afef'
-#  magenta: '0xc678dd'
-#  cyan: '0x56b6c2'
-#  white: '0xdcdfe4'
+# normal:
+#   black: '0x282c34'
+#   red: '0xe06c75'
+#   green: '0x98c379'
+#   yellow: '0xe5c07b'
+#   blue: '0x61afef'
+#   magenta: '0xc678dd'
+#   cyan: '0x56b6c2'
+#   white: '0xdcdfe4'
 
-#bright:
-#  black: '0xa5a4a0'
-#  red: '0xe06c75'
-#  green: '0x98c379'
-#  yellow: '0xe5c07b'
-#  blue: '0x61afef'
-#  magenta: '0xc678dd'
-#  cyan: '0x56b6c2'
-#  white: '0xdcdfe4'
+# bright:
+#   black: '0xa5a4a0'
+#   red: '0xe06c75'
+#   green: '0x98c379'
+#   yellow: '0xe5c07b'
+#   blue: '0x61afef'
+#   magenta: '0xc678dd'
+#   cyan: '0x56b6c2'
+#   white: '0xdcdfe4
