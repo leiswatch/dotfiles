@@ -57,7 +57,7 @@ end
 time([[Luarocks path setup]], false)
 time([[try_loadstring definition]], true)
 local function try_loadstring(s, component, name)
-  local success, result = pcall(loadstring(s))
+  local success, result = pcall(loadstring(s), name, _G.packer_plugins[name])
   if not success then
     vim.schedule(function()
       vim.api.nvim_notify('packer.nvim: Error running ' .. component .. ' for ' .. name .. ': ' .. result, vim.log.levels.ERROR, {})
@@ -69,81 +69,100 @@ end
 time([[try_loadstring definition]], false)
 time([[Defining packer_plugins]], true)
 _G.packer_plugins = {
+  catppuccin = {
+    loaded = true,
+    path = "/home/leiswatch/.local/share/nvim/site/pack/packer/start/catppuccin",
+    url = "https://github.com/catppuccin/nvim"
+  },
   ["cmp-buffer"] = {
     loaded = true,
-    path = "/home/leiswatch/.local/share/nvim/site/pack/packer/start/cmp-buffer"
+    path = "/home/leiswatch/.local/share/nvim/site/pack/packer/start/cmp-buffer",
+    url = "https://github.com/hrsh7th/cmp-buffer"
   },
   ["cmp-cmdline"] = {
     loaded = true,
-    path = "/home/leiswatch/.local/share/nvim/site/pack/packer/start/cmp-cmdline"
+    path = "/home/leiswatch/.local/share/nvim/site/pack/packer/start/cmp-cmdline",
+    url = "https://github.com/hrsh7th/cmp-cmdline"
   },
   ["cmp-nvim-lsp"] = {
     loaded = true,
-    path = "/home/leiswatch/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp"
+    path = "/home/leiswatch/.local/share/nvim/site/pack/packer/start/cmp-nvim-lsp",
+    url = "https://github.com/hrsh7th/cmp-nvim-lsp"
   },
   ["cmp-path"] = {
     loaded = true,
-    path = "/home/leiswatch/.local/share/nvim/site/pack/packer/start/cmp-path"
+    path = "/home/leiswatch/.local/share/nvim/site/pack/packer/start/cmp-path",
+    url = "https://github.com/hrsh7th/cmp-path"
   },
   ["cmp-vsnip"] = {
     loaded = true,
-    path = "/home/leiswatch/.local/share/nvim/site/pack/packer/start/cmp-vsnip"
+    path = "/home/leiswatch/.local/share/nvim/site/pack/packer/start/cmp-vsnip",
+    url = "https://github.com/hrsh7th/cmp-vsnip"
   },
-  ["coq.artifacts"] = {
+  ["friendly-snippets"] = {
     loaded = true,
-    path = "/home/leiswatch/.local/share/nvim/site/pack/packer/start/coq.artifacts"
+    path = "/home/leiswatch/.local/share/nvim/site/pack/packer/start/friendly-snippets",
+    url = "https://github.com/rafamadriz/friendly-snippets"
   },
-  ["github-nvim-theme"] = {
+  ["lspkind-nvim"] = {
     loaded = true,
-    path = "/home/leiswatch/.local/share/nvim/site/pack/packer/start/github-nvim-theme"
+    path = "/home/leiswatch/.local/share/nvim/site/pack/packer/start/lspkind-nvim",
+    url = "https://github.com/onsails/lspkind-nvim"
   },
   ["lspsaga.nvim"] = {
     loaded = true,
-    path = "/home/leiswatch/.local/share/nvim/site/pack/packer/start/lspsaga.nvim"
+    path = "/home/leiswatch/.local/share/nvim/site/pack/packer/start/lspsaga.nvim",
+    url = "https://github.com/tami5/lspsaga.nvim"
   },
   ["nvim-cmp"] = {
     loaded = true,
-    path = "/home/leiswatch/.local/share/nvim/site/pack/packer/start/nvim-cmp"
-  },
-  ["nvim-lightbulb"] = {
-    loaded = true,
-    path = "/home/leiswatch/.local/share/nvim/site/pack/packer/start/nvim-lightbulb"
+    path = "/home/leiswatch/.local/share/nvim/site/pack/packer/start/nvim-cmp",
+    url = "https://github.com/hrsh7th/nvim-cmp"
   },
   ["nvim-lsp-installer"] = {
     loaded = true,
-    path = "/home/leiswatch/.local/share/nvim/site/pack/packer/start/nvim-lsp-installer"
+    path = "/home/leiswatch/.local/share/nvim/site/pack/packer/start/nvim-lsp-installer",
+    url = "https://github.com/williamboman/nvim-lsp-installer"
   },
   ["nvim-lspconfig"] = {
     loaded = true,
-    path = "/home/leiswatch/.local/share/nvim/site/pack/packer/start/nvim-lspconfig"
-  },
-  ["nvim-lsputils"] = {
-    loaded = true,
-    path = "/home/leiswatch/.local/share/nvim/site/pack/packer/start/nvim-lsputils"
+    path = "/home/leiswatch/.local/share/nvim/site/pack/packer/start/nvim-lspconfig",
+    url = "https://github.com/neovim/nvim-lspconfig"
   },
   ["nvim-treesitter"] = {
     loaded = true,
-    path = "/home/leiswatch/.local/share/nvim/site/pack/packer/start/nvim-treesitter"
+    path = "/home/leiswatch/.local/share/nvim/site/pack/packer/start/nvim-treesitter",
+    url = "https://github.com/nvim-treesitter/nvim-treesitter"
   },
   ["packer.nvim"] = {
     loaded = true,
-    path = "/home/leiswatch/.local/share/nvim/site/pack/packer/start/packer.nvim"
+    path = "/home/leiswatch/.local/share/nvim/site/pack/packer/start/packer.nvim",
+    url = "https://github.com/wbthomason/packer.nvim"
   },
   ["plenary.nvim"] = {
     loaded = true,
-    path = "/home/leiswatch/.local/share/nvim/site/pack/packer/start/plenary.nvim"
-  },
-  popfix = {
-    loaded = true,
-    path = "/home/leiswatch/.local/share/nvim/site/pack/packer/start/popfix"
+    path = "/home/leiswatch/.local/share/nvim/site/pack/packer/start/plenary.nvim",
+    url = "https://github.com/nvim-lua/plenary.nvim"
   },
   ["telescope.nvim"] = {
     loaded = true,
-    path = "/home/leiswatch/.local/share/nvim/site/pack/packer/start/telescope.nvim"
+    path = "/home/leiswatch/.local/share/nvim/site/pack/packer/start/telescope.nvim",
+    url = "https://github.com/nvim-telescope/telescope.nvim"
+  },
+  ["vim-prettier"] = {
+    loaded = true,
+    path = "/home/leiswatch/.local/share/nvim/site/pack/packer/start/vim-prettier",
+    url = "https://github.com/prettier/vim-prettier"
   },
   ["vim-vsnip"] = {
     loaded = true,
-    path = "/home/leiswatch/.local/share/nvim/site/pack/packer/start/vim-vsnip"
+    path = "/home/leiswatch/.local/share/nvim/site/pack/packer/start/vim-vsnip",
+    url = "https://github.com/hrsh7th/vim-vsnip"
+  },
+  ["vim-vsnip-integ"] = {
+    loaded = true,
+    path = "/home/leiswatch/.local/share/nvim/site/pack/packer/start/vim-vsnip-integ",
+    url = "https://github.com/hrsh7th/vim-vsnip-integ"
   }
 }
 

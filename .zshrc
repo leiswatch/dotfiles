@@ -66,7 +66,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(zsh-lazyload aws git npm yarn node docker docker-compose pip command-not-found you-should-use zsh-syntax-highlighting ubuntu tmux rust rustup pyenv autojump)
+plugins=(zsh-lazyload aws git npm yarn node docker docker-compose pip command-not-found you-should-use zsh-syntax-highlighting ubuntu tmux rust pyenv autojump)
 
 source $ZSH/oh-my-zsh.sh
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#555753"
@@ -102,7 +102,7 @@ export BAT_THEME='OneHalfDark'
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 alias ls="exa"
-alias cat="batcat"
+alias cat="bat"
 alias ngb-start="yarn workspace @boldpl/ngb start"
 
 DISABLE_AUTO_TITLE=true
@@ -141,4 +141,3 @@ add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 
 eval "$(starship init zsh)"
-
