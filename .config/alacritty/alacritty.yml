@@ -9,10 +9,11 @@ window:
     x: 10
     y: 10
 
-  dynamic_padding: true
+  dynamic_padding: false
   decorations: full
   title: Alacritty
   dynamic_title: false
+  opacity: 0.96
 
 scrolling:
   history: 10000
@@ -20,15 +21,15 @@ scrolling:
 
 font:
   normal:
-    family: JetBrainsMono NL
+    family: JetBrains Mono NL
     style: Medium
 
   bold:
-    family: JetBrainsMono NL
+    family: JetBrains Mono NL
     style: Bold
 
   italic:
-    family: JetBrainsMono NL
+    family: JetBrains Mono NL
     style: Italic
 
   size: 12
@@ -44,8 +45,6 @@ cursor:
   blink_interval: 0
   unfocused_hollow: true
   custom_cursor_colors: true
-
-background_opacity: 0.98
 
 # Catppuccin!
 colors:

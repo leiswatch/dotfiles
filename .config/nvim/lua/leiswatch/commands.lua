@@ -1,12 +1,23 @@
 local vim = vim
 
--- Eslint
+-- ESlint --
 vim.cmd [[
-  augroup Eslint
+  augroup ESlint
     autocmd BufWritePre *.ts EslintFixAll
     autocmd BufWritePre *.tsx EslintFixAll
     autocmd BufWritePre *.js EslintFixAll
     autocmd BufWritePre *.jsx EslintFixAll
+  augroup END
+]]
+
+-- Stylelint --
+vim.cmd [[
+  augroup Stylelint
+    autocmd BufWritePre *.scss :lua vim.lsp.buf.formatting_sync()
+    autocmd BufWritePre *.css :lua vim.lsp.buf.formatting_sync()
+    autocmd BufWritePre *.postcss :lua vim.lsp.buf.formatting_sync()
+    autocmd BufWritePre *.sass :lua vim.lsp.buf.formatting_sync()
+    autocmd BufWritePre *.less :lua vim.lsp.buf.formatting_sync()
   augroup END
 ]]
 

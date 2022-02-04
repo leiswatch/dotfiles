@@ -1,10 +1,9 @@
 local lsp_installer = require("nvim-lsp-installer")
 local capabilities = require('cmp_nvim_lsp').update_capabilities(vim.lsp.protocol.make_client_capabilities())
 local opts = { noremap = true, silent = true }
-
+local map = vim.api.nvim_buf_set_keymap
 
 local on_attach = function(client, bufnr)
-  local map = vim.api.nvim_buf_set_keymap
 
   map(bufnr, 'n', '<leader>cd', ':lua vim.diagnostic.open_float()<CR>', opts)
   map(bufnr, 'n', '[d', ':lua vim.diagnostic.goto_prev()<CR>', opts)
@@ -32,6 +31,69 @@ lsp_installer.on_server_ready(function(server)
       on_attach = on_attach
     }
 
+    if server.name == "tsserver" then
+      server_opts.init_options = require("nvim-lsp-ts-utils").init_options;
+      server_opts.on_attach = function(client, bufnr)
+        local ts_utils = require("nvim-lsp-ts-utils")
+
+        -- defaults
+        ts_utils.setup({
+            debug = false,
+            disable_commands = false,
+            enable_import_on_completion = true,
+
+            -- import all
+            import_all_timeout = 5000, -- ms
+            -- lower numbers = higher priority
+            import_all_priorities = {
+                same_file = 1, -- add to existing import statement
+                local_files = 2, -- git files or files with relative path markers
+                buffer_content = 3, -- loaded buffer content
+                buffers = 4, -- loaded buffer names
+            },
+            import_all_scan_buffers = 100,
+            import_all_select_source = false,
+            -- if false will avoid organizing imports
+            always_organize_imports = false,
+
+            -- filter diagnostics
+            filter_out_diagnostics_by_severity = {},
+            filter_out_diagnostics_by_code = {},
+
+            -- inlay hints
+            auto_inlay_hints = true,
+            inlay_hints_highlight = "Comment",
+            inlay_hints_priority = 200, -- priority of the hint extmarks
+            inlay_hints_throttle = 150, -- throttle the inlay hint request
+            inlay_hints_format = { -- format options for individual hint kind
+                Type = {},
+                Parameter = {},
+                Enum = {},
+                -- Example format customization for `Type` kind:
+                -- Type = {
+                --     highlight = "Comment",
+                --     text = function(text)
+                --         return "->" .. text:sub(2)
+                --     end,
+                -- },
+            },
+
+            -- update imports on file move
+            update_imports_on_move = true,
+            require_confirmation_on_move = true,
+            watch_dir = nil,
+        })
+
+        -- required to fix code action ranges and filter diagnostics
+        ts_utils.setup_client(client)
+
+        -- no default maps, so you may want to define some here
+        map(bufnr, "n", "<leader>ts", ":TSLspOrganize<cr>", opts)
+        map(bufnr, "n", "<leader>tr", ":TSLspRenameFile<cr>", opts)
+        map(bufnr, "n", "<leader>ti", ":TSLspImportAll<cr>", opts)
+    end
+  end
+
     if server.name == "eslint" then
       server_opts.settings = {
         codeActionOnSave = {
@@ -44,29 +106,15 @@ lsp_installer.on_server_ready(function(server)
       }
     end
 
-    if server.name == "efm" then
-      local stylelint = {
-        lintCommand = 'stylelint --stdin --stdin-filename ${INPUT} --formatter compact',
-        lintIgnoreExitCode = true,
-        lintStdin = true,
-        lintFormats = {
-          '%f: line %l, col %c, %tarning - %m',
-          '%f: line %l, col %c, %trror - %m',
-        },
-        formatCommand = 'stylelint --fix --stdin --stdin-filename ${INPUT}',
-        formatStdin = true,
-      }
-
-      server_opts.init_options = {
-        documentFormatting = true
-      };
-      server_opts.filetypes = {
-        "scss"
-      };
+    if server.name == "stylelint_lsp" then
+      server_opts.filetypes = { "css", "less", "scss", "sugarss", "vue", "wxss" }
       server_opts.settings = {
-        rootMarkers = { '.git', 'package.json' },
-        languages = {
-          scss = { stylelint }
+        stylelintplus = {
+          autoFixOnFormat = true,
+          autoFixOnSave = true,
+          cssInJs = false,
+          validateOnSave = true,
+          validateOnType = true,
         }
       }
     end
