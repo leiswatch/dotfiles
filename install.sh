@@ -86,6 +86,7 @@ yay -S brave-bin \
   adobe-base-14-fonts \
   ttf-font-awesome \
   ttf-mac-fonts \
+  polybar \
 
 echo "Installing oh-my-zsh..."
 sh -c "$(curl -fsSL https://raw.githubusercontent.com/ohmyzsh/ohmyzsh/master/tools/install.sh)"
