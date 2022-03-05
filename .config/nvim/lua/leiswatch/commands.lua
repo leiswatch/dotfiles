@@ -1,14 +1,14 @@
 local vim = vim
 
 -- ESlint --
-vim.cmd [[
-  augroup ESlint
-    autocmd BufWritePre *.ts EslintFixAll
-    autocmd BufWritePre *.tsx EslintFixAll
-    autocmd BufWritePre *.js EslintFixAll
-    autocmd BufWritePre *.jsx EslintFixAll
-  augroup END
-]]
+-- vim.cmd [[
+--   augroup ESlint
+--     autocmd BufWritePre *.ts EslintFixAll
+--     autocmd BufWritePre *.tsx EslintFixAll
+--     autocmd BufWritePre *.js EslintFixAll
+--     autocmd BufWritePre *.jsx EslintFixAll
+--   augroup END
+-- ]]
 
 -- Stylelint --
 vim.cmd [[

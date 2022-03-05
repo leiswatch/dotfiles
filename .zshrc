@@ -1,3 +1,10 @@
+# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
+# Initialization code that may require console input (password prompts, [y/n]
+# confirmations, etc.) must go above this block; everything else may go below.
+#if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+#  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+#fi
+
 # If you come from bash you might have to change your $PATH.
 # export PATH=$HOME/bin:/usr/local/bin:$PATH
 
@@ -8,8 +15,8 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-ZSH_THEME="robbyrussell"
-
+ZSH_THEME="agnoster"
+#ZSH_THEME="powerlevel10k/powerlevel10k"
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
 # a theme from this variable instead of looking in $ZSH/themes/
@@ -66,7 +73,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(zsh-lazyload aws git npm yarn node docker docker-compose pip command-not-found you-should-use zsh-syntax-highlighting ubuntu tmux rust pyenv autojump)
+plugins=(archlinux zsh-lazyload aws git npm yarn node docker docker-compose pip command-not-found you-should-use fast-syntax-highlighting tmux rust golang pyenv autojump)
 
 source $ZSH/oh-my-zsh.sh
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#555753"
@@ -78,7 +85,7 @@ ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 export DENO_INSTALL="$HOME/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 export PATH=$PATH:/usr/local/go/bin
-export BAT_THEME='OneHalfDark'
+export BAT_THEME='Coldark-Dark'
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
@@ -103,7 +110,8 @@ export BAT_THEME='OneHalfDark'
 
 alias ls="exa"
 alias cat="bat"
-alias ngb-start="yarn workspace @boldpl/ngb start"
+alias sudo="doas"
+alias ngb-start="yarn && yarn workspace @boldpl/ngb start"
 
 DISABLE_AUTO_TITLE=true
 
@@ -140,4 +148,15 @@ load-nvmrc() {
 add-zsh-hook chpwd load-nvmrc
 load-nvmrc
 
+function set_win_title(){
+    echo -ne "\033]0; $(basename "$PWD") \007"
+}
+
+precmd () {print -Pn "\e]0;Kitty\a"}
+
+starship_precmd_user_func="set_win_title"
+
 eval "$(starship init zsh)"
+
+# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
+#[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

@@ -23,14 +23,14 @@ map('n', '<Tab>', ':tabnext<Return>', opts)
 map('n', '<S-Tab>', ':tabprev<Return>', opts)
 
 -- Telescope --
-map('n', '<leader>ff', ":lua require('telescope.builtin').find_files({layout_strategy='vertical', layout_config={width=0.8}})<cr>", opts)
+map('n', '<leader>ff', ":lua require('telescope.builtin').find_files({layout_strategy='vertical', layout_config={width=0.8}, previewer=false})<cr>", opts)
 map('n', '<leader>fg', ":lua require('telescope.builtin').live_grep({layout_strategy='vertical', layout_config={width=0.8}})<cr>", opts)
 map('n', '<leader>fh', ":lua require('telescope.builtin').help_tags({layout_strategy='vertical', layout_config={width=0.8}})<cr>", opts)
 map('n', '<leader>fb', ":lua require('telescope.builtin').buffers({layout_strategy='vertical', layout_config={width=0.8}})<cr>", opts)
 -- Jester --
 map('n', '<leader>jf', ":lua require('jester').run_file({ path_to_jest='./node_modules/.bin/jest' })<cr>", opts)
 -- Tree --
-map('n', '<C-n>', ":lua require'leiswatch.tree'.toggle()<cr>", opts)
+map('n', '<C-n>', ":lua require'lir.float'.toggle()<cr>", opts)
 
 -- BarBar --
 

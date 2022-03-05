@@ -36,7 +36,7 @@ return require('packer').startup(function()
   use { 'glepnir/dashboard-nvim' }
   use { 'folke/lsp-colors.nvim' }
   use { 'lukas-reineke/indent-blankline.nvim' }
-  use { 'kyazdani42/nvim-tree.lua' }
+  -- use { 'kyazdani42/nvim-tree.lua' }
   use { 'p00f/nvim-ts-rainbow' }
   use { 'nvim-lualine/lualine.nvim' }
   use {
@@ -56,4 +56,11 @@ return require('packer').startup(function()
   use { 'norcalli/nvim-colorizer.lua' }
   use { 'xiyaowong/nvim-cursorword' }
   use { 'David-Kunz/jester' }
+  use { 'tamago324/lir.nvim' }
+  use 'leafgarland/typescript-vim'
+  use 'pangloss/vim-javascript'
+  use 'peitalin/vim-jsx-typescript'
+  use 'leafgarland/typescript-vim'
+  use { 'styled-components/vim-styled-components', branch = 'main' }
+  use { 'jparise/vim-graphql' }
 end)

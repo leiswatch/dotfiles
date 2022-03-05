@@ -1,0 +1,35 @@
+[global]
+  class       = Dunst
+  alignment   = center
+  width       = 300
+  height      = 300
+  frame_color = "#DDB6F2"
+  frame_width = 1
+  font        = JetBrains Mono 12
+  offset      = 10x50
+  min_icon_size = 0
+  max_icon_size = 32
+  show_indicators = yes
+  icon_position = left
+  notification_limit = 0
+  progress_bar = true
+  progress_bar_height = 10
+  progress_bar_frame_width = 1
+  progress_bar_min_width = 150
+  progress_bar_max_width = 300
+  indicate_hidden = yes
+
+[urgency_low]
+  background = "#1E1D2F"
+  foreground = "#D9E0EE"
+  timeout = 5
+
+[urgency_normal]
+  background = "#1E1D2F"
+  foreground = "#D9E0EE"
+  timeout = 5
+
+[urgency_critical]
+  background  = "#1E1D2F"
+  foreground  = "#F28FAD"
+  timeout = 5
