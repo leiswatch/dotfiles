@@ -110,7 +110,6 @@ export BAT_THEME='Coldark-Dark'
 
 alias ls="exa"
 alias cat="bat"
-alias sudo="doas"
 alias ngb-start="yarn && yarn workspace @boldpl/ngb start"
 
 DISABLE_AUTO_TITLE=true
