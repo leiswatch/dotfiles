@@ -1,66 +1,40 @@
-return require('packer').startup(function()
-  use { 'wbthomason/packer.nvim' }
-  use({
-    "catppuccin/nvim",
-    as = "catppuccin"
-  }) 
-  use{ 'nvim-treesitter/nvim-treesitter', run = ':TSUpdate' }
-  use {
-    'nvim-telescope/telescope.nvim',
-    requires = { { 'nvim-lua/plenary.nvim' } }
-  }
-  use { 'neovim/nvim-lspconfig' }
-  use { 'williamboman/nvim-lsp-installer' }
-  use { 'hrsh7th/cmp-nvim-lsp' }
-  use { 'hrsh7th/cmp-buffer' }
-  use { 'hrsh7th/cmp-path' }
-  use { 'hrsh7th/cmp-cmdline' }
-  use { 'hrsh7th/nvim-cmp' }
-  use { 'onsails/lspkind-nvim' }
-  use { 'hrsh7th/vim-vsnip' }
-  use { 'hrsh7th/cmp-vsnip' }
-  use {
-    'David-Kunz/cmp-npm',
-    requires = {
-      'nvim-lua/plenary.nvim'
-    }
-  }
-  use { "hrsh7th/cmp-nvim-lua" }
-  use { "lukas-reineke/cmp-rg" }
-  use { "lukas-reineke/cmp-under-comparator" }
-  use { 'hrsh7th/vim-vsnip-integ' }
-  use { 'rafamadriz/friendly-snippets' }
-  use { 'tami5/lspsaga.nvim', branch = 'nvim6.0' }
-  use { 'prettier/vim-prettier', run = 'yarn install --frozen-lockfile --production' }
-  use { 'kyazdani42/nvim-web-devicons' }
-  use { 'glepnir/dashboard-nvim' }
-  use { 'folke/lsp-colors.nvim' }
-  use { 'lukas-reineke/indent-blankline.nvim' }
-  -- use { 'kyazdani42/nvim-tree.lua' }
-  use { 'p00f/nvim-ts-rainbow' }
-  use { 'nvim-lualine/lualine.nvim' }
-  use {
-    'lewis6991/gitsigns.nvim',
-    requires = {
-      'nvim-lua/plenary.nvim'
-    },
-  }
-  use { 'windwp/nvim-autopairs' }
-  use { 'numToStr/Comment.nvim' }
-  use { 'windwp/nvim-ts-autotag' }
-  use { 'JoosepAlviste/nvim-ts-context-commentstring'}
-  use { 'romgrk/barbar.nvim' }
-  -- use {'akinsho/bufferline.nvim', requires = 'kyazdani42/nvim-web-devicons'}
-  use { 'jose-elias-alvarez/nvim-lsp-ts-utils'}
-  use { 'sunjon/shade.nvim' }
-  use { 'norcalli/nvim-colorizer.lua' }
-  use { 'xiyaowong/nvim-cursorword' }
-  use { 'David-Kunz/jester' }
-  use { 'tamago324/lir.nvim' }
-  use 'leafgarland/typescript-vim'
-  use 'pangloss/vim-javascript'
-  use 'peitalin/vim-jsx-typescript'
-  use 'leafgarland/typescript-vim'
-  use { 'styled-components/vim-styled-components', branch = 'main' }
-  use { 'jparise/vim-graphql' }
+return require("packer").startup(function()
+	use("wbthomason/packer.nvim")
+	use("olimorris/onedarkpro.nvim")
+	use("neovim/nvim-lspconfig")
+	use("williamboman/nvim-lsp-installer")
+	use("hrsh7th/cmp-nvim-lsp")
+	use("hrsh7th/cmp-buffer")
+	use("hrsh7th/cmp-path")
+	use("hrsh7th/cmp-cmdline")
+	use("hrsh7th/nvim-cmp")
+	use("L3MON4D3/LuaSnip")
+	use("saadparwaiz1/cmp_luasnip")
+	use("rafamadriz/friendly-snippets")
+	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
+	use({ "nvim-telescope/telescope.nvim", requires = { { "nvim-lua/plenary.nvim" } } })
+	use("nvim-telescope/telescope-ui-select.nvim")
+	use("kyazdani42/nvim-web-devicons")
+	use("onsails/lspkind.nvim")
+	use("nvim-lualine/lualine.nvim")
+	use("lukas-reineke/indent-blankline.nvim")
+	use("windwp/nvim-autopairs")
+	use("windwp/nvim-ts-autotag")
+	use({ "catppuccin/nvim", as = "catppuccin" })
+	use("Mofiqul/vscode.nvim")
+	use("norcalli/nvim-colorizer.lua")
+	use("f-person/git-blame.nvim")
+	use("lewis6991/gitsigns.nvim")
+	use("numToStr/Comment.nvim")
+	use("JoosepAlviste/nvim-ts-context-commentstring")
+	use("jose-elias-alvarez/nvim-lsp-ts-utils")
+	use("jose-elias-alvarez/null-ls.nvim")
+	use("kdheepak/lazygit.nvim")
+	use({ "akinsho/bufferline.nvim", tag = "*", requires = "kyazdani42/nvim-web-devicons" })
+	use("kyazdani42/nvim-tree.lua")
+	use("famiu/bufdelete.nvim")
+	use("goolord/alpha-nvim")
+	use("p00f/nvim-ts-rainbow")
+	use("sheerun/vim-polyglot")
+	use("ray-x/go.nvim")
 end)

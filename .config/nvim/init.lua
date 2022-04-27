@@ -1,63 +1,61 @@
-local vim = vim
-local o = vim.o
-local wo = vim.wo
+vim.cmd([[
+  if exists('g:vscode') 
+  else
+    lua require("leiswatch")
+  endif
+]])
 
-o.syntax = 'on'
-o.errorbells = false
-o.smartcase = true
-o.showmode = true
-o.swapfile = false
-o.backup = false
-o.undodir = vim.fn.stdpath('config') .. '/undodir'
-o.undofile = true
-o.incsearch = true
-o.hidden = true
-o.completeopt='menuone,noinsert,noselect'
-o.autoindent = true
-o.smartindent = true
-o.tabstop = 2
-o.softtabstop = 2
-o.shiftwidth = 2
-o.expandtab = true
-wo.number = true
-wo.wrap = false
+vim.o.syntax = "on"
+vim.o.errorbells = false
+vim.o.smartcase = true
+vim.o.showmode = true
+vim.o.swapfile = false
+vim.o.backup = false
+vim.o.undodir = vim.fn.stdpath("config") .. "/undodir"
+vim.o.undofile = true
+vim.o.incsearch = true
+vim.o.hidden = true
+vim.o.completeopt = "menuone,noinsert,noselect"
+vim.o.autoindent = true
+vim.o.smartindent = true
+vim.o.tabstop = 2
+vim.o.softtabstop = 2
+vim.o.shiftwidth = 2
+vim.o.expandtab = true
+vim.wo.number = true
+vim.wo.wrap = false
 vim.opt.termguicolors = true
-o.laststatus = 2
-o.list = true
-o.cmdheight = 2
-o.splitbelow = true
-o.ttyfast = true
-o.scrolloff = 5
-o.backspace = "indent,eol,start"
-o.showcmd = true
-o.encoding = "utf-8"
+vim.o.laststatus = 2
+vim.o.list = true
+vim.o.cmdheight = 2
+vim.o.splitbelow = true
+vim.o.splitright = true
+vim.o.ttyfast = true
+vim.o.scrolloff = 5
+vim.o.backspace = "indent,eol,start"
+vim.o.showcmd = true
+vim.o.encoding = "utf-8"
+vim.o.background = "dark"
+vim.o.relativenumber = true
+vim.wo.fillchars = "eob: "
 
-vim.g.nvim_tree_width = 50
+vim.cmd([[
+  if exists('g:vscode')
+  else
+    filetype on
+    filetype plugin on
+    filetype plugin indent on
+    set shortmess+=c
+    set listchars=tab:›\ ,trail:•,extends:#,nbsp:.
 
-require'leiswatch'
+    autocmd BufWritePre *.lua,*.py,*.go,*.rs,*.js,*.ts,*.jsx,*.tsx,*.scss,*.css lua vim.lsp.buf.formatting_sync()
+    autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif
+  endif
 
-vim.cmd[[
-  colorscheme catppuccin
+  autocmd FileType alpha setlocal nofoldenable
+  let g:lazygit_floating_window_scaling_factor = 0.75
+]])
+-- autocmd BufEnter * ++nested if winnr('$') == 1 && bufname() == 'NvimTree_' . tabpagenr() | quit | endif
+-- autocmd BufWritePre *.tsx,*.ts,*.jsx,*.js EslintFixAll
 
-  filetype on
-  filetype plugin on
-  filetype plugin indent on
-
-  set shortmess+=c
-  set listchars=tab:›\ ,trail:•,extends:#,nbsp:.
-
-  augroup numbertoggle
-    autocmd!
-    autocmd BufEnter,FocusGained,InsertLeave * set relativenumber
-    autocmd BufLeave,FocusLost,InsertEnter   * set norelativenumber
-  augroup END
-]]
-
-vim.g.bufferline = {
-  auto_hide = true,
-  insert_at_end = true,
-  exclude_ft = {'NvimTree'},
-  exclude_name = {'File Tree'}
-}
-
-vim.g.nvim_tree_quit_on_open = 1
+-- require("onedarkpro").load()

@@ -1,21 +1,21 @@
-require'leiswatch.plugins'
-require'leiswatch.catppuccin'
-require'leiswatch.commands'
-require'leiswatch.treesitter'
-require'leiswatch.mappings'
-require'leiswatch.lspinstaller'
-require'leiswatch.cmp'
-require'leiswatch.lspcolors'
-require'leiswatch.indent'
--- require'leiswatch.nvimtree'
-require'leiswatch.tsrainbow'
-require'leiswatch.lualine'
-require'leiswatch.gitsigns'
-require'leiswatch.npairs'
-require'leiswatch.comment'
-require'leiswatch.tsautotag'
--- require'leiswatch.tree'
--- require'leiswatch.shade'
-require'leiswatch.colorizer'
-require'leiswatch.jester'
-require'leiswatch.lir'
+require("leiswatch.plugins")
+require("leiswatch.lspinstaller")
+require("leiswatch.treesitter")
+require("leiswatch.nvimCmp")
+require("leiswatch.friendlySnippets")
+require("leiswatch.nvimLualine")
+require("leiswatch.indent")
+require("leiswatch.pairs")
+require("leiswatch.autotag")
+-- require("leiswatch.onedark")
+-- require("leiswatch.catppuccin")
+require("leiswatch.vscode")
+require("leiswatch.colorizer")
+require("leiswatch.gitsigns")
+require("leiswatch.comment")
+require("leiswatch.nullls")
+require("leiswatch.bufferline")
+require("leiswatch.nvimtree")
+require("leiswatch.alpha")
+require("leiswatch.telescope")
+require("leiswatch.mappings")

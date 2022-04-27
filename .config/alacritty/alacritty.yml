@@ -3,17 +3,17 @@ env:
 
 window:
   dimensions:
-    columns: 140
-    lines: 40
+    columns: 120
+    lines: 30
   padding:
-    x: 15
-    y: 15
+    x: 10
+    y: 10
 
   dynamic_padding: true
   decorations: full
   title: Alacritty
   dynamic_title: false
-  opacity: 0.98
+  opacity: 0.97
 
 scrolling:
   history: 10000
@@ -32,13 +32,14 @@ font:
     family: JetBrainsMono Nerd Font
     style: Italic
 
-  size: 12
+  size: 13
 
   offset:
     x: 0
-    y: 0
+    y: 2
 
 draw_bold_text_with_bright_colors: true
+
 cursor:
   style: Block
   blinking: Off
@@ -46,107 +47,105 @@ cursor:
   unfocused_hollow: true
   custom_cursor_colors: true
 
-
 mouse:
   hide_when_typing: true
 
-# Catppuccin!
-colors:
-  # Default colors
- primary:
-   background: '#1E1E28'
-   foreground: '#DADAE8'
-
+# # Catppuccin!
+# colors:
+#   # Default colors
+#   primary:
+#     background: '#1E1E28'
+#     foreground: '#DADAE8'
+#
 # # Colors the cursor will use if `custom_cursor_colors` is true
- cursor:
-   text: '#1E1E28'
-   cursor: '#B1E3AD'
-
+#   cursor:
+#     text: '#1E1E28'
+#     cursor: '#B1E3AD'
+#
 # # Normal colors
- normal:
-   black:   '#6E6C7E'
-   red:     '#E38C8F'
-   green:   '#B1E3AD'
-   yellow:  '#EBDDAA'
-   blue:    '#A4B9EF'
-   magenta: '#C6AAE8'
-   cyan:    '#E5B4E2'
-   white:   '#DADAE8'
-
+#   normal:
+#     black:   '#6E6C7E'
+#     red:     '#E38C8F'
+#     green:   '#B1E3AD'
+#     yellow:  '#EBDDAA'
+#     blue:    '#A4B9EF'
+#     magenta: '#C6AAE8'
+#     cyan:    '#E5B4E2'
+#     white:   '#DADAE8'
+#
 # # Bright colors
- bright:
-   black:   '#6E6C7E'
-   red:     '#E38C8F'
-   green:   '#B1E3AD'
-   yellow:  '#EBDDAA'
-   blue:    '#A4B9EF'
-   magenta: '#C6AAE8'
-   cyan:    '#E5B4E2'
-   white:   '#DADAE8'
-
- indexed_colors:
-   - { index: 16, color: '#F2CECF' }
-   - { index: 17, color: '#3E4058' }
-
-# Dracula theme for Alacritty
-# https://draculatheme.com/alacritty
+#   bright:
+#     black:   '#6E6C7E'
+#     red:     '#E38C8F'
+#     green:   '#B1E3AD'
+#     yellow:  '#EBDDAA'
+#     blue:    '#A4B9EF'
+#     magenta: '#C6AAE8'
+#     cyan:    '#E5B4E2'
+#     white:   '#DADAE8'
 #
-# Color palette
-# https://spec.draculatheme.com
-#
-# Template
-# https://github.com/alacritty/alacritty/blob/master/alacritty.yml
+#   indexed_colors:
+#     - { index: 16, color: '#F2CECF' }
+#     - { index: 17, color: '#3E4058' }
 
-     #colors:
-# primary:
-#   background: '#282a36'
-#   foreground: '#f8f8f2'
-#   bright_foreground: '#ffffff'
-# cursor:
-#   text: CellBackground
-#   cursor: CellForeground
-# vi_mode_cursor:
-#   text: CellBackground
-#   cursor: CellForeground
-# search:
-#   matches:
-#     foreground: '#44475a'
-#     background: '#50fa7b'
-#   focused_match:
-#     foreground: '#44475a'
-#     background: '#ffb86c'
-#   bar:
-#     background: '#282a36'
-#     foreground: '#f8f8f2'
-# hints:
-#   start:
-#     foreground: '#282a36'
-#     background: '#f1fa8c'
-#   end:
-#     foreground: '#f1fa8c'
-#     background: '#282a36'
-# line_indicator:
-#   foreground: None
-#   background: None
-# selection:
-#   text: CellForeground
-#   background: '#44475a'
-# normal:
-#   black: '#21222c'
-#   red: '#ff5555'
-#   green: '#50fa7b'
-#   yellow: '#f1fa8c'
-#   blue: '#bd93f9'
-#   magenta: '#ff79c6'
-#   cyan: '#8be9fd'
-#   white: '#f8f8f2'
-# bright:
-#   black: '#6272a4'
-#   red: '#ff6e6e'
-#   green: '#69ff94'
-#   yellow: '#ffffa5'
-#   blue: '#d6acff'
-#   magenta: '#ff92df'
-#   cyan: '#a4ffff'
-#   white: '#ffffff'
+schemes:
+  codelight: &light
+    primary:
+      background: '#ffffff'
+      foreground: '#1e1e1e'
 
+    cursor:
+      text: '#d4d4d4'
+      cursor: '#d4d4d4'
+
+    normal:
+      black:   '#1e1e1e'
+      red:     '#c72e0f'
+      green:   '#009000'
+      yellow:  '#795e25'
+      blue:    '#007acc'
+      magenta: '#af00db'
+      cyan:    '#56b6c2'
+      white:   '#d4d4d4'
+
+    bright:
+      black:   '#1e1e1e'
+      red:     '#c72e0f'
+      green:   '#009000'
+      yellow:  '#795e25'
+      blue:    '#007acc'
+      magenta: '#af00db'
+      cyan:    '#56b6c2'
+      white:   '#d4d4d4'
+
+  codedark: &dark
+
+    primary:
+      background: '#1e1e1e'
+      foreground: '#d4d4d4'
+
+    cursor:
+      text: '#d4d4d4'
+      cursor: '#d4d4d4'
+
+    normal:
+      black:   '#1e1e1e'
+      red:     '#f44747'
+      green:   '#608b4e'
+      yellow:  '#dcdcaa'
+      blue:    '#569cd6'
+      magenta: '#c678dd'
+      cyan:    '#56b6c2'
+      white:   '#d4d4d4'
+
+    bright:
+      black:   '#545454'
+      red:     '#f44747'
+      green:   '#608b4e'
+      yellow:  '#dcdcaa'
+      blue:    '#569cd6'
+      magenta: '#c678dd'
+      cyan:    '#56b6c2'
+      white:   '#d4d4d4'
+
+colors: *dark

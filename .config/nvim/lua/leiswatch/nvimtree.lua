@@ -1,19 +1,26 @@
-require'nvim-tree'.setup{
-  update_cwd = true,
-  update_focused_file = {
-    update_cwd = true,
-    enable = true,
-  },
-  auto_close = true,
-  hijack_netrw = false,
-  hijack_cursor = true,
-  view = {
-    width = 50,
-    number = true,
-    relativenumber = false,
-    auto_resize = true,
-  },
-  diagnostics = {
-    enable = true,
-  }
-}
+require("nvim-tree").setup({
+	disable_netrw = true,
+	update_cwd = true,
+	view = {
+		width = 40,
+		side = "left",
+		preserve_window_proportions = false,
+		number = false,
+		relativenumber = false,
+	},
+	actions = {
+		open_file = {
+			quit_on_open = false,
+			resize_window = true,
+		},
+	},
+	update_focused_file = {
+		enable = true,
+		update_cwd = true,
+		ignore_list = {},
+	},
+	hijack_directories = {
+		enable = false,
+		auto_open = false,
+	},
+})
