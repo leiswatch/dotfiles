@@ -17,6 +17,7 @@ dashboard.section.buttons.val = {
 	dashboard.button("f", "  Find File", ":Telescope find_files <CR>"),
 	dashboard.button("r", "  Recently used files", ":Telescope oldfiles <CR>"),
 	dashboard.button("t", "  Find Text", ":Telescope live_grep <CR>"),
+	dashboard.button("q", "  Exit", ":q<CR>"),
 }
 
 dashboard.opts.opts.noautocmd = true

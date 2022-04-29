@@ -44,7 +44,7 @@ require("telescope").setup({
 		previewer = true,
 		prompt_title = false,
 		use_less = true,
-		path_display = {},
+		path_display = { "truncate" },
 		set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
 		file_previewer = require("telescope.previewers").vim_buffer_cat.new,
 		grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
@@ -53,11 +53,11 @@ require("telescope").setup({
 		-- Developer configurations: Not meant for general override
 		buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
 	},
-	extensions = {
-		["ui-select"] = {
-			require("telescope.themes").get_dropdown({}),
-		},
-	},
+	-- extensions = {
+	-- 	["ui-select"] = {
+	-- 		require("telescope.themes").get_dropdown({}),
+	-- 	},
+	-- },
 })
 
-require("telescope").load_extension("ui-select")
+-- require("telescope").load_extension("ui-select")

@@ -1,4 +1,17 @@
-return require("packer").startup(function()
+local fn = vim.fn
+local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
+if fn.empty(fn.glob(install_path)) > 0 then
+	packer_bootstrap = fn.system({
+		"git",
+		"clone",
+		"--depth",
+		"1",
+		"https://github.com/wbthomason/packer.nvim",
+		install_path,
+	})
+end
+
+return require("packer").startup(function(use)
 	use("wbthomason/packer.nvim")
 	use("olimorris/onedarkpro.nvim")
 	use("neovim/nvim-lspconfig")
@@ -13,7 +26,7 @@ return require("packer").startup(function()
 	use("rafamadriz/friendly-snippets")
 	use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
 	use({ "nvim-telescope/telescope.nvim", requires = { { "nvim-lua/plenary.nvim" } } })
-	use("nvim-telescope/telescope-ui-select.nvim")
+	-- use("nvim-telescope/telescope-ui-select.nvim")
 	use("kyazdani42/nvim-web-devicons")
 	use("onsails/lspkind.nvim")
 	use("nvim-lualine/lualine.nvim")
@@ -37,4 +50,9 @@ return require("packer").startup(function()
 	use("p00f/nvim-ts-rainbow")
 	use("sheerun/vim-polyglot")
 	use("ray-x/go.nvim")
+	use("stevearc/dressing.nvim")
+
+	if packer_bootstrap then
+		require("packer").sync()
+	end
 end)
