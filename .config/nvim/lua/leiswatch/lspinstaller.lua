@@ -38,8 +38,8 @@ vim.api.nvim_set_keymap("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", op
 vim.api.nvim_set_keymap("n", "<space>q", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
 
 local on_attach = function(client, bufnr)
-	client.resolved_capabilities.document_formatting = false
-	client.resolved_capabilities.document_range_formatting = false
+	client.server_capabilities.document_formatting = false
+	client.server_capabilities.document_range_formatting = false
 
 	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
 
@@ -95,8 +95,8 @@ local enhance_server_opts = {
 			init_options = require("nvim-lsp-ts-utils").init_options,
 		}
 		curr_opts.on_attach = function(client, bufnr)
-			client.resolved_capabilities.document_formatting = false
-			client.resolved_capabilities.document_range_formatting = false
+			client.server_capabilities.document_formatting = false
+			client.server_capabilities.document_range_formatting = false
 
 			local ts_utils = require("nvim-lsp-ts-utils")
 
