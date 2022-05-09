@@ -13,17 +13,18 @@ require("nvim-treesitter.configs").setup({
 	},
 	context_commentstring = {
 		enable = true,
+		enable_autocmd = false,
 	},
 	rainbow = {
 		enable = true,
 		extended_mode = true,
 		colors = {
-			"#569cd6",
-			"#dcdcaa",
-			"#c678dd",
-			"#608b4e",
-			"#f44747",
-			"#56b6c2",
+			"#B48EAD",
+			"#A3BE8C",
+			"#EBCB8B",
+			"#D08770",
+			"#BF616A",
+			"#abb2c0",
 		},
 	},
 })

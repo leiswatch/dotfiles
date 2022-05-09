@@ -1,5 +1,5 @@
 vim.g.gitblame_display_virtual_text = 0 -- Disable virtual text
-vim.g.gitblame_date_format = "%c"
+vim.g.gitblame_date_format = "%r"
 
 local git_blame = require("gitblame")
 

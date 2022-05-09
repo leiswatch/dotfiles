@@ -2,7 +2,7 @@ require("nvim-tree").setup({
 	disable_netrw = true,
 	update_cwd = true,
 	view = {
-		width = 40,
+		width = 60,
 		side = "left",
 		preserve_window_proportions = false,
 		number = false,

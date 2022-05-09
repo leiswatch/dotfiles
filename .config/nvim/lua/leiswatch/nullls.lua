@@ -29,7 +29,7 @@ null_ls.setup({
 			filetypes = { "scss", "less", "css", "sass" },
 			prefer_local = "node_modules/.bin",
 		}),
-		-- diagnostics.golangci_lint,
+		diagnostics.golangci_lint,
 
 		-- Formatters
 		-- formatting.prettier.with({

@@ -17,6 +17,7 @@ vim.o.incsearch = true
 vim.o.hidden = true
 vim.o.completeopt = "menuone,noinsert,noselect"
 vim.o.autoindent = true
+vim.o.autoread = true
 vim.o.smartindent = true
 vim.o.tabstop = 2
 vim.o.softtabstop = 2
