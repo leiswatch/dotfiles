@@ -5,10 +5,8 @@ local git_blame = require("gitblame")
 
 require("lualine").setup({
 	options = {
-		theme = "vscode",
+		theme = "catppuccin",
 		globalstatus = true,
-		component_separators = { left = "", right = "" },
-		section_separators = { left = "", right = "" },
 	},
 	sections = {
 		--     lualine_c = {

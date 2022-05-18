@@ -47,7 +47,23 @@ catppuccin.setup({
 		variables = "NONE",
 	},
 	integrations = {
+		native_lsp = {
+			enabled = true,
+			virtual_text = {
+				errors = "italic",
+				hints = "italic",
+				warnings = "italic",
+				information = "italic",
+			},
+			underlines = {
+				errors = "undercurl",
+				hints = "undercurl",
+				warnings = "undercurl",
+				information = "undercurl",
+			},
+		},
 		treesitter = true,
+		barbar = true,
 		nvimtree = {
 			enabled = true,
 			show_root = true,
@@ -58,5 +74,7 @@ catppuccin.setup({
 			colored_indent_levels = true,
 		},
 		ts_rainbow = true,
+		lsp_trouble = true,
+		cmp = true,
 	},
 })
