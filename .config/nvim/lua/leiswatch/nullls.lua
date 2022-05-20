@@ -48,6 +48,7 @@ null_ls.setup({
 			prefer_local = "node_modules/.bin",
 		}),
 		diagnostics.golangci_lint,
+		diagnostics.jsonlint,
 
 		-- Formatters
 		-- formatting.prettier.with({
@@ -65,6 +66,13 @@ null_ls.setup({
 		formatting.gofmt,
 		formatting.rustfmt,
 		formatting.stylua,
+		-- formatting.fixjson,
+		formatting.prettier_d_slim.with({
+			filetypes = {
+				"json",
+				"yaml",
+			},
+		}),
 	},
 	on_attach = on_attach,
 })

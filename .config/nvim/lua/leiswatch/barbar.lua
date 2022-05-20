@@ -1,6 +1,6 @@
 vim.g.bufferline = {
 	-- Enable/disable animations
-	animation = true,
+	animation = false,
 
 	-- Enable/disable auto-hiding the tab bar when there is a single buffer
 	auto_hide = true,
@@ -44,10 +44,10 @@ vim.g.bufferline = {
 	insert_at_start = false,
 
 	-- Sets the maximum padding width with which to surround each tab
-	maximum_padding = 1,
+	maximum_padding = 3,
 
 	-- Sets the maximum buffer name length.
-	maximum_length = 30,
+	maximum_length = 40,
 
 	-- If set, the letters for each buffer in buffer-pick mode will be
 	-- assigned based on their name. Otherwise or in case all letters are

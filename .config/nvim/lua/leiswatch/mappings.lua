@@ -6,7 +6,7 @@ local opts = { noremap = true, silent = true }
 -- map("n", "<leader>ff", "<cmd>lua require('telescope.builtin').find_files({hidden=true})<cr>", opts)
 map(
 	"n",
-	"<leader>ff",
+	"<C-p>",
 	"<cmd>lua require'telescope.builtin'.find_files({ find_command = {'rg', '--files', '--hidden', '-g', '!.git' }})<cr>",
 	opts
 )
