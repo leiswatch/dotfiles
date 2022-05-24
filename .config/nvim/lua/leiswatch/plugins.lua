@@ -59,6 +59,8 @@ return require("packer").startup(function(use)
 	use("voldikss/vim-floaterm")
 	use("romgrk/barbar.nvim")
 	use("karb94/neoscroll.nvim")
+	-- use("sainnhe/gruvbox-material")
+	use("ellisonleao/gruvbox.nvim")
 
 	if packer_bootstrap then
 		require("packer").sync()

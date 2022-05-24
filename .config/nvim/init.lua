@@ -37,10 +37,14 @@ vim.o.hlsearch = false
 vim.o.wrap = false
 vim.o.signcolumn = "yes"
 vim.o.colorcolumn = "80"
+vim.o.winbar = "%f"
 
 require("leiswatch")
 
 vim.cmd([[
+  au ColorScheme * hi Normal ctermbg=none guibg=none
+  au ColorScheme myspecialcolors hi Normal ctermbg=red guibg=red
+
   filetype on
   filetype plugin on
   filetype plugin indent on
@@ -55,5 +59,7 @@ vim.cmd([[
   let test#neovim#term_position = "vert"
   let g:test#neovim#start_normal = 1 " If using neovim strategy
   let g:floaterm_wintype = 'split'
+  " let g:gruvbox_transparent_bg = 1
   colorscheme catppuccin
+  " colorscheme gruvbox
 ]])

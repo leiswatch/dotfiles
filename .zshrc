@@ -73,7 +73,7 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(archlinux zsh-lazyload aws git npm yarn node docker docker-compose pip command-not-found you-should-use fast-syntax-highlighting tmux rust golang pyenv autojump)
+plugins=(zsh-autosuggestions ubuntu zsh-lazyload git npm yarn node docker docker-compose command-not-found you-should-use fast-syntax-highlighting tmux rust golang autojump)
 
 source $ZSH/oh-my-zsh.sh
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#555753"
@@ -85,7 +85,9 @@ ZSH_AUTOSUGGEST_STRATEGY=(history completion)
 export DENO_INSTALL="$HOME/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 export PATH=$PATH:/usr/local/go/bin
-export BAT_THEME='Coldark-Dark'
+export PNPM_HOME="/home/leiswatch/.local/share/pnpm"
+export BAT_THEME='1337'
+export FZF_DEFAULT_OPTS='--color=bg+:#302D41,bg:#1E1E2E,spinner:#F8BD96,hl:#F28FAD --color=fg:#D9E0EE,header:#F28FAD,info:#DDB6F2,pointer:#F8BD96 --color=marker:#F8BD96,fg+:#F2CDCD,prompt:#DDB6F2,hl+:#F28FAD'
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
@@ -109,20 +111,16 @@ export BAT_THEME='Coldark-Dark'
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 alias ls="exa"
-alias cat="bat"
-alias ngb-start="yarn && yarn workspace @boldpl/ngb start"
+alias cat="batcat"
+alias vim="nvim"
 
 DISABLE_AUTO_TITLE=true
 
-export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS'
---color=dark
---color=fg:-1,bg:-1,hl:#5fff87,fg+:-1,bg+:-1,hl+:#ffaf5f
---color=info:#af87ff,prompt:#5fff87,pointer:#ff87d7,marker:#ff87d7,spinner:#ff87d7
-'
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+
 
 # place this after nvm initialization!
 autoload -U add-zsh-hook
@@ -151,11 +149,17 @@ function set_win_title(){
     echo -ne "\033]0; $(basename "$PWD") \007"
 }
 
-precmd () {print -Pn "\e]0;Kitty\a"}
+precmd () {print -Pn "\e]0;Terminal\a"}
 
 starship_precmd_user_func="set_win_title"
 
 eval "$(starship init zsh)"
-
+source /usr/share/doc/fzf/examples/key-bindings.zsh
+source /usr/share/doc/fzf/examples/completion.zsh
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 #[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+
+# tabtab source for packages
+# uninstall by removing these lines
+[[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true
+
