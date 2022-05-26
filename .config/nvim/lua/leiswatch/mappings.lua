@@ -4,12 +4,13 @@ local opts = { noremap = true, silent = true }
 
 -- Telescope --
 -- map("n", "<leader>ff", "<cmd>lua require('telescope.builtin').find_files({hidden=true})<cr>", opts)
-map(
-	"n",
-	"<C-p>",
-	"<cmd>lua require'telescope.builtin'.find_files({ find_command = {'rg', '--files', '--hidden', '-g', '!.git' }})<cr>",
-	opts
-)
+-- map(
+-- 	"n",
+-- 	"<C-p>",
+-- 	"<cmd>lua require'telescope.builtin'.find_files({ find_command = {'rg', '--files', '--hidden', '-g', '!.git' }})<cr>",
+-- 	opts
+-- )
+map("n", "<C-p>", "<cmd>lua require'telescope.builtin'.find_files()<cr>", opts)
 map("n", "<leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<cr>", opts)
 map("n", "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<cr>", opts)
 map("n", "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<cr>", opts)
@@ -47,3 +48,11 @@ map("n", "<leader>bp", ":BufferMovePrevious<cr>", opts)
 
 -- Delete buffer --
 map("n", "<leader>q", ":Bdelete<cr>", opts)
+
+-- Trouble
+vim.api.nvim_set_keymap("n", "<leader>xx", "<cmd>Trouble<cr>", opts)
+vim.api.nvim_set_keymap("n", "<leader>xw", "<cmd>Trouble workspace_diagnostics<cr>", opts)
+vim.api.nvim_set_keymap("n", "<leader>xd", "<cmd>Trouble document_diagnostics<cr>", opts)
+vim.api.nvim_set_keymap("n", "<leader>xl", "<cmd>Trouble loclist<cr>", opts)
+vim.api.nvim_set_keymap("n", "<leader>xq", "<cmd>Trouble quickfix<cr>", opts)
+vim.api.nvim_set_keymap("n", "gR", "<cmd>Trouble lsp_references<cr>", opts)

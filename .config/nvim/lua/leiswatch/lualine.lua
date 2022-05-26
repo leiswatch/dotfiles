@@ -4,7 +4,7 @@ vim.g.gitblame_date_format = "%r"
 local git_blame = require("gitblame")
 
 -- stylua: ignore
-local colors = {
+local colors_catppuccin = {
 	blue   = '#96CDFB',
 	cyan   = '#ABE9B3',
 	black  = '#1E1E2E',
@@ -14,28 +14,28 @@ local colors = {
 	grey   = '#302D41',
 }
 
-local bubbles_theme = {
+local bubbles_theme_catppuccin = {
 	normal = {
-		a = { fg = colors.black, bg = colors.violet },
-		b = { fg = colors.white, bg = colors.grey },
-		c = { fg = colors.black, bg = colors.black },
-		x = { fg = colors.white, bg = colors.black },
+		a = { fg = colors_catppuccin.black, bg = colors_catppuccin.violet },
+		b = { fg = colors_catppuccin.white, bg = colors_catppuccin.grey },
+		c = { fg = colors_catppuccin.black, bg = colors_catppuccin.black },
+		x = { fg = colors_catppuccin.white, bg = colors_catppuccin.black },
 	},
 
-	insert = { a = { fg = colors.black, bg = colors.blue } },
-	visual = { a = { fg = colors.black, bg = colors.cyan } },
-	replace = { a = { fg = colors.black, bg = colors.red } },
+	insert = { a = { fg = colors_catppuccin.black, bg = colors_catppuccin.blue } },
+	visual = { a = { fg = colors_catppuccin.black, bg = colors_catppuccin.cyan } },
+	replace = { a = { fg = colors_catppuccin.black, bg = colors_catppuccin.red } },
 
 	inactive = {
-		a = { fg = colors.white, bg = colors.black },
-		b = { fg = colors.white, bg = colors.black },
-		c = { fg = colors.black, bg = colors.black },
+		a = { fg = colors_catppuccin.white, bg = colors_catppuccin.black },
+		b = { fg = colors_catppuccin.white, bg = colors_catppuccin.black },
+		c = { fg = colors_catppuccin.black, bg = colors_catppuccin.black },
 	},
 }
 
 require("lualine").setup({
 	options = {
-		theme = bubbles_theme,
+		theme = bubbles_theme_catppuccin,
 		globalstatus = true,
 		component_separators = "|",
 		section_separators = { left = "", right = "" },
