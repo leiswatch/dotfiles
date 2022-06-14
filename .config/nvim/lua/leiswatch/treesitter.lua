@@ -18,13 +18,14 @@ require("nvim-treesitter.configs").setup({
 	rainbow = {
 		enable = true,
 		extended_mode = true,
+		-- Catppuccin
 		colors = {
-			"#B48EAD",
-			"#A3BE8C",
-			"#EBCB8B",
-			"#D08770",
-			"#BF616A",
-			"#abb2c0",
+			"#cba6f7",
+			"#a6e3a1",
+			"#f9e2af",
+			"#fab387",
+			"#f38ba8",
+			"#c6d0f5",
 		},
 	},
 })

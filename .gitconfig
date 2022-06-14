@@ -1,0 +1,11 @@
+[user]
+	email = kowalrox@gmail.com
+	name = leiswatch
+[init]
+	defaultBranch = main
+[core]
+	editor = nvim
+[pull]
+	rebase = false
+[merge]
+	conflictstyle = diff3

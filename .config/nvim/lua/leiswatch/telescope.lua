@@ -1,5 +1,10 @@
 require("telescope").setup({
 	defaults = {
+		-- mappings = {
+		-- 	i = {
+		-- 		["<C-u>"] = true,
+		-- 	},
+		-- },
 		vimgrep_arguments = {
 			"rg",
 			"--color=never",
@@ -7,8 +12,10 @@ require("telescope").setup({
 			"--with-filename",
 			"--line-number",
 			"--column",
-			"--smart-case",
+			"--ignore-case",
 			"--hidden",
+			"--trim",
+			"--fixed-strings",
 		},
 		prompt_prefix = "> ",
 		selection_caret = "> ",
@@ -19,8 +26,8 @@ require("telescope").setup({
 		layout_strategy = "horizontal",
 		layout_config = {
 			horizontal = {
-				width = 0.99,
-				height = 0.95,
+				width = 0.85,
+				height = 0.85,
 				preview_width = 0.4,
 				prompt_position = "bottom",
 			},
@@ -55,7 +62,8 @@ require("telescope").setup({
 	},
 	pickers = {
 		find_files = {
-			find_command = { "fd", "--type", "f", "--strip-cwd-prefix", "--hidden" },
+			previewer = false,
+			find_command = { "fd", "--type", "f", "--strip-cwd-prefix", "--hidden", "--ignore-case" },
 		},
 	},
 	extensions = {
@@ -70,3 +78,5 @@ require("telescope").setup({
 
 -- require("telescope").load_extension("ui-select")
 require("telescope").load_extension("fzf")
+require("telescope").load_extension("git_worktree")
+require("telescope").load_extension("harpoon")

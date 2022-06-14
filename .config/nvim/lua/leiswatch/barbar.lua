@@ -40,11 +40,11 @@ vim.g.bufferline = {
 
 	-- If true, new buffers will be inserted at the start/end of the list.
 	-- Default is to insert after current buffer.
-	insert_at_end = false,
+	insert_at_end = true,
 	insert_at_start = false,
 
 	-- Sets the maximum padding width with which to surround each tab
-	maximum_padding = 3,
+	maximum_padding = 2,
 
 	-- Sets the maximum buffer name length.
 	maximum_length = 40,
@@ -69,7 +69,7 @@ vim.api.nvim_create_autocmd("BufWinEnter", {
 	pattern = "*",
 	callback = function()
 		if vim.bo.filetype == "NvimTree" then
-			require("bufferline.state").set_offset(40, "FileTree")
+			require("bufferline.state").set_offset(40, "")
 		end
 	end,
 })

@@ -23,4 +23,7 @@ require("nvim-tree").setup({
 		enable = false,
 		auto_open = false,
 	},
+	log = {
+		enable = true,
+	},
 })

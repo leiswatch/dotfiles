@@ -73,7 +73,8 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-plugins=(zsh-autosuggestions ubuntu zsh-lazyload git npm yarn node docker docker-compose command-not-found you-should-use fast-syntax-highlighting tmux rust golang autojump)
+# source /home/leiswatch/.zsh/catppuccin-zsh-syntax-highlighting.zsh
+plugins=(ubuntu zsh-lazyload git npm yarn node docker docker-compose command-not-found you-should-use zsh-syntax-highlighting tmux rust golang autojump)
 
 source $ZSH/oh-my-zsh.sh
 ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=#555753"
@@ -86,8 +87,10 @@ export DENO_INSTALL="$HOME/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 export PATH=$PATH:/usr/local/go/bin
 export PNPM_HOME="/home/leiswatch/.local/share/pnpm"
-export BAT_THEME='1337'
+export BAT_THEME='OneHalfDark'
 export FZF_DEFAULT_OPTS='--color=bg+:#302D41,bg:#1E1E2E,spinner:#F8BD96,hl:#F28FAD --color=fg:#D9E0EE,header:#F28FAD,info:#DDB6F2,pointer:#F8BD96 --color=marker:#F8BD96,fg+:#F2CDCD,prompt:#DDB6F2,hl+:#F28FAD'
+# export FZF_DEFAULT_OPTS='--color=bg+:#545c7e,bg:#24283b,spinner:#E0AF68,hl:#F7768e --color=fg:#D9E0EE,header:#F7768e,info:#BB9AF7,pointer:#E0AF68 --color=marker:#E0AF68,fg+:#7DCFFF,prompt:#BB9AF7,hl+:#F7768e'
+export ESLINT_D_LOCAL_ESLINT_ONLY=true
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 

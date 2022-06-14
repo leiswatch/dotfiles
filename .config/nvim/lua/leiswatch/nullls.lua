@@ -6,11 +6,10 @@ local code_actions = null_ls.builtins.code_actions
 
 local lsp_formatting = function(bufnr)
 	vim.lsp.buf.format({
-		filter = function(clients)
-			-- filter out clients that you don't want to use
-			return vim.tbl_filter(function(client)
-				return client.name ~= ""
-			end, clients)
+		timeout_ms = 2000,
+		filter = function(client)
+			-- apply whatever logic you want (in this example, we'll only use null-ls)
+			return client.name == "null-ls"
 		end,
 		bufnr = bufnr,
 	})
@@ -27,7 +26,8 @@ local on_attach = function(client, bufnr)
 			group = augroup,
 			buffer = bufnr,
 			callback = function()
-				lsp_formatting(bufnr)
+				vim.lsp.buf.formatting_sync(nil, 2000)
+				-- lsp_formatting(bufnr)
 			end,
 		})
 	end
@@ -35,26 +35,22 @@ end
 
 null_ls.setup({
 	debug = false,
+	update_in_insert = true,
 	sources = {
 		-- Code Actions
-		code_actions.eslint_d,
+		code_actions.eslint_d.with({
+			filetypes = { "javascript", "typescript", "javascriptreact", "typescriptreact" },
+		}),
+
 		-- Diagnostics
 		diagnostics.pylint,
+		diagnostics.jsonlint,
 		diagnostics.eslint_d.with({
 			filetypes = { "javascript", "typescript", "javascriptreact", "typescriptreact" },
 		}),
-		diagnostics.stylelint.with({
-			filetypes = { "scss", "less", "css", "sass" },
-			prefer_local = "node_modules/.bin",
-		}),
 		diagnostics.golangci_lint,
-		diagnostics.jsonlint,
 
 		-- Formatters
-		-- formatting.prettier.with({
-		-- filetypes = { "javascript", "typescript", "javascriptreact", "typescriptreact", "json", "html", "yaml" },
-		-- prefer_local = "node_modules/.bin",
-		-- }),
 		formatting.eslint_d.with({
 			filetypes = { "javascript", "typescript", "javascriptreact", "typescriptreact" },
 		}),
@@ -67,11 +63,12 @@ null_ls.setup({
 		formatting.rustfmt,
 		formatting.stylua,
 		-- formatting.fixjson,
-		formatting.prettier_d_slim.with({
+		formatting.prettier.with({
 			filetypes = {
 				"json",
 				"yaml",
 			},
+			prefer_local = "node_modules/.bin",
 		}),
 	},
 	on_attach = on_attach,
