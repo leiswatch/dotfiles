@@ -18,7 +18,7 @@ local bubbles_theme_catppuccin = {
 	normal = {
 		a = { fg = colors_catppuccin.black, bg = colors_catppuccin.violet },
 		b = { fg = colors_catppuccin.white, bg = colors_catppuccin.grey },
-		c = { fg = colors_catppuccin.black, bg = colors_catppuccin.black },
+		c = { fg = colors_catppuccin.black, bg = colors_catppuccin.grey },
 		x = { fg = colors_catppuccin.white, bg = colors_catppuccin.grey },
 	},
 
