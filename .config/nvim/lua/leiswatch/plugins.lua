@@ -14,9 +14,14 @@ end
 return require("packer").startup({
 	function(use)
 		use("wbthomason/packer.nvim")
-		use("olimorris/onedarkpro.nvim")
 		use("neovim/nvim-lspconfig")
-		use("williamboman/nvim-lsp-installer")
+
+		use("williamboman/mason.nvim")
+		use("WhoIsSethDaniel/mason-tool-installer.nvim")
+		use("jayp0521/mason-null-ls.nvim")
+		use("RubixDev/mason-update-all")
+		use("williamboman/mason-lspconfig.nvim")
+
 		use("hrsh7th/cmp-nvim-lsp")
 		use("hrsh7th/cmp-buffer")
 		use("hrsh7th/cmp-path")
@@ -27,20 +32,22 @@ return require("packer").startup({
 		use("saadparwaiz1/cmp_luasnip")
 		use("rafamadriz/friendly-snippets")
 		use({ "nvim-treesitter/nvim-treesitter", run = ":TSUpdate" })
+		use("nvim-treesitter/nvim-treesitter-context")
 		use({ "nvim-telescope/telescope.nvim", requires = { { "nvim-lua/plenary.nvim" } } })
 		use({ "nvim-telescope/telescope-fzf-native.nvim", run = "make" })
+		use("nvim-telescope/telescope-live-grep-args.nvim")
 		use("kyazdani42/nvim-web-devicons")
-		-- use({
-		-- 	"yamatsum/nvim-nonicons",
-		-- 	requires = { "kyazdani42/nvim-web-devicons" },
-		-- })
+		use("rcarriga/nvim-notify")
+		use("folke/lua-dev.nvim")
+		use("folke/which-key.nvim")
 		use("onsails/lspkind.nvim")
 		use("nvim-lualine/lualine.nvim")
+		use("arkav/lualine-lsp-progress")
 		use("lukas-reineke/indent-blankline.nvim")
 		use("windwp/nvim-autopairs")
 		use("windwp/nvim-ts-autotag")
 		use({ "catppuccin/nvim", as = "catppuccin" })
-		use("Mofiqul/vscode.nvim")
+		use("LunarVim/onedarker.nvim")
 		use("norcalli/nvim-colorizer.lua")
 		use("f-person/git-blame.nvim")
 		use("lewis6991/gitsigns.nvim")
@@ -60,22 +67,26 @@ return require("packer").startup({
 		use("gpanders/editorconfig.nvim")
 		use("vim-test/vim-test")
 		use("voldikss/vim-floaterm")
-		use("romgrk/barbar.nvim")
+		--[[ use("romgrk/barbar.nvim") ]]
+		use({ "akinsho/bufferline.nvim", tag = "v2.*", requires = "kyazdani42/nvim-web-devicons" })
 		use("karb94/neoscroll.nvim")
 		use("folke/trouble.nvim")
-		use("ellisonleao/gruvbox.nvim")
 		use("tpope/vim-fugitive")
 		use("ThePrimeagen/harpoon")
 		use("ThePrimeagen/git-worktree.nvim")
 		use("petertriho/nvim-scrollbar")
+		use({ "sindrets/diffview.nvim", requires = "nvim-lua/plenary.nvim" })
 		use({
 			"ghillb/cybu.nvim",
 			branch = "main",
 		})
 		use("jose-elias-alvarez/typescript.nvim")
-		use("folke/tokyonight.nvim")
-		-- use("lukas-reineke/virt-column.nvim")
-		-- use("xiyaowong/virtcolumn.nvim")
+		use("nacro90/numb.nvim")
+		use("folke/lsp-colors.nvim")
+		use({
+			"glepnir/lspsaga.nvim",
+			branch = "main",
+		})
 
 		if packer_bootstrap then
 			require("packer").sync()

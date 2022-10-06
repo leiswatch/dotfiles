@@ -1,4 +1,6 @@
-require("telescope").setup({
+local telescope = require("telescope")
+
+telescope.setup({
 	defaults = {
 		-- mappings = {
 		-- 	i = {
@@ -26,9 +28,9 @@ require("telescope").setup({
 		layout_strategy = "horizontal",
 		layout_config = {
 			horizontal = {
-				width = 0.85,
-				height = 0.85,
-				preview_width = 0.4,
+				width = 0.9,
+				height = 0.9,
+				preview_width = 0.45,
 				prompt_position = "bottom",
 			},
 		},
@@ -77,6 +79,7 @@ require("telescope").setup({
 })
 
 -- require("telescope").load_extension("ui-select")
-require("telescope").load_extension("fzf")
-require("telescope").load_extension("git_worktree")
-require("telescope").load_extension("harpoon")
+telescope.load_extension("fzf")
+telescope.load_extension("git_worktree")
+telescope.load_extension("harpoon")
+telescope.load_extension("live_grep_args")

@@ -1,3 +1,5 @@
+local yank_group = vim.api.nvim_create_augroup("HighlightYank", {})
+
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "lspinfo",
 	callback = function()
@@ -31,11 +33,26 @@ vim.api.nvim_create_autocmd("BufEnter", {
 	end,
 })
 
-vim.cmd([[
-	augroup highlight_yank
-			autocmd!
-			au TextYankPost * silent! lua vim.highlight.on_yank{higroup="IncSearch", timeout=100}
-	augroup END
+vim.api.nvim_create_autocmd("TextYankPost", {
+	group = yank_group,
+	pattern = "*",
+	callback = function()
+		vim.highlight.on_yank({
+			higroup = "IncSearch",
+			timeout = 40,
+		})
+	end,
+})
 
-	autocmd FileType alpha, lspinfo, lsp-installer, null-ls-info, NvimTree  setl colorcolumn=0
+vim.api.nvim_create_autocmd("User", {
+	pattern = "MasonToolsUpdateCompleted",
+	callback = function()
+		vim.schedule(function()
+			vim.notify("mason-tool-installer has finished")
+		end)
+	end,
+})
+
+vim.cmd([[
+	autocmd FileType alpha, lspinfo, lsp-installer, null-ls-info, NvimTree setl colorcolumn=0
 ]])

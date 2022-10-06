@@ -1,26 +1,14 @@
 vim.g.mapleader = " "
-local map = vim.api.nvim_set_keymap
+local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
 -- Telescope --
--- map("n", "<leader>ff", "<cmd>lua require('telescope.builtin').find_files({hidden=true})<cr>", opts)
--- map(
--- 	"n",
--- 	"<C-p>",
--- 	"<cmd>lua require'telescope.builtin'.find_files({ find_command = {'rg', '--files', '--hidden', '-g', '!.git' }})<cr>",
--- 	opts
--- )
 map("n", "<C-p>", "<cmd>lua require'telescope.builtin'.find_files()<cr>", opts)
-map("n", "<leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<cr>", opts)
+map("n", "<leader>fg", ":lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", opts)
 map("n", "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<cr>", opts)
 map("n", "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<cr>", opts)
 map("n", "<leader>fw", "<cmd>lua require('telescope').extensions.git_worktree.git_worktrees()<cr>", opts)
-
--- ESC --
---[[ map("i", "kj", "<ESC>", opts)
-map("i", "jj", "<ESC>", opts)
-map("i", "JJ", "<ESC>", opts)
-map("i", "KJ", "<ESC>", opts) ]]
+--[[ map("n", "<leader>fm", "<cmd>Telescope harpoon marks<cr>", opts) ]]
 
 -- Alternate buffer --
 map("n", "<leader>vv", "<C-^>", opts)
@@ -29,12 +17,6 @@ map("n", "<leader>vv", "<C-^>", opts)
 map("n", "ss", ":split<Return><C-w>w", opts)
 map("n", "sv", ":vsplit<Return><C-w>w", opts)
 
--- Move between windows --
--- map("n", "<leader>h", "<C-w>h", opts)
--- map("n", "<leader>k", "<C-w>k", opts)
--- map("n", "<leader>j", "<C-w>j", opts)
--- map("n", "<leader>l", "<C-w>l", opts)
-
 -- NvimTree --
 map("n", "<C-n>", ":NvimTreeToggle<cr>", opts)
 
@@ -42,12 +24,10 @@ map("n", "<C-n>", ":NvimTreeToggle<cr>", opts)
 map("n", "<leader>gg", ":LazyGit<cr>", opts)
 
 -- Bufferline --
-map("n", "L", ":BufferNext<cr>", opts)
-map("n", "H", ":BufferPrevious<cr>", opts)
-map("n", "<leader>bn", ":BufferMoveNext<cr>", opts)
-map("n", "<leader>bp", ":BufferMovePrevious<cr>", opts)
--- map("n", "L", ":CybuNext<cr>", opts)
--- map("n", "H", ":CybuPrev<cr>", opts)
+map("n", "L", ":BufferLineCycleNext<cr>", opts)
+map("n", "H", ":BufferLineCyclePrev<cr>", opts)
+map("n", "<leader>bn", ":BufferLineMoveNext<cr>", opts)
+map("n", "<leader>bp", ":BufferLineMovePrev<cr>", opts)
 
 -- Delete buffer --
 map("n", "<leader>q", ":Bdelete<cr>", opts)
@@ -69,6 +49,24 @@ map("n", "<leader>k", ':lua require("harpoon.ui").nav_file(3)<cr>', opts)
 map("n", "<leader>l", ':lua require("harpoon.ui").nav_file(4)<cr>', opts)
 
 -- Typescript
-map("n", "<leader>tr", "<cmd>TypescriptRenameFile<cr>", opts)
-map("n", "<leader>ti", "<cmd>TypescriptAddMissingImports<cr>", opts)
-map("n", "<leader>tf", "<cmd>TypescriptFixAll<cr>", opts)
+map("n", "<leader>tr", ':lua require("typescript").renameFile()<cr>', opts)
+map("n", "<leader>ti", ':lua require("typescript").actions.addMissingImports()<cr>', opts)
+map("n", "<leader>tf", ':lua require("typescript").actions.fixAll()<cr>', opts)
+
+map("v", "J", ":m '>+1<CR>gv=gv", opts)
+map("v", "K", ":m '<-2<CR>gv=gv", opts)
+
+map("n", "<C-d>", "<C-d>zz", opts)
+map("n", "<C-u>", "<C-u>zz", opts)
+
+map("i", "<C-c>", "<Esc>", opts)
+
+map("x", "<leader>p", '"_dP', opts)
+map("n", "<leader>y", '"+y', opts)
+map("v", "<leader>y", '"+y', opts)
+map("n", "<leader>Y", '"+Y', { silent = true })
+
+map("n", "<C-j>", "<cmd>Lspsaga show_line_diagnostics<CR>", opts)
+map("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
+map("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
+map("n", "<leader>eq", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)

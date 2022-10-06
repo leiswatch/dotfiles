@@ -1,4 +1,6 @@
 local catppuccin = require("catppuccin")
+--[[ local ucolors = require("catppuccin.utils.colors") ]]
+--[[ local macchiato = require("catppuccin.palettes").get_palette("macchiato") ]]
 
 catppuccin.setup({
 	transparent_background = true,
@@ -17,6 +19,12 @@ catppuccin.setup({
 		types = {},
 		operators = {},
 	},
+	custom_highlights = {
+		DiagnosticVirtualTextError = { bg = "NONE" },
+		DiagnosticVirtualTextWarn = { bg = "NONE" },
+		DiagnosticVirtualTextInfo = { bg = "NONE" },
+		DiagnosticVirtualTextHint = { bg = "NONE" },
+	},
 	integrations = {
 		native_lsp = {
 			enabled = true,
@@ -33,6 +41,7 @@ catppuccin.setup({
 				information = { "undercurl" },
 			},
 		},
+		bufferline = true,
 		treesitter = true,
 		barbar = true,
 		nvimtree = {
@@ -49,5 +58,12 @@ catppuccin.setup({
 		cmp = true,
 		gitgutter = true,
 		gitsigns = true,
+		lsp_saga = true,
+		treesitter_context = false,
+		which_key = true,
+		dashboard = true,
+		neogit = true,
 	},
 })
+
+vim.g.catppuccin_flavour = "macchiato"
