@@ -93,6 +93,7 @@ return require("packer").startup({
 		end
 	end,
 	config = {
+		max_jobs = 10,
 		display = {
 			prompt_border = "rounded",
 			open_fn = function()

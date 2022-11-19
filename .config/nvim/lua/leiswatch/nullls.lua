@@ -77,5 +77,5 @@ null_ls.setup({
 			prefer_local = "node_modules/.bin",
 		}),
 	},
-	on_attach = on_attach,
+	--[[ on_attach = on_attach, ]]
 })

@@ -28,8 +28,8 @@ telescope.setup({
 		layout_strategy = "horizontal",
 		layout_config = {
 			horizontal = {
-				width = 0.9,
-				height = 0.9,
+				width = 0.95,
+				height = 0.95,
 				preview_width = 0.45,
 				prompt_position = "bottom",
 			},
@@ -64,7 +64,7 @@ telescope.setup({
 	},
 	pickers = {
 		find_files = {
-			previewer = false,
+			--[[ previewer = true, ]]
 			find_command = { "fdfind", "--type", "f", "--strip-cwd-prefix", "--hidden", "--ignore-case" },
 		},
 	},

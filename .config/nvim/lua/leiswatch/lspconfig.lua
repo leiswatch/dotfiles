@@ -1,5 +1,5 @@
 local saga = require("lspsaga")
-local lua_dev = require("lua-dev")
+local lua_dev = require("neodev")
 --[[ local mason_lspconfig = require("mason-lspconfig") ]]
 local lspconfig = require("lspconfig")
 
@@ -73,8 +73,7 @@ local on_attach = function(client, bufnr)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "v", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>cf", "<cmd>lua vim.lsp.buf.formatting_sync(nil, 2000)<CR>", opts)
-
+	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>cf", "<cmd>lua vim.lsp.buf.format({timeout=2000})<CR>", opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>tr", "<cmd>:TypescriptRenameFile<cr>", opts)
 	vim.api.nvim_buf_set_keymap(
 		bufnr,
@@ -92,7 +91,7 @@ local on_attach = function(client, bufnr)
 	end
 end
 
-local capabilities = require("cmp_nvim_lsp").update_capabilities(vim.lsp.protocol.make_client_capabilities())
+local capabilities = require("cmp_nvim_lsp").default_capabilities(vim.lsp.protocol.make_client_capabilities())
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 lspconfig.sumneko_lua.setup({

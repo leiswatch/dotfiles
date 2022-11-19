@@ -1,6 +1,7 @@
 require("notify").setup({
 	max_width = 50,
 	fps = 144,
+	background_colour = "#000000",
 })
 -- Utility functions shared between progress reports for LSP and DAP
 --[[ local client_notifs = {} ]]

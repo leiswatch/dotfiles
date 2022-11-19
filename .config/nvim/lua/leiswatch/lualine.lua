@@ -11,7 +11,7 @@ local colors_catppuccin = {
 	white = "#cad3f5",
 	red = "#ed8796",
 	violet = "#c6a0f6",
-	grey = "#363a4f",
+	grey = "#181926",
 }
 
 local custom_cattpuccin_theme = {
