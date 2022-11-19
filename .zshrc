@@ -73,7 +73,7 @@ ZSH_THEME="agnoster"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-# source /home/leiswatch/.zsh/catppuccin-zsh-syntax-highlighting.zsh
+source ~/.zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh
 plugins=(ubuntu git npm yarn node docker docker-compose command-not-found you-should-use zsh-syntax-highlighting tmux rust golang autojump)
 
 source $ZSH/oh-my-zsh.sh
@@ -87,9 +87,12 @@ export DENO_INSTALL="$HOME/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 export PATH=$PATH:/usr/local/go/bin
 export PNPM_HOME="/home/leiswatch/.local/share/pnpm"
-export BAT_THEME='OneHalfDark'
-export FZF_DEFAULT_OPTS='--color=bg+:#302D41,spinner:#F8BD96,hl:#F28FAD --color=fg:#D9E0EE,header:#F28FAD,info:#DDB6F2,pointer:#F8BD96 --color=marker:#F8BD96,fg+:#F2CDCD,prompt:#DDB6F2,hl+:#F28FAD'
-# export FZF_DEFAULT_OPTS='--color=bg+:#545c7e,bg:#24283b,spinner:#E0AF68,hl:#F7768e --color=fg:#D9E0EE,header:#F7768e,info:#BB9AF7,pointer:#E0AF68 --color=marker:#E0AF68,fg+:#7DCFFF,prompt:#BB9AF7,hl+:#F7768e'
+export BAT_THEME='Catppuccin-mocha'
+#export FZF_DEFAULT_OPTS='--color=bg+:#302D41,spinner:#F8BD96,hl:#F28FAD --color=fg:#D9E0EE,header:#F28FAD,info:#DDB6F2,pointer:#F8BD96 --color=marker:#F8BD96,fg+:#F2CDCD,prompt:#DDB6F2,hl+:#F28FAD'
+export FZF_DEFAULT_OPTS=" \
+--color=bg+:#313244,spinner:#f5e0dc,hl:#f38ba8 \
+--color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
+--color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
 export ESLINT_D_LOCAL_ESLINT_ONLY=true
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
@@ -117,7 +120,6 @@ alias ls="exa"
 alias cat="batcat"
 
 DISABLE_AUTO_TITLE=true
-
 
 export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
@@ -158,13 +160,6 @@ starship_precmd_user_func="set_win_title"
 eval "$(starship init zsh)"
 source /usr/share/doc/fzf/examples/key-bindings.zsh
 source /usr/share/doc/fzf/examples/completion.zsh
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-#[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
-
-# tabtab source for packages
-# uninstall by removing these lines
-[[ -f ~/.config/tabtab/zsh/__tabtab.zsh ]] && . ~/.config/tabtab/zsh/__tabtab.zsh || true
 
 # pnpm
 export PNPM_HOME="/home/leiswatch/.local/share/pnpm"
