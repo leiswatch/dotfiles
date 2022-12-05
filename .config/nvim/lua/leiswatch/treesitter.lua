@@ -16,7 +16,7 @@ require("nvim-treesitter.configs").setup({
 		enable_autocmd = false,
 	},
 	rainbow = {
-		enable = true,
+		enable = false,
 		extended_mode = false,
 		-- Catppuccin
 		--[[ colors = { ]]

@@ -6,6 +6,8 @@ catppuccin.setup({
 	transparent_background = true,
 	term_colors = true,
 	flavour = "mocha",
+	no_italic = true, -- Force no italic
+	no_bold = true, -- Force no bold
 	styles = {
 		comments = {},
 		conditionals = {},
@@ -44,7 +46,7 @@ catppuccin.setup({
 		},
 		bufferline = true,
 		treesitter = true,
-		barbar = true,
+		barbar = false,
 		nvimtree = {
 			enabled = true,
 			show_root = true,
@@ -59,10 +61,11 @@ catppuccin.setup({
 		cmp = true,
 		gitgutter = true,
 		gitsigns = true,
-		lsp_saga = true,
 		treesitter_context = false,
 		which_key = true,
 		dashboard = true,
-		neogit = true,
+		harpoon = true,
+		mason = true,
+		fidget = true,
 	},
 })

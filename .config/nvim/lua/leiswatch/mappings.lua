@@ -4,7 +4,7 @@ local opts = { noremap = true, silent = true }
 
 -- Telescope --
 map("n", "<C-p>", "<cmd>lua require'telescope.builtin'.find_files()<cr>", opts)
-map("n", "<leader>fg", "<cmd>lua require('telescope').extensions.live_grep_args.live_grep_args()<CR>", opts)
+map("n", "<leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<CR>", opts)
 map("n", "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<cr>", opts)
 map("n", "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<cr>", opts)
 map("n", "<leader>fw", "<cmd>lua require('telescope').extensions.git_worktree.git_worktrees()<cr>", opts)
@@ -48,11 +48,6 @@ map("n", "<leader>j", ':lua require("harpoon.ui").nav_file(2)<cr>', opts)
 map("n", "<leader>k", ':lua require("harpoon.ui").nav_file(3)<cr>', opts)
 map("n", "<leader>l", ':lua require("harpoon.ui").nav_file(4)<cr>', opts)
 
--- Typescript
-map("n", "<leader>tr", ':lua require("typescript").renameFile()<cr>', opts)
-map("n", "<leader>ti", ':lua require("typescript").actions.addMissingImports()<cr>', opts)
-map("n", "<leader>tf", ':lua require("typescript").actions.fixAll()<cr>', opts)
-
 map("v", "J", ":m '>+1<CR>gv=gv", opts)
 map("v", "K", ":m '<-2<CR>gv=gv", opts)
 
@@ -66,7 +61,7 @@ map("n", "<leader>y", '"+y', opts)
 map("v", "<leader>y", '"+y', opts)
 map("n", "<leader>Y", '"+Y', { silent = true })
 
-map("n", "<C-j>", "<cmd>Lspsaga show_line_diagnostics<CR>", opts)
-map("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
-map("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
+map("n", "<C-j>", "<cmd>lua vim.diagnostic.open_float({border='rounded'})<CR>", opts)
+map("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
+map("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
 map("n", "<leader>eq", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)

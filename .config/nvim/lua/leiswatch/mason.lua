@@ -34,36 +34,33 @@ require("mason").setup({
 
 require("mason-null-ls").setup({
 	ensure_installed = {
-		"stylua",
-		"eslint_d",
+		"zsh",
 		"pylint",
 		"jsonlint",
-		"golangci-lint",
-		"stylelint",
-		"yapf",
-		"gofmt",
-		"rustfmt",
 	},
+	automatic_installation = true,
 })
 
 require("mason-lspconfig").setup({
 	ensure_installed = {
+		"astro",
 		"cssls",
 		"cssmodules_ls",
 		"dockerls",
-		--[[ "eslint", ]]
 		"emmet_ls",
+		"eslint",
+		"golangci_lint_ls",
 		"gopls",
 		"graphql",
 		"html",
 		"jsonls",
-		"tsserver",
-		"sumneko_lua",
 		"pyright",
-		"stylelint_lsp",
-		"yamlls",
 		"rust_analyzer",
-		"dockerls",
+		"stylelint_lsp",
+		"sumneko_lua",
+		"tailwindcss",
+		"tsserver",
+		"yamlls",
 	},
 	automatic_installation = true,
 })

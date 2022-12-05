@@ -1,23 +1,5 @@
-local saga = require("lspsaga")
-local lua_dev = require("neodev")
 --[[ local mason_lspconfig = require("mason-lspconfig") ]]
 local lspconfig = require("lspconfig")
-
-saga.init_lsp_saga({
-	border_style = "rounded",
-	code_action_icon = "",
-	code_action_lightbulb = {
-		enable = true,
-		enable_in_insert = true,
-		cache_code_action = true,
-		sign = true,
-		update_time = 150,
-		sign_priority = 20,
-		virtual_text = false,
-	},
-})
-
-lua_dev.setup()
 
 local orig_util_open_floating_preview = vim.lsp.util.open_floating_preview
 
@@ -40,11 +22,10 @@ vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.s
 })
 
 local on_attach = function(client, bufnr)
-	vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc")
-
+	--[[ vim.api.nvim_buf_set_option(bufnr, "omnifunc", "v:lua.vim.lsp.omnifunc") ]]
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "gD", "<cmd>lua vim.lsp.buf.declaration()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<cmd>Lspsaga lsp_finder<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>Lspsaga hover_doc<CR>", opts)
+	vim.api.nvim_buf_set_keymap(bufnr, "n", "gd", "<cmd>lua vim.lsp.buf.definition()<CR>", opts)
+	vim.api.nvim_buf_set_keymap(bufnr, "n", "K", "<cmd>lua vim.lsp.buf.hover()<CR>", opts)
 	vim.api.nvim_buf_set_keymap(
 		bufnr,
 		"n",
@@ -69,20 +50,11 @@ local on_attach = function(client, bufnr)
 		opts
 	)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>D", "<cmd>lua vim.lsp.buf.type_definition()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>rn", "<cmd>Lspsaga rename<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "v", "<leader>ca", "<cmd>Lspsaga code_action<CR>", opts)
+	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>rn", "<cmd>lua vim.lsp.buf.rename()<CR>", opts)
+	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
+	vim.api.nvim_buf_set_keymap(bufnr, "v", "<leader>ca", "<cmd>lua vim.lsp.buf.code_action()<CR>", opts)
 	vim.api.nvim_buf_set_keymap(bufnr, "n", "gr", "<cmd>lua vim.lsp.buf.references()<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>cf", "<cmd>lua vim.lsp.buf.format({timeout=2000})<CR>", opts)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>tr", "<cmd>:TypescriptRenameFile<cr>", opts)
-	vim.api.nvim_buf_set_keymap(
-		bufnr,
-		"n",
-		"<leader>ti",
-		':lua require("typescript").actions.addMissingImports()<cr>',
-		opts
-	)
-	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>tf", ':lua require("typescript").actions.fixAll()<cr>', opts)
+	vim.api.nvim_buf_set_keymap(bufnr, "n", "<leader>cf", "<cmd>:Neoformat<CR>", opts)
 
 	local signs = { Error = " ", Warn = " ", Hint = " ", Info = " " }
 	for type, icon in pairs(signs) do
@@ -116,13 +88,6 @@ lspconfig.tsserver.setup({
 	capabilities = capabilities,
 })
 
-require("typescript").setup({
-	server = {
-		on_attach = on_attach,
-		capabilities = capabilities,
-	},
-})
-
 lspconfig.cssmodules_ls.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
@@ -139,36 +104,19 @@ lspconfig.eslint.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
 	settings = {
-		run = "onType",
-		useESLintClass = true,
-		format = false,
+		run = "onSave",
+		useESLintClass = false,
+		codeActionOnSave = {
+			enable = true,
+			mode = "all",
+		},
+		format = true,
 		validate = "on",
-		packageManager = "yarn",
-		filetypes = {
-			"javascript",
-			"javascriptreact",
-			"javascript.jsx",
-			"typescript",
-			"typescriptreact",
-			"typescript.tsx",
-			"vue",
+		workingDirectory = {
+			mode = "location",
 		},
 	},
 })
-
---[[ lspconfig.emmet_ls.setup({ ]]
---[[ 	on_attach = on_attach, ]]
---[[ 	capabilities = capabilities, ]]
---[[ 	filetypes = { "html", "typescriptreact", "javascriptreact", "css", "sass", "scss", "less" }, ]]
---[[ 	init_options = { ]]
---[[ 		html = { ]]
---[[ 			options = { ]]
---[[ 				-- For possible options, see: https://github.com/emmetio/emmet/blob/master/src/config.ts#L79-L267 ]]
---[[ 				["bem.enabled"] = true, ]]
---[[ 			}, ]]
---[[ 		}, ]]
---[[ 	}, ]]
---[[ }) ]]
 
 lspconfig.html.setup({
 	on_attach = on_attach,
@@ -202,6 +150,11 @@ lspconfig.pyright.setup({
 })
 
 lspconfig.gopls.setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+})
+
+lspconfig.golangci_lint_ls.setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
 })

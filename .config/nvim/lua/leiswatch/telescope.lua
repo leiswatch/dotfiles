@@ -44,6 +44,7 @@ telescope.setup({
 			".DS_STORE/",
 			".yarn/",
 			".cache",
+			"CHANGELOG.md",
 		},
 		generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
 		winblend = 0,
@@ -64,7 +65,6 @@ telescope.setup({
 	},
 	pickers = {
 		find_files = {
-			--[[ previewer = true, ]]
 			find_command = { "fdfind", "--type", "f", "--strip-cwd-prefix", "--hidden", "--ignore-case" },
 		},
 	},
@@ -82,4 +82,4 @@ telescope.setup({
 telescope.load_extension("fzf")
 telescope.load_extension("git_worktree")
 telescope.load_extension("harpoon")
-telescope.load_extension("live_grep_args")
+--[[ telescope.load_extension("live_grep_args") ]]

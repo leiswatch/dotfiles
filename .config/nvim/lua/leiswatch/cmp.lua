@@ -1,7 +1,7 @@
 require("luasnip.loaders.from_vscode").lazy_load()
 
 local cmp = require("cmp")
---[[ local lspkind = require("lspkind") ]]
+local lspkind = require("lspkind")
 local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 local luasnip = require("luasnip")
 local has_words_before = function()
@@ -9,37 +9,37 @@ local has_words_before = function()
 	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
-local t = function(str)
-	return vim.api.nvim_replace_termcodes(str, true, true, true)
-end
+--[[ local t = function(str) ]]
+--[[ 	return vim.api.nvim_replace_termcodes(str, true, true, true) ]]
+--[[ end ]]
 
-local kind_icons = {
-	Text = "",
-	Method = "",
-	Function = "",
-	Constructor = "",
-	Field = "",
-	Variable = "",
-	Class = "ﴯ",
-	Interface = "",
-	Module = "",
-	Property = "ﰠ",
-	Unit = "",
-	Value = "",
-	Enum = "",
-	Keyword = "",
-	Snippet = "",
-	Color = "",
-	File = "",
-	Reference = "",
-	Folder = "",
-	EnumMember = "",
-	Constant = "",
-	Struct = "",
-	Event = "",
-	Operator = "",
-	TypeParameter = "",
-}
+--[[ local kind_icons = { ]]
+--[[ 	Text = "", ]]
+--[[ 	Method = "", ]]
+--[[ 	Function = "", ]]
+--[[ 	Constructor = "", ]]
+--[[ 	Field = "", ]]
+--[[ 	Variable = "", ]]
+--[[ 	Class = "ﴯ", ]]
+--[[ 	Interface = "", ]]
+--[[ 	Module = "", ]]
+--[[ 	Property = "ﰠ", ]]
+--[[ 	Unit = "", ]]
+--[[ 	Value = "", ]]
+--[[ 	Enum = "", ]]
+--[[ 	Keyword = "", ]]
+--[[ 	Snippet = "", ]]
+--[[ 	Color = "", ]]
+--[[ 	File = "", ]]
+--[[ 	Reference = "", ]]
+--[[ 	Folder = "", ]]
+--[[ 	EnumMember = "", ]]
+--[[ 	Constant = "", ]]
+--[[ 	Struct = "", ]]
+--[[ 	Event = "", ]]
+--[[ 	Operator = "", ]]
+--[[ 	TypeParameter = "", ]]
+--[[ } ]]
 
 cmp.setup({
 	enabled = function()
@@ -113,37 +113,37 @@ cmp.setup({
 		{ name = "luasnip" }, -- For luasnip users.
 		{ name = "path" },
 		{ name = "buffer" },
-		{ name = "rg" },
+		--[[ { name = "rg" }, ]]
 	}),
 	formatting = {
-		fields = { "kind", "abbr", "menu" },
-		format = function(entry, vim_item)
-			vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
-
-			local kind = require("lspkind").cmp_format({
-				mode = "symbol_text",
-				maxwidth = 60,
-				menu = {
-					buffer = "[Buffer]",
-					nvim_lsp = "[LSP]",
-					luasnip = "[LuaSnip]",
-					nvim_lua = "[Lua]",
-					latex_symbols = "[Latex]",
-				},
-			})(entry, vim_item)
-
-			local strings = vim.split(kind.kind, "%s", { trimempty = true })
-			kind.kind = " " .. strings[1] .. " "
-			kind.menu = "    (" .. strings[2] .. ")"
-
-			return kind
-		end,
+		format = lspkind.cmp_format({
+			mode = "symbol_text", -- show only symbol annotations
+			maxwidth = 120, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+		}),
 	},
 	--[[ formatting = { ]]
-	--[[ 	format = lspkind.cmp_format({ ]]
-	--[[ 		mode = "symbol", -- show only symbol annotations ]]
-	--[[ 		maxwidth = 60, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters) ]]
-	--[[ 	}), ]]
+	--[[ 	fields = { "kind", "abbr", "menu" }, ]]
+	--[[ 	format = function(entry, vim_item) ]]
+	--[[ 		vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind ]]
+
+	--[[ 		local kind = require("lspkind").cmp_format({ ]]
+	--[[ 			mode = "symbol_text", ]]
+	--[[ 			maxwidth = 60, ]]
+	--[[ 			menu = { ]]
+	--[[ 				buffer = "[Buffer]", ]]
+	--[[ 				nvim_lsp = "[LSP]", ]]
+	--[[ 				luasnip = "[LuaSnip]", ]]
+	--[[ 				nvim_lua = "[Lua]", ]]
+	--[[ 				latex_symbols = "[Latex]", ]]
+	--[[ 			}, ]]
+	--[[ 		})(entry, vim_item) ]]
+
+	--[[ 		local strings = vim.split(kind.kind, "%s", { trimempty = true }) ]]
+	--[[ 		kind.kind = " " .. strings[1] .. " " ]]
+	--[[ 		kind.menu = "    (" .. strings[2] .. ")" ]]
+
+	--[[ 		return kind ]]
+	--[[ 	end, ]]
 	--[[ }, ]]
 })
 

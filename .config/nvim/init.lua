@@ -41,7 +41,6 @@ vim.opt.updatetime = 300
 vim.opt.cursorline = false
 vim.diagnostic.config({
 	virtual_text = {
-		prefix = "",
 		update_in_insert = false,
 		underline = true,
 		signs = false,
@@ -57,10 +56,9 @@ vim.opt.listchars:append("tab:› ,trail:•,extends:#,nbsp:.,eol:↴,space:⋅"
 -- disable netrw
 vim.g.loaded = 1
 vim.g.loaded_netrwPlugin = 1
-
 require("leiswatch")
 
-vim.notify = require("notify")
+--[[ vim.notify = require("notify") ]]
 
 vim.cmd([[
   " Catppuccin
@@ -85,6 +83,8 @@ vim.cmd([[
   " autocmd ColorScheme * highlight WhichKeyGroup guibg=#24273A guifg=#CAD3F5
   " autocmd ColorScheme * highlight WhichKeyFloat guibg=#24273A guifg=#CAD3F5
   " autocmd ColorScheme * highlight WhichKeyBorder guibg=#24273A guifg=#CAD3F5
+
+
   autocmd ColorScheme * highlight NormalFloat guibg=NONE guifg=#CAD3F5
   autocmd ColorScheme * highlight Normal guibg=NONE guifg=#CAD3F5
   autocmd ColorScheme * highlight FloatBorder guibg=NONE guifg=#CAD3F5
@@ -115,13 +115,41 @@ vim.cmd([[
   set shortmess+=c
   set listchars=tab:›\ ,trail:•,extends:#,nbsp:.
 
+  set wildignore+=*/node_modules/**  
+
   let g:lazygit_floating_window_scaling_factor = 0.75
   let test#strategy = "neovim"
   let test#neovim#term_position = "vert"
   let g:test#neovim#start_normal = 1 " If using neovim strategy
   let g:floaterm_wintype = 'split'
-
   colorscheme catppuccin
-  
+  " colorscheme tokyonight  
 	autocmd BufNewFile,BufRead * setlocal formatoptions-=ro
+
+  let g:neoformat_try_node_exe = 1
+  let g:neoformat_run_all_formatters = 1
+
+  let g:neoformat_basic_format_align = 1
+  let g:neoformat_basic_format_retab = 1
+  let g:neoformat_basic_format_trim = 1
+
+  let g:neoformat_enabled_python = ['yapf']
+  let g:neoformat_enabled_lua = ['stylua']
+  let g:neoformat_enabled_astro = ['prettier']
+  let g:neoformat_enabled_css = ['stylelint']
+  let g:neoformat_enabled_go = ['gofumpt', 'goimports']
+  let g:neoformat_enabled_graphql = ['prettier']
+  let g:neoformat_enabled_html = ['prettier']
+  let g:neoformat_enabled_javascript = ['prettier']
+  let g:neoformat_enabled_javascriptreact = ['prettier']
+  let g:neoformat_enabled_typescript = ['prettier']
+  let g:neoformat_enabled_typescriptreact = ['prettier']
+  let g:neoformat_enabled_json = ['prettier']
+  let g:neoformat_enabled_jsonc = ['prettier']
+  let g:neoformat_enabled_less = ['stylelint']
+  let g:neoformat_enabled_prisma = ['prettier']
+  let g:neoformat_enabled_rust = ['rustfmt']
+  let g:neoformat_enabled_sass = ['stylelint']
+  let g:neoformat_enabled_scss = ['stylelint']
+  let g:neoformat_enabled_yaml = ['prettier']
 ]])
