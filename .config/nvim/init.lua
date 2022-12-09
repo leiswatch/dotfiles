@@ -5,6 +5,7 @@ vim.o.showmode = true
 vim.o.swapfile = false
 vim.o.backup = false
 vim.o.undodir = vim.fn.stdpath("config") .. "/undodir"
+vim.o.undolevels = 1000
 vim.o.undofile = true
 vim.o.incsearch = true
 vim.o.hidden = true
@@ -17,7 +18,7 @@ vim.o.softtabstop = 2
 vim.o.shiftwidth = 2
 vim.o.expandtab = true
 vim.o.number = true
-vim.o.wrap = false
+vim.o.wrap = true
 vim.opt.termguicolors = true
 vim.o.laststatus = 3
 vim.o.list = false
@@ -41,71 +42,50 @@ vim.opt.updatetime = 300
 vim.opt.cursorline = false
 vim.diagnostic.config({
 	virtual_text = {
-		update_in_insert = false,
+		update_in_insert = true,
 		underline = true,
-		signs = false,
-		source = true,
-		float = {
-			border = "rounded",
-		},
+		signs = true,
+		source = "if_many",
+		prefix = "",
+    format = function(diagnostic)
+      return diagnostic.message .. " "
+    end
 	},
 })
 vim.g.virtcolumn_char = "▕" -- by default
 vim.opt.listchars:append("tab:› ,trail:•,extends:#,nbsp:.,eol:↴,space:⋅")
 
 -- disable netrw
-vim.g.loaded = 1
 vim.g.loaded_netrwPlugin = 1
-require("leiswatch")
-
---[[ vim.notify = require("notify") ]]
+vim.g.loaded_netrw = 1
 
 vim.cmd([[
   " Catppuccin
-  " autocmd ColorScheme * highlight NormalFloat guibg=#24273A guifg=#CAD3F5
-  " autocmd ColorScheme * highlight Normal guibg=#24273A guifg=#CAD3F5
-  " autocmd ColorScheme * highlight FloatBorder guibg=#24273A guifg=#CAD3F5
-  " autocmd ColorScheme * highlight BufferOffset guibg=#24273A
-  " autocmd ColorScheme * highlight BufferTabpageFill guibg=#24273A
-  " autocmd ColorScheme * highlight TelescopeBorder guibg=#24273A guifg=#CAD3F5
-  " autocmd ColorScheme * highlight TelescopePromptBorder guibg=#24273A guifg=#CAD3F5
-  " autocmd ColorScheme * highlight TelescopePreviewBorder guibg=#24273A guifg=#CAD3F5
-  " autocmd ColorScheme * highlight TelescopeResultsBorder guibg=#24273A guifg=#CAD3F5
-  " autocmd ColorScheme * highlight LspInstallerHeader guibg=#24273A guifg=#CAD3F5
+  " autocmd ColorScheme * highlight NormalFloat guibg=NONE guifg=#CAD3F5
+  " autocmd ColorScheme * highlight Normal guibg=NONE guifg=#CAD3F5
+  " autocmd ColorScheme * highlight FloatBorder guibg=NONE guifg=#CAD3F5
+  " autocmd ColorScheme * highlight BufferOffset guibg=NONE
+  " autocmd ColorScheme * highlight BufferTabpageFill guibg=NONE
+  " autocmd ColorScheme * highlight TelescopeBorder guibg=NONE guifg=#CAD3F5
+  " autocmd ColorScheme * highlight TelescopePromptBorder guibg=NONE guifg=#CAD3F5
+  " autocmd ColorScheme * highlight TelescopePreviewBorder guibg=NONE guifg=#CAD3F5
+  " autocmd ColorScheme * highlight TelescopeResultsBorder guibg=NONE guifg=#CAD3F5
+  " autocmd ColorScheme * highlight LspInstallerHeader guibg=NONE guifg=#CAD3F5
   " autocmd ColorScheme * highlight ColorColumn ctermbg=0 guibg=#363A4F
-  " autocmd ColorScheme * highlight LspFloatWinNormal guibg=#24273A guifg=#CAD3F5
-  " autocmd ColorScheme * highlight LspSagaHoverBorder guibg=#24273A guifg=#CAD3F5
-  " autocmd ColorScheme * highlight LspSagaCodeActionBorder guibg=#24273A guifg=#CAD3F5
-  " autocmd ColorScheme * highlight LspSagaLspFinderBorder guibg=#24273A guifg=#CAD3F5
-  " autocmd ColorScheme * highlight LspSagaRenameBorder guibg=#24273A guifg=#CAD3F5
-  " autocmd ColorScheme * highlight LspSagaDiagnosticBorder guibg=#24273A guifg=#CAD3F5
-  " autocmd ColorScheme * highlight WhichKey guibg=#24273A guifg=#CAD3F5
-  " autocmd ColorScheme * highlight WhichKeyGroup guibg=#24273A guifg=#CAD3F5
-  " autocmd ColorScheme * highlight WhichKeyFloat guibg=#24273A guifg=#CAD3F5
-  " autocmd ColorScheme * highlight WhichKeyBorder guibg=#24273A guifg=#CAD3F5
-
-
-  autocmd ColorScheme * highlight NormalFloat guibg=NONE guifg=#CAD3F5
-  autocmd ColorScheme * highlight Normal guibg=NONE guifg=#CAD3F5
-  autocmd ColorScheme * highlight FloatBorder guibg=NONE guifg=#CAD3F5
-  autocmd ColorScheme * highlight BufferOffset guibg=NONE
-  autocmd ColorScheme * highlight BufferTabpageFill guibg=NONE
-  autocmd ColorScheme * highlight TelescopeBorder guibg=NONE guifg=#CAD3F5
-  autocmd ColorScheme * highlight TelescopePromptBorder guibg=NONE guifg=#CAD3F5
-  autocmd ColorScheme * highlight TelescopePreviewBorder guibg=NONE guifg=#CAD3F5
-  autocmd ColorScheme * highlight TelescopeResultsBorder guibg=NONE guifg=#CAD3F5
-  autocmd ColorScheme * highlight LspInstallerHeader guibg=NONE guifg=#CAD3F5
-  autocmd ColorScheme * highlight ColorColumn ctermbg=0 guibg=#363A4F
-  autocmd ColorScheme * highlight LspFloatWinNormal guibg=NONE guifg=#CAD3F5
-  autocmd ColorScheme * highlight LspSagaHoverBorder guibg=NONE guifg=#CAD3F5
-  autocmd ColorScheme * highlight LspSagaCodeActionBorder guibg=NONE guifg=#CAD3F5
-  autocmd ColorScheme * highlight LspSagaLspFinderBorder guibg=NONE guifg=#CAD3F5
-  autocmd ColorScheme * highlight LspSagaRenameBorder guibg=NONE guifg=#CAD3F5
-  autocmd ColorScheme * highlight LspSagaDiagnosticBorder guibg=NONE guifg=#CAD3F5
-  autocmd ColorScheme * highlight WhichKey guibg=NONE guifg=#CAD3F5
-  autocmd ColorScheme * highlight WhichKeyGroup guibg=NONE guifg=#CAD3F5
-  autocmd ColorScheme * highlight WhichKeyFloat guibg=NONE guifg=#CAD3F5
-  autocmd ColorScheme * highlight WhichKeyBorder guibg=NONE guifg=#CAD3F5
+  " autocmd ColorScheme * highlight LspFloatWinNormal guibg=NONE guifg=#CAD3F5
+  " autocmd ColorScheme * highlight LspSagaHoverBorder guibg=NONE guifg=#CAD3F5
+  " autocmd ColorScheme * highlight LspSagaCodeActionBorder guibg=NONE guifg=#CAD3F5
+  " autocmd ColorScheme * highlight LspSagaLspFinderBorder guibg=NONE guifg=#CAD3F5
+  " autocmd ColorScheme * highlight LspSagaRenameBorder guibg=NONE guifg=#CAD3F5
+  " autocmd ColorScheme * highlight LspSagaDiagnosticBorder guibg=NONE guifg=#CAD3F5
+  " autocmd ColorScheme * highlight WhichKey guibg=NONE guifg=#CAD3F5
+  " autocmd ColorScheme * highlight WhichKeyGroup guibg=NONE guifg=#CAD3F5
+  " autocmd ColorScheme * highlight WhichKeyFloat guibg=NONE guifg=#CAD3F5
+  " autocmd ColorScheme * highlight WhichKeyBorder guibg=NONE guifg=#CAD3F5
+  autocmd ColorScheme * highlight LspInlayHint guibg=NONE guifg=#a6adc8
+  autocmd ColorScheme * highlight DiagnosticVirtualTextError guibg=#32283a 
+  autocmd ColorScheme * highlight DiagnosticVirtualTextWarn guibg=#33313a
+  autocmd ColorScheme * highlight DiagnosticVirtualTextHint guibg=#29313e
 
   autocmd FileType alpha setlocal nofoldenable
 
@@ -117,13 +97,10 @@ vim.cmd([[
 
   set wildignore+=*/node_modules/**  
 
-  let g:lazygit_floating_window_scaling_factor = 0.75
   let test#strategy = "neovim"
   let test#neovim#term_position = "vert"
   let g:test#neovim#start_normal = 1 " If using neovim strategy
-  let g:floaterm_wintype = 'split'
-  colorscheme catppuccin
-  " colorscheme tokyonight  
+
 	autocmd BufNewFile,BufRead * setlocal formatoptions-=ro
 
   let g:neoformat_try_node_exe = 1
@@ -153,3 +130,7 @@ vim.cmd([[
   let g:neoformat_enabled_scss = ['stylelint']
   let g:neoformat_enabled_yaml = ['prettier']
 ]])
+
+require("leiswatch")
+
+vim.cmd.colorscheme("catppuccin")

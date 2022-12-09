@@ -1,13 +1,7 @@
-vim.g.gitblame_display_virtual_text = 0 -- Disable virtual text
-vim.g.gitblame_date_format = "%r"
-vim.g.gitblame_enabled = true
-vim.g.gitblame_message_template = "<author> • <date> • <summary>"
-local git_blame = require("gitblame")
-
 local colors_catppuccin = {
 	blue = "#8aadf4",
 	cyan = "#7dc4e4",
-	black = "#24273a",
+	black = "#181825",
 	white = "#cad3f5",
 	red = "#ed8796",
 	violet = "#c6a0f6",
@@ -37,16 +31,8 @@ local config = {
 		theme = custom_cattpuccin_theme,
 		globalstatus = true,
 		component_separators = "",
-		section_separators = "",
+		--[[ section_separators = "", ]]
 	},
-	--[[ winbar = { ]]
-	--[[ 	lualine_a = {}, ]]
-	--[[ 	lualine_b = {}, ]]
-	--[[ 	lualine_c = { "filename", { git_blame.get_current_blame_text, cond = git_blame.is_blame_text_available } }, ]]
-	--[[ 	lualine_x = {}, ]]
-	--[[ 	lualine_y = {}, ]]
-	--[[ 	lualine_z = {}, ]]
-	--[[ }, ]]
 	sections = {
 		lualine_a = {
 			"mode",
@@ -72,7 +58,6 @@ local config = {
 		lualine_c = {},
 		lualine_y = {},
 		lualine_x = {
-			--[[ "lsp_progress", ]]
 			"diagnostics",
 			"filetype",
 			"progress",

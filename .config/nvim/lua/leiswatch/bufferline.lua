@@ -1,34 +1,18 @@
-local colors = require("catppuccin.palettes").get_palette()
+local bufferline = require("bufferline")
+local mocha = require("catppuccin.palettes").get_palette("mocha")
 
-require("bufferline").setup({
-
-	highlights = require("catppuccin.groups.integrations.bufferline").get(),
-	--[[ highlights = { ]]
-	--[[ 	fill = { ]]
-	--[[ 		fg = colors.text, ]]
-	--[[ 		bg = colors.surface0, ]]
-	--[[ 	}, ]]
-	--[[ 	buffer_visible = { ]]
-	--[[ 		fg = colors.base, ]]
-	--[[ 		bg = colors.surface0, ]]
-	--[[ 	}, ]]
-	--[[ 	buffer_selected = { ]]
-	--[[ 		fg = colors.text, ]]
-	--[[ 		bg = colors.surface0, ]]
-	--[[ 		bold = true, ]]
-	--[[ 		italic = true, ]]
-	--[[ 	}, ]]
-	--[[ 	numbers_visible = { ]]
-	--[[ 		fg = colors.base, ]]
-	--[[ 		bg = colors.surface0, ]]
-	--[[ 	}, ]]
-	--[[ 	numbers_selected = { ]]
-	--[[ 		fg = colors.text, ]]
-	--[[ 		bg = colors.surface0, ]]
-	--[[ 		bold = true, ]]
-	--[[ 		italic = true, ]]
-	--[[ 	}, ]]
-	--[[ }, ]]
+bufferline.setup({
+	highlights = require("catppuccin.groups.integrations.bufferline").get({
+		styles = { "italic", "bold" },
+		custom = {
+			all = {
+				fill = { bg = mocha.mantle },
+				indicator_selected = {
+					fg = mocha.rosewater,
+				},
+			},
+		},
+	}),
 	options = {
 		mode = "buffers",
 		numbers = "ordinal",
@@ -37,13 +21,21 @@ require("bufferline").setup({
 			{
 				filetype = "NvimTree",
 				text = "File Explorer",
-				text_align = "center",
-				separator = true,
+				text_align = "left",
+				separator = false,
 			},
 		},
 		color_icons = true,
 		show_close_icon = false,
 		always_show_bufferline = false,
 		show_buffer_close_icons = false,
+		diagnostics_indicator = function(count, level, diagnostics_dict, context)
+			local s = " "
+			for e, n in pairs(diagnostics_dict) do
+				local sym = e == "error" and "  " or (e == "warning" and "  " or "  ")
+				s = s .. n .. sym
+			end
+			return s
+		end,
 	},
 })

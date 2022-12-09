@@ -1,6 +1,6 @@
 require("fidget").setup({
 	fmt = {
-		stack_upwards = false,
+		stack_upwards = true,
 	},
 	align = {
 		bottom = false, -- align fidgets along bottom edge of buffer

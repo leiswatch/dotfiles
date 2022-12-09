@@ -1,5 +1,6 @@
 require("nvim-tree").setup({
 	disable_netrw = true,
+	ignore_buffer_on_setup = true,
 	update_cwd = true,
 	view = {
 		width = 50,
@@ -11,7 +12,7 @@ require("nvim-tree").setup({
 	},
 	actions = {
 		open_file = {
-			quit_on_open = false,
+			quit_on_open = true,
 			resize_window = true,
 			window_picker = {
 				exclude = {
@@ -26,8 +27,8 @@ require("nvim-tree").setup({
 		ignore_list = {},
 	},
 	hijack_directories = {
-		enable = false,
-		auto_open = false,
+		enable = true,
+		auto_open = true,
 	},
 	log = {
 		enable = false,

@@ -3,12 +3,12 @@ local map = vim.keymap.set
 local opts = { noremap = true, silent = true }
 
 -- Telescope --
-map("n", "<C-p>", "<cmd>lua require'telescope.builtin'.find_files()<cr>", opts)
+map("n", "<leader>ff", "<cmd>lua require'telescope.builtin'.find_files()<cr>", opts)
 map("n", "<leader>fg", "<cmd>lua require('telescope.builtin').live_grep()<CR>", opts)
 map("n", "<leader>fb", "<cmd>lua require('telescope.builtin').buffers()<cr>", opts)
 map("n", "<leader>fh", "<cmd>lua require('telescope.builtin').help_tags()<cr>", opts)
 map("n", "<leader>fw", "<cmd>lua require('telescope').extensions.git_worktree.git_worktrees()<cr>", opts)
---[[ map("n", "<leader>fm", "<cmd>Telescope harpoon marks<cr>", opts) ]]
+map("n", "<leader>fj", "<cmd>Telescope harpoon marks<cr>", opts)
 
 -- Alternate buffer --
 map("n", "<leader>vv", "<C-^>", opts)
@@ -19,9 +19,6 @@ map("n", "sv", ":vsplit<Return><C-w>w", opts)
 
 -- NvimTree --
 map("n", "<C-n>", ":NvimTreeToggle<cr>", opts)
-
--- Lazygit --
-map("n", "<leader>gg", ":LazyGit<cr>", opts)
 
 -- Bufferline --
 map("n", "L", ":BufferLineCycleNext<cr>", opts)
@@ -61,7 +58,9 @@ map("n", "<leader>y", '"+y', opts)
 map("v", "<leader>y", '"+y', opts)
 map("n", "<leader>Y", '"+Y', { silent = true })
 
-map("n", "<C-j>", "<cmd>lua vim.diagnostic.open_float({border='rounded'})<CR>", opts)
+map("n", "<C-j>", "<cmd>lua vim.diagnostic.open_float({ border='rounded' })<CR>", opts)
 map("n", "[d", "<cmd>lua vim.diagnostic.goto_prev()<CR>", opts)
 map("n", "]d", "<cmd>lua vim.diagnostic.goto_next()<CR>", opts)
 map("n", "<leader>eq", "<cmd>lua vim.diagnostic.setloclist()<CR>", opts)
+
+map("n", "<leader>tb", "<cmd>Gitsigns toggle_current_line_blame<CR>", opts)

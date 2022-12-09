@@ -50,6 +50,7 @@ telescope.setup({
 		winblend = 0,
 		border = {},
 		borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+		--[[ borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" }, ]]
 		color_devicons = true,
 		previewer = true,
 		prompt_title = false,

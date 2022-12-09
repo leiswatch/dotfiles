@@ -1,13 +1,84 @@
 local catppuccin = require("catppuccin")
---[[ local ucolors = require("catppuccin.utils.colors") ]]
---[[ local macchiato = require("catppuccin.palettes").get_palette("macchiato") ]]
 
 catppuccin.setup({
+	flavour = "mocha",
 	transparent_background = true,
 	term_colors = true,
-	flavour = "mocha",
-	no_italic = true, -- Force no italic
-	no_bold = true, -- Force no bold
+	no_italic = false,
+	no_bold = false,
+	integrations = {
+		aerial = false,
+		barbar = false,
+		beacon = false,
+		cmp = true,
+		coc_nvim = false,
+		dashboard = true,
+		fern = false,
+		fidget = true,
+		gitgutter = true,
+		gitsigns = true,
+		harpoon = true,
+		hop = false,
+		illuminate = false,
+		leap = false,
+		lightspeed = false,
+		lsp_saga = false,
+		lsp_trouble = true,
+		markdown = true,
+		mason = true,
+		mini = false,
+		neogit = false,
+		neotest = false,
+		neotree = false,
+		noice = false,
+		notify = true,
+		overseer = false,
+		pounce = false,
+		semantic_tokens = false,
+		symbols_outline = false,
+		telekasten = false,
+		telescope = true,
+		treesitter = true,
+		treesitter_context = true,
+		ts_rainbow = true,
+		vim_sneak = false,
+		vimwiki = false,
+		which_key = true,
+
+		-- Special integrations, see https://github.com/catppuccin/nvim#special-integrations
+		dap = {
+			enabled = true,
+			enable_ui = true,
+		},
+		indent_blankline = {
+			enabled = false,
+			colored_indent_levels = false,
+		},
+		native_lsp = {
+			enabled = true,
+			virtual_text = {
+				errors = { "italic" },
+				hints = { "italic" },
+				warnings = { "italic" },
+				information = { "italic" },
+			},
+			underlines = {
+				errors = { "underline" },
+				hints = { "underline" },
+				warnings = { "underline" },
+				information = { "underline" },
+			},
+		},
+		navic = {
+			enabled = true,
+			custom_bg = "NONE",
+		},
+		nvimtree = {
+			enabled = true,
+			show_root = true,
+			transparent_panel = true,
+		},
+	},
 	styles = {
 		comments = {},
 		conditionals = {},
@@ -22,50 +93,6 @@ catppuccin.setup({
 		types = {},
 		operators = {},
 	},
-	custom_highlights = {
-		DiagnosticVirtualTextError = { bg = "NONE" },
-		DiagnosticVirtualTextWarn = { bg = "NONE" },
-		DiagnosticVirtualTextInfo = { bg = "NONE" },
-		DiagnosticVirtualTextHint = { bg = "NONE" },
-	},
-	integrations = {
-		native_lsp = {
-			enabled = true,
-			virtual_text = {
-				errors = { "italic" },
-				hints = { "italic" },
-				warnings = { "italic" },
-				information = { "italic" },
-			},
-			underlines = {
-				errors = { "undercurl" },
-				hints = { "undercurl" },
-				warnings = { "undercurl" },
-				information = { "undercurl" },
-			},
-		},
-		bufferline = true,
-		treesitter = true,
-		barbar = false,
-		nvimtree = {
-			enabled = true,
-			show_root = true,
-			transparent_panel = true,
-		},
-		indent_blankline = {
-			enabled = true,
-			colored_indent_levels = true,
-		},
-		ts_rainbow = true,
-		lsp_trouble = true,
-		cmp = true,
-		gitgutter = true,
-		gitsigns = true,
-		treesitter_context = false,
-		which_key = true,
-		dashboard = true,
-		harpoon = true,
-		mason = true,
-		fidget = true,
-	},
+	custom_highlights = {},
 })
+

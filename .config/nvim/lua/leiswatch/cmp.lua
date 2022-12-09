@@ -1,45 +1,18 @@
 require("luasnip.loaders.from_vscode").lazy_load()
 
+vim.api.nvim_set_hl(0, "CatppuccinBorder", { bg = "NONE", fg = "#89b4fa" })
+vim.api.nvim_set_hl(0, "CatppuccinNormal", { bg = "NONE", fg = "#cdd6f4" })
+vim.api.nvim_set_hl(0, "CatppucinCursorLine", { bg = "#313244",  })
+
 local cmp = require("cmp")
 local lspkind = require("lspkind")
-local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 local luasnip = require("luasnip")
+--[[ local cmp_autopairs = require("nvim-autopairs.completion.cmp") ]]
+
 local has_words_before = function()
 	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
 	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
-
---[[ local t = function(str) ]]
---[[ 	return vim.api.nvim_replace_termcodes(str, true, true, true) ]]
---[[ end ]]
-
---[[ local kind_icons = { ]]
---[[ 	Text = "", ]]
---[[ 	Method = "", ]]
---[[ 	Function = "", ]]
---[[ 	Constructor = "", ]]
---[[ 	Field = "", ]]
---[[ 	Variable = "", ]]
---[[ 	Class = "ﴯ", ]]
---[[ 	Interface = "", ]]
---[[ 	Module = "", ]]
---[[ 	Property = "ﰠ", ]]
---[[ 	Unit = "", ]]
---[[ 	Value = "", ]]
---[[ 	Enum = "", ]]
---[[ 	Keyword = "", ]]
---[[ 	Snippet = "", ]]
---[[ 	Color = "", ]]
---[[ 	File = "", ]]
---[[ 	Reference = "", ]]
---[[ 	Folder = "", ]]
---[[ 	EnumMember = "", ]]
---[[ 	Constant = "", ]]
---[[ 	Struct = "", ]]
---[[ 	Event = "", ]]
---[[ 	Operator = "", ]]
---[[ 	TypeParameter = "", ]]
---[[ } ]]
 
 cmp.setup({
 	enabled = function()
@@ -65,8 +38,8 @@ cmp.setup({
 		entries = "custom", -- can be "custom", "wildmenu" or "native"
 	},
 	window = {
-		completion = cmp.config.window.bordered(),
-		documentation = cmp.config.window.bordered(),
+		completion = cmp.config.window.bordered({ border = "rounded", winhighlight = "Normal:CatppuccinNormal,FloatBorder:CatppuccinBorder,CursorLine:CatppucinCursorLine" }),
+		documentation = cmp.config.window.bordered({ border = "rounded", winhighlight = "Normal:CatppuccinNormal,FloatBorder:CatppuccinBorder,CursorLine:CatppucinCursorLine"}),
 	},
 	mapping = cmp.mapping.preset.insert({
 		["<C-y>"] = cmp.mapping(cmp.mapping.disable, { "i", "c", "s" }),
@@ -115,36 +88,36 @@ cmp.setup({
 		{ name = "buffer" },
 		--[[ { name = "rg" }, ]]
 	}),
-	formatting = {
-		format = lspkind.cmp_format({
-			mode = "symbol_text", -- show only symbol annotations
-			maxwidth = 120, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
-		}),
-	},
 	--[[ formatting = { ]]
-	--[[ 	fields = { "kind", "abbr", "menu" }, ]]
-	--[[ 	format = function(entry, vim_item) ]]
-	--[[ 		vim_item.kind = string.format("%s %s", kind_icons[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind ]]
-
-	--[[ 		local kind = require("lspkind").cmp_format({ ]]
-	--[[ 			mode = "symbol_text", ]]
-	--[[ 			maxwidth = 60, ]]
-	--[[ 			menu = { ]]
-	--[[ 				buffer = "[Buffer]", ]]
-	--[[ 				nvim_lsp = "[LSP]", ]]
-	--[[ 				luasnip = "[LuaSnip]", ]]
-	--[[ 				nvim_lua = "[Lua]", ]]
-	--[[ 				latex_symbols = "[Latex]", ]]
-	--[[ 			}, ]]
-	--[[ 		})(entry, vim_item) ]]
-
-	--[[ 		local strings = vim.split(kind.kind, "%s", { trimempty = true }) ]]
-	--[[ 		kind.kind = " " .. strings[1] .. " " ]]
-	--[[ 		kind.menu = "    (" .. strings[2] .. ")" ]]
-
-	--[[ 		return kind ]]
-	--[[ 	end, ]]
+	--[[ 	format = lspkind.cmp_format({ ]]
+	--[[ 		mode = "symbol_text", -- show only symbol annotations ]]
+	--[[ 		maxwidth = 120, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters) ]]
+	--[[ 	}), ]]
 	--[[ }, ]]
+	formatting = {
+		fields = { "kind", "abbr", "menu" },
+		format = function(entry, vim_item)
+			vim_item.kind = string.format("%s %s", lspkind.presets.default[vim_item.kind], vim_item.kind) -- This concatonates the icons with the name of the item kind
+
+			local kind = require("lspkind").cmp_format({
+				mode = "symbol_text",
+				maxwidth = 120,
+				menu = {
+					buffer = "[Buffer]",
+					nvim_lsp = "[LSP]",
+					luasnip = "[LuaSnip]",
+					nvim_lua = "[Lua]",
+					latex_symbols = "[Latex]",
+				},
+			})(entry, vim_item)
+
+			local strings = vim.split(kind.kind, "%s", { trimempty = true })
+			kind.kind = " " .. strings[1] .. " "
+			kind.menu = "    (" .. strings[2] .. ")"
+
+			return kind
+		end,
+	},
 })
 
-cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({ map_char = { tex = "" } }))
+--[[ cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done({ map_char = { tex = "" } })) ]]
