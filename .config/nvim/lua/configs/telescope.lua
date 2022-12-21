@@ -14,7 +14,7 @@ telescope.setup({
 			"--trim",
 			"--fixed-strings",
 		},
-		prompt_prefix = " > ",
+		prompt_prefix = "   ",
 		selection_caret = " > ",
 		entry_prefix = "  ",
 		initial_mode = "insert",
@@ -23,9 +23,9 @@ telescope.setup({
 		layout_strategy = "horizontal",
 		layout_config = {
 			horizontal = {
-				width = 0.95,
-				height = 0.95,
-				preview_width = 0.45,
+				width = 0.90,
+				height = 0.85,
+				preview_width = 0.4,
 				prompt_position = "bottom",
 			},
 		},

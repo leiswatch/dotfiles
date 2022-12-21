@@ -47,7 +47,9 @@ vim.diagnostic.config({
 		underline = true,
 		signs = true,
 		source = true,
-		prefix = "",
+    prefix = "",
+		-- prefix = " ",
+  --   prefix = " ",
 		format = function(diagnostic)
 			return diagnostic.message .. " "
 		end,
@@ -71,7 +73,7 @@ vim.cmd([[
   filetype plugin on
   filetype plugin indent on
   set shortmess+=c
-  set listchars=tab:›\ ,trail:•,extends:#,nbsp:.
+  " set list
 
   set wildignore+=*/node_modules/**
 

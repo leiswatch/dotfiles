@@ -1,6 +1,6 @@
 require("window-picker").setup({
 	autoselect_one = true,
-	include_current = false,
+  include_current_win = false,
 	filter_rules = {
 		bo = {
 			-- if the file type is one of following, the window will be ignored
@@ -10,5 +10,6 @@ require("window-picker").setup({
 			buftype = { "terminal", "quickfix" },
 		},
 	},
-	-- other_win_hl_color = "#e35e4f",
+  fg_color = '#11111b',
+	other_win_hl_color = "#a6e3a1",
 })

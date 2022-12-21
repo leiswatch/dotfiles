@@ -27,6 +27,7 @@ cmp.setup({
 		documentation = cmp.config.window.bordered({
 			border = "rounded",
 			winhighlight = "Normal:CatppuccinNormal,FloatBorder:CatppuccinBorder,CursorLine:CatppucinCursorLine",
+			side_padding = 0,
 		}),
 	},
 	mapping = cmp.mapping.preset.insert({

@@ -1,7 +1,7 @@
 require("catppuccin").setup({
 	flavour = "mocha",
 	transparent_background = true,
-	term_colors = false,
+	term_colors = true,
 	styles = {
 		comments = { "italic" },
 		conditionals = {},
@@ -18,8 +18,8 @@ require("catppuccin").setup({
 	},
 	integrations = {
 		aerial = false,
-		barbar = false,
-		beacon = false,
+		barbar = true,
+		beacon = true,
 		cmp = true,
 		coc_nvim = false,
 		dashboard = true,
@@ -55,7 +55,6 @@ require("catppuccin").setup({
 		vim_sneak = false,
 		vimwiki = false,
 		which_key = true,
-
 		-- Special integrations, see https://github.com/catppuccin/nvim#special-integrations
 		dap = {
 			enabled = false,

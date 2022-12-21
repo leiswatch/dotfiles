@@ -124,7 +124,10 @@ return require("packer").startup({
 			branch = "v2.x",
 		})
 		use({ "s1n7ax/nvim-window-picker", tag = "v1.*" })
+		-- which key
 		use({ "folke/which-key.nvim" })
+    -- feline
+    use({"feline-nvim/feline.nvim"})
 
 		if packer_bootstrap then
 			require("packer").sync()

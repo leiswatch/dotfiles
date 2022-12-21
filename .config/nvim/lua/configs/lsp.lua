@@ -38,6 +38,7 @@ require("mason-null-ls").setup({
 		"stylua",
 		"gofumpt",
 		"goimports",
+		"eslint_d",
 	},
 	automatic_installation = true,
 	automatic_setup = false,
@@ -55,6 +56,15 @@ local signs = { Error = "", Warn = "", Hint = "", Info = "" }
 for type, icon in pairs(signs) do
 	local hl = "DiagnosticSign" .. type
 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
+end
+
+local function organize_imports()
+	local params = {
+		command = "_typescript.organizeImports",
+		arguments = { vim.api.nvim_buf_get_name(0) },
+		title = "",
+	}
+	vim.lsp.buf.execute_command(params)
 end
 
 local opts = { noremap = true, silent = true }
@@ -121,6 +131,12 @@ lspconfig["stylelint_lsp"].setup({
 lspconfig["tsserver"].setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
+	commands = {
+		OrganizeImports = {
+			organize_imports,
+			description = "Organize Imports",
+		},
+	},
 })
 
 lspconfig["cssmodules_ls"].setup({
@@ -135,23 +151,23 @@ lspconfig["graphql"].setup({
 	filetypes = { "graphql" },
 })
 
-lspconfig["eslint"].setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-	settings = {
-		run = "onType",
-		useESLintClass = false,
-		codeActionOnSave = {
-			enable = true,
-			mode = "all",
-		},
-		format = true,
-		validate = "on",
-		workingDirectory = {
-			mode = "auto",
-		},
-	},
-})
+-- lspconfig["eslint"].setup({
+-- 	on_attach = on_attach,
+-- 	capabilities = capabilities,
+-- 	settings = {
+-- 		run = "onType",
+-- 		useESLintClass = false,
+-- 		codeActionOnSave = {
+-- 			enable = true,
+-- 			mode = "all",
+-- 		},
+-- 		format = true,
+-- 		validate = "true",
+-- 		workingDirectory = {
+-- 			mode = "auto",
+-- 		},
+-- 	},
+-- })
 
 lspconfig["html"].setup({
 	on_attach = on_attach,
@@ -190,6 +206,11 @@ lspconfig["golangci_lint_ls"].setup({
 })
 
 lspconfig["dockerls"].setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+})
+
+lspconfig["emmet_ls"].setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
 })

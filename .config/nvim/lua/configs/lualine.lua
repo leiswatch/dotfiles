@@ -1,19 +1,26 @@
 local colors_catppuccin = {
-	blue = "#8aadf4",
-	cyan = "#7dc4e4",
+	blue = "#89b4fa",
+	cyan = "#89dceb",
 	black = "#181825",
-	white = "#cad3f5",
-	red = "#ed8796",
-	violet = "#c6a0f6",
-	grey = "#181926",
+	white = "#cdd6f4",
+	red = "#f38ba8",
+	violet = "#cba6f7",
+	grey = "#313244",
+	peach = "#fab387",
+	base = "#1e1e2e",
+	yellow = "#f9e2af",
+	subtext = "#585b70",
+	lavender = "#b4befe",
 }
 
 local custom_cattpuccin_theme = {
 	normal = {
 		a = { fg = colors_catppuccin.black, bg = colors_catppuccin.blue },
-		b = { fg = colors_catppuccin.white, bg = colors_catppuccin.grey },
-		c = { fg = colors_catppuccin.black, bg = colors_catppuccin.grey },
-		x = { fg = colors_catppuccin.white, bg = colors_catppuccin.grey },
+		b = { fg = colors_catppuccin.white, bg = colors_catppuccin.black },
+		z = { fg = colors_catppuccin.black, bg = colors_catppuccin.yellow },
+		c = { fg = colors_catppuccin.white, bg = colors_catppuccin.black },
+		x = { fg = colors_catppuccin.white, bg = colors_catppuccin.black },
+		y = { fg = colors_catppuccin.white, bg = colors_catppuccin.black },
 	},
 	insert = { a = { fg = colors_catppuccin.black, bg = colors_catppuccin.red } },
 	visual = { a = { fg = colors_catppuccin.black, bg = colors_catppuccin.violet } },
@@ -30,12 +37,16 @@ local config = {
 		icons_enabled = true,
 		theme = custom_cattpuccin_theme,
 		globalstatus = true,
-		section_separators = { left = "", right = "" },
-		component_separators = { left = "", right = "" },
+		component_separators = "",
+		-- section_separators = { left = "", right = "" },
+		disabled_filetypes = { -- Filetypes to disable lualine for.
+			statusline = { "alpha", "packer", "mason" }, -- only ignores the ft for statusline.
+			winbar = {}, -- only ignores the ft for winbar.
+		},
 	},
 	sections = {
 		lualine_a = {
-			"mode",
+			{ "mode" },
 		},
 		lualine_b = {
 			{ "branch", icon = "" },
@@ -56,14 +67,8 @@ local config = {
 			"filename",
 		},
 		lualine_c = {},
+		lualine_x = { "diagnostics", "filetype", "fileformat", "encoding", "progress" },
 		lualine_y = {},
-		lualine_x = {
-			"diagnostics",
-			"filetype",
-			"progress",
-			"fileformat",
-			"encoding",
-		},
 		lualine_z = { "location" },
 	},
 	extensions = { "neo-tree", "quickfix", "fzf" },
@@ -100,8 +105,8 @@ ins_left({
 
 		return msg
 	end,
-	icon = " :",
-	color = { fg = colors_catppuccin.white, gui = "bold" },
+	icon = "",
+	color = { fg = colors_catppuccin.subtext, gui = "bold" },
 })
 
 require("lualine").setup(config)
