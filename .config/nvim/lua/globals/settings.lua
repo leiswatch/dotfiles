@@ -35,11 +35,12 @@ vim.o.encoding = "utf-8"
 vim.o.background = "dark"
 vim.o.relativenumber = true
 vim.o.fillchars = "eob: "
+vim.o.colorcolumn = "80"
 vim.o.guicursor = ""
 vim.o.hlsearch = false
 vim.o.wrap = false
 vim.o.signcolumn = "yes"
-vim.opt.updatetime = 300
+vim.opt.updatetime = 50
 vim.opt.cursorline = false
 vim.diagnostic.config({
 	virtual_text = {
@@ -48,10 +49,10 @@ vim.diagnostic.config({
 		signs = true,
 		source = true,
     prefix = "",
-		-- prefix = " ",
+		-- prefix = " ",
   --   prefix = " ",
 		format = function(diagnostic)
-			return diagnostic.message .. " "
+			return diagnostic.message .. ""
 		end,
 	},
 })
@@ -62,10 +63,10 @@ vim.g.loaded_netrwPlugin = 1
 
 vim.cmd([[
   " Catppuccin
-  autocmd ColorScheme * highlight LspInlayHint guibg=NONE guifg=#a6adc8
-  autocmd ColorScheme * highlight DiagnosticVirtualTextError guibg=#32283a
-  autocmd ColorScheme * highlight DiagnosticVirtualTextWarn guibg=#33313a
-  autocmd ColorScheme * highlight DiagnosticVirtualTextHint guibg=#29313e
+  " autocmd ColorScheme * highlight LspInlayHint guibg=NONE guifg=#a6adc8
+  " autocmd ColorScheme * highlight DiagnosticVirtualTextError guibg=#32283a
+  " autocmd ColorScheme * highlight DiagnosticVirtualTextWarn guibg=#33313a
+  " autocmd ColorScheme * highlight DiagnosticVirtualTextHint guibg=#29313e
 
   autocmd FileType alpha setlocal nofoldenable
 

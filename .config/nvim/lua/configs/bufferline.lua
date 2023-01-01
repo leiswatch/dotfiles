@@ -1,8 +1,10 @@
 local bufferline = require("bufferline")
 -- local mocha = require("catppuccin.palettes").get_palette("mocha")
+local highlights = require('rose-pine.plugins.bufferline')
 
 bufferline.setup({
-  highlights = require("catppuccin.groups.integrations.bufferline").get(),
+  highlights = highlights,
+  -- highlights = require("catppuccin.groups.integrations.bufferline").get(),
 	-- highlights = require("catppuccin.groups.integrations.bufferline").get({
 	-- 	styles = { "bold" },
 	-- 	custom = {

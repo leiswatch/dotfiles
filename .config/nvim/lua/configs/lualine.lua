@@ -35,7 +35,7 @@ local custom_cattpuccin_theme = {
 local config = {
 	options = {
 		icons_enabled = true,
-		theme = custom_cattpuccin_theme,
+		theme = 'rose-pine-alt',
 		globalstatus = true,
 		component_separators = "",
 		-- section_separators = { left = "", right = "" },

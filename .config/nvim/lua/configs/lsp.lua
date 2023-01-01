@@ -2,7 +2,7 @@ local lspconfig = require("lspconfig")
 
 require("mason").setup({
 	ui = {
-		border = "rounded",
+		border = "single",
 	},
 })
 
@@ -32,7 +32,7 @@ require("mason-lspconfig").setup({
 
 require("mason-null-ls").setup({
 	ensure_installed = {
-		"pytlint",
+		"pylint",
 		"jsonlint",
 		"luacheck",
 		"stylua",
@@ -45,11 +45,11 @@ require("mason-null-ls").setup({
 })
 
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-	border = "rounded",
+	border = "single",
 })
 
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-	border = "rounded",
+	border = "single",
 })
 
 local signs = { Error = "", Warn = "", Hint = "", Info = "" }
@@ -69,9 +69,9 @@ end
 
 local opts = { noremap = true, silent = true }
 
-vim.keymap.set("n", "<leader>e", "<cmd> lua vim.diagnostic.open_float({border='rounded'})<cr>", opts)
-vim.keymap.set("n", "[d", "<cmd> lua vim.diagnostic.goto_prev({float={border='rounded'}})<cr>", opts)
-vim.keymap.set("n", "]d", "<cmd> lua vim.diagnostic.goto_next({float={border='rounded'}})<cr>", opts)
+vim.keymap.set("n", "<leader>e", "<cmd> lua vim.diagnostic.open_float({border='single'})<cr>", opts)
+vim.keymap.set("n", "[d", "<cmd> lua vim.diagnostic.goto_prev({float={border='single'}})<cr>", opts)
+vim.keymap.set("n", "]d", "<cmd> lua vim.diagnostic.goto_next({float={border='single'}})<cr>", opts)
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, opts)
 
 local on_attach = function(client, bufnr)

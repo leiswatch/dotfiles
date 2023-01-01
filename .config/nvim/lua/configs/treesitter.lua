@@ -1,6 +1,6 @@
 require("nvim-treesitter.configs").setup({
-	ensure_installed = "all",
-	sync_install = true,
+	ensure_installed = { "javascript", "typescript", "css", "scss", "graphql", "python", "tsx", "rust", "go", "lua" },
+	sync_install = false,
 	auto_install = true,
 	highlight = {
 		enable = true,
@@ -13,5 +13,17 @@ require("nvim-treesitter.configs").setup({
 	context_commentstring = {
 		enable = true,
 		enable_autocmd = false,
+	},
+	rainbow = {
+		enable = false,
+		extend_mode = true,
+		colors = {
+			"#c4a7e7",
+			"#9ccfd8",
+			"#ebbcba",
+			"#f6c177",
+			"#eb6f92",
+			"#31748f",
+		},
 	},
 })

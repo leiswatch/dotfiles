@@ -55,7 +55,9 @@ if [ -d "$HOME/.local/bin" ] ; then
     PATH="$HOME/.local/bin:$PATH"
 fi
 
-. "$HOME/.cargo/env"
+if [ -d "$HOME/.cargo/env" ] ; then
+    . "$HOME/.cargo/env"
+fi
 
 if [ -d "$HOME/.go/bin" ] ; then
   PATH="$HOME/.go/bin:$PATH"
@@ -66,3 +68,5 @@ if [ -d "$HOME/.local/share/pnpm" ] ; then
 fi
 
 export GOPATH=$HOME/.go
+export PATH=$PATH:/usr/local/go/bin
+

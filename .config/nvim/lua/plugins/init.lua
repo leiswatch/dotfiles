@@ -15,7 +15,12 @@ return require("packer").startup({
 	function(use)
 		use("wbthomason/packer.nvim")
 		-- themes
-		use({ "catppuccin/nvim", as = "catppuccin" })
+		-- use({ "catppuccin/nvim", as = "catppuccin" })
+		-- use("navarasu/onedark.nvim")
+		use({
+			"rose-pine/neovim",
+			as = "rose-pine",
+		})
 		-- lspconfig
 		use({ "neovim/nvim-lspconfig" })
 		-- treesitter
@@ -30,6 +35,7 @@ return require("packer").startup({
 			"windwp/nvim-ts-autotag",
 		})
 		use({ "JoosepAlviste/nvim-ts-context-commentstring" })
+		use({ "p00f/nvim-ts-rainbow" })
 		-- mason
 		use({ "williamboman/mason.nvim" })
 		use({ "williamboman/mason-lspconfig.nvim" })
@@ -62,8 +68,6 @@ return require("packer").startup({
 		use({ "stevearc/dressing.nvim" })
 		-- fidget
 		use({ "j-hui/fidget.nvim" })
-		-- bufferline
-		use({ "akinsho/bufferline.nvim", tag = "v3.*", requires = "nvim-tree/nvim-web-devicons" })
 		-- lspkind
 		use({ "onsails/lspkind.nvim" })
 		-- icons
@@ -114,9 +118,9 @@ return require("packer").startup({
 		-- bqf
 		use({ "kevinhwang91/nvim-bqf", ft = "qf" })
 		-- vim-fugitive
-		-- use({ "tpope/vim-fugitive" })
+		use({ "tpope/vim-fugitive" })
 		-- neogit
-		use({ "TimUntersberger/neogit" })
+		-- use({ "TimUntersberger/neogit" })
 		-- neotree
 		use({ "MunifTanjim/nui.nvim" })
 		use({
@@ -126,19 +130,24 @@ return require("packer").startup({
 		use({ "s1n7ax/nvim-window-picker", tag = "v1.*" })
 		-- which key
 		use({ "folke/which-key.nvim" })
-    -- feline
-    use({"feline-nvim/feline.nvim"})
+		-- undotree
+		use("mbbill/undotree")
+		-- cybu
+		use({
+			"ghillb/cybu.nvim",
+			branch = "main", -- timely updates
+		})
 
 		if packer_bootstrap then
 			require("packer").sync()
 		end
 	end,
 	config = {
-		max_jobs = 5,
+		max_jobs = 10,
 		display = {
-			prompt_border = "rounded",
+			prompt_border = "single",
 			open_fn = function()
-				return require("packer.util").float({ border = "rounded" })
+				return require("packer.util").float({ border = "single" })
 			end,
 		},
 	},

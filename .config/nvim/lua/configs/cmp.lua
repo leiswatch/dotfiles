@@ -7,9 +7,12 @@ local has_words_before = function()
 	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 end
 
-vim.api.nvim_set_hl(0, "CatppuccinBorder", { bg = "NONE", fg = "#89b4fa" })
-vim.api.nvim_set_hl(0, "CatppuccinNormal", { bg = "NONE", fg = "#cdd6f4" })
-vim.api.nvim_set_hl(0, "CatppucinCursorLine", { bg = "#313244" })
+-- vim.api.nvim_set_hl(0, "CatppuccinBorder", { bg = "NONE", fg = "#89b4fa" })
+-- vim.api.nvim_set_hl(0, "CatppuccinNormal", { bg = "NONE", fg = "#cdd6f4" })
+-- vim.api.nvim_set_hl(0, "CatppucinCursorLine", { bg = "#313244" })
+vim.api.nvim_set_hl(0, "RosePineBorder", { bg = "NONE", fg = "#403d52" })
+vim.api.nvim_set_hl(0, "RosePineNormal", { bg = "NONE", fg = "#e0def4" })
+vim.api.nvim_set_hl(0, "RosePineCursorLine", { bg = "#524f67" })
 
 cmp.setup({
 	snippet = {
@@ -19,15 +22,17 @@ cmp.setup({
 	},
 	window = {
 		completion = cmp.config.window.bordered({
-			border = "rounded",
-			winhighlight = "Normal:CatppuccinNormal,FloatBorder:CatppuccinBorder,CursorLine:CatppucinCursorLine",
-			col_offset = -3,
-			side_padding = 0,
+			border = "single",
+			winhighlight = "Normal:RosePineNormal,FloatBorder:RosePineBorder,CursorLine:RosePineCursorLine",
+			-- winhighlight = "Normal:CatppuccinNormal,FloatBorder:CatppuccinBorder,CursorLine:CatppucinCursorLine",
+			-- col_offset = -3,
+			-- side_padding = 0,
 		}),
 		documentation = cmp.config.window.bordered({
-			border = "rounded",
-			winhighlight = "Normal:CatppuccinNormal,FloatBorder:CatppuccinBorder,CursorLine:CatppucinCursorLine",
-			side_padding = 0,
+			border = "single",
+			winhighlight = "Normal:RosePineNormal,FloatBorder:RosePineBorder,CursorLine:RosePineCursorLine",
+			-- winhighlight = "Normal:CatppuccinNormal,FloatBorder:CatppuccinBorder,CursorLine:CatppucinCursorLine",
+			-- side_padding = 0,
 		}),
 	},
 	mapping = cmp.mapping.preset.insert({
@@ -79,16 +84,19 @@ cmp.setup({
 			return not context.in_treesitter_capture("comment") and not context.in_syntax_group("Comment")
 		end
 	end,
-	formatting = {
-		fields = { "kind", "abbr", "menu" },
-		format = function(entry, vim_item)
-			local kind = require("lspkind").cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
-			local strings = vim.split(kind.kind, "%s", { trimempty = true })
-			kind.kind = " " .. strings[1] .. " "
-			kind.menu = "    (" .. strings[2] .. ")"
+	-- formatting = {
+	-- 	fields = { "kind", "abbr", "menu" },
+	-- 	format = function(entry, vim_item)
+	-- 		local kind = lspkind.cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
+	-- 		local strings = vim.split(kind.kind, "%s", { trimempty = true })
+	-- 		kind.kind = " " .. strings[1] .. " "
+	-- 		kind.menu = "    (" .. strings[2] .. ")"
 
-			return kind
-		end,
+	-- 		return kind
+	-- 	end,
+	-- },
+	formatting = {
+		format = lspkind.cmp_format(),
 	},
 })
 
