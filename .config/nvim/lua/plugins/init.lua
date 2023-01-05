@@ -36,6 +36,7 @@ return require("packer").startup({
 		})
 		use({ "JoosepAlviste/nvim-ts-context-commentstring" })
 		use({ "p00f/nvim-ts-rainbow" })
+		use("nvim-treesitter/nvim-treesitter-context")
 		-- mason
 		use({ "williamboman/mason.nvim" })
 		use({ "williamboman/mason-lspconfig.nvim" })
@@ -106,11 +107,11 @@ return require("packer").startup({
 		use("jose-elias-alvarez/null-ls.nvim")
 		-- numbers
 		use("nkakouros-original/numbers.nvim")
-		-- lspsaga
-		use({
-			"glepnir/lspsaga.nvim",
-			branch = "main",
-		})
+		-- -- lspsaga
+		-- use({
+		-- 	"glepnir/lspsaga.nvim",
+		-- 	branch = "main",
+		-- })
 		-- trouble
 		use("folke/trouble.nvim")
 		-- bufdelete
@@ -137,6 +138,12 @@ return require("packer").startup({
 			"ghillb/cybu.nvim",
 			branch = "main", -- timely updates
 		})
+		-- vim-matchup
+		use({ "andymass/vim-matchup" })
+		-- JABS
+		use("matbme/JABS.nvim")
+		-- auto-hlsearch
+		use("asiryk/auto-hlsearch.nvim")
 
 		if packer_bootstrap then
 			require("packer").sync()

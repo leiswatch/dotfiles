@@ -98,6 +98,19 @@ cmp.setup({
 	formatting = {
 		format = lspkind.cmp_format(),
 	},
+	sorting = {
+		comparators = {
+			cmp.config.compare.locality,
+			cmp.config.compare.recently_used,
+			cmp.config.compare.score,
+			cmp.config.compare.offset,
+			cmp.config.compare.order,
+			-- cmp.config.compare.exact,
+			-- cmp.config.compare.kind,
+			-- cmp.config.compare.sort_text,
+			-- cmp.config.compare.length,
+		},
+	},
 })
 
 cmp.setup.cmdline({ "/", "?" }, {

@@ -72,4 +72,3 @@ vim.api.nvim_create_autocmd("User", {
 vim.cmd([[
 	autocmd FileType alpha, lspinfo, lsp-installer, null-ls-info, NvimTree setl colorcolumn=0
 ]])
-

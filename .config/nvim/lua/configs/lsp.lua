@@ -14,7 +14,6 @@ require("mason-lspconfig").setup({
 		"dockerls",
 		"emmet_ls",
 		"eslint",
-		"golangci_lint_ls",
 		"gopls",
 		"graphql",
 		"html",
@@ -39,6 +38,8 @@ require("mason-null-ls").setup({
 		"gofumpt",
 		"goimports",
 		"eslint_d",
+		"prettierd",
+		"golangci_lint",
 	},
 	automatic_installation = true,
 	automatic_setup = false,
@@ -90,16 +91,14 @@ local on_attach = function(client, bufnr)
 	end, bufopts)
 	vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, bufopts)
 	vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, bufopts)
-	-- vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, bufopts)
-	vim.keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<cr>", bufopts)
-	vim.keymap.set("v", "<leader>ca", "<cmd>Lspsaga code_action<cr>", bufopts)
+	vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, bufopts)
 	vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
 
-	vim.keymap.set("n", "gh", "<cmd>Lspsaga lsp_finder<cr>", bufopts)
-	-- vim.keymap.set('n', '<leader>f', function() vim.lsp.buf.format { async = true } end, bufopts)
+	-- vim.keymap.set('n', '<leader>cf', function() vim.lsp.buf.format { async = false } end, bufopts)
 end
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
+capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 lspconfig["rust_analyzer"].setup({
 	on_attach = on_attach,
@@ -151,24 +150,6 @@ lspconfig["graphql"].setup({
 	filetypes = { "graphql" },
 })
 
--- lspconfig["eslint"].setup({
--- 	on_attach = on_attach,
--- 	capabilities = capabilities,
--- 	settings = {
--- 		run = "onType",
--- 		useESLintClass = false,
--- 		codeActionOnSave = {
--- 			enable = true,
--- 			mode = "all",
--- 		},
--- 		format = true,
--- 		validate = "true",
--- 		workingDirectory = {
--- 			mode = "auto",
--- 		},
--- 	},
--- })
-
 lspconfig["html"].setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
@@ -200,17 +181,30 @@ lspconfig["gopls"].setup({
 	capabilities = capabilities,
 })
 
-lspconfig["golangci_lint_ls"].setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
-
 lspconfig["dockerls"].setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
 })
 
-lspconfig["emmet_ls"].setup({
-	on_attach = on_attach,
-	capabilities = capabilities,
-})
+-- lspconfig["emmet_ls"].setup({
+-- 	on_attach = on_attach,
+-- 	capabilities = capabilities,
+-- })
+
+-- lspconfig["eslint"].setup({
+-- 	on_attach = on_attach,
+-- 	capabilities = capabilities,
+-- 	settings = {
+-- 		run = "onType",
+-- 		useESLintClass = false,
+-- 		codeActionOnSave = {
+-- 			enable = true,
+-- 			mode = "all",
+-- 		},
+-- 		format = true,
+-- 		validate = "true",
+-- 		workingDirectory = {
+-- 			mode = "auto",
+-- 		},
+-- 	},
+-- })
