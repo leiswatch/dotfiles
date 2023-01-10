@@ -2,9 +2,10 @@ local lspconfig = require("lspconfig")
 
 require("mason").setup({
 	ui = {
-		border = "single",
+		border = "rounded",
 	},
 })
+
 
 require("mason-lspconfig").setup({
 	ensure_installed = {
@@ -24,33 +25,37 @@ require("mason-lspconfig").setup({
 		"sumneko_lua",
 		"tailwindcss",
 		"tsserver",
+		"svelte",
 		"yamlls",
+		"prismals",
+    "vuels",
+    "terraformls",
 	},
 	automatic_installation = true,
 })
 
 require("mason-null-ls").setup({
 	ensure_installed = {
-		"pylint",
-		"jsonlint",
-		"luacheck",
-		"stylua",
+		"eslint_d",
 		"gofumpt",
 		"goimports",
-		"eslint_d",
-		"prettierd",
 		"golangci_lint",
+		"jsonlint",
+		"luacheck",
+		"prettierd",
+		"pylint",
+		"stylua",
 	},
 	automatic_installation = true,
 	automatic_setup = false,
 })
 
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-	border = "single",
+	border = "rounded",
 })
 
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-	border = "single",
+	border = "rounded",
 })
 
 local signs = { Error = "", Warn = "", Hint = "", Info = "" }
@@ -70,9 +75,9 @@ end
 
 local opts = { noremap = true, silent = true }
 
-vim.keymap.set("n", "<leader>e", "<cmd> lua vim.diagnostic.open_float({border='single'})<cr>", opts)
-vim.keymap.set("n", "[d", "<cmd> lua vim.diagnostic.goto_prev({float={border='single'}})<cr>", opts)
-vim.keymap.set("n", "]d", "<cmd> lua vim.diagnostic.goto_next({float={border='single'}})<cr>", opts)
+vim.keymap.set("n", "<leader>e", "<cmd> lua vim.diagnostic.open_float({border='rounded'})<cr>", opts)
+vim.keymap.set("n", "[d", "<cmd> lua vim.diagnostic.goto_prev({float={border='rounded'}})<cr>", opts)
+vim.keymap.set("n", "]d", "<cmd> lua vim.diagnostic.goto_next({float={border='rounded'}})<cr>", opts)
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, opts)
 
 local on_attach = function(client, bufnr)
@@ -155,6 +160,11 @@ lspconfig["html"].setup({
 	capabilities = capabilities,
 })
 
+lspconfig["svelte"].setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+})
+
 lspconfig["cssls"].setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
@@ -182,6 +192,16 @@ lspconfig["gopls"].setup({
 })
 
 lspconfig["dockerls"].setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+})
+
+lspconfig["tailwindcss"].setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+})
+
+lspconfig["prismals"].setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
 })

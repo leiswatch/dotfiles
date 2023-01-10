@@ -5,7 +5,7 @@ require("cybu").setup({
     max_win_height = 15,
 	},
 	style = {
-		border = "single",
+		border = "rounded",
 		path = "relative",
 		path_abbreviation = "none", -- none, shortened
 		hide_buffer_id = true,

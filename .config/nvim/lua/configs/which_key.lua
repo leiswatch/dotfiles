@@ -1,6 +1,6 @@
 require("which-key").setup({
 	window = {
-		border = "single",
+		border = "rounded",
 		position = "bottom",
 		winblend = 0,
 	},

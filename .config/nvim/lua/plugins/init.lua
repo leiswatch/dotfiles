@@ -15,7 +15,7 @@ return require("packer").startup({
 	function(use)
 		use("wbthomason/packer.nvim")
 		-- themes
-		-- use({ "catppuccin/nvim", as = "catppuccin" })
+		use({ "catppuccin/nvim", as = "catppuccin" })
 		-- use("navarasu/onedark.nvim")
 		use({
 			"rose-pine/neovim",
@@ -35,7 +35,7 @@ return require("packer").startup({
 			"windwp/nvim-ts-autotag",
 		})
 		use({ "JoosepAlviste/nvim-ts-context-commentstring" })
-		use({ "p00f/nvim-ts-rainbow" })
+		use({ "mrjones2014/nvim-ts-rainbow" })
 		use("nvim-treesitter/nvim-treesitter-context")
 		-- mason
 		use({ "williamboman/mason.nvim" })
@@ -152,9 +152,9 @@ return require("packer").startup({
 	config = {
 		max_jobs = 10,
 		display = {
-			prompt_border = "single",
+			prompt_border = "rounded",
 			open_fn = function()
-				return require("packer.util").float({ border = "single" })
+				return require("packer.util").float({ border = "rounded" })
 			end,
 		},
 	},
