@@ -6,14 +6,16 @@ null_ls.setup({
 	debug = false,
 	update_in_insert = true,
 	sources = {
-		diagnostics.jsonlint.with({
-			filetypes = { "json" },
-		}),
+		diagnostics.jsonlint,
 		diagnostics.pylint,
 		diagnostics.luacheck,
 		diagnostics.eslint_d,
-    diagnostics.golangci_lint,
+		diagnostics.golangci_lint,
+		diagnostics.yamllint,
+		diagnostics.trail_space,
+		diagnostics.dotenv_linter,
 
 		code_actions.eslint_d,
+		code_actions.gitsigns,
 	},
 })

@@ -3,6 +3,8 @@ add_newline = false
 [character]
 success_symbol = "[➜](bold #94e2d5)"
 error_symbol = "[✗](bold #f38ba8)"
+# success_symbol = "[➜](bold #31748f)"
+# error_symbol = "[✗](bold #eb6f92)"
 
 [package]
 disabled = true
@@ -134,4 +136,3 @@ symbol = " "
 
 [spack]
 symbol = "🅢 "
-

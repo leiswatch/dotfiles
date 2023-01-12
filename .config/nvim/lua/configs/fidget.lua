@@ -13,7 +13,7 @@ require("fidget").setup({
 		relative = "win", -- where to anchor, either "win" or "editor"
 		blend = 0, -- &winblend for the window
 		zindex = nil, -- the zindex value for the window
-		border = "rounded", -- style of border for the fidget window
+		border = "single", -- style of border for the fidget window
 	},
 	timer = {
 		spinner_rate = 165, -- frame rate of spinner animation, in ms

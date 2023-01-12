@@ -33,44 +33,43 @@ local custom_cattpuccin_theme = {
 	},
 }
 
--- local colors_rose_pine = {
--- 	base = "#191724",
--- 	surface = "#1f1d2e",
--- 	overlay = "#26233a",
--- 	muted = "#6e6a86",
--- 	subtle = "#908caa",
--- 	text = "#e0def4",
--- 	love = "#eb6f92",
--- 	gold = "#f6c177",
--- 	rose = "#ebbcba",
--- 	pine = "#31748f",
--- 	foam = "#9ccfd8",
--- 	iris = "#c4a7e7",
--- 	highlight_low = "#21202e",
--- 	highlight_med = "#403d52",
--- 	highlight_high = "#524f67",
--- }
+local colors_rose_pine = {
+	base = "#191724",
+	surface = "#1f1d2e",
+	overlay = "#26233a",
+	muted = "#6e6a86",
+	subtle = "#908caa",
+	text = "#e0def4",
+	love = "#eb6f92",
+	gold = "#f6c177",
+	rose = "#ebbcba",
+	pine = "#31748f",
+	foam = "#9ccfd8",
+	iris = "#c4a7e7",
+	highlight_low = "#21202e",
+	highlight_med = "#403d52",
+	highlight_high = "#524f67",
+}
 
--- local custom_rose_pine = {
--- 	normal = {
--- 		a = { fg = colors_rose_pine.text, bg = colors_rose_pine.pine },
--- 		b = { fg = colors_rose_pine.text, bg = colors_rose_pine.surface },
--- 		z = { fg = colors_rose_pine.surface, bg = colors_rose_pine.gold },
--- 		c = { fg = colors_rose_pine.text, bg = colors_rose_pine.surface },
--- 		x = { fg = colors_rose_pine.text, bg = colors_rose_pine.surface },
--- 		y = { fg = colors_rose_pine.text, bg = colors_rose_pine.surface },
--- 	},
--- 	insert = { a = { fg = colors_rose_pine.base, bg = colors_rose_pine.love } },
--- 	visual = { a = { fg = colors_rose_pine.base, bg = colors_rose_pine.iris } },
--- 	replace = { a = { fg = colors_rose_pine.base, bg = colors_rose_pine.foam } },
--- 	inactive = {
--- 		a = { fg = colors_rose_pine.text, bg = colors_rose_pine.base },
--- 		b = { fg = colors_rose_pine.text, bg = colors_rose_pine.base },
--- 		c = { fg = colors_rose_pine.base, bg = colors_rose_pine.surface },
--- 	},
--- }
+local custom_rose_pine = {
+	normal = {
+		a = { fg = colors_rose_pine.surface, bg = colors_rose_pine.foam },
+		b = { fg = colors_rose_pine.text, bg = colors_rose_pine.surface },
+		z = { fg = colors_rose_pine.surface, bg = colors_rose_pine.gold },
+		c = { fg = colors_rose_pine.text, bg = colors_rose_pine.surface },
+		x = { fg = colors_rose_pine.text, bg = colors_rose_pine.surface },
+		y = { fg = colors_rose_pine.text, bg = colors_rose_pine.surface },
+	},
+	insert = { a = { fg = colors_rose_pine.base, bg = colors_rose_pine.love } },
+	visual = { a = { fg = colors_rose_pine.base, bg = colors_rose_pine.iris } },
+	replace = { a = { fg = colors_rose_pine.base, bg = colors_rose_pine.pine } },
+	inactive = {
+		a = { fg = colors_rose_pine.text, bg = colors_rose_pine.base },
+		b = { fg = colors_rose_pine.text, bg = colors_rose_pine.base },
+		c = { fg = colors_rose_pine.base, bg = colors_rose_pine.surface },
+	},
+}
 
---  
 local config = {
 	options = {
 		icons_enabled = true,

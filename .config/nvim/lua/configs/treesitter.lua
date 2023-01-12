@@ -18,15 +18,15 @@ require("nvim-treesitter.configs").setup({
 		enable = true,
 	},
 	rainbow = {
-		enable = false,
+		enable = true,
 		extend_mode = true,
 		colors = {
 			"#c4a7e7",
 			"#9ccfd8",
 			"#ebbcba",
 			"#f6c177",
-			"#eb6f92",
-			"#31748f",
+			-- "#eb6f92",
+			-- "#31748f",
 		},
 	},
 })
