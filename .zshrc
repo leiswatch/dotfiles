@@ -73,7 +73,7 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-source ~/.zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh
+# source ~/.zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh
 plugins=(ubuntu git npm yarn node docker docker-compose command-not-found you-should-use zsh-syntax-highlighting tmux rust golang autojump)
 
 source $ZSH/oh-my-zsh.sh
@@ -85,15 +85,18 @@ export PATH="$DENO_INSTALL/bin:$PATH"
 export PATH=$PATH:/usr/local/go/bin
 export PNPM_HOME="/home/leiswatch/.local/share/pnpm"
 export BAT_THEME='base16'
-#export FZF_DEFAULT_OPTS='--color=bg+:#302D41,spinner:#F8BD96,hl:#F28FAD --color=fg:#D9E0EE,header:#F28FAD,info:#DDB6F2,pointer:#F8BD96 --color=marker:#F8BD96,fg+:#F2CDCD,prompt:#DDB6F2,hl+:#F28FAD'
-#export FZF_DEFAULT_OPTS=" \
-#--color=bg+:#313244,spinner:#f5e0dc,hl:#f38ba8 \
-#--color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
-#--color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
+# Catppuccin
 export FZF_DEFAULT_OPTS=" \
 --color=bg+:#313244,spinner:#f5e0dc,hl:#f38ba8 \
 --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
 --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
+
+# Rose pine
+# export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS"
+#  --color=fg:#e0def4,hl:#6e6a86
+#  --color=fg+:#908caa,bg+:#191724,hl+:#908caa
+#  --color=info:#9ccfd8,prompt:#f6c177,pointer:#c4a7e7
+#  --color=marker:#ebbcba,spinner:#eb6f92,header:#ebbcba"
 # You may need to manually set your language environment
 # export LANG=en_US.UTF-8
 
