@@ -208,14 +208,29 @@ lspconfig["prismals"].setup({
 	capabilities = capabilities,
 })
 
+lspconfig["eslint"].setup({
+	on_attach = on_attach,
+	capabilities = capabilities,
+	 settings = {
+		run = "onSave",
+		useESLintClass = false,
+		codeActionOnSave = {
+			enable = true,
+			mode = "all",
+		},
+		format = true,
+		validate = "true",
+		workingDirectory = {
+			mode = "auto",
+		},
+	},
+})
+
 -- lspconfig["emmet_ls"].setup({
 -- 	on_attach = on_attach,
 -- 	capabilities = capabilities,
 -- })
 
--- lspconfig["eslint"].setup({
---   on_attach = on_attach,
---   capabilities = capabilities,
 -- 	 settings = {
 -- 		run = "onType",
 -- 		useESLintClass = false,

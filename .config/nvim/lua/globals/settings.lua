@@ -21,7 +21,7 @@ vim.o.shiftwidth = 2
 vim.o.expandtab = true
 vim.o.number = true
 vim.o.wrap = true
-vim.opt.termguicolors = true
+vim.o.termguicolors = true
 vim.o.laststatus = 3
 vim.o.list = false
 vim.o.cmdheight = 2
@@ -40,17 +40,17 @@ vim.o.guicursor = ""
 vim.o.hlsearch = false
 vim.o.wrap = false
 vim.o.signcolumn = "yes"
-vim.opt.updatetime = 50
-vim.opt.cursorline = false
+vim.o.updatetime = 50
+vim.o.cursorline = true
 vim.diagnostic.config({
 	virtual_text = {
 		update_in_insert = true,
 		underline = true,
 		signs = true,
 		source = true,
-    prefix = "",
+		-- prefix = "",
 		-- prefix = " ",
-  --   prefix = " ",
+		--   prefix = " ",
 		format = function(diagnostic)
 			return diagnostic.message .. ""
 		end,
@@ -67,6 +67,7 @@ vim.cmd([[
   " autocmd ColorScheme * highlight DiagnosticVirtualTextError guibg=#32283a
   " autocmd ColorScheme * highlight DiagnosticVirtualTextWarn guibg=#33313a
   " autocmd ColorScheme * highlight DiagnosticVirtualTextHint guibg=#29313e
+  autocmd ColorScheme * highlight CursorLine guibg=#313244
 
   autocmd FileType alpha setlocal nofoldenable
 
