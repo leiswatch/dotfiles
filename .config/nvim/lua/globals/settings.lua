@@ -41,7 +41,7 @@ vim.o.hlsearch = false
 vim.o.wrap = false
 vim.o.signcolumn = "yes"
 vim.o.updatetime = 50
-vim.o.cursorline = true
+vim.o.cursorline = false
 vim.diagnostic.config({
 	virtual_text = {
 		update_in_insert = true,

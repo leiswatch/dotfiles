@@ -15,7 +15,7 @@ null_ls.setup({
 		diagnostics.trail_space,
 		diagnostics.dotenv_linter,
 
-		code_actions.eslint,
+		-- code_actions.eslint,
 		code_actions.gitsigns,
 	},
 })

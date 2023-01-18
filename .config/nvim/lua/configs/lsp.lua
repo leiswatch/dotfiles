@@ -45,6 +45,7 @@ require("mason-null-ls").setup({
 		"pylint",
 		"stylua",
 		"yamllint",
+		"yapf",
 	},
 	automatic_installation = true,
 	automatic_setup = false,
@@ -211,37 +212,20 @@ lspconfig["prismals"].setup({
 lspconfig["eslint"].setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
-	 settings = {
-		run = "onSave",
-		useESLintClass = false,
+	settings = {
 		codeActionOnSave = {
 			enable = true,
 			mode = "all",
 		},
-		format = true,
-		validate = "true",
-		workingDirectory = {
-			mode = "auto",
-		},
+		run = "onType",
+	},
+	validate = "on",
+	workingDirectory = {
+		mode = "location",
 	},
 })
 
 -- lspconfig["emmet_ls"].setup({
 -- 	on_attach = on_attach,
 -- 	capabilities = capabilities,
--- })
-
--- 	 settings = {
--- 		run = "onType",
--- 		useESLintClass = false,
--- 		codeActionOnSave = {
--- 			enable = true,
--- 			mode = "all",
--- 		},
--- 		format = true,
--- 		validate = "true",
--- 		workingDirectory = {
--- 			mode = "auto",
--- 		},
--- 	},
 -- })
