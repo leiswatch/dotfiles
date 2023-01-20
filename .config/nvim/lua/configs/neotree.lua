@@ -1,6 +1,6 @@
 require("neo-tree").setup({
 	close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
-	popup_border_style = "single",
+	popup_border_style = "rounded",
 	enable_git_status = true,
 	enable_diagnostics = true,
 	window = {
@@ -17,6 +17,9 @@ require("neo-tree").setup({
 			hide_dotfiles = false,
 			hide_gitignored = false,
 			hide_hidden = false, -- only works on Windows for hidden files/directories
+			never_show = { -- remains hidden even if visible is toggled to true, this overrides always_show
+				".git",
+			},
 		},
 		follow_current_file = true,
 	},

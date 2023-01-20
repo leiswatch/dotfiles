@@ -2,7 +2,7 @@ local saga = require("lspsaga")
 -- local custom_kind = require("catppuccin.groups.integrations.lsp_saga").custom_kind()
 
 saga.init_lsp_saga({
-	border_style = "single",
+	border_style = "rounded",
 	saga_winblend = 0,
 	-- custom_kind = custom_kind,
 	code_action_icon = " ",

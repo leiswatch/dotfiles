@@ -1,10 +1,16 @@
-add_newline = false
+add_newline = true
 
 [character]
-success_symbol = "[➜](bold #94e2d5)"
-error_symbol = "[✗](bold #f38ba8)"
+success_symbol = "[](bold green)"
+error_symbol = "[✗](bold red)"
 # success_symbol = "[➜](bold #31748f)"
 # error_symbol = "[✗](bold #eb6f92)"
+
+[line_break]
+disabled = false
+
+[time]
+disabled = true
 
 [package]
 disabled = true

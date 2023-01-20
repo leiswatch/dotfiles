@@ -3,7 +3,7 @@ local yank_group = vim.api.nvim_create_augroup("HighlightYank", {})
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "lspinfo",
 	callback = function()
-		vim.api.nvim_win_set_config(0, { border = "single" })
+		vim.api.nvim_win_set_config(0, { border = "rounded" })
 		vim.opt.colorcolumn = ""
 	end,
 })
@@ -11,7 +11,7 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "lsp-installer",
 	callback = function()
-		vim.api.nvim_win_set_config(0, { border = "single" })
+		vim.api.nvim_win_set_config(0, { border = "rounded" })
 		vim.opt.colorcolumn = ""
 	end,
 })
@@ -19,7 +19,7 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "null-ls-info",
 	callback = function()
-		vim.api.nvim_win_set_config(0, { border = "single" })
+		vim.api.nvim_win_set_config(0, { border = "rounded" })
 		vim.opt.colorcolumn = ""
 	end,
 })

@@ -2,14 +2,17 @@ local cmp = require("cmp")
 local luasnip = require("luasnip")
 local lspkind = require("lspkind")
 
-local has_words_before = function()
-	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-end
+-- local has_words_before = function()
+-- 	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+-- 	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+-- end
 
+-- Catppuccin Mocha
 vim.api.nvim_set_hl(0, "CatppuccinBorder", { bg = "NONE", fg = "#89b4fa" })
 vim.api.nvim_set_hl(0, "CatppuccinNormal", { bg = "NONE", fg = "#cdd6f4" })
 vim.api.nvim_set_hl(0, "CatppucinCursorLine", { bg = "#313244" })
+
+-- Rose Pine
 -- vim.api.nvim_set_hl(0, "RosePineBorder", { bg = "NONE", fg = "#403d52" })
 -- vim.api.nvim_set_hl(0, "RosePineNormal", { bg = "NONE", fg = "#e0def4" })
 -- vim.api.nvim_set_hl(0, "RosePineCursorLine", { bg = "#524f67" })
@@ -17,19 +20,19 @@ vim.api.nvim_set_hl(0, "CatppucinCursorLine", { bg = "#313244" })
 cmp.setup({
 	snippet = {
 		expand = function(args)
-			require("luasnip").lsp_expand(args.body) -- For `luasnip` users.
+			luasnip.lsp_expand(args.body) -- For `luasnip` users.
 		end,
 	},
 	window = {
 		completion = cmp.config.window.bordered({
-			border = "single",
+			border = "rounded",
 			winhighlight = "Normal:CatppuccinNormal,FloatBorder:CatppuccinBorder,CursorLine:CatppucinCursorLine",
 			-- winhighlight = "Normal:RosePineNormal,FloatBorder:RosePineBorder,CursorLine:RosePineCursorLine",
 			-- col_offset = -3,
 			-- side_padding = 0,
 		}),
 		documentation = cmp.config.window.bordered({
-			border = "single",
+			border = "rounded",
 			winhighlight = "Normal:CatppuccinNormal,FloatBorder:CatppuccinBorder,CursorLine:CatppucinCursorLine",
 			-- winhighlight = "Normal:RosePineNormal,FloatBorder:RosePineBorder,CursorLine:RosePineCursorLine",
 			-- side_padding = 0,

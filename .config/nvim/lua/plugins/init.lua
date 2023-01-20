@@ -57,6 +57,8 @@ return require("packer").startup({
 			"nvim-lualine/lualine.nvim",
 			requires = { "kyazdani42/nvim-web-devicons", opt = true },
 		})
+		-- feline
+		use("feline-nvim/feline.nvim")
 		-- autopairs
 		use({
 			"windwp/nvim-autopairs",
@@ -152,9 +154,9 @@ return require("packer").startup({
 	config = {
 		max_jobs = 10,
 		display = {
-			prompt_border = "single",
+			prompt_border = "rounded",
 			open_fn = function()
-				return require("packer.util").float({ border = "single" })
+				return require("packer.util").float({ border = "rounded" })
 			end,
 		},
 	},

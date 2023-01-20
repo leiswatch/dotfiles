@@ -73,8 +73,8 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-# source ~/.zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh
-plugins=(ubuntu git npm yarn node docker docker-compose command-not-found you-should-use zsh-syntax-highlighting tmux rust golang autojump)
+source ~/.zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh
+plugins=(archlinux git npm yarn node docker docker-compose command-not-found you-should-use zsh-syntax-highlighting tmux rust golang autojump)
 
 source $ZSH/oh-my-zsh.sh
 # User configuration
@@ -120,7 +120,20 @@ export FZF_DEFAULT_OPTS=" \
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 alias ls="exa"
-alias cat="batcat"
+alias cat="bat"
+
+declare -A pomo_options
+pomo_options["work"]="25"
+pomo_options["break"]="5"
+
+pomodoro () {
+  if [ -n "$1" -a -n "${pomo_options["$1"]}" ]; then
+  val=$1
+  echo $val | lolcat
+  timer ${pomo_options["$val"]}m
+  spd-say "'$val' session done"
+  fi
+}
 
 DISABLE_AUTO_TITLE=true
 
@@ -161,8 +174,8 @@ precmd () {print -Pn "\e]0;Terminal\a"}
 starship_precmd_user_func="set_win_title"
 
 eval "$(starship init zsh)"
-source /usr/share/doc/fzf/examples/key-bindings.zsh
-source /usr/share/doc/fzf/examples/completion.zsh
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
 
 # pnpm
 export PNPM_HOME="/home/leiswatch/.local/share/pnpm"
