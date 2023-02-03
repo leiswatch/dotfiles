@@ -3,7 +3,9 @@ local ensure_packer = function()
 	local install_path = fn.stdpath("data") .. "/site/pack/packer/start/packer.nvim"
 	if fn.empty(fn.glob(install_path)) > 0 then
 		fn.system({ "git", "clone", "--depth", "1", "https://github.com/wbthomason/packer.nvim", install_path })
-		vim.cmd([[packadd packer.nvim]])
+		vim.cmd([[
+		  packadd packer.nvim
+		]])
 		return true
 	end
 	return false
@@ -16,11 +18,11 @@ return require("packer").startup({
 		use("wbthomason/packer.nvim")
 		-- themes
 		use({ "catppuccin/nvim", as = "catppuccin" })
-		-- use("navarasu/onedark.nvim")
-		use({
-			"rose-pine/neovim",
-			as = "rose-pine",
-		})
+		-- use({
+		-- 	"rose-pine/neovim",
+		-- 	as = "rose-pine",
+		-- })
+		use("EdenEast/nightfox.nvim")
 		-- lspconfig
 		use({ "neovim/nvim-lspconfig" })
 		-- treesitter
@@ -35,7 +37,7 @@ return require("packer").startup({
 			"windwp/nvim-ts-autotag",
 		})
 		use({ "JoosepAlviste/nvim-ts-context-commentstring" })
-		use({ "mrjones2014/nvim-ts-rainbow" })
+		-- use({ "mrjones2014/nvim-ts-rainbow" })
 		use("nvim-treesitter/nvim-treesitter-context")
 		-- mason
 		use({ "williamboman/mason.nvim" })
@@ -96,11 +98,11 @@ return require("packer").startup({
 			"goolord/alpha-nvim",
 		})
 		-- navic
-		use({ "smiteshp/nvim-navic" })
+		-- use({ "smiteshp/nvim-navic" })
 		-- barbecue
-		use({
-			"utilyre/barbecue.nvim",
-		})
+		-- use({
+		-- 	"utilyre/barbecue.nvim",
+		-- })
 		-- neoformat
 		use({ "sbdchd/neoformat" })
 		-- suround
@@ -110,9 +112,14 @@ return require("packer").startup({
 		-- numbers
 		use("nkakouros-original/numbers.nvim")
 		-- -- lspsaga
+		use({
+			"glepnir/lspsaga.nvim",
+			branch = "main",
+		})
+		-- code action menu
 		-- use({
-		-- 	"glepnir/lspsaga.nvim",
-		-- 	branch = "main",
+		-- 	"weilbith/nvim-code-action-menu",
+		-- 	cmd = "CodeActionMenu",
 		-- })
 		-- trouble
 		use("folke/trouble.nvim")
@@ -122,8 +129,6 @@ return require("packer").startup({
 		use({ "kevinhwang91/nvim-bqf", ft = "qf" })
 		-- vim-fugitive
 		use({ "tpope/vim-fugitive" })
-		-- neogit
-		-- use({ "TimUntersberger/neogit" })
 		-- neotree
 		use({ "MunifTanjim/nui.nvim" })
 		use({
@@ -146,6 +151,12 @@ return require("packer").startup({
 		use("matbme/JABS.nvim")
 		-- auto-hlsearch
 		use("asiryk/auto-hlsearch.nvim")
+		-- neodev
+		-- use("folke/neodev.nvim")
+		-- spectre
+		use("windwp/nvim-spectre")
+		--notify
+		use("rcarriga/nvim-notify")
 
 		if packer_bootstrap then
 			require("packer").sync()
@@ -154,9 +165,9 @@ return require("packer").startup({
 	config = {
 		max_jobs = 10,
 		display = {
-			prompt_border = "rounded",
+			prompt_border = "single",
 			open_fn = function()
-				return require("packer.util").float({ border = "rounded" })
+				return require("packer.util").float({ border = "single" })
 			end,
 		},
 	},

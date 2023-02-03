@@ -47,10 +47,7 @@ vim.diagnostic.config({
 		update_in_insert = true,
 		underline = true,
 		signs = true,
-		source = true,
-		-- prefix = "",
-		-- prefix = " ",
-		--   prefix = " ",
+		source = "if_many",
 		format = function(diagnostic)
 			return diagnostic.message .. ""
 		end,
@@ -78,7 +75,7 @@ vim.cmd([[
   " set list
 
   set wildignore+=*/node_modules/**
-
+  set mouse=
   let test#strategy = "neovim"
   let test#neovim#term_position = "vert"
   let g:test#neovim#start_normal = 1 " If using neovim strategy

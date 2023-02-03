@@ -17,6 +17,26 @@ require("catppuccin").setup({
 		types = {},
 		operators = {},
 	},
+	custom_highlights = function()
+		return {
+			FloatBorder = { fg = "#313244" },
+			TelescopeBorder = { fg = "#313244" },
+			TelescopePreviewBorder = { fg = "#313244" },
+			TelescopeResultsBorder = { fg = "#313244" },
+			TelescopePromptBorder = { fg = "#313244" },
+			TelescopePromptTitle = { fg = "#cdd6f4" },
+			TelescopePreviewTitle = { fg = "#cdd6f4" },
+			WhichKeyBorder = { fg = "#313244" },
+			CodeActionNormal = { fg = "#cdd6f4" },
+			CodeActionBorder = { fg = "#313244" },
+			CodeActionText = { fg = "#cdd6f4" },
+			CodeActionNumber = { fg = "#a6e3a1" },
+			ActionPreviewNormal = { fg = "#cdd6f4" },
+			ActionPreviewBorder = { fg = "#313244" },
+			ActionPreviewTitle = { fg = "#cdd6f4", bg = "NONE" },
+			FloatTitle = { fg = "#cdd6f4" },
+		}
+	end,
 	integrations = {
 		aerial = false,
 		barbar = true,
@@ -74,10 +94,10 @@ require("catppuccin").setup({
 				information = { "italic" },
 			},
 			underlines = {
-				errors = { "undercurl" },
-				hints = { "undercurl" },
-				warnings = { "undercurl" },
-				information = { "undercurl" },
+				errors = { "underline" },
+				hints = { "underline" },
+				warnings = { "underline" },
+				information = { "underline" },
 			},
 		},
 		navic = {

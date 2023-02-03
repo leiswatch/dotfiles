@@ -15,7 +15,9 @@ export ZSH="$HOME/.oh-my-zsh"
 # load a random theme each time oh-my-zsh is loaded, in which case,
 # to know which specific one was loaded, run: echo $RANDOM_THEME
 # See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
+
 ZSH_THEME="robbyrussell"
+
 #ZSH_THEME="powerlevel10k/powerlevel10k"
 # Set list of themes to pick from when loading at random
 # Setting this variable when ZSH_THEME=random will cause zsh to load
@@ -73,8 +75,10 @@ ZSH_THEME="robbyrussell"
 # Custom plugins may be added to $ZSH_CUSTOM/plugins/
 # Example format: plugins=(rails git textmate ruby lighthouse)
 # Add wisely, as too many plugins slow down shell startup.
-source ~/.zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh
-plugins=(archlinux git npm yarn node docker docker-compose command-not-found you-should-use zsh-syntax-highlighting tmux rust golang autojump)
+# source ~/.zsh/catppuccin_mocha-zsh-syntax-highlighting.zsh
+export NVM_LAZY_LOAD=true
+export NVM_COMPLETION=true
+plugins=(evalcache git npm yarn node docker docker-compose you-should-use zsh-syntax-highlighting tmux rust golang autojump zsh-nvm)
 
 source $ZSH/oh-my-zsh.sh
 # User configuration
@@ -84,17 +88,23 @@ export DENO_INSTALL="$HOME/.deno"
 export PATH="$DENO_INSTALL/bin:$PATH"
 export PATH=$PATH:/usr/local/go/bin
 export PNPM_HOME="/home/leiswatch/.local/share/pnpm"
-export BAT_THEME='base16'
+# export BAT_THEME='base16'
+export BAT_THEME="Catppuccin-mocha"
 # Catppuccin
 export FZF_DEFAULT_OPTS=" \
 --color=bg+:#313244,spinner:#f5e0dc,hl:#f38ba8 \
 --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
 --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
 
+# pnpm
+export PNPM_HOME="/home/leiswatch/.local/share/pnpm"
+export PATH="$PNPM_HOME:$PATH"
+# pnpm end
+
 # Rose pine
 # export FZF_DEFAULT_OPTS=$FZF_DEFAULT_OPTS"
 #  --color=fg:#e0def4,hl:#6e6a86
-#  --color=fg+:#908caa,bg+:#191724,hl+:#908caa
+#  --color=fg+:#e0def4,bg+:#191724,hl+:#eb6f92
 #  --color=info:#9ccfd8,prompt:#f6c177,pointer:#c4a7e7
 #  --color=marker:#ebbcba,spinner:#eb6f92,header:#ebbcba"
 # You may need to manually set your language environment
@@ -120,20 +130,7 @@ export FZF_DEFAULT_OPTS=" \
 # alias ohmyzsh="mate ~/.oh-my-zsh"
 
 alias ls="exa"
-alias cat="bat"
-
-declare -A pomo_options
-pomo_options["work"]="25"
-pomo_options["break"]="5"
-
-pomodoro () {
-  if [ -n "$1" -a -n "${pomo_options["$1"]}" ]; then
-  val=$1
-  echo $val | lolcat
-  timer ${pomo_options["$val"]}m
-  spd-say "'$val' session done"
-  fi
-}
+alias cat="batcat"
 
 DISABLE_AUTO_TITLE=true
 
@@ -141,43 +138,48 @@ export NVM_DIR="$HOME/.nvm"
 [ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
 [ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
 
-
 # place this after nvm initialization!
-autoload -U add-zsh-hook
-load-nvmrc() {
-  local node_version="$(nvm version)"
-  local nvmrc_path="$(nvm_find_nvmrc)"
+# autoload -U add-zsh-hook
+# load-nvmrc() {
+#   local node_version="$(nvm version)"
+#   local nvmrc_path="$(nvm_find_nvmrc)"
 
-  if [ -n "$nvmrc_path" ]; then
-    local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
+#   if [ -n "$nvmrc_path" ]; then
+#     local nvmrc_node_version=$(nvm version "$(cat "${nvmrc_path}")")
 
-    if [ "$nvmrc_node_version" = "N/A" ]; then
-      nvm install
-    elif [ "$nvmrc_node_version" != "$node_version" ]; then
-      nvm use
-    fi
-  elif [ "$node_version" != "$(nvm version default)" ]; then
-    echo "Reverting to nvm default version"
-    nvm use default
-  fi
-}
+#     if [ "$nvmrc_node_version" = "N/A" ]; then
+#       nvm install
+#     elif [ "$nvmrc_node_version" != "$node_version" ]; then
+#       nvm use
+#     fi
+#   elif [ "$node_version" != "$(nvm version default)" ]; then
+#     echo "Reverting to nvm default version"
+#     nvm use default
+#   fi
+# }
 
-add-zsh-hook chpwd load-nvmrc
-load-nvmrc
+# add-zsh-hook chpwd load-nvmrc
+# load-nvmrc
 
-function set_win_title(){
-    echo -ne "\033]0; $(basename "$PWD") \007"
-}
+# function set_win_title(){
+#     echo -ne "\033]0; $(basename "$PWD") \007"
+# }
 
-precmd () {print -Pn "\e]0;Terminal\a"}
+# precmd () {print -Pn "\e]0;Terminal\a"}
 
-starship_precmd_user_func="set_win_title"
+# starship_precmd_user_func="set_win_title"
+
+#fzf
+source /usr/share/doc/fzf/examples/key-bindings.zsh
+source /usr/share/doc/fzf/examples/completion.zsh
+
+#kubectl
+source <(kubectl completion zsh)
+
+autoload -Uz compinit && compinit
+eval "$(zoxide init zsh)"
 
 eval "$(starship init zsh)"
-source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
 
-# pnpm
-export PNPM_HOME="/home/leiswatch/.local/share/pnpm"
-export PATH="$PNPM_HOME:$PATH"
-# pnpm end
+_evalcache starship init zsh
+_evalcache zoxide init zsh

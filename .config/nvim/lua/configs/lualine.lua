@@ -1,4 +1,4 @@
-local colors_catppuccin = {
+local colors = {
 	blue = "#89b4fa",
 	cyan = "#89dceb",
 	black = "#11111b",
@@ -16,59 +16,59 @@ local colors_catppuccin = {
 
 local custom_cattpuccin_theme = {
 	normal = {
-		a = { fg = colors_catppuccin.black, bg = colors_catppuccin.blue },
-		b = { fg = colors_catppuccin.white, bg = colors_catppuccin.black },
-		z = { fg = colors_catppuccin.black, bg = colors_catppuccin.yellow },
-		c = { fg = colors_catppuccin.white, bg = colors_catppuccin.black },
-		x = { fg = colors_catppuccin.white, bg = colors_catppuccin.black },
-		y = { fg = colors_catppuccin.white, bg = colors_catppuccin.black },
+		a = { fg = colors.black, bg = colors.blue },
+		b = { fg = colors.white, bg = colors.black },
+		z = { fg = colors.black, bg = colors.yellow },
+		c = { fg = colors.white, bg = colors.black },
+		x = { fg = colors.white, bg = colors.black },
+		y = { fg = colors.white, bg = colors.black },
 	},
-	insert = { a = { fg = colors_catppuccin.black, bg = colors_catppuccin.red } },
-	visual = { a = { fg = colors_catppuccin.black, bg = colors_catppuccin.violet } },
-	replace = { a = { fg = colors_catppuccin.black, bg = colors_catppuccin.blue } },
+	insert = { a = { fg = colors.black, bg = colors.red } },
+	visual = { a = { fg = colors.black, bg = colors.violet } },
+	replace = { a = { fg = colors.black, bg = colors.blue } },
 	inactive = {
-		a = { fg = colors_catppuccin.white, bg = colors_catppuccin.black },
-		b = { fg = colors_catppuccin.white, bg = colors_catppuccin.black },
-		c = { fg = colors_catppuccin.black, bg = colors_catppuccin.black },
+		a = { fg = colors.white, bg = colors.black },
+		b = { fg = colors.white, bg = colors.black },
+		c = { fg = colors.black, bg = colors.black },
 	},
 }
 
-local colors_rose_pine = {
-	base = "#191724",
-	surface = "#1f1d2e",
-	overlay = "#26233a",
-	muted = "#6e6a86",
-	subtle = "#908caa",
-	text = "#e0def4",
-	love = "#eb6f92",
-	gold = "#f6c177",
-	rose = "#ebbcba",
-	pine = "#31748f",
-	foam = "#9ccfd8",
-	iris = "#c4a7e7",
-	highlight_low = "#21202e",
-	highlight_med = "#403d52",
-	highlight_high = "#524f67",
-}
+-- local colors_rose_pine = {
+-- 	base = "#191724",
+-- 	surface = "#1f1d2e",
+-- 	overlay = "#26233a",
+-- 	muted = "#6e6a86",
+-- 	subtle = "#908caa",
+-- 	text = "#e0def4",
+-- 	love = "#eb6f92",
+-- 	gold = "#f6c177",
+-- 	rose = "#ebbcba",
+-- 	pine = "#31748f",
+-- 	foam = "#9ccfd8",
+-- 	iris = "#c4a7e7",
+-- 	highlight_low = "#21202e",
+-- 	highlight_med = "#403d52",
+-- 	highlight_high = "#524f67",
+-- }
 
-local custom_rose_pine = {
-	normal = {
-		a = { fg = colors_rose_pine.surface, bg = colors_rose_pine.foam },
-		b = { fg = colors_rose_pine.text, bg = colors_rose_pine.surface },
-		z = { fg = colors_rose_pine.surface, bg = colors_rose_pine.gold },
-		c = { fg = colors_rose_pine.text, bg = colors_rose_pine.surface },
-		x = { fg = colors_rose_pine.text, bg = colors_rose_pine.surface },
-		y = { fg = colors_rose_pine.text, bg = colors_rose_pine.surface },
-	},
-	insert = { a = { fg = colors_rose_pine.base, bg = colors_rose_pine.love } },
-	visual = { a = { fg = colors_rose_pine.base, bg = colors_rose_pine.iris } },
-	replace = { a = { fg = colors_rose_pine.base, bg = colors_rose_pine.pine } },
-	inactive = {
-		a = { fg = colors_rose_pine.text, bg = colors_rose_pine.base },
-		b = { fg = colors_rose_pine.text, bg = colors_rose_pine.base },
-		c = { fg = colors_rose_pine.base, bg = colors_rose_pine.surface },
-	},
-}
+-- local custom_rose_pine = {
+-- 	normal = {
+-- 		a = { fg = colors_rose_pine.surface, bg = colors_rose_pine.foam },
+-- 		b = { fg = colors_rose_pine.text, bg = colors_rose_pine.surface },
+-- 		z = { fg = colors_rose_pine.surface, bg = colors_rose_pine.rose },
+-- 		c = { fg = colors_rose_pine.text, bg = colors_rose_pine.surface },
+-- 		x = { fg = colors_rose_pine.text, bg = colors_rose_pine.surface },
+-- 		y = { fg = colors_rose_pine.text, bg = colors_rose_pine.surface },
+-- 	},
+-- 	insert = { a = { fg = colors_rose_pine.base, bg = colors_rose_pine.love } },
+-- 	visual = { a = { fg = colors_rose_pine.base, bg = colors_rose_pine.iris } },
+-- 	replace = { a = { fg = colors_rose_pine.base, bg = colors_rose_pine.pine } },
+-- 	inactive = {
+-- 		a = { fg = colors_rose_pine.text, bg = colors_rose_pine.base },
+-- 		b = { fg = colors_rose_pine.text, bg = colors_rose_pine.base },
+-- 		c = { fg = colors_rose_pine.base, bg = colors_rose_pine.surface },
+-- 	},
+-- }
 
 local config = {
 	options = {
@@ -76,7 +76,7 @@ local config = {
 		theme = custom_cattpuccin_theme,
 		globalstatus = true,
 		component_separators = "",
-		section_separators = "",
+		-- section_separators = "",
 		-- section_separators = { left = "", right = "" },
 		disabled_filetypes = { -- Filetypes to disable lualine for.
 			statusline = { "alpha", "packer", "mason" }, -- only ignores the ft for statusline.
@@ -85,17 +85,18 @@ local config = {
 	},
 	sections = {
 		lualine_a = {
-			{ "mode" },
+			{ "mode", icons_enabled = true, icon = "" },
 		},
 		lualine_b = {
+			{ "filename", icon = "󰈔" },
 			{ "branch", icon = "" },
 			{
 				"diff",
 				colored = true,
 				diff_color = {
-					added = { fg = colors_catppuccin.green },
-					modified = { fg = colors_catppuccin.yellow },
-					removed = { fg = colors_catppuccin.red },
+					added = { fg = colors.green },
+					modified = { fg = colors.yellow },
+					removed = { fg = colors.red },
 				},
 				symbols = {
 					added = " ",
@@ -103,10 +104,35 @@ local config = {
 					removed = " ",
 				},
 			},
-			"filename",
 		},
 		lualine_c = {},
-		lualine_x = { "diagnostics", "filetype", "fileformat", "encoding", "progress" },
+		lualine_x = {
+			"diagnostics",
+			{
+				"filetype",
+				colored = true, -- Displays filetype icon in color if set to true
+				icon_only = false, -- Display only an icon for filetype
+				icon = { align = "left" },
+			},
+			{
+				"fileformat",
+				icons_enabled = true,
+				symbols = {
+					unix = "LF",
+					dos = "CRLF",
+					mac = "CR",
+				},
+			},
+			{
+				"encoding",
+				fmt = function(str)
+					return string.upper(str)
+				end,
+				color = { fg = colors.red },
+			},
+			-- "progress",
+			"%P",
+		},
 		lualine_y = {},
 		lualine_z = { "location" },
 	},
@@ -145,7 +171,7 @@ ins_left({
 		return msg
 	end,
 	icon = "",
-	color = { fg = colors_catppuccin.subtext, gui = "bold" },
+	color = { fg = colors.subtext, gui = "bold" },
 })
 
 require("lualine").setup(config)

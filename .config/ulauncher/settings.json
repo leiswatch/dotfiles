@@ -3,10 +3,10 @@
     "clear-previous-query": true,
     "disable-desktop-filters": false,
     "grab-mouse-pointer": false,
-    "hotkey-show-app": "<Primary><Alt>space",
+    "hotkey-show-app": "<Primary><Shift>space",
     "render-on-screen": "mouse-pointer-monitor",
     "show-indicator-icon": true,
     "show-recent-apps": "0",
     "terminal-command": "",
-    "theme-name": "catppuccin-mocha"
+    "theme-name": "Matcha-dark-azul"
 }

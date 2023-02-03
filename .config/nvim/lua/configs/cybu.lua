@@ -2,10 +2,10 @@ require("cybu").setup({
 	position = {
 		anchor = "center",
 		max_win_width = 0.5,
-    max_win_height = 15,
+		max_win_height = 15,
 	},
 	style = {
-		border = "rounded",
+		border = "single",
 		path = "relative",
 		path_abbreviation = "none", -- none, shortened
 		hide_buffer_id = true,

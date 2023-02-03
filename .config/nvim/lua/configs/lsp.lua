@@ -2,7 +2,7 @@ local lspconfig = require("lspconfig")
 
 require("mason").setup({
 	ui = {
-		border = "rounded",
+		border = "single",
 	},
 })
 
@@ -11,6 +11,7 @@ require("mason-lspconfig").setup({
 		"astro",
 		"cssls",
 		"cssmodules_ls",
+		"denols",
 		"dockerls",
 		"emmet_ls",
 		"eslint",
@@ -18,17 +19,17 @@ require("mason-lspconfig").setup({
 		"graphql",
 		"html",
 		"jsonls",
+		"prismals",
 		"pyright",
 		"rust_analyzer",
 		"stylelint_lsp",
 		"sumneko_lua",
-		"tailwindcss",
-		"tsserver",
 		"svelte",
-		"yamlls",
-		"prismals",
-		"vuels",
+		"tailwindcss",
 		"terraformls",
+		"tsserver",
+		"vuels",
+		"yamlls",
 	},
 	automatic_installation = true,
 })
@@ -52,13 +53,13 @@ require("mason-null-ls").setup({
 })
 
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-	border = "rounded",
-	max_height = 30,
+	border = "single",
+	max_height = 20,
 })
 
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-	border = "rounded",
-	max_height = 30,
+	border = "single",
+	max_height = 20,
 })
 
 local signs = { Error = "", Warn = "", Hint = "", Info = "" }
@@ -78,9 +79,9 @@ end
 
 local opts = { noremap = true, silent = true }
 
-vim.keymap.set("n", "<leader>e", "<cmd> lua vim.diagnostic.open_float({border='rounded'})<cr>", opts)
-vim.keymap.set("n", "[d", "<cmd> lua vim.diagnostic.goto_prev({float={border='rounded'}})<cr>", opts)
-vim.keymap.set("n", "]d", "<cmd> lua vim.diagnostic.goto_next({float={border='rounded'}})<cr>", opts)
+vim.keymap.set("n", "<leader>e", "<cmd> lua vim.diagnostic.open_float({border='single'})<cr>", opts)
+vim.keymap.set("n", "[d", "<cmd> lua vim.diagnostic.goto_prev({float={border='single'}})<cr>", opts)
+vim.keymap.set("n", "]d", "<cmd> lua vim.diagnostic.goto_next({float={border='single'}})<cr>", opts)
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, opts)
 
 local on_attach = function(client, bufnr)
@@ -99,7 +100,9 @@ local on_attach = function(client, bufnr)
 	end, bufopts)
 	vim.keymap.set("n", "<leader>D", vim.lsp.buf.type_definition, bufopts)
 	vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, bufopts)
-	vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, bufopts)
+	-- vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, bufopts)
+	vim.keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", bufopts)
+	vim.keymap.set("v", "<leader>ca", "<cmd>Lspsaga code_action<CR>", bufopts)
 	vim.keymap.set("n", "gr", vim.lsp.buf.references, bufopts)
 
 	-- vim.keymap.set('n', '<leader>cf', function() vim.lsp.buf.format { async = false } end, bufopts)
@@ -111,12 +114,21 @@ capabilities.textDocument.completion.completionItem.snippetSupport = true
 lspconfig["rust_analyzer"].setup({
 	on_attach = on_attach,
 	capabilities = capabilities,
+	cmd = {
+		"rustup",
+		"run",
+		"stable",
+		"rust-analyzer",
+	},
 })
 
 lspconfig["sumneko_lua"].setup({
 	settings = {
 		Lua = {
 			diagnostics = { globals = { "vim" } },
+			completion = {
+				callSnippet = "Replace",
+			},
 		},
 	},
 	on_attach = on_attach,
@@ -217,7 +229,7 @@ lspconfig["eslint"].setup({
 			enable = true,
 			mode = "all",
 		},
-		run = "onSave",
+		run = "onType",
 	},
 	validate = "on",
 	workingDirectory = {

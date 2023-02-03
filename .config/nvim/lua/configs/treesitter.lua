@@ -8,7 +8,7 @@ require("nvim-treesitter.configs").setup({
 		additional_vim_regex_highlighting = false,
 	},
 	autotag = {
-		enable = true,
+		enable = false,
 	},
 	context_commentstring = {
 		enable = true,
@@ -30,3 +30,4 @@ require("nvim-treesitter.configs").setup({
 		},
 	},
 })
+

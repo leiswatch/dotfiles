@@ -1,8 +1,8 @@
 local opts = { noremap = true, silent = true }
 
 vim.keymap.set("n", "<leader>vv", "<C-^>", opts)
-vim.keymap.set("n", "<leader>ss", ":split<Return><C-w>w", opts)
-vim.keymap.set("n", "<leader>sv", ":vsplit<Return><C-w>w", opts)
+-- vim.keymap.set("n", "<leader>ss", ":split<Return><C-w>w", opts)
+-- vim.keymap.set("n", "<leader>sv", ":vsplit<Return><C-w>w", opts)
 vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", opts)
 vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", opts)
 vim.keymap.set("n", "<C-d>", "<C-d>zz", opts)

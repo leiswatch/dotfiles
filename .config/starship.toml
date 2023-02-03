@@ -16,7 +16,7 @@ disabled = true
 disabled = true
 
 [username]
-show_always = false
+show_always = true
 
 [aws]
 symbol = "  "
