@@ -1,7 +1,7 @@
 configuration{
     modi: "run,drun,window";
     lines: 5;
-    font: "JetBrainsMono Nerd Font 14";
+    font: "JetbrainsMono Nerd Font 14";
     show-icons: true;
     icon-theme: "Papirus-Dark";
     terminal: "kitty";
@@ -24,10 +24,10 @@ element-text, element-icon , mode-switcher {
 }
 
 window {
-    height: 50%;
-    width: 50%;
+    height: 400;
+    width: 600;
     border: 2px;
-    border-radius: 0px;
+    border-radius: 4px;
     border-color: @blue;
     background-color: @bg-col;
 }
@@ -67,7 +67,7 @@ listview {
     border: 0px 0px 0px;
     padding: 6px 0px 0px;
     margin: 10px 0px 0px 20px;
-    columns: 2;
+    columns: 1;
     background-color: @bg-col;
 }
 
@@ -94,7 +94,7 @@ button {
     padding: 10px;
     background-color: @bg-col-light;
     text-color: @grey;
-    vertical-align: 0.5; 
+    vertical-align: 0.5;
     horizontal-align: 0.5;
 }
 

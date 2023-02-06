@@ -1,6 +1,8 @@
 lastupdatecheck: 0
 recentrepos:
 - /home/leiswatch/Projects/bold/app-builder-next
+- /home/leiswatch/Projects/leiswatch/rust_book/structs
 startuppopupversion: 5
-customcommandshistory: []
+customcommandshistory:
+- w
 hidecommandlog: false

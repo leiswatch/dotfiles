@@ -169,6 +169,12 @@ export NVM_DIR="$HOME/.nvm"
 
 # starship_precmd_user_func="set_win_title"
 
+function set_win_title(){
+    echo -ne "\033]0; Kitty \007"
+}
+
+precmd_functions+=(set_win_title)
+
 #fzf
 source /usr/share/doc/fzf/examples/key-bindings.zsh
 source /usr/share/doc/fzf/examples/completion.zsh
