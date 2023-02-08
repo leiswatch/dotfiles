@@ -122,11 +122,11 @@ super + {Left,Down,Up,Right}
 
 # Keyboard volume controls
 XF86AudioRaiseVolume
-  pactl set-sink-volume @DEFAULT_SINK@ +5%
+  pactl set-sink-volume @DEFAULT_SINK@ +5% && /home/leiswatch/.config/sxhkd/scripts/volume.sh
 XF86AudioLowerVolume
-  pactl set-sink-volume @DEFAULT_SINK@ -5%
+  pactl set-sink-volume @DEFAULT_SINK@ -5% && /home/leiswatch/.config/sxhkd/scripts/volume.sh
 XF86AudioMute
-  pactl set-sink-mute @DEFAULT_SINK@ toggle
+  pactl set-sink-mute @DEFAULT_SINK@ toggle && /home/leiswatch/.config/sxhkd/scripts/volume.sh
 XF86AudioMicMute
   pactl set-source-mute @DEFAULT_SOURCE@ toggle
 XF86AudioPlay

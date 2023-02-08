@@ -4,21 +4,9 @@
 pgrep -x sxhkd > /dev/null || sxhkd &
 
 # Autostart
-picom -b &
-dunst -conf /home/leiswatch/.config/dunst/dunstrc &
-nitrogen --restore &
-/usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1 &
-/usr/bin/gnome-keyring-daemon --start --components=ssh,secrets,pkcs11,gpg &
-redshift -t 6500:3500 -l 54.3520:18.6466 &
-/home/leiswatch/.config/polybar/launch.sh --blocks &
-/usr/share/discord/Discord --start-minimized
-/usr/bin/slack %U -u
-flameshot
-mintupdate-launcher
-nvidia-settings -a "[gpu:0]/GPUFanControlState=1" -a "[fan:0]/GPUTargetFanSpeed=35"
-xset s 900 900
+/home/leiswatch/.config/bspwm/scripts/autostart.sh
 
-bspc monitor -d I II III IV V VI VII VIII IX X
+bspc monitor -d 1 2 3 4 5 6 7 8 9
 
 bspc config border_width         2
 bspc config window_gap           10
@@ -30,6 +18,8 @@ bspc config focused_border_color "#89b4fa"
 bspc config active_border_color "#89b4fa"
 bspc config normal_border_color "#313244"
 bspc config top_padding 34
+
+bspc rule -a Pavucontrol state=floating
 
 # bspc rule -a Gimp desktop='^8' state=floating follow=on
 # bspc rule -a Chromium desktop='^2'
