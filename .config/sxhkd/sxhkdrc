@@ -138,3 +138,6 @@ XF86AudioPrev
 
 super + shift + p
   /home/leiswatch/.config/polybar/blocks/scripts/powermenu.sh &
+
+super + shift + s
+  flameshot gui

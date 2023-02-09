@@ -1,7 +1,7 @@
 configuration{
     modi: "run,drun,window";
     lines: 5;
-    font: "JetbrainsMono Nerd Font 14";
+    font: "JetbrainsMono Nerd Font 13";
     show-icons: true;
     icon-theme: "Papirus-Dark";
     terminal: "kitty";
@@ -27,8 +27,8 @@ window {
     height: 400;
     width: 600;
     border: 2px;
-    border-radius: 4px;
-    border-color: @blue;
+    border-radius: 0px;
+    border-color: @muave;
     background-color: @bg-col;
 }
 
@@ -92,13 +92,13 @@ mode-switcher {
 
 button {
     padding: 10px;
-    background-color: @bg-col-light;
+    background-color: @bg-col;
     text-color: @grey;
     vertical-align: 0.5;
     horizontal-align: 0.5;
 }
 
 button selected {
-  background-color: @bg-col;
+  background-color: @bg-col-light;
   text-color: @blue;
 }

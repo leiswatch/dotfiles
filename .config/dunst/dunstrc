@@ -1,21 +1,20 @@
 [global]
     monitor = 0
-    width=(200, 600)
-    height=(0, 250)
+    width=(200, 900)
+    height=(0, 350)
     origin = top-right
     class       = Dunst
     alignment   = center
-    frame_color = "#DDB6F2"
+    frame_color = "#cba6f7"
     frame_width = 2
-    font        = Jetbrains Mono 13
-    offset      = 5x40
+    font        = JetBrains Mono 13
+    offset      = 5x45
     min_icon_size = 0
-    max_icon_size = 32
+    max_icon_size = 24
     show_indicators = yes
     show_age_threshold = 60
     icon_position = left
-    icon_theme = Papirus-Dark
-    enable_recursive_icon_lookup = true
+    icon_path = /usr/share/icons/Papirus-Dark/32x32/status/:/usr/share/icons/Papirus-Dark/32x32/devices/:/usr/share/icons/Papirus-Dark/32x32/apps/:/usr/share/icons/Papirus-Dark/32x32/actions/:/usr/share/icons/Papirus-Dark/32x32/categories/:/usr/share/icons/Papirus-Dark/32x32/emblems/:/usr/share/icons/Papirus-Dark/32x32/emotes/:/usr/share/icons/Papirus-Dark/32x32/mimetypes
     notification_limit = 0
     progress_bar = true
     progress_bar_height = 10
@@ -24,19 +23,27 @@
     progress_bar_max_width = 300
     indicate_hidden = yes
     separator_color= frame
-    corner_radius = 4
+    corner_radius = 0
+    highlight = "#89b4fa"
 
 [urgency_low]
-    background = "#1E1D2F"
+    background = "#181825"
     foreground = "#D9E0EE"
     timeout = 5
 
 [urgency_normal]
-    background = "#1E1D2F"
+    background = "#181825"
     foreground = "#D9E0EE"
     timeout = 5
 
 [urgency_critical]
-    background  = "#1E1D2F"
+    background  = "#181825"
     foreground  = "#F28FAD"
     timeout = 5
+
+[fullscreen_delay_everything]
+    fullscreen = delay
+
+[fullscreen_show_critical]
+    msg_urgency = critical
+    fullscreen = show
