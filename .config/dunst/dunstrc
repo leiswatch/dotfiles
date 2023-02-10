@@ -1,14 +1,14 @@
 [global]
     monitor = 0
-    width=(200, 900)
-    height=(0, 350)
+    width=(200, 600)
+    height=(100, 500)
     origin = top-right
     class       = Dunst
     alignment   = center
-    frame_color = "#cba6f7"
+    frame_color = "#f38ba8"
     frame_width = 2
     font        = JetBrains Mono 13
-    offset      = 5x45
+    offset      = 15x51
     min_icon_size = 0
     max_icon_size = 24
     show_indicators = yes
@@ -24,7 +24,7 @@
     indicate_hidden = yes
     separator_color= frame
     corner_radius = 0
-    highlight = "#89b4fa"
+    highlight = "#cdd6f4"
 
 [urgency_low]
     background = "#181825"

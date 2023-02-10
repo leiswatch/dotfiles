@@ -22,36 +22,38 @@ title_align center
 # Start XDG autostart .desktop files using dex. See also
 # https://wiki.archlinux.org/index.php/XDG_Autostart
 # exec --no-startup-id dex --autostart --environment i3
-exec --no-startup-id $HOME/.config/polybar/launch.sh --blocks
+exec --no-startup-id $HOME/.config/polybar/launch.sh --i3
 
 # The combination of xss-lock, nm-applet and pactl is a popular choice, so
 # they are included here as an example. Modify as you see fit.
 
 # xss-lock grabs a logind suspend inhibit lock and will use i3lock to lock the
 # screen before suspend. Use loginctl lock-session to lock your screen.
-exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock --nofork
+exec --no-startup-id xss-lock --transfer-sleep-lock -- i3lock -i /home/leiswatch/Pictures/Wallpapers/2279198.png --nofork
 
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 exec --no-startup-id picom -b
 # exec --no-startup-id nitrogen --restore
 # exec --no-startup-id /usr/libexec/geoclue-2.0/demos/agent
-exec --no-startup-id feh --bg-scale /home/leiswatch/Pictures/1028709.jpg
+exec --no-startup-id feh --bg-scale /home/leiswatch/Pictures/Wallpapers/617304.jpg
 exec --no-startup-id /usr/lib/policykit-1-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id dbus-update-activation-environment --all
-exec --no-startup-id /usr/bin/gnome-keyring-daemon -s -d -l --unlock --components=ssh,secrets,pkcs11
+exec --no-startup-id /home/leiswatch/.config/i3/scripts/gnome-keyring.sh
+exec --no-startup-id /home/leiswatch/.config/i3/scripts/autostart.sh
+# exec --no-startup-id /usr/bin/gnome-keyring-daemon -s -d -l --unlock --components=ssh,secrets,pkcs11
 exec --no-startup-id dunst -config /home/leiswatch/.config/dunst/dunstrc
 exec --no-startup-id redshift -t 6500:3500 -l 54.3520:18.6466
 exec --no-startup-id xset r rate 300 50
 exec --no-startup-id xset dpms 0 0 1800
 
-exec --no-startup-id nm-applet
-exec --no-startup-id flameshot
-exec --no-startup-id megasync
-exec --no-startup-id /usr/bin/slack %U -u
-exec --no-startup-id /usr/share/discord/Discord --start-minimized
-exec --no-startup-id /opt/Mullvad\ VPN/mullvad-vpn %U
-exec --no-startup-id nvidia-settings -a "[gpu:0]/GPUFanControlState=1" -a "[fan:0]/GPUTargetFanSpeed=35"
+# exec --no-startup-id nm-applet
+# exec --no-startup-id flameshot
+# exec --no-startup-id megasync
+# exec --no-startup-id /usr/bin/slack %U -u
+# exec --no-startup-id /usr/share/discord/Discord --start-minimized
+# exec --no-startup-id /opt/Mullvad\ VPN/mullvad-vpn %U
+# exec --no-startup-id nvidia-settings -a "[gpu:0]/GPUFanControlState=1" -a "[fan:0]/GPUTargetFanSpeed=35"
 
 
 # Use pactl to adjust volume in PulseAudio.
@@ -60,6 +62,7 @@ bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && /home/leiswatch/.config/i3/scripts/volume.sh
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && /home/leiswatch/.config/i3/scripts/volume.sh
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym XF86AudioPlay exec playerctl -p spotify play-pause
 bindsym XF86AudioPause exec playerctl -p spotify play-pause
 bindsym XF86AudioNext exec playerctl -p spotify next
 bindsym XF86AudioPrev exec playerctl -p spotify previous
@@ -174,10 +177,19 @@ mode "resize" {
 # Pressing right will grow the window’s width.
 # Pressing up will shrink the window’s height.
 # Pressing down will grow the window’s height.
-  bindsym h resize shrink width 10 px or 10 ppt
-    bindsym k resize grow height 10 px or 10 ppt
-    bindsym j resize shrink height 10 px or 10 ppt
-    bindsym l resize grow width 10 px or 10 ppt
+# bindsym h resize shrink width 10 px or 10 ppt
+# bindsym k resize grow height 10 px or 10 ppt
+# bindsym j resize shrink height 10 px or 10 ppt
+# bindsym l resize grow width 10 px or 10 ppt
+    bindsym h resize grow left 5 px or 5 ppt
+    bindsym j resize grow down 5 px or 5 ppt
+    bindsym k resize grow up 5 px or 5 ppt
+    bindsym l resize grow right 5 px or 5 ppt
+
+    bindsym Shift+h resize shrink right 5 px or 5 ppt
+    bindsym Shift+j resize shrink up 5 px or 5 ppt
+    bindsym Shift+k resize shrink down 5 px or 5 ppt
+    bindsym Shift+l resize shrink left 5 px or 5 ppt
 
 # back to normal: Enter or Escape or $mod+r
     bindsym Return mode "default"
@@ -213,9 +225,9 @@ set $base      #1e1e2e
 set $mantle    #181825
 set $crust     #11111b
 
-client.focused           $blue     $base $text  $blue   $blue
-client.focused_inactive  $surface0   $base $text  $surface0  $surface0
-client.unfocused         $surface0    $base $text  $surface0  $surface0
+client.focused           $peach     $peach $base  $peach   $peach
+client.focused_inactive  $overlay2   $overlay2 $base  $overlay2  $overlay2
+client.unfocused         $overlay2    $overlay2 $base  $overlay2  $overlay2
 client.urgent            $peach    $base $peach $overlay0  $peach
 client.placeholder       $overlay0 $base $text  $overlay0  $overlay0
 client.background        $base

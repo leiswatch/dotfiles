@@ -130,14 +130,14 @@ XF86AudioMute
 XF86AudioMicMute
   pactl set-source-mute @DEFAULT_SOURCE@ toggle
 XF86AudioPlay
-  playerctl play-pause
+  playerctl -p spotify play-pause
 XF86AudioNext
-  playerctl next
+  playerctl -p spotify next
 XF86AudioPrev
-  playerctl previous
+  playerctl -p spotify previous
 
 super + shift + p
-  /home/leiswatch/.config/polybar/blocks/scripts/powermenu.sh &
+  rofi -show power-menu -modi power-menu:$HOME/.config/rofi/rofi-power-menu
 
 super + shift + s
   flameshot gui
