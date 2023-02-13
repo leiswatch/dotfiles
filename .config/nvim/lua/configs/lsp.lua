@@ -23,7 +23,7 @@ require("mason-lspconfig").setup({
 		"pyright",
 		"rust_analyzer",
 		"stylelint_lsp",
-		"sumneko_lua",
+		"lua_ls",
 		"svelte",
 		"tailwindcss",
 		"terraformls",
@@ -122,7 +122,7 @@ lspconfig["rust_analyzer"].setup({
 	},
 })
 
-lspconfig["sumneko_lua"].setup({
+lspconfig["lua_ls"].setup({
 	settings = {
 		Lua = {
 			diagnostics = { globals = { "vim" } },
