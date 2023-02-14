@@ -1,4 +1,6 @@
 [global]
+    gaps = true
+    gap_size = 5
     monitor = 0
     width=(200, 600)
     height=(100, 500)
@@ -24,7 +26,7 @@
     indicate_hidden = yes
     separator_color= frame
     corner_radius = 0
-    highlight = "#cdd6f4"
+    highlight = "#89b4fa"
 
 [urgency_low]
     background = "#1E1E2E"
