@@ -8,7 +8,7 @@ local has_words_before = function()
 end
 
 -- Catppuccin Mocha
-vim.api.nvim_set_hl(0, "CatppuccinBorder", { bg = "NONE", fg = "#313244" })
+vim.api.nvim_set_hl(0, "CatppuccinBorder", { bg = "NONE", fg = "#89b4fa" })
 vim.api.nvim_set_hl(0, "CatppuccinNormal", { bg = "NONE", fg = "#cdd6f4" })
 vim.api.nvim_set_hl(0, "CatppucinCursorLine", { bg = "#313244" })
 
@@ -66,11 +66,12 @@ cmp.setup({
 		end, { "i", "s" }),
 	}),
 	sources = cmp.config.sources({
-		{ name = "nvim_lsp" },
-		{ name = "luasnip" },
-		{ name = "buffer" },
-		{ name = "path" },
-		{ name = "nvim_lua" },
+		{ name = "nvim_lsp", priority = 8 },
+		{ name = "luasnip", priority = 7 },
+		{ name = "buffer", priority = 7 },
+		{ name = "spell", keyword_length = 3, priority = 5, keyword_pattern = [[\w\+]] },
+		{ name = "nvim_lua", priority = 5 },
+		{ name = "path", priority = 3 },
 	}),
 	enabled = function()
 		-- disable completion in comments

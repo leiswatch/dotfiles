@@ -45,7 +45,7 @@ exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=ssh
 # exec --no-startup-id ssh-add /home/leiswatch/.ssh/id_github
 exec --no-startup-id dbus-launch dunst --config /home/leiswatch/.config/dunst/dunstrc
 exec_always --no-startup-id xset r rate 300 50
-exec_always --no-startup-id xset s 480 dpms 600 600 600
+exec_always --no-startup-id xset s 600 dpms 1200 1200 1200
 # exec --no-startup-id /usr/libexec/geoclue-2.0/demos/agent
 # exec --no-startup-id feh --bg-scale /home/leiswatch/Pictures/Wallpapers/617304.jpg
 
@@ -57,9 +57,10 @@ exec --no-startup-id flameshot
 exec --no-startup-id megasync
 exec --no-startup-id /usr/bin/slack %U -u
 exec --no-startup-id /usr/share/discord/Discord --start-minimized
-exec --no-startup-id /opt/Mullvad\ VPN/mullvad-vpn %U
+exec --no-startup-id mintupdate-launcher
+# exec --no-startup-id /opt/Mullvad\ VPN/mullvad-vpn %U
 # exec --no-startup-id nvidia-settings -a "[gpu:0]/GPUFanControlState=1" -a "[fan:0]/GPUTargetFanSpeed=35"
-exec --no-startup-id redshift -t 6500:3500 -l 54.3520:18.6466
+# exec --no-startup-id redshift -t 6500:3500 -l 54.3520:18.6466
 
 
 exec_always --no-startup-id /home/leiswatch/.config/polybar/launch.sh --i3
@@ -84,7 +85,7 @@ bindsym $mod+Return exec kitty
 # bindsym $mod+Return exec alacritty
 
 # kill focused window
-bindsym $mod+Shift+q kill
+bindsym $mod+q kill
 
 # start dmenu (a program launcher)
 bindsym $mod+d exec --no-startup-id rofi -show drun
@@ -130,7 +131,10 @@ bindsym $mod+space focus mode_toggle
 bindsym $mod+a focus parent
 
 # focus the child container
-#bindsym $mod+d focus child
+bindsym $mod+c focus child
+
+bindsym $mod+Tab focus next
+bindsym $mod+Shift+Tab focus prev
 
 # Define names for default workspaces for which we configure key bindings later on.
 # We use variables to avoid repeating the names in multiple places.
@@ -224,16 +228,22 @@ set $base      #1e1e2e
 set $mantle    #181825
 set $crust     #11111b
 
-client.focused           $blue     $blue      $base  $blue     $blue
-client.focused_inactive  $overlay1 $overlay1  $base  $overlay1 $overlay1
-client.unfocused         $overlay1 $overlay1  $base  $overlay1 $overlay1
-client.urgent            $peach    $base      $peach $overlay0 $peach
-client.placeholder       $overlay0 $base      $text  $overlay0 $overlay0
+client.focused           $blue     $blue      $base     $blue     $blue
+client.focused_inactive  $overlay1 $overlay1  $base     $overlay1 $overlay1
+client.unfocused         $blue     $base      $text     $overlay1 $overlay1
+client.urgent            $sapphire $base      $sapphire $overlay0 $sapphire
+client.placeholder       $overlay0 $base      $text     $overlay0 $overlay0
 client.background        $base
 
 default_border pixel 2
 for_window [class=".*"] border pixel 2
+for_window [window_role="Popup"] border pixel 0
+for_window [window_role="pop-up"] border pixel 0
 gaps inner 10
 
 for_window [class="Pavucontrol"] floating enable
+for_window [title="Picture-in-Picture"] floating enable sticky enable
+for_window [title="Picture in picture"] floating enable sticky enable
+for_window [class="firefox" window_role="Popup"] border pixel 0
+for_window [class="MEGAsync"] border pixel 0 floating enable
 

@@ -1,5 +1,17 @@
 require("nvim-treesitter.configs").setup({
-	ensure_installed = { "javascript", "typescript", "css", "scss", "graphql", "python", "tsx", "rust", "go", "lua" },
+	ensure_installed = {
+		"javascript",
+		"typescript",
+		"css",
+		"scss",
+		"graphql",
+		"python",
+		"tsx",
+		"rust",
+		"go",
+		"lua",
+		"vim",
+	},
 	sync_install = false,
 	auto_install = true,
 	highlight = {
@@ -30,4 +42,3 @@ require("nvim-treesitter.configs").setup({
 		},
 	},
 })
-

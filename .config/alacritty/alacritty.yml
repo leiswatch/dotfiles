@@ -1,3 +1,5 @@
+env:
+  TERM: xterm-256color
 window:
   # Window dimensions (changes require restart)
   #
@@ -11,7 +13,7 @@ window:
     x: 10
     y: 10
 
-  opacity: 0.98
+  opacity: 1
 
 font:
   # The normal (roman) font face to use.
@@ -40,9 +42,9 @@ font:
     # style: "Medium Italic"
 
   # Point size of the font
-  size: 13.5
+  size: 13
 
-  draw_bold_text_with_bright_colors: true
+  draw_bold_text_with_bright_colors: false
 
 import:
   # uncomment the flavour you want below:

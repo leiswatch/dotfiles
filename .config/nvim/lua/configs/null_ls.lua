@@ -1,6 +1,6 @@
 local null_ls = require("null-ls")
 local diagnostics = null_ls.builtins.diagnostics
-local code_actions = null_ls.builtins.code_actions
+-- local code_actions = null_ls.builtins.code_actions
 
 null_ls.setup({
 	debug = false,
@@ -16,6 +16,6 @@ null_ls.setup({
 		diagnostics.dotenv_linter,
 
 		-- code_actions.eslint,
-		code_actions.gitsigns,
+		-- code_actions.gitsigns,
 	},
 })

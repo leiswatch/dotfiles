@@ -9,14 +9,6 @@ vim.api.nvim_create_autocmd("FileType", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = "lsp-installer",
-	callback = function()
-		vim.api.nvim_win_set_config(0, { border = "single" })
-		vim.opt.colorcolumn = ""
-	end,
-})
-
-vim.api.nvim_create_autocmd("FileType", {
 	pattern = "null-ls-info",
 	callback = function()
 		vim.api.nvim_win_set_config(0, { border = "single" })

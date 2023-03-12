@@ -7,7 +7,7 @@
     origin = top-right
     class       = Dunst
     alignment   = center
-    frame_color = "#89b4fa"
+    frame_color = "#fab387"
     frame_width = 2
     font        = JetBrains Mono 13
     offset      = 15x50
@@ -26,21 +26,21 @@
     indicate_hidden = yes
     separator_color= frame
     corner_radius = 0
-    highlight = "#89b4fa"
+    highlight = "#fab387"
 
 [urgency_low]
     background = "#1E1E2E"
-    foreground = "#D9E0EE"
+    foreground = "#cdd6f4"
     timeout = 5
 
 [urgency_normal]
     background = "#1E1E2E"
-    foreground = "#D9E0EE"
+    foreground = "#cdd6f4"
     timeout = 5
 
 [urgency_critical]
     background  = "#1E1E2E"
-    foreground  = "#F28FAD"
+    foreground  = "#cdd6f4"
     timeout = 5
 
 [fullscreen_delay_everything]
