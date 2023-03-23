@@ -66,12 +66,12 @@ cmp.setup({
 		end, { "i", "s" }),
 	}),
 	sources = cmp.config.sources({
-		{ name = "nvim_lsp", priority = 8 },
-		{ name = "luasnip", priority = 7 },
-		{ name = "buffer", priority = 7 },
-		{ name = "spell", keyword_length = 3, priority = 5, keyword_pattern = [[\w\+]] },
-		{ name = "nvim_lua", priority = 5 },
-		{ name = "path", priority = 3 },
+		{ name = "nvim_lsp" },
+		{ name = "luasnip" },
+		{ name = "path" },
+		{ name = "buffer" },
+		{ name = "nvim_lua" },
+		{ name = "spell", keyword_length = 3, keyword_pattern = [[\w\+]] },
 	}),
 	enabled = function()
 		-- disable completion in comments
@@ -108,8 +108,8 @@ cmp.setup({
 			cmp.config.compare.score,
 			cmp.config.compare.offset,
 			cmp.config.compare.order,
-			-- cmp.config.compare.exact,
 			-- cmp.config.compare.kind,
+			-- cmp.config.compare.exact,
 			-- cmp.config.compare.sort_text,
 			-- cmp.config.compare.length,
 		},

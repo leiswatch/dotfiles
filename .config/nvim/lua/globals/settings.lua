@@ -57,6 +57,7 @@ vim.g.virtcolumn_char = "▕" -- by default
 vim.opt.listchars:append("tab:› ,trail:•,extends:#,nbsp:.,eol:↴,space:⋅")
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
+vim.opt.equalalways = true
 
 vim.cmd([[
   " Catppuccin

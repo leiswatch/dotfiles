@@ -13,9 +13,10 @@ plugins=(git npm yarn node docker docker-compose command-not-found you-should-us
 source $ZSH/oh-my-zsh.sh
 
 export BAT_THEME="Catppuccin-mocha"
+
 # Catppuccin
 export FZF_DEFAULT_OPTS=" \
---color=bg+:#313244,spinner:#f5e0dc,hl:#f38ba8 \
+--color=bg+:#313244,bg:#1e1e2e,spinner:#f5e0dc,hl:#f38ba8 \
 --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
 --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
 
@@ -27,13 +28,12 @@ export FZF_DEFAULT_OPTS=" \
 #  --color=marker:#ebbcba,spinner:#eb6f92,header:#ebbcba"
 
 alias ls="exa"
-alias cat="batcat"
+alias cat="bat"
 
 DISABLE_AUTO_TITLE=true
 
-export NVM_DIR="$HOME/.nvm"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh"  # This loads nvm
-[ -s "$NVM_DIR/bash_completion" ] && \. "$NVM_DIR/bash_completion"  # This loads nvm bash_completion
+export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
+[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
 
 function set_win_title(){
     echo -ne "\033]0; Terminal \007"
@@ -41,15 +41,13 @@ function set_win_title(){
 
 precmd_functions+=(set_win_title)
 
+autoload -Uz compinit && compinit
+
 #fzf
-source /usr/share/doc/fzf/examples/key-bindings.zsh
-source /usr/share/doc/fzf/examples/completion.zsh
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
 
 #kubectl
 source <(kubectl completion zsh)
 
-autoload -Uz compinit && compinit
-eval "$(zoxide init zsh)"
-
 eval "$(starship init zsh)"
-

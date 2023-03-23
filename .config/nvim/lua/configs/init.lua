@@ -29,4 +29,4 @@ require("configs.cybu")
 require("configs.jabs")
 require("configs.auto_hlsearch")
 require("configs.lspsaga")
-
+require("configs.bqf")

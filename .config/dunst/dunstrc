@@ -2,12 +2,12 @@
     gaps = true
     gap_size = 5
     monitor = 0
-    width=(200, 600)
-    height=(100, 500)
+    width=(300, 600)
+    height=(100, 600)
     origin = top-right
     class       = Dunst
     alignment   = center
-    frame_color = "#fab387"
+    frame_color = "#cba6f7"
     frame_width = 2
     font        = JetBrains Mono 13
     offset      = 15x50
@@ -25,8 +25,8 @@
     progress_bar_max_width = 300
     indicate_hidden = yes
     separator_color= frame
-    corner_radius = 0
-    highlight = "#fab387"
+    corner_radius = 4
+    highlight = "#cba6f7"
 
 [urgency_low]
     background = "#1E1E2E"

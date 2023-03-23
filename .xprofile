@@ -1,2 +1,2 @@
+xrdb ~/.Xresources
 xset r rate 300 50
-redshift -t 6500:3500 -l 54.3520:18.6466 &

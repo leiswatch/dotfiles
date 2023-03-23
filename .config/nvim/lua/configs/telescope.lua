@@ -60,7 +60,7 @@ telescope.setup({
 	},
 	pickers = {
 		find_files = {
-			find_command = { "fdfind", "--type", "f", "--strip-cwd-prefix", "--hidden", "--ignore-case" },
+			find_command = { "fd", "--type", "f", "--strip-cwd-prefix", "--hidden", "--ignore-case" },
 		},
 	},
 	extensions = {

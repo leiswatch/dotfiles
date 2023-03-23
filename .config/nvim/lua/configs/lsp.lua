@@ -84,7 +84,7 @@ vim.keymap.set("n", "[d", "<cmd> lua vim.diagnostic.goto_prev({float={border='si
 vim.keymap.set("n", "]d", "<cmd> lua vim.diagnostic.goto_next({float={border='single'}})<cr>", opts)
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, opts)
 
-local on_attach = function(client, bufnr)
+local custom_on_attach = function(client, bufnr)
 	-- vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 	local bufopts = { noremap = true, silent = true, buffer = bufnr }
 
@@ -112,7 +112,7 @@ local capabilities = require("cmp_nvim_lsp").default_capabilities()
 capabilities.textDocument.completion.completionItem.snippetSupport = true
 
 lspconfig["rust_analyzer"].setup({
-	on_attach = on_attach,
+	on_attach = custom_on_attach,
 	capabilities = capabilities,
 	cmd = {
 		"rustup",
@@ -131,12 +131,12 @@ lspconfig["lua_ls"].setup({
 			},
 		},
 	},
-	on_attach = on_attach,
+	on_attach = custom_on_attach,
 	capabilities = capabilities,
 })
 
 lspconfig["stylelint_lsp"].setup({
-	on_attach = on_attach,
+	on_attach = custom_on_attach,
 	capabilities = capabilities,
 	filetypes = { "css", "less", "sass", "scss", "sugarss", "vue" },
 	settings = {
@@ -148,7 +148,7 @@ lspconfig["stylelint_lsp"].setup({
 })
 
 lspconfig["tsserver"].setup({
-	on_attach = on_attach,
+	on_attach = custom_on_attach,
 	capabilities = capabilities,
 	commands = {
 		OrganizeImports = {
@@ -159,70 +159,73 @@ lspconfig["tsserver"].setup({
 })
 
 lspconfig["cssmodules_ls"].setup({
-	on_attach = on_attach,
+	on_attach = function(client)
+		client.server_capabilities.definitionProvider = false
+		custom_on_attach(client)
+	end,
 	capabilities = capabilities,
 	filetypes = { "typescriptreact", "javascriptreact" },
 })
 
 lspconfig["graphql"].setup({
-	on_attach = on_attach,
+	on_attach = custom_on_attach,
 	capabilities = capabilities,
 	filetypes = { "graphql" },
 })
 
 lspconfig["html"].setup({
-	on_attach = on_attach,
+	on_attach = custom_on_attach,
 	capabilities = capabilities,
 })
 
 lspconfig["svelte"].setup({
-	on_attach = on_attach,
+	on_attach = custom_on_attach,
 	capabilities = capabilities,
 })
 
 lspconfig["cssls"].setup({
-	on_attach = on_attach,
+	on_attach = custom_on_attach,
 	capabilities = capabilities,
 	filetypes = { "css", "less", "sass", "scss", "sugarss", "vue" },
 })
 
 lspconfig["jsonls"].setup({
-	on_attach = on_attach,
+	on_attach = custom_on_attach,
 	capabilities = capabilities,
 })
 
 lspconfig["yamlls"].setup({
-	on_attach = on_attach,
+	on_attach = custom_on_attach,
 	capabilities = capabilities,
 })
 
 lspconfig["pyright"].setup({
-	on_attach = on_attach,
+	on_attach = custom_on_attach,
 	capabilities = capabilities,
 })
 
 lspconfig["gopls"].setup({
-	on_attach = on_attach,
+	on_attach = custom_on_attach,
 	capabilities = capabilities,
 })
 
 lspconfig["dockerls"].setup({
-	on_attach = on_attach,
+	on_attach = custom_on_attach,
 	capabilities = capabilities,
 })
 
 lspconfig["tailwindcss"].setup({
-	on_attach = on_attach,
+	on_attach = custom_on_attach,
 	capabilities = capabilities,
 })
 
 lspconfig["prismals"].setup({
-	on_attach = on_attach,
+	on_attach = custom_on_attach,
 	capabilities = capabilities,
 })
 
 lspconfig["eslint"].setup({
-	on_attach = on_attach,
+	on_attach = custom_on_attach,
 	capabilities = capabilities,
 	settings = {
 		codeActionOnSave = {
