@@ -13,6 +13,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	{ "catppuccin/nvim", name = "catppuccin" },
+	{ "EdenEast/nightfox.nvim" },
 	{ "neovim/nvim-lspconfig" },
 	{
 		"nvim-treesitter/nvim-treesitter",
@@ -55,7 +56,7 @@ require("lazy").setup({
 	{ "nvim-lua/plenary.nvim" },
 	{
 		"nvim-telescope/telescope.nvim",
-		version = "0.1.0",
+		tag = "0.1.1",
 	},
 	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 	{ "ThePrimeagen/harpoon" },

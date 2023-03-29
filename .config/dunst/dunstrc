@@ -2,8 +2,8 @@
     gaps = true
     gap_size = 5
     monitor = 0
-    width=(300, 600)
-    height=(100, 600)
+    width = (200, 400)
+    height = (0, 300)
     origin = top-right
     class       = Dunst
     alignment   = center
@@ -14,10 +14,10 @@
     min_icon_size = 0
     max_icon_size = 24
     show_indicators = yes
-    show_age_threshold = 60
+    show_age_threshold = -1
     icon_position = left
     icon_path = /usr/share/icons/Papirus-Dark/32x32/status/:/usr/share/icons/Papirus-Dark/32x32/devices/:/usr/share/icons/Papirus-Dark/32x32/apps/:/usr/share/icons/Papirus-Dark/32x32/actions/:/usr/share/icons/Papirus-Dark/32x32/categories/:/usr/share/icons/Papirus-Dark/32x32/emblems/:/usr/share/icons/Papirus-Dark/32x32/emotes/:/usr/share/icons/Papirus-Dark/32x32/mimetypes
-    notification_limit = 0
+    notification_limit = 5
     progress_bar = true
     progress_bar_height = 10
     progress_bar_frame_width = 1
@@ -25,8 +25,10 @@
     progress_bar_max_width = 300
     indicate_hidden = yes
     separator_color= frame
-    corner_radius = 4
+    corner_radius = 0
     highlight = "#cba6f7"
+    hide_duplicate_count = false
+    sticky_history = false
 
 [urgency_low]
     background = "#1E1E2E"

@@ -1,4 +1,5 @@
 require("configs.catppuccin")
+-- require("configs.nightfox")
 -- require("configs.tokyonight")
 -- require("configs.nightfox")
 -- require("configs.notify")

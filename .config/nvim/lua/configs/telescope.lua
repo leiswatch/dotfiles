@@ -26,7 +26,7 @@ telescope.setup({
 				width = 0.90,
 				height = 0.85,
 				preview_width = 0.4,
-				prompt_position = "bottom",
+				-- prompt_position = "bottom",
 			},
 		},
 		file_sorter = require("telescope.sorters").get_fuzzy_file,
@@ -44,7 +44,7 @@ telescope.setup({
 		generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
 		winblend = 0,
 		border = true,
-    borderchars = { '─', '│', '─', '│', '┌', '┐', '┘', '└'},
+		borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
 		color_devicons = true,
 		previewer = true,
 		prompt_title = true,
@@ -61,7 +61,14 @@ telescope.setup({
 	pickers = {
 		find_files = {
 			find_command = { "fd", "--type", "f", "--strip-cwd-prefix", "--hidden", "--ignore-case" },
+			previewer = false,
+			prompt_title = false,
+      layout_config = {
+      horizontal = {
+        prompt_position = "top",
+      },
 		},
+  }
 	},
 	extensions = {
 		fzf = {

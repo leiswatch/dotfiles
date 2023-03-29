@@ -36,7 +36,7 @@ vim.o.background = "dark"
 vim.o.relativenumber = true
 vim.o.fillchars = "eob: "
 vim.o.colorcolumn = "80"
--- vim.o.guicursor = ""
+vim.o.guicursor = ""
 vim.o.hlsearch = false
 vim.o.wrap = false
 vim.o.signcolumn = "yes"
@@ -80,6 +80,9 @@ vim.cmd([[
   let test#strategy = "neovim"
   let test#neovim#term_position = "vert"
   let g:test#neovim#start_normal = 1 " If using neovim strategy
+
+  au BufRead,BufNewFile *.cjs setfiletype javascript
+  au BufRead,BufNewFile *.mjs setfiletype javascript
 
 	autocmd BufNewFile,BufRead * setlocal formatoptions-=ro
 ]])

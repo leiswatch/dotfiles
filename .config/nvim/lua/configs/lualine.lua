@@ -70,13 +70,14 @@ local custom_cattpuccin_theme = {
 -- 	},
 -- }
 
+
 local config = {
 	options = {
 		icons_enabled = true,
 		theme = custom_cattpuccin_theme,
 		globalstatus = true,
 		component_separators = "",
-		-- section_separators = "",
+		section_separators = "",
 		-- section_separators = { left = "", right = "" },
 		disabled_filetypes = { -- Filetypes to disable lualine for.
 			statusline = { "alpha", "packer", "mason" }, -- only ignores the ft for statusline.
@@ -88,7 +89,7 @@ local config = {
 			{ "mode", icons_enabled = true, icon = "" },
 		},
 		lualine_b = {
-			{ "filename", icon = "󰈔" },
+			{ "filename", icon = "" },
 			{ "branch", icon = "" },
 			{
 				"diff",
