@@ -61,11 +61,10 @@ telescope.setup({
 	pickers = {
 		find_files = {
 			find_command = { "fd", "--type", "f", "--strip-cwd-prefix", "--hidden", "--ignore-case" },
-			previewer = false,
 			prompt_title = false,
       layout_config = {
       horizontal = {
-        prompt_position = "top",
+        prompt_position = "bottom",
       },
 		},
   }

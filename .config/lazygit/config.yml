@@ -6,7 +6,7 @@ gui:
     selectedRangeBgColor:
       - "#313244"
     inactiveBorderColor:
-      - "#313244"
+      - "#6c7086"
     activeBorderColor:
       - "#89b4fa"
       - bold

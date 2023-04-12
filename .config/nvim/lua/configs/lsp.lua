@@ -25,7 +25,7 @@ require("mason-lspconfig").setup({
 		"stylelint_lsp",
 		"lua_ls",
 		"svelte",
-		"tailwindcss",
+		-- "tailwindcss",
 		"terraformls",
 		"tsserver",
 		"vuels",
@@ -85,6 +85,7 @@ vim.keymap.set("n", "]d", "<cmd> lua vim.diagnostic.goto_next({float={border='si
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, opts)
 
 local custom_on_attach = function(client, bufnr)
+	-- client.server_capabilities.semanticTokensProvider = nil
 	-- vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 	local bufopts = { noremap = true, silent = true, buffer = bufnr }
 
@@ -214,10 +215,10 @@ lspconfig["dockerls"].setup({
 	capabilities = capabilities,
 })
 
-lspconfig["tailwindcss"].setup({
-	on_attach = custom_on_attach,
-	capabilities = capabilities,
-})
+-- lspconfig["tailwindcss"].setup({
+-- 	on_attach = custom_on_attach,
+-- 	capabilities = capabilities,
+-- })
 
 lspconfig["prismals"].setup({
 	on_attach = custom_on_attach,

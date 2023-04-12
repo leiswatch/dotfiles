@@ -35,7 +35,6 @@ title_align center
 exec --no-startup-id xss-lock --transfer-sleep-lock -- betterlockscreen -l blur --blur 50
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
-exec --no-startup-id /home/leiswatch/.config/polybar/launch.sh --i3
 exec --no-startup-id picom --config /home/leiswatch/.config/picom/picom.conf
 exec --no-startup-id nitrogen --restore
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
@@ -44,17 +43,21 @@ exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=ssh
 exec --no-startup-id dbus-launch dunst --config /home/leiswatch/.config/dunst/dunstrc
 exec --no-startup-id xautocfg
 
+exec_always --no-startup-id /home/leiswatch/.config/polybar/launch.sh --i3
+
+exec --no-startup-id volctl
 exec --no-startup-id nm-applet
 exec --no-startup-id blueman-applet
 exec --no-startup-id system-config-printer-applet
-exec --no-startup-id flameshot
+# exec --no-startup-id flameshot
+exec --no-startup-id shutter --min_at_startup
 exec --no-startup-id megasync
 exec --no-startup-id /usr/bin/slack %U -u
 exec --no-startup-id /usr/bin/discord --start-minimized
 exec --no-startup-id caffeine start --activate
-exec --no-startup-id pamac-tray
 exec --no-startup-id xfce4-power-manager
 exec --no-startup-id redshift-gtk
+# exec --no-startup-id pamac-tray
 # exec --no-startup-id /usr/bin/mullvad-vpn %U
 # exec --no-startup-id i3-autolayout autolayout
 
@@ -62,12 +65,14 @@ exec_always --no-startup-id xset r rate 300 50
 exec_always --no-startup-id setxkbmap -layout pl
 exec_always --no-startup-id xrandr --output DisplayPort-1 --set TearFree on --mode 2560x1440 --rate 164.96
 
-
 # Use pactl to adjust volume in PulseAudio.
 # set $refresh_i3status killall -SIGUSR1 i3status
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && /home/leiswatch/.config/i3/scripts/volume.sh
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && /home/leiswatch/.config/i3/scripts/volume.sh
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && /home/leiswatch/.config/i3/scripts/volume.sh
+# bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && /home/leiswatch/.config/i3/scripts/volume.sh
+# bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && /home/leiswatch/.config/i3/scripts/volume.sh
+# bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && /home/leiswatch/.config/i3/scripts/volume.sh
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 bindsym XF86AudioPlay exec playerctl -p spotify play-pause
 bindsym XF86AudioPause exec playerctl -p spotify play-pause
@@ -78,9 +83,9 @@ bindsym XF86AudioPrev exec playerctl -p spotify previous
 floating_modifier $mod
 
 # start a terminal
-bindsym $mod+Return exec kitty
+# bindsym $mod+Return exec kitty
 # bindsym $mod+Return exec gnome-terminal
-#bindsym $mod+Return exec alacritty
+bindsym $mod+Return exec kitty
 
 # kill focused window
 bindsym $mod+q kill
@@ -180,7 +185,7 @@ bindsym $mod+Shift+r restart
 bindsym $mod+shift+p exec --no-startup-id /home/leiswatch/.config/rofi/powermenu/type-1/powermenu.sh
 # bindsym $mod+shift+p exec /home/leiswatch/.config/polybar/blocks/scripts/powermenu.sh &
 # Flameshot
-bindsym $mod+shift+s exec flameshot gui
+bindsym $mod+shift+s exec shutter -s -C
 # resize window (you can also use the mouse for that)
 mode "resize" {
     bindsym h resize grow left 5 px or 5 ppt
@@ -244,7 +249,7 @@ client.placeholder       $overlay0 $base      $text     $overlay0 $overlay0
 client.background        $base
 
 default_border pixel 2
-for_window [class=".*"] border pixel 2 move position center
+for_window [all] border pixel 2
 for_window [window_role="Popup"] border pixel 0
 for_window [window_role="pop-up"] border pixel 0
 gaps inner 10
@@ -258,4 +263,5 @@ for_window [class="Google-chrome" window_role="pop-up"] border pixel 2 floating 
 for_window [class="Brave-browser" window_role="pop-up"] border pixel 2 floating enable
 for_window [class="MEGAsync"] border pixel 0 floating enable
 for_window [class="Qalculate-gtk"] floating enable
-
+for_window [all] title_window_icon on
+for_window [all] title_window_icon padding 10px

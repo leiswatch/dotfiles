@@ -12,10 +12,9 @@ vim.api.nvim_set_hl(0, "CatppuccinBorder", { bg = "NONE", fg = "#89b4fa" })
 vim.api.nvim_set_hl(0, "CatppuccinNormal", { bg = "NONE", fg = "#cdd6f4" })
 vim.api.nvim_set_hl(0, "CatppucinCursorLine", { bg = "#313244" })
 
--- Rose Pine
--- vim.api.nvim_set_hl(0, "RosePineBorder", { bg = "NONE", fg = "#403d52" })
--- vim.api.nvim_set_hl(0, "RosePineNormal", { bg = "NONE", fg = "#e0def4" })
--- vim.api.nvim_set_hl(0, "RosePineCursorLine", { bg = "#524f67" })
+-- vim.api.nvim_set_hl(0, "CatppuccinBorder", { bg = "NONE", fg = "#45475a" })
+-- vim.api.nvim_set_hl(0, "CatppuccinNormal", { bg = "NONE", fg = "#cdd6f4" })
+-- vim.api.nvim_set_hl(0, "CatppucinCursorLine", { bg = "#45475a" })
 
 cmp.setup({
 	snippet = {
@@ -99,21 +98,23 @@ cmp.setup({
 	-- 	end,
 	-- },
 	formatting = {
-		format = lspkind.cmp_format(),
+		format = lspkind.cmp_format({
+      mode = "symbol",
+    }),
 	},
-	sorting = {
-		comparators = {
-			cmp.config.compare.locality,
-			cmp.config.compare.recently_used,
-			cmp.config.compare.score,
-			cmp.config.compare.offset,
-			cmp.config.compare.order,
-			-- cmp.config.compare.kind,
-			-- cmp.config.compare.exact,
-			-- cmp.config.compare.sort_text,
-			-- cmp.config.compare.length,
-		},
-	},
+	-- sorting = {
+	-- 	comparators = {
+	-- 		cmp.config.compare.locality,
+	-- 		cmp.config.compare.recently_used,
+	-- 		cmp.config.compare.score,
+	-- 		cmp.config.compare.offset,
+	-- 		cmp.config.compare.order,
+	-- 		-- cmp.config.compare.kind,
+	-- 		-- cmp.config.compare.exact,
+	-- 		-- cmp.config.compare.sort_text,
+	-- 		-- cmp.config.compare.length,
+	-- 	},
+	-- },
 })
 
 cmp.setup.cmdline({ "/", "?" }, {

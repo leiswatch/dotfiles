@@ -70,7 +70,6 @@ local custom_cattpuccin_theme = {
 -- 	},
 -- }
 
-
 local config = {
 	options = {
 		icons_enabled = true,
@@ -86,11 +85,24 @@ local config = {
 	},
 	sections = {
 		lualine_a = {
-			{ "mode", icons_enabled = true, icon = "" },
+			{ "mode", icons_enabled = true, icon = "" },
 		},
-		lualine_b = {
-			{ "filename", icon = "" },
-			{ "branch", icon = "" },
+		lualine_b = {},
+		lualine_c = {
+			"%=",
+			{ colored = true, icon_only = true, "filetype" },
+			{ "filename", padding = { left = 0 } },
+			"diagnostics",
+		},
+		lualine_x = {
+			"searchcount",
+			-- "diagnostics",
+			-- {
+			-- 	"filetype",
+			-- 	colored = true, -- Displays filetype icon in color if set to true
+			-- 	icon_only = false, -- Display only an icon for filetype
+			-- 	icon = { align = "left" },
+			-- },
 			{
 				"diff",
 				colored = true,
@@ -105,24 +117,15 @@ local config = {
 					removed = " ",
 				},
 			},
-		},
-		lualine_c = {},
-		lualine_x = {
-			"diagnostics",
-			{
-				"filetype",
-				colored = true, -- Displays filetype icon in color if set to true
-				icon_only = false, -- Display only an icon for filetype
-				icon = { align = "left" },
-			},
+			{ "branch", icon = "󰘬" },
 			{
 				"fileformat",
 				icons_enabled = true,
-				symbols = {
-					unix = "LF",
-					dos = "CRLF",
-					mac = "CR",
-				},
+				-- symbols = {
+				-- 	unix = "LF",
+				-- 	dos = "CRLF",
+				-- 	mac = "CR",
+				-- },
 			},
 			{
 				"encoding",
@@ -131,8 +134,7 @@ local config = {
 				end,
 				color = { fg = colors.red },
 			},
-			-- "progress",
-			"%P",
+			"progress",
 		},
 		lualine_y = {},
 		lualine_z = { "location" },
@@ -140,39 +142,39 @@ local config = {
 	extensions = { "neo-tree", "quickfix", "fzf" },
 }
 
-local function ins_left(component)
-	table.insert(config.sections.lualine_c, component)
-end
+-- local function ins_left(component)
+-- 	table.insert(config.sections.lualine_c, component)
+-- end
 
-ins_left({
-	function()
-		return "%="
-	end,
-})
+-- ins_left({
+-- 	function()
+-- 		return "%="
+-- 	end,
+-- })
 
-ins_left({
-	-- Lsp server name .
-	function()
-		local lsp = ""
-		local msg = "No Active Lsp"
-		local clients = vim.lsp.get_active_clients()
-		if next(clients) == nil then
-			return msg
-		end
-		for _, client in ipairs(clients) do
-			if not lsp:find(client.name) then
-				lsp = client.name .. " " .. lsp
-			end
-		end
+-- ins_left({
+-- 	-- Lsp server name .
+-- 	function()
+-- 		local lsp = ""
+-- 		local msg = "No Active Lsp"
+-- 		local clients = vim.lsp.get_active_clients()
+-- 		if next(clients) == nil then
+-- 			return msg
+-- 		end
+-- 		for _, client in ipairs(clients) do
+-- 			if not lsp:find(client.name) then
+-- 				lsp = client.name .. " " .. lsp
+-- 			end
+-- 		end
 
-		if lsp ~= "" then
-			return lsp
-		end
+-- 		if lsp ~= "" then
+-- 			return lsp
+-- 		end
 
-		return msg
-	end,
-	icon = "",
-	color = { fg = colors.subtext, gui = "bold" },
-})
+-- 		return msg
+-- 	end,
+-- 	icon = "",
+-- 	color = { fg = colors.subtext, gui = "bold" },
+-- })
 
 require("lualine").setup(config)

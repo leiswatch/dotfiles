@@ -13,7 +13,7 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	{ "catppuccin/nvim", name = "catppuccin" },
-	{ "EdenEast/nightfox.nvim" },
+	{ "rebelot/kanagawa.nvim" },
 	{ "neovim/nvim-lspconfig" },
 	{
 		"nvim-treesitter/nvim-treesitter",
@@ -95,6 +95,7 @@ require("lazy").setup({
 	{ "matbme/JABS.nvim" },
 	{ "asiryk/auto-hlsearch.nvim" },
 	{ "windwp/nvim-spectre" },
+	{ "akinsho/git-conflict.nvim" },
 }, {
 	ui = {
 		size = { width = 0.8, height = 0.8 },
