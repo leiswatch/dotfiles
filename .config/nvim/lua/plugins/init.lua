@@ -13,7 +13,6 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	{ "catppuccin/nvim", name = "catppuccin" },
-	{ "rebelot/kanagawa.nvim" },
 	{ "neovim/nvim-lspconfig" },
 	{
 		"nvim-treesitter/nvim-treesitter",
@@ -22,9 +21,7 @@ require("lazy").setup({
 			ts_update()
 		end,
 	},
-	{
-		"windwp/nvim-ts-autotag",
-	},
+	{ "windwp/nvim-ts-autotag" },
 	{ "JoosepAlviste/nvim-ts-context-commentstring" },
 	{ "nvim-treesitter/nvim-treesitter-context" },
 	{ "williamboman/mason.nvim" },
@@ -43,12 +40,8 @@ require("lazy").setup({
 		"nvim-lualine/lualine.nvim",
 		dependencies = { "kyazdani42/nvim-web-devicons", opt = true },
 	},
-	{
-		"windwp/nvim-autopairs",
-	},
-	{
-		"numToStr/Comment.nvim",
-	},
+	{ "windwp/nvim-autopairs" },
+	{ "numToStr/Comment.nvim" },
 	{ "stevearc/dressing.nvim" },
 	{ "j-hui/fidget.nvim" },
 	{ "onsails/lspkind.nvim" },
@@ -61,16 +54,11 @@ require("lazy").setup({
 	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 	{ "ThePrimeagen/harpoon" },
 	{ "NvChad/nvim-colorizer.lua" },
-	{
-		"lewis6991/gitsigns.nvim",
-	},
-	{
-		"goolord/alpha-nvim",
-	},
+	{ "lewis6991/gitsigns.nvim" },
+	{ "goolord/alpha-nvim" },
 	{ "sbdchd/neoformat" },
 	{ "kylechui/nvim-surround", version = "*" },
 	{ "jose-elias-alvarez/null-ls.nvim" },
-	{ "nkakouros-original/numbers.nvim" },
 	{
 		"glepnir/lspsaga.nvim",
 		branch = "main",
@@ -87,15 +75,11 @@ require("lazy").setup({
 	{ "s1n7ax/nvim-window-picker", version = "v1.*" },
 	{ "folke/which-key.nvim" },
 	{ "mbbill/undotree" },
-	{
-		"ghillb/cybu.nvim",
-		branch = "main",
-	},
 	{ "andymass/vim-matchup" },
-	{ "matbme/JABS.nvim" },
 	{ "asiryk/auto-hlsearch.nvim" },
-	{ "windwp/nvim-spectre" },
+	-- { "windwp/nvim-spectre" },
 	{ "akinsho/git-conflict.nvim" },
+	{ "j-morano/buffer_manager.nvim" },
 }, {
 	ui = {
 		size = { width = 0.8, height = 0.8 },

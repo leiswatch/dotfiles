@@ -36,31 +36,36 @@ vim.api.nvim_create_autocmd("User", {
 	end,
 })
 
--- vim.api.nvim_create_autocmd("ColorScheme", {
--- 	pattern = "*",
--- 	callback = function()
--- 		package.loaded["feline"] = nil
--- 		package.loaded["catppuccin.groups.integrations.feline"] = nil
--- 		require("feline").setup({
--- 			components = require("catppuccin.groups.integrations.feline").get(),
--- 		})
--- 	end,
--- })
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = {
+		"alpha",
+		"lspinfo",
+		"lsp-installer",
+		"null-ls-info",
+		"NvimTree",
+		"buffer_manager",
+		"harpoon",
+		"TelescopePrompt",
+		"mason",
+	},
+	callback = function()
+		vim.o.relativenumber = false
+	end,
+})
 
--- vim.api.nvim_create_augroup("LspAttach_inlayhints", {})
--- vim.api.nvim_create_autocmd("LspAttach", {
--- 	group = "LspAttach_inlayhints",
--- 	callback = function(args)
--- 		if not (args.data and args.data.client_id) then
--- 			return
--- 		end
-
--- 		local bufnr = args.buf
--- 		local client = vim.lsp.get_client_by_id(args.data.client_id)
--- 		require("lsp-inlayhints").on_attach(client, bufnr)
--- 	end,
--- })
-
-vim.cmd([[
-	autocmd FileType alpha, lspinfo, lsp-installer, null-ls-info, NvimTree setl colorcolumn=0
-]])
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = {
+		"alpha",
+		"lspinfo",
+		"lsp-installer",
+		"null-ls-info",
+		"NvimTree",
+		"buffer_manager",
+		"harpoon",
+		"TelescopePrompt",
+		"mason",
+	},
+	callback = function()
+		vim.o.colorcolumn = "0"
+	end,
+})

@@ -38,7 +38,6 @@ require("catppuccin").setup({
 			ActionPreviewBorder = { fg = color.blue, bg = "NONE" },
 			ActionPreviewTitle = { fg = color.text, bg = "NONE" },
 			FloatTitle = { fg = color.text, bg = "NONE" },
-			CybuFocus = { bg = color.surface0 },
 		}
 	end,
 	integrations = {
