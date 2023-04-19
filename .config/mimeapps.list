@@ -1,0 +1,21 @@
+[Default Applications]
+text/html=google-chrome.desktop
+x-scheme-handler/http=google-chrome.desktop
+x-scheme-handler/https=google-chrome.desktop
+x-scheme-handler/about=google-chrome.desktop
+x-scheme-handler/unknown=google-chrome.desktop
+text/plain=xed.desktop
+application/pdf=org.gnome.Evince.desktop
+inode/directory=thunar.desktop
+image/jpeg=pix.desktop
+image/png=pix.desktop
+image/svg+xml=pix.desktop
+image/webp=pix.desktop
+image/gif=pix.desktop
+audio/mpeg=org.gnome.Rhythmbox3.desktop
+
+[Added Associations]
+text/plain=xed.desktop;
+application/pdf=org.gnome.Evince.desktop;
+audio/mpeg=org.gnome.Rhythmbox3.desktop;
+audio/x-wav=org.gnome.Rhythmbox3.device.desktop;
