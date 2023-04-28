@@ -29,22 +29,21 @@ if [ -d "$HOME/.local/share/pnpm" ] ; then
 fi
 
 # Go
-export GOPATH=$HOME/.go
+export GOPATH="$HOME/.go"
 export PATH=$PATH:/usr/local/go/bin
 # Deno
-export DENO_INSTALL=$HOME/.deno
+export DENO_INSTALL="$HOME/.deno"
 export PATH=$PATH:$DENO_INSTALL/bin
 # PNPM
 export PNPM_HOME="$HOME/.local/share/pnpm"
 export PATH="$PNPM_HOME:$PATH"
 
 # Other
-export GTK_THEME=Mint-Y-Dark-Aqua
+# export GTK_THEME=Mint-Y-Dark-Aqua
+export GTK_THEME=Arc-Dark-solid
 export XCURSOR_THEME=Simpe1-Adw-Dark
 export QT_QPA_PLATFORMTHEME=qt5ct
 
 export XDG_CONFIG_HOME="$HOME/.config"
 export XDG_CACHE_HOME="$HOME/.cache"
 export XDG_LOCAL_HOME="$HOME/.local"
-
-export TERM=kitty
