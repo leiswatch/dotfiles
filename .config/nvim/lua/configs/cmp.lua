@@ -12,28 +12,25 @@ vim.api.nvim_set_hl(0, "CatppuccinBorder", { bg = "NONE", fg = "#89b4fa" })
 vim.api.nvim_set_hl(0, "CatppuccinNormal", { bg = "NONE", fg = "#cdd6f4" })
 vim.api.nvim_set_hl(0, "CatppucinCursorLine", { bg = "#313244" })
 
--- vim.api.nvim_set_hl(0, "CatppuccinBorder", { bg = "NONE", fg = "#45475a" })
--- vim.api.nvim_set_hl(0, "CatppuccinNormal", { bg = "NONE", fg = "#cdd6f4" })
--- vim.api.nvim_set_hl(0, "CatppucinCursorLine", { bg = "#45475a" })
-
 cmp.setup({
 	snippet = {
 		expand = function(args)
 			luasnip.lsp_expand(args.body) -- For `luasnip` users.
 		end,
 	},
+	completion = {
+		completeopt = "menuone,noinsert,noselect",
+	},
 	window = {
 		completion = cmp.config.window.bordered({
 			border = "single",
 			winhighlight = "Normal:CatppuccinNormal,FloatBorder:CatppuccinBorder,CursorLine:CatppucinCursorLine",
-			-- -- winhighlight = "Normal:RosePineNormal,FloatBorder:RosePineBorder,CursorLine:RosePineCursorLine",
 			-- col_offset = -3,
 			-- side_padding = 0,
 		}),
 		documentation = cmp.config.window.bordered({
 			border = "single",
 			winhighlight = "Normal:CatppuccinNormal,FloatBorder:CatppuccinBorder,CursorLine:CatppucinCursorLine",
-			-- winhighlight = "Normal:RosePineNormal,FloatBorder:RosePineBorder,CursorLine:RosePineCursorLine",
 			-- side_padding = 0,
 		}),
 	},
@@ -67,9 +64,10 @@ cmp.setup({
 	sources = cmp.config.sources({
 		{ name = "nvim_lsp" },
 		{ name = "luasnip" },
-		{ name = "path" },
-		{ name = "buffer" },
 		{ name = "nvim_lua" },
+	}, {
+		{ name = "buffer" },
+		{ name = "path" },
 		{ name = "spell", keyword_length = 3, keyword_pattern = [[\w\+]] },
 	}),
 	enabled = function()
@@ -98,9 +96,10 @@ cmp.setup({
 	-- 	end,
 	-- },
 	formatting = {
-		format = lspkind.cmp_format({
-      mode = "symbol",
-    }),
+		-- format = lspkind.cmp_format({
+		-- 	mode = "symbol",
+		-- }),
+		format = lspkind.cmp_format(),
 	},
 	-- sorting = {
 	-- 	comparators = {

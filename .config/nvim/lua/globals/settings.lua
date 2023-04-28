@@ -3,7 +3,7 @@ vim.o.exrc = true
 vim.o.syntax = "on"
 vim.o.errorbells = false
 vim.o.showmode = true
-vim.o.swapfile = false
+vim.o.swapfile = true
 vim.o.backup = false
 vim.o.undodir = vim.fn.stdpath("config") .. "/undodir"
 vim.o.undolevels = 1000
@@ -47,7 +47,7 @@ vim.diagnostic.config({
 		update_in_insert = true,
 		underline = true,
 		signs = true,
-		source = "if_many",
+		source = true,
 		format = function(diagnostic)
 			return diagnostic.message .. ""
 		end,

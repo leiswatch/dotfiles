@@ -14,7 +14,8 @@ telescope.setup({
 			"--trim",
 			"--fixed-strings",
 		},
-		prompt_prefix = "   ",
+		-- prompt_prefix = "   ",
+		prompt_prefix = " ",
 		selection_caret = "> ",
 		entry_prefix = "  ",
 		initial_mode = "insert",
@@ -26,7 +27,7 @@ telescope.setup({
 				width = 0.90,
 				height = 0.85,
 				preview_width = 0.4,
-				-- prompt_position = "bottom",
+				prompt_position = "top",
 			},
 		},
 		file_sorter = require("telescope.sorters").get_fuzzy_file,
@@ -60,14 +61,22 @@ telescope.setup({
 	},
 	pickers = {
 		find_files = {
-			find_command = { "fdfind", "--type", "f", "--strip-cwd-prefix", "--hidden", "--ignore-case" },
-			prompt_title = false,
-      layout_config = {
-      horizontal = {
-        prompt_position = "bottom",
-      },
+			find_command = { "fd", "--type", "f", "--strip-cwd-prefix", "--hidden", "--ignore-case" },
+			-- prompt_title = false,
+			layout_config = {
+				horizontal = {
+					prompt_position = "top",
+				},
+			},
 		},
-  }
+		live_grep = {
+			-- prompt_title = false,
+			layout_config = {
+				horizontal = {
+					prompt_position = "top",
+				},
+			},
+		},
 	},
 	extensions = {
 		fzf = {

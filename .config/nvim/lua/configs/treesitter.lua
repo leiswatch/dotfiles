@@ -11,6 +11,8 @@ require("nvim-treesitter.configs").setup({
 		"go",
 		"lua",
 		"vim",
+    "markdown",
+    "markdown_inline",
 	},
 	sync_install = false,
 	auto_install = true,

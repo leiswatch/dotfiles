@@ -68,6 +68,7 @@ require("lazy").setup({
 	{ "kevinhwang91/nvim-bqf" },
 	{ "tpope/vim-fugitive" },
 	{ "MunifTanjim/nui.nvim" },
+	{ "folke/noice.nvim" },
 	{
 		"nvim-neo-tree/neo-tree.nvim",
 		branch = "v2.x",
@@ -80,6 +81,15 @@ require("lazy").setup({
 	-- { "windwp/nvim-spectre" },
 	{ "akinsho/git-conflict.nvim" },
 	{ "j-morano/buffer_manager.nvim" },
+	{
+		"utilyre/barbecue.nvim",
+		name = "barbecue",
+		version = "*",
+		dependencies = {
+			"SmiteshP/nvim-navic",
+		},
+	},
+	{ "folke/todo-comments.nvim" },
 }, {
 	ui = {
 		size = { width = 0.8, height = 0.8 },

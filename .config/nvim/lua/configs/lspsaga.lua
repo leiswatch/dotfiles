@@ -2,10 +2,11 @@ local saga = require("lspsaga")
 
 saga.setup({
 	ui = {
-		kind = require("catppuccin.groups.integrations.lsp_saga").custom_kind(),
+		title = false,
 		border = "single",
 		winblend = 0,
 		code_action = " ",
+		kind = require("catppuccin.groups.integrations.lsp_saga").custom_kind(),
 	},
 	lightbulb = {
 		enable = true,
@@ -21,5 +22,20 @@ saga.setup({
 	},
 	diagnostic = {
 		on_insert = false,
+	},
+	beacon = {
+		enable = false,
+	},
+	finder = {
+		keys = {
+			jump_to = "p",
+			expand_or_jump = "<CR>",
+			vsplit = "s",
+			split = "i",
+			tabe = "t",
+			tabnew = "r",
+			quit = { "q", "<ESC>", "<C-[>" },
+			close_in_preview = "<ESC>",
+		},
 	},
 })
