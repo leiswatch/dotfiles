@@ -1,14 +1,8 @@
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
 
-# Set name of the theme to load --- if set to "random", it will
-# load a random theme each time oh-my-zsh is loaded, in which case,
-# to know which specific one was loaded, run: echo $RANDOM_THEME
-# See https://github.com/ohmyzsh/ohmyzsh/wiki/Themes
-
-ZSH_THEME="robbyrussell"
-
 plugins=(git npm yarn node docker docker-compose command-not-found you-should-use zsh-syntax-highlighting tmux rust golang autojump)
+fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}
 
 source $ZSH/oh-my-zsh.sh
 
@@ -26,9 +20,6 @@ alias icat="kitty +kitten icat"
 
 DISABLE_AUTO_TITLE=true
 
-export NVM_DIR="$([ -z "${XDG_CONFIG_HOME-}" ] && printf %s "${HOME}/.nvm" || printf %s "${XDG_CONFIG_HOME}/nvm")"
-[ -s "$NVM_DIR/nvm.sh" ] && \. "$NVM_DIR/nvm.sh" # This loads nvm
-
 function set_win_title(){
     echo -ne "\033]0; Terminal \007"
 }
@@ -36,15 +27,6 @@ function set_win_title(){
 precmd_functions+=(set_win_title)
 
 autoload -Uz compinit && compinit
-
-#fzf
-source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
-
-#kubectl
-source <(kubectl completion zsh)
-
-eval "$(starship init zsh)"
 
 # pnpm
 export PNPM_HOME="/home/leiswatch/.local/share/pnpm"
@@ -54,5 +36,21 @@ case ":$PATH:" in
 esac
 # pnpm end
 
+# fnm
+export PATH="/home/leiswatch/.local/share/fnm:$PATH"
+eval "$(fnm env --shell zsh)"
+# eval "$(fnm env --use-on-cd --shell zsh --version-file-strategy recursive)"
+
 # Go path
 export GOPATH="$HOME/.go"
+
+# fzf
+source /usr/share/fzf/key-bindings.zsh
+source /usr/share/fzf/completion.zsh
+
+# kubectl
+source <(kubectl completion zsh)
+
+# starship
+eval "$(starship init zsh)"
+

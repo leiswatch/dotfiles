@@ -2,10 +2,7 @@ add_newline = false
 
 [character]
 success_symbol = "[](bold green)"
-# success_symbol = "[󰣇 ](bold green)"
 error_symbol = "[✗](bold red)"
-# success_symbol = "[➜](bold #31748f)"
-# error_symbol = "[✗](bold #eb6f92)"
 
 [line_break]
 disabled = false
@@ -35,7 +32,7 @@ symbol = " "
 symbol = " "
 
 [directory]
-read_only = " "
+read_only = " "
 
 [docker_context]
 symbol = " "
@@ -45,6 +42,9 @@ symbol = " "
 
 [elm]
 symbol = " "
+
+[fossil_branch]
+symbol = " "
 
 [git_branch]
 symbol = " "
@@ -64,6 +64,9 @@ symbol = "⌘ "
 [hg_branch]
 symbol = " "
 
+[hostname]
+ssh_symbol = " "
+
 [java]
 symbol = " "
 
@@ -74,13 +77,10 @@ symbol = " "
 symbol = " "
 
 [memory_usage]
-symbol = " "
-
-[meson]
-symbol = "喝 "
+symbol = "󰍛 "
 
 [nim]
-symbol = " "
+symbol = " "
 
 [nix_shell]
 symbol = " "
@@ -89,10 +89,12 @@ symbol = " "
 symbol = " "
 
 [os.symbols]
+Alpaquita = " "
 Alpine = " "
 Amazon = " "
 Android = " "
 Arch = " "
+Artix = " "
 CentOS = " "
 Debian = " "
 DragonFly = " "
@@ -100,11 +102,9 @@ Emscripten = " "
 EndeavourOS = " "
 Fedora = " "
 FreeBSD = " "
-Garuda = "﯑ "
 Gentoo = " "
-HardenedBSD = "ﲊ "
-Illumos = " "
 Linux = " "
+Mabox = " "
 Macos = " "
 Manjaro = " "
 Mariner = " "
@@ -115,22 +115,21 @@ NixOS = " "
 OpenBSD = " "
 openSUSE = " "
 OracleLinux = " "
-Pop = " "
+Pop = " "
 Raspbian = " "
 Redhat = " "
 RedHatEnterprise = " "
 Redox = " "
-Solus = "ﴱ "
 SUSE = " "
 Ubuntu = " "
 Unknown = " "
-Windows = " "
+Windows = " "
+
+[pijul_channel]
+symbol = "🪺 "
 
 [python]
 symbol = " "
-
-[rlang]
-symbol = "ﳒ "
 
 [ruby]
 symbol = " "
@@ -143,3 +142,4 @@ symbol = " "
 
 [spack]
 symbol = "🅢 "
+

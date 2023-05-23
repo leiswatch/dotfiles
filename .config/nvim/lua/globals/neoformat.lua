@@ -24,3 +24,5 @@ vim.g.neoformat_enabled_rust = { "rustfmt" }
 vim.g.neoformat_enabled_sass = { "stylelint" }
 vim.g.neoformat_enabled_scss = { "stylelint" }
 vim.g.neoformat_enabled_yaml = { "prettier" }
+vim.g.neoformat_enabled_c = { "clang-format" }
+vim.g.neoformat_enabled_cpp = { "clang-format" }

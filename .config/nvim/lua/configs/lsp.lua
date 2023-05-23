@@ -30,6 +30,7 @@ require("mason-lspconfig").setup({
 		"tsserver",
 		"vuels",
 		"yamlls",
+    "clangd",
 	},
 	automatic_installation = true,
 })
@@ -47,6 +48,7 @@ require("mason-null-ls").setup({
 		"stylua",
 		"yamllint",
 		"yapf",
+    "clang-format",
 	},
 	automatic_installation = true,
 	automatic_setup = false,
@@ -54,17 +56,17 @@ require("mason-null-ls").setup({
 
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
 	border = "single",
-  title = " Hover ",
+	title = " Hover ",
 	max_height = 20,
 })
 
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
 	border = "single",
-  title = " Signature ",
+	title = " Signature ",
 	max_height = 20,
 })
 
-local signs = { Error = "", Warn = "", Hint = "", Info = "" }
+local signs = { Error = "", Warn = "", Hint = "", Info = "" }
 for type, icon in pairs(signs) do
 	local hl = "DiagnosticSign" .. type
 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
@@ -250,6 +252,11 @@ lspconfig["eslint"].setup({
 	workingDirectory = {
 		mode = "location",
 	},
+})
+
+lspconfig["clangd"].setup({
+	on_attach = custom_on_attach,
+	capabilities = vim.tbl_deep_extend("error", capabilities, { offsetEncoding = { "utf-16" } }),
 })
 
 -- lspconfig["emmet_ls"].setup({

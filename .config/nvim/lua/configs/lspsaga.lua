@@ -5,7 +5,7 @@ saga.setup({
 		title = false,
 		border = "single",
 		winblend = 0,
-		code_action = " ",
+		code_action = " ",
 		kind = require("catppuccin.groups.integrations.lsp_saga").custom_kind(),
 	},
 	lightbulb = {

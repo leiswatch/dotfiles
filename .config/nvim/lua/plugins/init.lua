@@ -21,6 +21,7 @@ require("lazy").setup({
 			ts_update()
 		end,
 	},
+	{ "HiPhish/nvim-ts-rainbow2" },
 	{ "windwp/nvim-ts-autotag" },
 	{ "JoosepAlviste/nvim-ts-context-commentstring" },
 	{ "nvim-treesitter/nvim-treesitter-context" },
