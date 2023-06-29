@@ -1,6 +1,9 @@
 require("bqf").setup({
 	auto_enable = true,
-  func_map = {
+	preview = {
+		winblend = 0,
+	},
+	func_map = {
 		openc = "<CR>",
 	},
 })

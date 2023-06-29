@@ -12,6 +12,13 @@ vim.api.nvim_set_hl(0, "CatppuccinBorder", { bg = "NONE", fg = "#89b4fa" })
 vim.api.nvim_set_hl(0, "CatppuccinNormal", { bg = "NONE", fg = "#cdd6f4" })
 vim.api.nvim_set_hl(0, "CatppucinCursorLine", { bg = "#313244" })
 
+-- Tokyonight Moon
+-- vim.api.nvim_set_hl(0, "TokyonightBorder", { bg = "NONE", fg = "#7aa2f7" })
+-- vim.api.nvim_set_hl(0, "TokyonightNormal", { bg = "NONE", fg = "#a9b1d6" })
+-- vim.api.nvim_set_hl(0, "TokyonightCursorLine", { bg = "#414868" })
+
+vim.g.sass_variables_file = "_variables.scss"
+
 cmp.setup({
 	snippet = {
 		expand = function(args)
@@ -25,12 +32,14 @@ cmp.setup({
 		completion = cmp.config.window.bordered({
 			border = "single",
 			winhighlight = "Normal:CatppuccinNormal,FloatBorder:CatppuccinBorder,CursorLine:CatppucinCursorLine",
+			-- winhighlight = "Normal:TokyonightNormal,FloatBorder:TokyonightBorder,CursorLine:TokyonightCursorLine",
 			-- col_offset = -3,
 			-- side_padding = 0,
 		}),
 		documentation = cmp.config.window.bordered({
 			border = "single",
 			winhighlight = "Normal:CatppuccinNormal,FloatBorder:CatppuccinBorder,CursorLine:CatppucinCursorLine",
+			-- winhighlight = "Normal:TokyonightNormal,FloatBorder:TokyonightBorder,CursorLine:TokyonightCursorLine",
 			-- side_padding = 0,
 		}),
 	},
@@ -65,6 +74,7 @@ cmp.setup({
 		{ name = "nvim_lsp" },
 		{ name = "luasnip" },
 		{ name = "nvim_lua" },
+		{ name = "sass-variables" },
 	}, {
 		{ name = "buffer" },
 		{ name = "path" },
@@ -101,19 +111,33 @@ cmp.setup({
 		-- }),
 		format = lspkind.cmp_format(),
 	},
-	-- sorting = {
-	-- 	comparators = {
-	-- 		cmp.config.compare.locality,
-	-- 		cmp.config.compare.recently_used,
-	-- 		cmp.config.compare.score,
-	-- 		cmp.config.compare.offset,
-	-- 		cmp.config.compare.order,
-	-- 		-- cmp.config.compare.kind,
-	-- 		-- cmp.config.compare.exact,
-	-- 		-- cmp.config.compare.sort_text,
-	-- 		-- cmp.config.compare.length,
-	-- 	},
-	-- },
+  sorting = {
+    -- TODO: Would be cool to add stuff like "See variable names before method names" in rust, or something like that.
+    comparators = {
+      cmp.config.compare.offset,
+      cmp.config.compare.exact,
+      cmp.config.compare.score,
+
+      -- copied from cmp-under, but I don't think I need the plugin for this.
+      -- I might add some more of my own.
+      function(entry1, entry2)
+        local _, entry1_under = entry1.completion_item.label:find "^_+"
+        local _, entry2_under = entry2.completion_item.label:find "^_+"
+        entry1_under = entry1_under or 0
+        entry2_under = entry2_under or 0
+        if entry1_under > entry2_under then
+          return false
+        elseif entry1_under < entry2_under then
+          return true
+        end
+      end,
+
+      cmp.config.compare.kind,
+      cmp.config.compare.sort_text,
+      cmp.config.compare.length,
+      cmp.config.compare.order,
+    },
+  },
 })
 
 cmp.setup.cmdline({ "/", "?" }, {

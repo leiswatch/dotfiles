@@ -30,6 +30,7 @@ require("catppuccin").setup({
 			TelescopeResultsTitle = { fg = color.text, bg = "NONE" },
 			TelescopePromptPrefix = { fg = color.text, bg = "NONE" },
 			TelescopeSelection = { fg = color.text, bg = color.surface0 },
+			-- TelescopeMatching = { fg = color.peach, bg = "NONE" },
 			TelescopeSelectionCaret = { fg = color.text, bg = color.surface0 },
 			WhichKeyBorder = { fg = color.blue, bg = "NONE" },
 			CodeActionNormal = { fg = color.text, bg = "NONE" },

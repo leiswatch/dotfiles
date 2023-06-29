@@ -17,5 +17,7 @@ null_ls.setup({
 
 		-- code_actions.eslint,
 		-- code_actions.gitsigns,
+
+		require("typescript.extensions.null-ls.code-actions"),
 	},
 })

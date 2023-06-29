@@ -30,7 +30,7 @@ require("mason-lspconfig").setup({
 		"tsserver",
 		"vuels",
 		"yamlls",
-    "clangd",
+		"clangd",
 	},
 	automatic_installation = true,
 })
@@ -48,7 +48,7 @@ require("mason-null-ls").setup({
 		"stylua",
 		"yamllint",
 		"yapf",
-    "clang-format",
+		"clang-format",
 	},
 	automatic_installation = true,
 	automatic_setup = false,
@@ -97,8 +97,8 @@ local custom_on_attach = function(client, bufnr)
 	local bufopts = { noremap = true, silent = true, buffer = bufnr }
 
 	vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
-	-- vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
-	vim.keymap.set("n", "gd", "<cmd>Lspsaga goto_definition<CR>", bufopts)
+	vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
+	-- vim.keymap.set("n", "gd", "<cmd>Lspsaga goto_definition<CR>", bufopts)
 	vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
 	-- vim.keymap.set("n", "K", "<cmd>Lspsaga hover_doc<CR>", bufopts)
 	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
@@ -161,14 +161,26 @@ lspconfig["stylelint_lsp"].setup({
 	},
 })
 
-lspconfig["tsserver"].setup({
-	on_attach = custom_on_attach,
-	capabilities = capabilities,
-	commands = {
-		OrganizeImports = {
-			organize_imports,
-			description = "Organize Imports",
-		},
+-- lspconfig["tsserver"].setup({
+-- 	on_attach = custom_on_attach,
+-- 	capabilities = capabilities,
+-- 	commands = {
+-- 		OrganizeImports = {
+-- 			organize_imports,
+-- 			description = "Organize Imports",
+-- 		},
+-- 	},
+-- })
+
+require("typescript").setup({
+	disable_commands = false, -- prevent the plugin from creating Vim commands
+	debug = false, -- enable debug logging for commands
+	go_to_source_definition = {
+		fallback = true, -- fall back to standard LSP definition on failure
+	},
+	server = { -- pass options to lspconfig's setup method
+		on_attach = custom_on_attach,
+		capabilities = capabilities,
 	},
 })
 
@@ -178,7 +190,7 @@ lspconfig["cssmodules_ls"].setup({
 		custom_on_attach(client)
 	end,
 	capabilities = capabilities,
-	filetypes = { "typescriptreact", "javascriptreact" },
+	filetypes = { "typescriptreact", "javascriptreact", "scss", "css", "less", "sass" },
 })
 
 lspconfig["graphql"].setup({
@@ -259,7 +271,16 @@ lspconfig["clangd"].setup({
 	capabilities = vim.tbl_deep_extend("error", capabilities, { offsetEncoding = { "utf-16" } }),
 })
 
--- lspconfig["emmet_ls"].setup({
--- 	on_attach = on_attach,
--- 	capabilities = capabilities,
--- })
+lspconfig["emmet_ls"].setup({
+	on_attach = custom_on_attach,
+	capabilities = capabilities,
+	filetypes = {
+		"css",
+		"html",
+		"javascriptreact",
+		"less",
+		"sass",
+		"scss",
+		"typescriptreact",
+	},
+})

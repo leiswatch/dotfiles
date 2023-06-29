@@ -16,7 +16,7 @@ telescope.setup({
 		},
 		prompt_prefix = "   ",
 		-- prompt_prefix = " ",
-		selection_caret = "> ",
+		selection_caret = " > ",
 		entry_prefix = "  ",
 		initial_mode = "insert",
 		selection_strategy = "reset",
@@ -61,7 +61,7 @@ telescope.setup({
 	},
 	pickers = {
 		find_files = {
-			find_command = { "fd", "--type", "f", "--strip-cwd-prefix", "--hidden", "--ignore-case" },
+			-- find_command = { "fdfind", "--type", "f", "--strip-cwd-prefix", "--hidden", "--ignore-case" },
 			-- prompt_title = false,
 			layout_config = {
 				horizontal = {
