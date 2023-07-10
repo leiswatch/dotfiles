@@ -15,8 +15,7 @@ export FZF_DEFAULT_OPTS=" \
 --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
 
 alias ls="exa"
-alias cat="bat"
-alias icat="kitty +kitten icat"
+alias cat="batcat"
 
 DISABLE_AUTO_TITLE=true
 
@@ -45,12 +44,11 @@ eval "$(fnm env --shell zsh)"
 export GOPATH="$HOME/.go"
 
 # fzf
-source /usr/share/fzf/key-bindings.zsh
-source /usr/share/fzf/completion.zsh
+source /usr/share/doc/fzf/examples//key-bindings.zsh
+source /usr/share/doc/fzf/examples/completion.zsh
 
 # kubectl
 source <(kubectl completion zsh)
 
 # starship
 eval "$(starship init zsh)"
-

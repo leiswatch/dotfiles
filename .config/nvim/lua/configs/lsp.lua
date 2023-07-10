@@ -25,7 +25,6 @@ require("mason-lspconfig").setup({
 		"stylelint_lsp",
 		"lua_ls",
 		"svelte",
-		-- "tailwindcss",
 		"terraformls",
 		"tsserver",
 		"vuels",
@@ -35,29 +34,24 @@ require("mason-lspconfig").setup({
 	automatic_installation = true,
 })
 
-require("mason-null-ls").setup({
+require("mason-tool-installer").setup({
 	ensure_installed = {
-		"eslint_d",
-		"gofumpt",
-		"goimports",
-		"golangci_lint",
-		"jsonlint",
 		"luacheck",
-		"prettier",
+		"golangci-lint",
 		"pylint",
-		"stylua",
 		"yamllint",
-		"yapf",
-		"clang-format",
+		"jsonlint",
 	},
-	automatic_installation = true,
-	automatic_setup = false,
+	auto_update = false,
+	run_on_start = true,
+	start_delay = 3000, -- 3 second delay
+	debounce_hours = nil, -- at least 5 hours between attempts to install/update
 })
 
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
 	border = "single",
 	title = " Hover ",
-	max_height = 20,
+	max_height = 15,
 })
 
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
@@ -83,10 +77,25 @@ end
 
 local opts = { noremap = true, silent = true }
 
-vim.keymap.set("n", "<leader>e", "<cmd> lua vim.diagnostic.open_float({border='single'})<cr>", opts)
+vim.keymap.set(
+	"n",
+	"<leader>e",
+	"<cmd> lua vim.diagnostic.open_float({border='single', max_width=100, title=' Diagnostics ', header='', source='if_many' })<cr>",
+	opts
+)
 -- vim.keymap.set("n", "<leader>e", "<cmd>Lspsaga show_line_diagnostics ++unfocus<cr>", opts)
-vim.keymap.set("n", "[d", "<cmd> lua vim.diagnostic.goto_prev({float={border='single'}})<cr>", opts)
-vim.keymap.set("n", "]d", "<cmd> lua vim.diagnostic.goto_next({float={border='single'}})<cr>", opts)
+vim.keymap.set(
+	"n",
+	"[d",
+	"<cmd> lua vim.diagnostic.goto_prev({float={border='single', max_width=100, title=' Diagnostics ', header='', source='if_many' }})<cr>",
+	opts
+)
+vim.keymap.set(
+	"n",
+	"]d",
+	"<cmd> lua vim.diagnostic.goto_next({float={border='single', max_width=100, title=' Diagnostics ', header='', source='if_many' }})<cr>",
+	opts
+)
 -- vim.keymap.set("n", "[d", "<cmd>Lspsaga diagnostic_jump_prev<CR>", opts)
 -- vim.keymap.set("n", "]d", "<cmd>Lspsaga diagnostic_jump_next<CR>", opts)
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, opts)
@@ -184,6 +193,24 @@ require("typescript").setup({
 	},
 })
 
+-- require("typescript-tools").setup({
+-- 	on_attach = custom_on_attach,
+-- 	capabilities = capabilities,
+-- 	settings = {
+-- 		separate_diagnostic_server = true,
+-- 		publish_diagnostic_on = "insert_leave",
+-- 		tsserver_max_memory = "auto",
+-- 		tsserver_file_preferences = {
+--       includeCompletionsForImportStatements = true,
+-- 			includeCompletionsForModuleExports = true,
+--       includeAutomaticOptionalChainCompletions = true,
+--       allowRenameOfImportPath = true,
+--       jsxAttributeCompletionStyle = 'auto',
+-- 			quotePreference = "auto",
+-- 		},
+-- 	},
+-- })
+
 lspconfig["cssmodules_ls"].setup({
 	on_attach = function(client)
 		client.server_capabilities.definitionProvider = false
@@ -258,7 +285,7 @@ lspconfig["eslint"].setup({
 			enable = true,
 			mode = "all",
 		},
-		run = "onType",
+		run = "onSave",
 	},
 	validate = "on",
 	workingDirectory = {

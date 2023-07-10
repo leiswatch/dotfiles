@@ -15,7 +15,6 @@ telescope.setup({
 			"--fixed-strings",
 		},
 		prompt_prefix = "   ",
-		-- prompt_prefix = " ",
 		selection_caret = " > ",
 		entry_prefix = "  ",
 		initial_mode = "insert",
@@ -24,9 +23,9 @@ telescope.setup({
 		layout_strategy = "horizontal",
 		layout_config = {
 			horizontal = {
-				width = 0.90,
-				height = 0.85,
-				preview_width = 0.4,
+				width = 0.95,
+				height = 0.9,
+				preview_width = 0.5,
 				prompt_position = "top",
 			},
 		},
@@ -61,7 +60,9 @@ telescope.setup({
 	},
 	pickers = {
 		find_files = {
-			-- find_command = { "fdfind", "--type", "f", "--strip-cwd-prefix", "--hidden", "--ignore-case" },
+			find_command = { "fdfind", "--type", "f", "--strip-cwd-prefix", "--hidden", "--ignore-case" },
+      -- find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
+      previewer = false,
 			-- prompt_title = false,
 			layout_config = {
 				horizontal = {

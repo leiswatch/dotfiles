@@ -70,6 +70,12 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
+vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+	callback = function()
+		require("lint").try_lint()
+	end,
+})
+
 -- vim.api.nvim_create_autocmd("LspAttach", {
 --   callback = function(args)
 --     local client = vim.lsp.get_client_by_id(args.data.client_id)
