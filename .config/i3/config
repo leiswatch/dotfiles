@@ -56,7 +56,7 @@ exec --no-startup-id /usr/bin/slack %U -u
 exec --no-startup-id /usr/bin/discord --start-minimized
 exec --no-startup-id caffeine start --activate
 exec --no-startup-id xfce4-power-manager
-exec --no-startup-id redshift-gtk
+exec --no-startup-id redshift -r -b 1.0:1.0 -t 6500:3500 -l 54.3:18.6
 # exec --no-startup-id pamac-tray
 # exec --no-startup-id /usr/bin/mullvad-vpn %U
 # exec --no-startup-id i3-autolayout autolayout
