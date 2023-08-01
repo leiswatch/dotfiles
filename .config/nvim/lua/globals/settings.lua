@@ -14,7 +14,7 @@ vim.o.completeopt = "menuone,noinsert,noselect"
 vim.o.shortmess = vim.o.shortmess .. "c"
 vim.o.autoindent = true
 vim.o.autoread = true
-vim.o.smartindent = true
+vim.o.smartindent = false
 vim.o.tabstop = 2
 vim.o.softtabstop = 2
 vim.o.shiftwidth = 2
@@ -58,6 +58,7 @@ vim.opt.listchars:append("tab:› ,trail:•,extends:#,nbsp:.,eol:↴,space:⋅"
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 vim.opt.equalalways = true
+vim.o.pumheight = 10
 
 vim.cmd([[
   " Catppuccin
@@ -73,6 +74,7 @@ vim.cmd([[
   filetype plugin on
   filetype plugin indent on
   set shortmess+=c
+  " set pumheight=1
   " set list
 
   set wildignore+=*/node_modules/**
@@ -86,3 +88,4 @@ vim.cmd([[
 
 	autocmd BufNewFile,BufRead * setlocal formatoptions-=ro
 ]])
+

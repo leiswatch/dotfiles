@@ -1,9 +1,10 @@
 require("noice").setup({
+	throttle = 0,
 	lsp = {
 		override = {
 			["vim.lsp.util.convert_input_to_markdown_lines"] = true,
 			["vim.lsp.util.stylize_markdown"] = true,
-			["cmp.entry.get_documentation"] = false,
+			["cmp.entry.get_documentation"] = true,
 		},
 		progress = {
 			enabled = false,
@@ -16,6 +17,12 @@ require("noice").setup({
 		},
 		signature = {
 			enabled = true,
+			auto_open = {
+				enabled = true,
+				trigger = true, -- Automatically show signature help when typing a trigger character from the LSP
+				luasnip = true, -- Will open signature help when jumping to Luasnip insert nodes
+				throttle = 0, -- Debounce lsp signature help request by 50ms
+			},
 		},
 		documentation = {
 			view = "hover",
@@ -24,7 +31,7 @@ require("noice").setup({
 				position = 2,
 				border = {
 					padding = { 0, 1 },
-					style = "single",
+					style = "rounded",
 				},
 				win_options = {
 					winblend = 0,
@@ -32,16 +39,17 @@ require("noice").setup({
 			},
 		},
 	},
-	cmdline = {
+	messages = {
 		enabled = false,
 	},
-	messages = {
+	cmdline = {
 		enabled = false,
 	},
 	notify = {
 		enabled = false,
 	},
 	popupmenu = {
-		enabled = false,
+		enabled = true,
+		backend = "nui",
 	},
 })

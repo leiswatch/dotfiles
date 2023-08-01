@@ -3,7 +3,7 @@ local saga = require("lspsaga")
 saga.setup({
 	ui = {
 		title = false,
-		border = "single",
+		border = "rounded",
 		winblend = 0,
 		code_action = " ",
 		kind = require("catppuccin.groups.integrations.lsp_saga").custom_kind(),

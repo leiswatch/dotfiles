@@ -1,17 +1,10 @@
+local opts = { noremap = true, silent = true }
 local yank_group = vim.api.nvim_create_augroup("HighlightYank", {})
 
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "lspinfo",
 	callback = function()
-		vim.api.nvim_win_set_config(0, { border = "single" })
-		vim.opt.colorcolumn = ""
-	end,
-})
-
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = "null-ls-info",
-	callback = function()
-		vim.api.nvim_win_set_config(0, { border = "single" })
+		vim.api.nvim_win_set_config(0, { border = "rounded" })
 		vim.opt.colorcolumn = ""
 	end,
 })
@@ -50,29 +43,20 @@ vim.api.nvim_create_autocmd("FileType", {
 	},
 	callback = function()
 		vim.o.relativenumber = false
-	end,
-})
-
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = {
-		"alpha",
-		"lspinfo",
-		"lsp-installer",
-		"null-ls-info",
-		"NvimTree",
-		"buffer_manager",
-		"harpoon",
-		"TelescopePrompt",
-		"mason",
-	},
-	callback = function()
 		vim.o.colorcolumn = "0"
 	end,
 })
 
-vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+vim.api.nvim_create_autocmd({ "BufWritePost", "InsertLeave" }, {
 	callback = function()
 		require("lint").try_lint()
+	end,
+})
+
+vim.api.nvim_create_autocmd({ "FileType" }, {
+	pattern = { "qf" },
+	callback = function()
+		vim.keymap.set("n", "q", "<cmd>ccl<cr>", opts)
 	end,
 })
 

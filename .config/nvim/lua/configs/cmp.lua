@@ -12,11 +12,6 @@ vim.api.nvim_set_hl(0, "CatppuccinBorder", { bg = "NONE", fg = "#89b4fa" })
 vim.api.nvim_set_hl(0, "CatppuccinNormal", { bg = "NONE", fg = "#cdd6f4" })
 vim.api.nvim_set_hl(0, "CatppucinCursorLine", { bg = "#313244" })
 
--- Tokyonight Moon
--- vim.api.nvim_set_hl(0, "TokyonightBorder", { bg = "NONE", fg = "#7aa2f7" })
--- vim.api.nvim_set_hl(0, "TokyonightNormal", { bg = "NONE", fg = "#a9b1d6" })
--- vim.api.nvim_set_hl(0, "TokyonightCursorLine", { bg = "#414868" })
-
 vim.g.sass_variables_file = "_variables.scss"
 
 cmp.setup({
@@ -30,14 +25,14 @@ cmp.setup({
 	},
 	window = {
 		completion = cmp.config.window.bordered({
-			border = "single",
+			border = "rounded",
 			winhighlight = "Normal:CatppuccinNormal,FloatBorder:CatppuccinBorder,CursorLine:CatppucinCursorLine",
 			-- winhighlight = "Normal:TokyonightNormal,FloatBorder:TokyonightBorder,CursorLine:TokyonightCursorLine",
 			-- col_offset = -3,
 			-- side_padding = 0,
 		}),
 		documentation = cmp.config.window.bordered({
-			border = "single",
+			border = "rounded",
 			winhighlight = "Normal:CatppuccinNormal,FloatBorder:CatppuccinBorder,CursorLine:CatppucinCursorLine",
 			-- winhighlight = "Normal:TokyonightNormal,FloatBorder:TokyonightBorder,CursorLine:TokyonightCursorLine",
 			-- side_padding = 0,
@@ -49,26 +44,26 @@ cmp.setup({
 		["<C-Space>"] = cmp.mapping.complete(),
 		["<C-e>"] = cmp.mapping.abort(),
 		["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-		["<Tab>"] = cmp.mapping(function(fallback)
-			if cmp.visible() then
-				cmp.select_next_item()
-			elseif luasnip.expand_or_jumpable() then
-				luasnip.expand_or_jump()
-			elseif has_words_before() then
-				cmp.complete()
-			else
-				fallback()
-			end
-		end, { "i", "s" }),
-		["<S-Tab>"] = cmp.mapping(function(fallback)
-			if cmp.visible() then
-				cmp.select_prev_item()
-			elseif luasnip.jumpable(-1) then
-				luasnip.jump(-1)
-			else
-				fallback()
-			end
-		end, { "i", "s" }),
+		-- ["<Tab>"] = cmp.mapping(function(fallback)
+		-- 	if cmp.visible() then
+		-- 		cmp.select_next_item()
+		-- 	elseif luasnip.expand_or_jumpable() then
+		-- 		luasnip.expand_or_jump()
+		-- 	elseif has_words_before() then
+		-- 		cmp.complete()
+		-- 	else
+		-- 		fallback()
+		-- 	end
+		-- end, { "i", "s" }),
+		-- ["<S-Tab>"] = cmp.mapping(function(fallback)
+		-- 	if cmp.visible() then
+		-- 		cmp.select_prev_item()
+		-- 	elseif luasnip.jumpable(-1) then
+		-- 		luasnip.jump(-1)
+		-- 	else
+		-- 		fallback()
+		-- 	end
+		-- end, { "i", "s" }),
 	}),
 	sources = cmp.config.sources({
 		{ name = "nvim_lsp" },

@@ -14,7 +14,8 @@ telescope.setup({
 			"--trim",
 			"--fixed-strings",
 		},
-		prompt_prefix = "   ",
+		-- prompt_prefix = "   ",
+		prompt_prefix = " > ",
 		selection_caret = " > ",
 		entry_prefix = "  ",
 		initial_mode = "insert",
@@ -44,7 +45,7 @@ telescope.setup({
 		generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
 		winblend = 0,
 		border = true,
-		borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+		-- borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
 		color_devicons = true,
 		previewer = true,
 		prompt_title = true,
@@ -60,8 +61,8 @@ telescope.setup({
 	},
 	pickers = {
 		find_files = {
-			find_command = { "fdfind", "--type", "f", "--strip-cwd-prefix", "--hidden", "--ignore-case" },
-      -- find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
+			-- find_command = { "fdfind", "--type", "f", "--strip-cwd-prefix", "--hidden", "--ignore-case" },
+      find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
       previewer = false,
 			-- prompt_title = false,
 			layout_config = {

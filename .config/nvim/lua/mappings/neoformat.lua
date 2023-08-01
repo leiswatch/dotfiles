@@ -24,5 +24,5 @@ local neoformat = function()
 	end
 end
 
--- vim.keymap.set("n", "<leader>cf", "<cmd>:Neoformat<CR>", opts)
-vim.keymap.set("n", "<leader>cf", neoformat, opts)
+vim.keymap.set("n", "<leader>cf", "<cmd>:Neoformat<CR>", opts)
+-- vim.keymap.set("n", "<leader>cf", neoformat, opts)

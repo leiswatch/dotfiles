@@ -4,6 +4,6 @@ require("bqf").setup({
 		winblend = 0,
 	},
 	func_map = {
-		openc = "<CR>",
+		openc = "o",
 	},
 })

@@ -4,4 +4,12 @@ require("lint").linters_by_ft = {
   lua = { "luacheck" },
   go = { "golangcilint" },
   yaml = { "yamllint" },
+  typescript = { "eslint_d" },
+  javascript = { "eslint_d" },
+  typescriptreact = { "eslint_d" },
+  javascriptreact = { "eslint_d" },
+  scss = { "stylelint" },
+  sass = { "stylelint" },
+  css = { "stylelint" },
+  less = { "stylelint" },
 }
