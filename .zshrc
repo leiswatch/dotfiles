@@ -14,6 +14,12 @@ export FZF_DEFAULT_OPTS=" \
 --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
 --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
 
+# Rose Pine
+# export FZF_DEFAULT_OPTS=" \
+# --color=bg+:#21202e,spinner:#ebbcba,hl:#eb6f92 \
+# --color=fg:#e0def4,header:#eb6f92,info:#c4a7e7,pointer:#ebbcba \
+# --color=marker:#ebbcba,fg+:#9ccfd8,prompt:#c4a7e7,hl+:#eb6f92"
+
 alias ls="exa"
 alias cat="batcat"
 
