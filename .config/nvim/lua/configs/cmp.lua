@@ -8,13 +8,28 @@ local has_words_before = function()
 end
 
 -- Catppuccin Mocha
-vim.api.nvim_set_hl(0, "CatppuccinBorder", { bg = "NONE", fg = "#89b4fa" })
+vim.api.nvim_set_hl(0, "CatppuccinBorder", { bg = "NONE", fg = "#45475a" })
 vim.api.nvim_set_hl(0, "CatppuccinNormal", { bg = "NONE", fg = "#cdd6f4" })
-vim.api.nvim_set_hl(0, "CatppucinCursorLine", { bg = "#313244" })
+vim.api.nvim_set_hl(0, "CatppucinCursorLine", { bg = "#45475a" })
+
+-- Rose Pine
+vim.api.nvim_set_hl(0, "RosePineBorder", { bg = "NONE", fg = "#6e6a86" })
+vim.api.nvim_set_hl(0, "RosePineNormal", { bg = "NONE", fg = "#e0def4" })
+vim.api.nvim_set_hl(0, "RosePineCursorLine", { bg = "#403d52" })
 
 vim.g.sass_variables_file = "_variables.scss"
 
 cmp.setup({
+	-- matching = {
+	-- 	disallow_fuzzy_matching = true,
+	-- 	disallow_fullfuzzy_matching = true,
+	-- 	disallow_partial_fuzzy_matching = true,
+	-- 	disallow_partial_matching = true,
+	-- 	disallow_prefix_unmatching = false,
+	-- },
+	view = {
+		entries = "custom",
+	},
 	snippet = {
 		expand = function(args)
 			luasnip.lsp_expand(args.body) -- For `luasnip` users.
@@ -27,15 +42,12 @@ cmp.setup({
 		completion = cmp.config.window.bordered({
 			border = "rounded",
 			winhighlight = "Normal:CatppuccinNormal,FloatBorder:CatppuccinBorder,CursorLine:CatppucinCursorLine",
-			-- winhighlight = "Normal:TokyonightNormal,FloatBorder:TokyonightBorder,CursorLine:TokyonightCursorLine",
-			-- col_offset = -3,
-			-- side_padding = 0,
+			-- winhighlight = "Normal:RosePineNormal,FloatBorder:RosePineBorder,CursorLine:RosePineCursorLine",
 		}),
 		documentation = cmp.config.window.bordered({
 			border = "rounded",
 			winhighlight = "Normal:CatppuccinNormal,FloatBorder:CatppuccinBorder,CursorLine:CatppucinCursorLine",
-			-- winhighlight = "Normal:TokyonightNormal,FloatBorder:TokyonightBorder,CursorLine:TokyonightCursorLine",
-			-- side_padding = 0,
+			-- winhighlight = "Normal:RosePineNormal,FloatBorder:RosePineBorder,CursorLine:RosePineCursorLine",
 		}),
 	},
 	mapping = cmp.mapping.preset.insert({
@@ -43,37 +55,37 @@ cmp.setup({
 		["<C-f>"] = cmp.mapping.scroll_docs(4),
 		["<C-Space>"] = cmp.mapping.complete(),
 		["<C-e>"] = cmp.mapping.abort(),
-		["<CR>"] = cmp.mapping.confirm({ select = true }), -- Accept currently selected item. Set `select` to `false` to only confirm explicitly selected items.
-		-- ["<Tab>"] = cmp.mapping(function(fallback)
-		-- 	if cmp.visible() then
-		-- 		cmp.select_next_item()
-		-- 	elseif luasnip.expand_or_jumpable() then
-		-- 		luasnip.expand_or_jump()
-		-- 	elseif has_words_before() then
-		-- 		cmp.complete()
-		-- 	else
-		-- 		fallback()
-		-- 	end
-		-- end, { "i", "s" }),
-		-- ["<S-Tab>"] = cmp.mapping(function(fallback)
-		-- 	if cmp.visible() then
-		-- 		cmp.select_prev_item()
-		-- 	elseif luasnip.jumpable(-1) then
-		-- 		luasnip.jump(-1)
-		-- 	else
-		-- 		fallback()
-		-- 	end
-		-- end, { "i", "s" }),
+		["<CR>"] = cmp.mapping.confirm({ select = true }),
+		["<Tab>"] = cmp.mapping(function(fallback)
+			if cmp.visible() then
+				cmp.select_next_item()
+			elseif luasnip.expand_or_jumpable() then
+				luasnip.expand_or_jump()
+			elseif has_words_before() then
+				cmp.complete()
+			else
+				fallback()
+			end
+		end, { "i", "s" }),
+		["<S-Tab>"] = cmp.mapping(function(fallback)
+			if cmp.visible() then
+				cmp.select_prev_item()
+			elseif luasnip.jumpable(-1) then
+				luasnip.jump(-1)
+			else
+				fallback()
+			end
+		end, { "i", "s" }),
 	}),
 	sources = cmp.config.sources({
 		{ name = "nvim_lsp" },
 		{ name = "luasnip" },
-		{ name = "nvim_lua" },
 		{ name = "sass-variables" },
+		-- { name = "nvim_lua" },
 	}, {
 		{ name = "buffer" },
 		{ name = "path" },
-		{ name = "spell", keyword_length = 3, keyword_pattern = [[\w\+]] },
+		-- { name = "spell", keyword_length = 3, keyword_pattern = [[\w\+]] },
 	}),
 	enabled = function()
 		-- disable completion in comments
@@ -89,50 +101,39 @@ cmp.setup({
 			return not context.in_treesitter_capture("comment") and not context.in_syntax_group("Comment")
 		end
 	end,
-	-- formatting = {
-	-- 	fields = { "kind", "abbr", "menu" },
-	-- 	format = function(entry, vim_item)
-	-- 		local kind = lspkind.cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
-	-- 		local strings = vim.split(kind.kind, "%s", { trimempty = true })
-	-- 		kind.kind = " " .. strings[1] .. " "
-	-- 		kind.menu = "    (" .. strings[2] .. ")"
-
-	-- 		return kind
-	-- 	end,
-	-- },
 	formatting = {
-		-- format = lspkind.cmp_format({
-		-- 	mode = "symbol",
-		-- }),
-		format = lspkind.cmp_format(),
+		format = lspkind.cmp_format({
+			mode = "symbol_text",
+			maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+			ellipsis_char = "...",
+		}),
+		-- format = lspkind.cmp_format(),
 	},
-  sorting = {
-    -- TODO: Would be cool to add stuff like "See variable names before method names" in rust, or something like that.
-    comparators = {
-      cmp.config.compare.offset,
-      cmp.config.compare.exact,
-      cmp.config.compare.score,
+	sorting = {
+		comparators = {
+			cmp.config.compare.offset,
+			cmp.config.compare.exact,
+			cmp.config.compare.score,
+			cmp.config.recently_used,
 
-      -- copied from cmp-under, but I don't think I need the plugin for this.
-      -- I might add some more of my own.
-      function(entry1, entry2)
-        local _, entry1_under = entry1.completion_item.label:find "^_+"
-        local _, entry2_under = entry2.completion_item.label:find "^_+"
-        entry1_under = entry1_under or 0
-        entry2_under = entry2_under or 0
-        if entry1_under > entry2_under then
-          return false
-        elseif entry1_under < entry2_under then
-          return true
-        end
-      end,
+			function(entry1, entry2)
+				local _, entry1_under = entry1.completion_item.label:find("^_+")
+				local _, entry2_under = entry2.completion_item.label:find("^_+")
+				entry1_under = entry1_under or 0
+				entry2_under = entry2_under or 0
+				if entry1_under > entry2_under then
+					return false
+				elseif entry1_under < entry2_under then
+					return true
+				end
+			end,
 
-      cmp.config.compare.kind,
-      cmp.config.compare.sort_text,
-      cmp.config.compare.length,
-      cmp.config.compare.order,
-    },
-  },
+			cmp.config.compare.kind,
+			cmp.config.compare.sort_text,
+			cmp.config.compare.length,
+			cmp.config.compare.order,
+		},
+	},
 })
 
 cmp.setup.cmdline({ "/", "?" }, {

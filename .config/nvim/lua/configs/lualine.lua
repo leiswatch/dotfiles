@@ -33,10 +33,30 @@ local custom_cattpuccin_theme = {
 	},
 }
 
+-- local custom_rose_pine_theme = {
+-- 	normal = {
+-- 		a = { fg = '#21202e', bg = '#31748f' },
+-- 		b = { fg = '#e0def4', bg = '#21202e' },
+-- 		z = { fg = '#21202e', bg = '#f6c177' },
+-- 		c = { fg = '#e0def4', bg = '#21202e' },
+-- 		x = { fg = '#e0def4', bg = '#21202e' },
+-- 		y = { fg = '#e0def4', bg = '#21202e' },
+-- 	},
+-- 	insert = { a = { fg = '#21202e', bg = '#eb6f92' } },
+-- 	visual = { a = { fg = '#21202e', bg = '#c4a7e7' } },
+-- 	replace = { a = { fg = '#21202e', bg = '#31748f' } },
+-- 	inactive = {
+-- 		a = { fg = '#e0def4', bg = '#21202e' },
+-- 		b = { fg = '#e0def4', bg = '#21202e' },
+-- 		c = { fg = '#21202e', bg = '#21202e' },
+-- 	},
+-- }
+
 local config = {
 	options = {
 		icons_enabled = true,
 		theme = custom_cattpuccin_theme,
+		-- theme = custom_rose_pine_theme,
 		globalstatus = true,
 		component_separators = "",
 		section_separators = "",

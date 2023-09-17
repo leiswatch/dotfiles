@@ -1,5 +1,5 @@
 require("noice").setup({
-	throttle = 0,
+	throttle = 1000 / 30,
 	lsp = {
 		override = {
 			["vim.lsp.util.convert_input_to_markdown_lines"] = true,
@@ -21,13 +21,15 @@ require("noice").setup({
 				enabled = true,
 				trigger = true, -- Automatically show signature help when typing a trigger character from the LSP
 				luasnip = true, -- Will open signature help when jumping to Luasnip insert nodes
-				throttle = 0, -- Debounce lsp signature help request by 50ms
+				throttle = 50, -- Debounce lsp signature help request by 50ms
 			},
 		},
 		documentation = {
 			view = "hover",
 			opts = {
+				replace = true,
 				relative = "cursor",
+				render = "plain",
 				position = 2,
 				border = {
 					padding = { 0, 1 },

@@ -47,7 +47,7 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
-vim.api.nvim_create_autocmd({ "BufWritePost", "InsertLeave" }, {
+vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 	callback = function()
 		require("lint").try_lint()
 	end,
@@ -59,6 +59,16 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 		vim.keymap.set("n", "q", "<cmd>ccl<cr>", opts)
 	end,
 })
+
+vim.api.nvim_create_autocmd({ "FileType" }, {
+	pattern = { "DressingSelect" },
+	callback = function()
+		vim.b.matchup_matchparen_enabled = 0
+		vim.b.matchup_matchparen_fallback = 0
+	end,
+})
+
+-- vim.cmd([[autocmd FileType netrw autocmd BufLeave <buffer> if &filetype == 'netrw' | :bdelete | endif]])
 
 -- vim.api.nvim_create_autocmd("LspAttach", {
 --   callback = function(args)

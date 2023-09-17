@@ -15,9 +15,9 @@ vim.o.shortmess = vim.o.shortmess .. "c"
 vim.o.autoindent = true
 vim.o.autoread = true
 vim.o.smartindent = false
-vim.o.tabstop = 2
-vim.o.softtabstop = 2
-vim.o.shiftwidth = 2
+vim.o.tabstop = 4
+vim.o.softtabstop = 4
+vim.o.shiftwidth = 4
 vim.o.expandtab = true
 vim.o.number = true
 vim.o.wrap = true
@@ -48,6 +48,7 @@ vim.diagnostic.config({
 		underline = true,
 		signs = true,
 		source = true,
+        -- prefix = "",
 		format = function(diagnostic)
 			return diagnostic.message .. ""
 		end,
@@ -55,19 +56,12 @@ vim.diagnostic.config({
 })
 vim.g.virtcolumn_char = "▕" -- by default
 vim.opt.listchars:append("tab:› ,trail:•,extends:#,nbsp:.,eol:↴,space:⋅")
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
+-- vim.g.loaded_netrw = 1
+-- vim.g.loaded_netrwPlugin = 1
 vim.opt.equalalways = true
 vim.o.pumheight = 10
 
 vim.cmd([[
-  " Catppuccin
-  " autocmd ColorScheme * highlight LspInlayHint guibg=NONE guifg=#a6adc8
-  " autocmd ColorScheme * highlight DiagnosticVirtualTextError guibg=#32283a
-  " autocmd ColorScheme * highlight DiagnosticVirtualTextWarn guibg=#33313a
-  " autocmd ColorScheme * highlight DiagnosticVirtualTextHint guibg=#29313e
-  autocmd ColorScheme * highlight CursorLine guibg=#313244
-
   autocmd FileType alpha setlocal nofoldenable
 
   filetype on

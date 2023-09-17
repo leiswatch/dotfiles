@@ -1,4 +1,3 @@
--- Utilities for creating configurations
 local util = require("formatter.util")
 
 local stylelint_format = function()
@@ -6,7 +5,6 @@ local stylelint_format = function()
 		exe = "stylelint",
 		args = {
 			"--fix",
-			"--stdin",
 			"--stdin-filename",
 			util.escape_path(util.get_current_buffer_file_path()),
 		},
@@ -15,36 +13,32 @@ local stylelint_format = function()
 	}
 end
 
--- Provides the Format, FormatWrite, FormatLock, and FormatWriteLock commands
 require("formatter").setup({
-	-- Enable or disable logging
 	logging = false,
-	-- Set the log level
 	log_level = vim.log.levels.WARN,
-	-- All formatter configurations are opt-in
 	filetype = {
 		lua = {
 			require("formatter.filetypes.lua").stylua,
 		},
 		typescript = {
-			require("formatter.filetypes.typescript").eslint_d,
-			require("formatter.filetypes.typescript").prettierd,
+			-- require("formatter.defaults.eslint_d"),
+			require("formatter.defaults.prettierd"),
 		},
 		typescriptreact = {
-			require("formatter.filetypes.typescriptreact").eslint_d,
-			require("formatter.filetypes.typescriptreact").prettierd,
+			-- require("formatter.defaults.eslint_d"),
+			require("formatter.defaults.prettierd"),
 		},
 		javascript = {
-			require("formatter.filetypes.javascript").eslint_d,
-			require("formatter.filetypes.javascript").prettierd,
+			-- require("formatter.defaults.eslint_d"),
+			require("formatter.defaults.prettierd"),
 		},
 		javacriptreact = {
-			require("formatter.filetypes.javascriptreact").eslint_d,
-			require("formatter.filetypes.javascriptreact").prettierd,
+			-- require("formatter.defaults.eslint_d"),
+			require("formatter.defaults.prettierd"),
 		},
 		go = {
+      require("formatter.filetypes.go").goimports,
 			require("formatter.filetypes.go").gofmt,
-			require("formatter.filetypes.go").goimports,
 		},
 		python = {
 			require("formatter.filetypes.python").yapf,
@@ -53,23 +47,23 @@ require("formatter").setup({
 			require("formatter.filetypes.rust").rustfmt,
 		},
 		astro = {
-			require("formatter.filetypes.typescript").eslint_d,
-			require("formatter.filetypes.typescript").prettierd,
+			-- require("formatter.defaults.eslint_d"),
+			require("formatter.defaults.prettierd"),
 		},
 		html = {
-			require("formatter.filetypes.html").prettierd,
+			require("formatter.defaults.prettier"),
 		},
 		json = {
-			require("formatter.filetypes.html").prettierd,
+			require("formatter.defaults.prettierd"),
 		},
 		jsonc = {
-			require("formatter.filetypes.json").prettierd,
+			require("formatter.defaults.prettierd"),
 		},
 		prisma = {
-			require("formatter.filetypes.typescript").prettierd,
+			require("formatter.defaults.prettierd"),
 		},
 		yaml = {
-			require("formatter.filetypes.yaml").prettierd,
+			require("formatter.defaults.prettierd"),
 		},
 		c = {
 			require("formatter.filetypes.c").clangformat,
@@ -79,19 +73,19 @@ require("formatter").setup({
 		},
 		scss = {
 			stylelint_format,
-			require("formatter.filetypes.css").prettierd,
+			require("formatter.defaults.prettierd"),
 		},
 		css = {
 			stylelint_format,
-			require("formatter.filetypes.css").prettierd,
+			require("formatter.defaults.prettierd"),
 		},
 		sass = {
 			stylelint_format,
-			require("formatter.filetypes.css").prettierd,
+			require("formatter.defaults.prettierd"),
 		},
 		less = {
 			stylelint_format,
-			require("formatter.filetypes.css").prettierd,
+			require("formatter.defaults.prettierd"),
 		},
 		["*"] = {
 			require("formatter.filetypes.any").remove_trailing_whitespace,

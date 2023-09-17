@@ -14,7 +14,7 @@ require("mason-lspconfig").setup({
 		"denols",
 		"dockerls",
 		"emmet_ls",
-		-- "eslint",
+		"eslint",
 		"gopls",
 		"graphql",
 		"html",
@@ -22,7 +22,7 @@ require("mason-lspconfig").setup({
 		"prismals",
 		"pyright",
 		"rust_analyzer",
-		-- "stylelint_lsp",
+		"stylelint_lsp",
 		"lua_ls",
 		"svelte",
 		"terraformls",
@@ -30,6 +30,7 @@ require("mason-lspconfig").setup({
 		"vuels",
 		"yamlls",
 		"clangd",
+		"efm",
 	},
 	automatic_installation = true,
 })
@@ -53,14 +54,16 @@ require("mason-tool-installer").setup({
 
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
 	border = "rounded",
-	title = " Hover ",
-	max_height = 15,
+	title = "",
+	max_height = 20,
+	max_width = 100,
 })
 
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
 	border = "rounded",
-	title = " Signature ",
+	title = "",
 	max_height = 20,
+	max_width = 100,
 })
 
 local signs = { Error = "", Warn = "", Hint = "", Info = "" }
@@ -117,14 +120,11 @@ local custom_on_attach = function(client, bufnr)
 	end, bufopts)
 	vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, bufopts)
 	vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, bufopts)
-	vim.keymap.set("n", "<leader>ca", vim.lsp.buf.code_action, bufopts)
-	vim.keymap.set("v", "<leader>ca", vim.lsp.buf.code_action, bufopts)
-	-- vim.keymap.set("n", "<leader>ca", "<cmd>Lspsaga code_action<CR>", bufopts)
-	-- vim.keymap.set("v", "<leader>ca", "<cmd>Lspsaga code_action<CR>", bufopts)
+	vim.keymap.set({ "v", "n" }, "<leader>ca", vim.lsp.buf.code_action, bufopts)
 	vim.keymap.set("n", "gl", vim.lsp.buf.references, bufopts)
-	-- vim.keymap.set("n", "gl", "<cmd>Lspsaga finder<CR>", bufopts)
-
-	-- vim.keymap.set('n', '<leader>cf', function() vim.lsp.buf.format { async = false } end, bufopts)
+	-- vim.keymap.set("n", "<leader>cf", function()
+	-- 	vim.lsp.buf.format({ async = false })
+	-- end, bufopts)
 end
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -154,23 +154,16 @@ lspconfig["lua_ls"].setup({
 	capabilities = capabilities,
 })
 
--- lspconfig["stylelint_lsp"].setup({
--- 	on_attach = custom_on_attach,
--- 	capabilities = capabilities,
--- 	filetypes = { "css", "less", "sass", "scss", "sugarss", "vue" },
--- 	settings = {
--- 		stylelintplus = {
--- 			autoFixOnSave = false,
--- 			autoFixOnFormat = true,
--- 		},
--- 	},
--- })
+lspconfig["astro"].setup({
+	on_attach = custom_on_attach,
+	capabilities = capabilities,
+})
 
 lspconfig["tsserver"].setup({
 	on_attach = custom_on_attach,
 	capabilities = capabilities,
 	init_options = {
-		tsserver = { maxTsServerMemory = 4096 },
+		tsserver = { maxTsServerMemory = 2048 },
 	},
 	commands = {
 		OrganizeImports = {
@@ -180,41 +173,13 @@ lspconfig["tsserver"].setup({
 	},
 })
 
--- require("typescript-tools").setup({
--- 	on_attach = custom_on_attach,
--- 	capabilities = capabilities,
--- 	settings = {
--- 		-- spawn additional tsserver instance to calculate diagnostics on it
--- 		separate_diagnostic_server = true,
--- 		-- "change"|"insert_leave" determine when the client asks the server about diagnostic
--- 		publish_diagnostic_on = "insert_leave",
--- 		-- array of strings("fix_all"|"add_missing_imports"|"remove_unused")
--- 		-- specify commands exposed as code_actions
--- 		expose_as_code_action = { "fix_all", "add_missing_imports", "remove_unused" },
--- 		-- string|nil - specify a custom path to `tsserver.js` file, if this is nil or file under path
--- 		-- not exists then standard path resolution strategy is applied
--- 		tsserver_path = nil,
--- 		-- specify a list of plugins to load by tsserver, e.g., for support `styled-components`
--- 		-- (see 💅 `styled-components` support section)
--- 		tsserver_plugins = {},
--- 		-- this value is passed to: https://nodejs.org/api/cli.html#--max-old-space-sizesize-in-megabytes
--- 		-- memory limit in megabytes or "auto"(basically no limit)
--- 		tsserver_max_memory = "auto",
--- 		-- described below
--- 		tsserver_format_options = {},
--- 		tsserver_file_preferences = {},
--- 		-- mirror of VSCode's `typescript.suggest.completeFunctionCalls`
--- 		complete_function_calls = false,
--- 	},
--- })
-
 lspconfig["cssmodules_ls"].setup({
 	on_attach = function(client)
 		client.server_capabilities.definitionProvider = false
 		custom_on_attach(client)
 	end,
 	capabilities = capabilities,
-	filetypes = { "typescriptreact", "javascriptreact", "scss", "css", "less", "sass" },
+	filetypes = { "typescriptreact", "javascriptreact" },
 })
 
 lspconfig["graphql"].setup({
@@ -264,46 +229,58 @@ lspconfig["dockerls"].setup({
 	capabilities = capabilities,
 })
 
--- lspconfig["tailwindcss"].setup({
--- 	on_attach = custom_on_attach,
--- 	capabilities = capabilities,
--- })
+lspconfig["clangd"].setup({
+	on_attach = custom_on_attach,
+	capabilities = vim.tbl_deep_extend("error", capabilities, { offsetEncoding = { "utf-16" } }),
+})
 
 lspconfig["prismals"].setup({
 	on_attach = custom_on_attach,
 	capabilities = capabilities,
 })
 
--- lspconfig["eslint"].setup({
+-- lspconfig["stylelint_lsp"].setup({
 -- 	on_attach = custom_on_attach,
 -- 	capabilities = capabilities,
+-- 	filetypes = { "css", "less", "sass", "scss", "sugarss", "vue" },
 -- 	settings = {
--- 		codeAction = {
--- 			disableRuleComment = {
--- 				enable = true,
--- 				location = "separateLine",
--- 			},
--- 			showDocumentation = {
--- 				enable = true,
--- 			},
--- 		},
--- 		codeActionOnSave = {
--- 			enable = true,
--- 			mode = "all",
--- 		},
--- 		format = true,
--- 		run = "onType",
--- 		validate = "on",
--- 		workingDirectory = {
--- 			mode = "location",
+-- 		stylelintplus = {
+-- 			autoFixOnSave = false,
+-- 			autoFixOnFormat = true,
 -- 		},
 -- 	},
 -- })
 
-lspconfig["clangd"].setup({
-	on_attach = custom_on_attach,
-	capabilities = vim.tbl_deep_extend("error", capabilities, { offsetEncoding = { "utf-16" } }),
+lspconfig["eslint"].setup({
+	-- on_attach = custom_on_attach,
+	-- capabilities = capabilities,
+	settings = {
+		codeAction = {
+			disableRuleComment = {
+				enable = true,
+				location = "separateLine",
+			},
+			showDocumentation = {
+				enable = true,
+			},
+		},
+		codeActionOnSave = {
+			enable = true,
+			mode = "all",
+		},
+		format = true,
+		run = "onType",
+		validate = "on",
+		workingDirectory = {
+			mode = "location",
+		},
+	},
 })
+
+-- lspconfig["tailwindcss"].setup({
+-- 	on_attach = custom_on_attach,
+-- 	capabilities = capabilities,
+-- })
 
 -- lspconfig["emmet_ls"].setup({
 -- 	on_attach = custom_on_attach,

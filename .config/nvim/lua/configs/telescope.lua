@@ -27,7 +27,7 @@ telescope.setup({
 				width = 0.95,
 				height = 0.9,
 				preview_width = 0.5,
-				prompt_position = "top",
+				prompt_position = "bottom",
 			},
 		},
 		file_sorter = require("telescope.sorters").get_fuzzy_file,
@@ -61,12 +61,14 @@ telescope.setup({
 	},
 	pickers = {
 		find_files = {
-			-- find_command = { "fdfind", "--type", "f", "--strip-cwd-prefix", "--hidden", "--ignore-case" },
-      find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
-      previewer = false,
+			find_command = { "fdfind", "--type", "f", "--strip-cwd-prefix", "--hidden", "--ignore-case" },
+			-- find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
+			previewer = false,
 			-- prompt_title = false,
 			layout_config = {
 				horizontal = {
+					width = 0.75,
+					height = 0.75,
 					prompt_position = "top",
 				},
 			},

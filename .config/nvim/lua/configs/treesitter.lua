@@ -11,8 +11,10 @@ require("nvim-treesitter.configs").setup({
 		"go",
 		"lua",
 		"vim",
-    "markdown",
-    "markdown_inline",
+		"markdown",
+		"markdown_inline",
+        "regex",
+        "bash",
 	},
 	sync_install = false,
 	auto_install = true,
@@ -23,7 +25,7 @@ require("nvim-treesitter.configs").setup({
 	},
 	autotag = {
 		enable = true,
-    enable_close_on_slash = false,
+		enable_close_on_slash = false,
 	},
 	context_commentstring = {
 		enable = true,

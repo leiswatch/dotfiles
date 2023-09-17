@@ -4,5 +4,5 @@ neogit.setup({
   integrations = {
     diffview = true,
   },
-  kind = "vsplit",
+  kind = "tab",
 })

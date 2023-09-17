@@ -14,15 +14,19 @@ local neoformat = function()
 		if vim.fn.exists(":EslintFixAll") ~= 0 then
 			vim.api.nvim_command(":EslintFixAll")
 		end
+
 		if vim.fn.exists(":Neoformat") ~= 0 then
 			vim.api.nvim_command(":Neoformat")
 		end
+
+		vim.notify("Buffer formatted!")
 	elseif vim.fn.exists(":Neoformat") ~= 0 then
 		vim.api.nvim_command(":Neoformat")
+		vim.notify("Buffer formatted!")
 	else
-		print("No formatter!")
+		vim.notify("No formatter found!")
 	end
 end
 
-vim.keymap.set("n", "<leader>cf", "<cmd>:Neoformat<CR>", opts)
--- vim.keymap.set("n", "<leader>cf", neoformat, opts)
+-- vim.keymap.set("n", "<leader>cf", "<cmd>:Neoformat<CR>", opts)
+vim.keymap.set("n", "<leader>cf", neoformat, opts)

@@ -3,3 +3,5 @@ require("plugins")
 require("configs")
 require("mappings")
 require("autocommands")
+
+-- vim.notify = require("notify")

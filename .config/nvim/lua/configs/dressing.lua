@@ -16,7 +16,7 @@ require("dressing").setup({
 		backend = { "builtin" },
 		builtin = {
 			-- These are passed to nvim_open_win
-			anchor = "NW",
+			-- anchor = "NW",
 			border = "rounded",
 			-- 'editor' and 'win' will default to being centered
 			relative = "cursor",
