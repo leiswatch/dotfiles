@@ -1,5 +1,6 @@
 # Path to your oh-my-zsh installation.
 export ZSH="$HOME/.oh-my-zsh"
+ZSH_THEME=robbyrussell
 
 plugins=(git npm yarn node docker docker-compose command-not-found you-should-use zsh-syntax-highlighting tmux rust golang autojump)
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}
@@ -14,13 +15,7 @@ export FZF_DEFAULT_OPTS=" \
 --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
 --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
 
-# Rose Pine
-# export FZF_DEFAULT_OPTS=" \
-# --color=bg+:#21202e,spinner:#ebbcba,hl:#eb6f92 \
-# --color=fg:#e0def4,header:#eb6f92,info:#c4a7e7,pointer:#ebbcba \
-# --color=marker:#ebbcba,fg+:#9ccfd8,prompt:#c4a7e7,hl+:#eb6f92"
-
-alias ls="exa"
+alias ls="eza"
 alias cat="batcat"
 
 DISABLE_AUTO_TITLE=true
@@ -44,24 +39,23 @@ esac
 # fnm
 export PATH="/home/leiswatch/.local/share/fnm:$PATH"
 eval "$(fnm env --shell zsh)"
-# eval "$(fnm env --use-on-cd --shell zsh --version-file-strategy recursive)"
 
 # Go path
 export GOPATH="$HOME/.go"
 
 # fzf
-source /usr/share/doc/fzf/examples//key-bindings.zsh
-source /usr/share/doc/fzf/examples/completion.zsh
+source $HOME/.fzf/key-bindings.zsh
+source $HOME/.fzf/completion.zsh
 
 # kubectl
 source <(kubectl completion zsh)
 
-# starship
-eval "$(starship init zsh)"
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
 
 # bun completions
 [ -s "/home/leiswatch/.bun/_bun" ] && source "/home/leiswatch/.bun/_bun"
 
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
+# starship
+eval "$(starship init zsh)"
