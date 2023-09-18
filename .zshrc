@@ -18,6 +18,18 @@ export FZF_DEFAULT_OPTS=" \
 alias ls="eza"
 alias cat="batcat"
 
+function vmrss() {
+    if [ -n "$1" ]
+    then
+        while true
+        do
+            sync
+            cat /proc/"$1"/status | grep --color=auto "VmRSS" | grep --color=auto -o '[0-9]\+' | awk '{print $1/1024 " MB"}'
+            sleep 1
+        done
+    fi
+}
+
 DISABLE_AUTO_TITLE=true
 
 function set_win_title(){
