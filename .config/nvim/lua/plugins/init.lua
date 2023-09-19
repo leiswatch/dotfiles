@@ -38,7 +38,7 @@ require("lazy").setup({
 	{ "rafamadriz/friendly-snippets" },
 	{ "nvim-lualine/lualine.nvim" },
 	{ "numToStr/Comment.nvim" },
-	-- { "stevearc/dressing.nvim" },
+	{ "stevearc/dressing.nvim" },
 	{ "j-hui/fidget.nvim" },
 	{ "onsails/lspkind.nvim" },
 	{ "kyazdani42/nvim-web-devicons" },

@@ -30,7 +30,6 @@ require("mason-lspconfig").setup({
 		"vuels",
 		"yamlls",
 		"clangd",
-		"efm",
 	},
 	automatic_installation = true,
 })
