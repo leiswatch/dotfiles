@@ -70,6 +70,7 @@ require("lazy").setup({
 	{ "nvim-neotest/neotest" },
 	{ "haydenmeade/neotest-jest" },
 	{ "nvim-neotest/neotest-go" },
+	{ "stevearc/conform.nvim" },
 	-- { "lukas-reineke/indent-blankline.nvim", branch = "v3" },
 	-- { "HiPhish/rainbow-delimiters.nvim" },
 	-- { "mhartington/formatter.nvim" },
