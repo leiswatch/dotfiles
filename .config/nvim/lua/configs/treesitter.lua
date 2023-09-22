@@ -31,13 +31,13 @@ require("nvim-treesitter.configs").setup({
 		enable = true,
 		enable_autocmd = false,
 	},
-	matchup = {
-		enable = true,
-	},
 	indent = {
 		enable = true,
 	},
 	rainbow = {
 		enable = false,
+	},
+	matchup = {
+		enable = true,
 	},
 })

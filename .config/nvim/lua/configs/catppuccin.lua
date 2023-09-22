@@ -44,7 +44,7 @@ require("catppuccin").setup({
 			LineNrAbove = { fg = color.surface1, bg = "NONE" },
 			LineNrBelow = { fg = color.surface1, bg = "NONE" },
 			ColorColumn = { fg = "NONE", bg = color.surface0 },
-			MatchParen = { fg = color.peach, bg = color.surface0 },
+			MatchParen = { fg = color.teal, bg = color.surface0 },
 			SagaBorder = { fg = color.surface2, bg = "NONE" },
 		}
 	end,
