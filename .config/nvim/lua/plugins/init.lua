@@ -12,36 +12,55 @@ end
 vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
-	{ "catppuccin/nvim", name = "catppuccin", priority = 1000 },
-	{ "neovim/nvim-lspconfig" },
+	{ "catppuccin/nvim", name = "catppuccin", lazy = false, priority = 1000 },
+	{ "stevearc/dressing.nvim", event = "VeryLazy" },
+	{ "nvim-lua/plenary.nvim", lazy = true },
+	{ "MunifTanjim/nui.nvim", lazy = true },
+	{ "nvim-tree/nvim-web-devicons", lazy = true },
+
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = function()
 			local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
 			ts_update()
 		end,
+		dependencies = {
+			"JoosepAlviste/nvim-ts-context-commentstring",
+			"nvim-treesitter/nvim-treesitter-context",
+			"windwp/nvim-ts-autotag",
+			"windwp/nvim-autopairs",
+			"andymass/vim-matchup",
+			"numToStr/Comment.nvim",
+		},
 	},
-	{ "nvim-lua/plenary.nvim" },
-	{ "windwp/nvim-ts-autotag" },
-	{ "JoosepAlviste/nvim-ts-context-commentstring" },
-	{ "nvim-treesitter/nvim-treesitter-context" },
-	{ "williamboman/mason.nvim" },
-	{ "williamboman/mason-lspconfig.nvim" },
-	{ "WhoIsSethDaniel/mason-tool-installer.nvim" },
-	{ "hrsh7th/cmp-nvim-lsp" },
-	{ "hrsh7th/cmp-buffer" },
-	{ "hrsh7th/cmp-path" },
-	{ "hrsh7th/cmp-cmdline" },
-	{ "hrsh7th/nvim-cmp" },
-	{ "L3MON4D3/LuaSnip" },
-	{ "saadparwaiz1/cmp_luasnip" },
-	{ "rafamadriz/friendly-snippets" },
+
+	{ "neovim/nvim-lspconfig" },
+	{
+		"williamboman/mason.nvim",
+		dependencies = {
+			"williamboman/mason-lspconfig.nvim",
+			"WhoIsSethDaniel/mason-tool-installer.nvim",
+		},
+	},
+
+	{
+		"hrsh7th/nvim-cmp",
+		event = "InsertEnter",
+		dependencies = {
+			"hrsh7th/cmp-nvim-lsp",
+			"hrsh7th/cmp-buffer",
+			"hrsh7th/cmp-path",
+			"hrsh7th/cmp-cmdline",
+			"L3MON4D3/LuaSnip",
+			"saadparwaiz1/cmp_luasnip",
+			"pontusk/cmp-sass-variables",
+			"rafamadriz/friendly-snippets",
+			"onsails/lspkind.nvim",
+		},
+	},
+
 	{ "nvim-lualine/lualine.nvim" },
-	{ "numToStr/Comment.nvim" },
-	{ "stevearc/dressing.nvim" },
-	{ "j-hui/fidget.nvim" },
-	{ "onsails/lspkind.nvim" },
-	{ "kyazdani42/nvim-web-devicons" },
+	{ "j-hui/fidget.nvim", tag = "legacy" },
 	{ "nvim-telescope/telescope.nvim", branch = "0.1.x" },
 	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 	{ "ThePrimeagen/harpoon" },
@@ -51,26 +70,57 @@ require("lazy").setup({
 	{ "folke/trouble.nvim" },
 	{ "famiu/bufdelete.nvim" },
 	{ "kevinhwang91/nvim-bqf" },
-	{ "MunifTanjim/nui.nvim" },
-	{ "folke/noice.nvim" },
-	{ "nvim-neo-tree/neo-tree.nvim", branch = "v3.x" },
+	{
+		"nvim-neo-tree/neo-tree.nvim",
+		branch = "v3.x",
+		dependencies = {
+			{
+				"s1n7ax/nvim-window-picker",
+				version = "v2.*",
+				config = function()
+					require("window-picker").setup({
+						filter_rules = {
+							include_current_win = false,
+							autoselect_one = true,
+							-- filter using buffer options
+							bo = {
+								-- if the file type is one of following, the window will be ignored
+								filetype = { "neo-tree", "neo-tree-popup", "notify" },
+								-- if the buffer type is one of following, the window will be ignored
+								buftype = { "terminal", "quickfix" },
+							},
+						},
+					})
+				end,
+			},
+		},
+	},
 	{ "mbbill/undotree" },
 	{ "asiryk/auto-hlsearch.nvim" },
 	{ "j-morano/buffer_manager.nvim" },
-	{ "folke/todo-comments.nvim" },
-	{ "pontusk/cmp-sass-variables" },
+	{ "folke/todo-comments.nvim", event = "VeryLazy" },
 	{ "sindrets/diffview.nvim" },
 	{ "mfussenegger/nvim-lint" },
-	{ "NeogitOrg/neogit" },
-	{ "windwp/nvim-autopairs" },
-	{ "andymass/vim-matchup" },
-	{ "goolord/alpha-nvim" },
-	{ "sbdchd/neoformat" },
-	{ "antoinemadec/FixCursorHold.nvim" },
-	{ "nvim-neotest/neotest" },
-	{ "haydenmeade/neotest-jest" },
-	{ "nvim-neotest/neotest-go" },
+	{ "tpope/vim-fugitive" },
+	{
+		"nvim-neotest/neotest",
+		dependencies = {
+			"haydenmeade/neotest-jest",
+			"nvim-neotest/neotest-go",
+		},
+	},
 	{ "stevearc/conform.nvim" },
+	{ "goolord/alpha-nvim" },
+	-- { "sbdchd/neoformat" },
+	-- {
+	-- 	"utilyre/barbecue.nvim",
+	-- 	name = "barbecue",
+	-- 	version = "*",
+	-- 	dependencies = {
+	-- 		"SmiteshP/nvim-navic",
+	-- 	},
+	-- },
+	-- { "folke/noice.nvim" },
 	-- { "lukas-reineke/indent-blankline.nvim", branch = "v3" },
 	-- { "HiPhish/rainbow-delimiters.nvim" },
 	-- { "mhartington/formatter.nvim" },
@@ -82,8 +132,5 @@ require("lazy").setup({
 	},
 	install = {
 		missing = true,
-	},
-	defaults = {
-		lazy = false,
 	},
 })

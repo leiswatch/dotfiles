@@ -8,5 +8,9 @@ require("lint").linters_by_ft = {
 	sass = { "stylelint" },
 	css = { "stylelint" },
 	less = { "stylelint" },
-    -- astro = { "eslint" }
+	-- astro = { "eslint_d" },
+	-- javascript = { "eslint_d" },
+	-- javascriptreact = { "eslint_d" },
+	-- typescript = { "eslint_d" },
+	-- typescriptreact = { "eslint_d" },
 }

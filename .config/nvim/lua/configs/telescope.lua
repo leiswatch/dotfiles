@@ -61,7 +61,7 @@ telescope.setup({
 	},
 	pickers = {
 		find_files = {
-			find_command = { "fdfind", "--type", "f", "--strip-cwd-prefix", "--hidden", "--ignore-case" },
+			find_command = { "fd", "-t", "f", "-i", "-H", "--strip-cwd-prefix" },
 			-- find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
 			previewer = false,
 			-- prompt_title = false,

@@ -41,14 +41,14 @@ vim.o.hlsearch = false
 vim.o.wrap = false
 vim.o.signcolumn = "yes"
 vim.o.updatetime = 50
-vim.o.cursorline = false
+vim.o.cursorline = true
 vim.diagnostic.config({
 	virtual_text = {
 		update_in_insert = true,
 		underline = true,
 		signs = true,
 		source = true,
-        -- prefix = "",
+		-- prefix = "",
 		format = function(diagnostic)
 			return diagnostic.message .. ""
 		end,
@@ -62,24 +62,10 @@ vim.opt.equalalways = true
 vim.o.pumheight = 10
 
 vim.cmd([[
-  autocmd FileType alpha setlocal nofoldenable
-
   filetype on
   filetype plugin on
   filetype plugin indent on
-  set shortmess+=c
-  " set pumheight=1
-  " set list
-
+  set mps+=<:>
   set wildignore+=*/node_modules/**
   set mouse=
-  let test#strategy = "neovim"
-  let test#neovim#term_position = "vert"
-  let g:test#neovim#start_normal = 1 " If using neovim strategy
-
-  au BufRead,BufNewFile *.cjs setfiletype javascript
-  au BufRead,BufNewFile *.mjs setfiletype javascript
-
-	autocmd BufNewFile,BufRead * setlocal formatoptions-=ro
 ]])
-

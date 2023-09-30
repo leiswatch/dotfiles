@@ -15,6 +15,7 @@ require("nvim-treesitter.configs").setup({
 		"markdown_inline",
         "regex",
         "bash",
+        "astro",
 	},
 	sync_install = false,
 	auto_install = true,

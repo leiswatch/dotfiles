@@ -62,7 +62,7 @@ local config = {
 		section_separators = "",
 		-- section_separators = { left = "", right = "" },
 		disabled_filetypes = { -- Filetypes to disable lualine for.
-			-- statusline = { "alpha", "packer", "mason" }, -- only ignores the ft for statusline.
+			statusline = {}, -- only ignores the ft for statusline.
 			winbar = {}, -- only ignores the ft for winbar.
 		},
 	},

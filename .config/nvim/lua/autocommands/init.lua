@@ -68,11 +68,9 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 	end,
 })
 
--- vim.cmd([[autocmd FileType netrw autocmd BufLeave <buffer> if &filetype == 'netrw' | :bdelete | endif]])
-
--- vim.api.nvim_create_autocmd("LspAttach", {
---   callback = function(args)
---     local client = vim.lsp.get_client_by_id(args.data.client_id)
---     client.server_capabilities.semanticTokensProvider = nil
---   end,
--- });
+vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+	pattern = { "*" },
+	callback = function()
+		vim.cmd([[setlocal formatoptions-=ro]])
+	end,
+})

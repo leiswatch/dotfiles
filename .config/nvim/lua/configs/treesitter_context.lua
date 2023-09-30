@@ -1,4 +1,5 @@
 require("treesitter-context").setup({
 	enable = true,
-  multiline_threshold = 1,
+	multiline_threshold = 3,
+    max_lines = 3,
 })

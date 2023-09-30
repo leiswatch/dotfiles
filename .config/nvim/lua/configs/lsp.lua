@@ -55,14 +55,14 @@ vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
 	border = "rounded",
 	title = "",
 	max_height = 20,
-	max_width = 100,
+	-- max_width = 120,
 })
 
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
 	border = "rounded",
 	title = "",
 	max_height = 20,
-	max_width = 100,
+	-- max_width = 120,
 })
 
 local signs = { Error = "", Warn = "", Hint = "", Info = "" }
@@ -85,19 +85,19 @@ local opts = { noremap = true, silent = true }
 vim.keymap.set(
 	"n",
 	"<leader>e",
-	"<cmd> lua vim.diagnostic.open_float({border='rounded', max_width=100, title=' Diagnostics ', header='', source='if_many' })<cr>",
+	"<cmd> lua vim.diagnostic.open_float({border='rounded', max_width=100, title='', header='', source='if_many' })<cr>",
 	opts
 )
 vim.keymap.set(
 	"n",
 	"[d",
-	"<cmd> lua vim.diagnostic.goto_prev({float={border='rounded', max_width=100, title=' Diagnostics ', header='', source='if_many' }})<cr>",
+	"<cmd> lua vim.diagnostic.goto_prev({float={border='rounded', max_width=100, title='', header='', source='if_many' }})<cr>",
 	opts
 )
 vim.keymap.set(
 	"n",
 	"]d",
-	"<cmd> lua vim.diagnostic.goto_next({float={border='rounded', max_width=100, title=' Diagnostics ', header='', source='if_many' }})<cr>",
+	"<cmd> lua vim.diagnostic.goto_next({float={border='rounded', max_width=100, title='', header='', source='if_many' }})<cr>",
 	opts
 )
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, opts)
@@ -173,10 +173,7 @@ lspconfig["tsserver"].setup({
 })
 
 lspconfig["cssmodules_ls"].setup({
-	on_attach = function(client)
-		client.server_capabilities.definitionProvider = false
-		custom_on_attach(client)
-	end,
+	on_attach = custom_on_attach,
 	capabilities = capabilities,
 	filetypes = { "typescriptreact", "javascriptreact" },
 })
@@ -251,8 +248,8 @@ lspconfig["prismals"].setup({
 -- })
 
 lspconfig["eslint"].setup({
-	-- on_attach = custom_on_attach,
-	-- capabilities = capabilities,
+	on_attach = custom_on_attach,
+	capabilities = capabilities,
 	settings = {
 		codeAction = {
 			disableRuleComment = {
