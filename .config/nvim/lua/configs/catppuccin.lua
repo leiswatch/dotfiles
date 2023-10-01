@@ -40,7 +40,7 @@ require("catppuccin").setup({
 			ActionPreviewBorder = { fg = color.surface2, bg = "NONE" },
 			ActionPreviewTitle = { fg = color.text, bg = "NONE" },
 			FloatTitle = { fg = color.text, bg = "NONE" },
-			LineNr = { fg = color.blue, bg = "NONE" },
+			LineNr = { fg = color.text, bg = "NONE" },
 			CursorLineNr = { fg = color.blue, bg = "NONE" },
 			LineNrAbove = { fg = color.surface1, bg = "NONE" },
 			LineNrBelow = { fg = color.surface1, bg = "NONE" },

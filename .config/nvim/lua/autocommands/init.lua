@@ -31,7 +31,7 @@ vim.api.nvim_create_autocmd("User", {
 
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = {
-		"alpha",
+		-- "alpha",
 		"lspinfo",
 		"lsp-installer",
 		"null-ls-info",
