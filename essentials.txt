@@ -9,3 +9,6 @@ autojump
 vim
 neovim
 lazygit
+tokei
+bottom
+btop
