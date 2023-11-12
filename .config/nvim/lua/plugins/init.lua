@@ -111,10 +111,6 @@ require("lazy").setup({
 	},
 	{ "stevearc/conform.nvim" },
 	{ "goolord/alpha-nvim" },
-	{
-		"m4xshen/hardtime.nvim",
-		dependencies = { "MunifTanjim/nui.nvim", "nvim-lua/plenary.nvim" },
-	},
 	-- { "sbdchd/neoformat" },
 	-- {
 	-- 	"utilyre/barbecue.nvim",

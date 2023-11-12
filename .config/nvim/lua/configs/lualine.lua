@@ -59,7 +59,7 @@ local config = {
 		-- theme = custom_rose_pine_theme,
 		globalstatus = true,
 		component_separators = "",
-		section_separators = "",
+		-- section_separators = "",
 		-- section_separators = { left = "", right = "" },
 		disabled_filetypes = { -- Filetypes to disable lualine for.
 			statusline = {}, -- only ignores the ft for statusline.

@@ -5,7 +5,7 @@ require("neo-tree").setup({
 	enable_diagnostics = true,
 	window = {
 		position = "left",
-		width = 50,
+		width = 75,
 		mapping_options = {
 			noremap = true,
 			nowait = true,

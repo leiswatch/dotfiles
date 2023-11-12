@@ -13,20 +13,13 @@ vim.api.nvim_set_hl(0, "CatppuccinNormal", { bg = "NONE", fg = "#cdd6f4" })
 vim.api.nvim_set_hl(0, "CatppucinCursorLine", { bg = "#45475a" })
 
 -- Rose Pine
-vim.api.nvim_set_hl(0, "RosePineBorder", { bg = "NONE", fg = "#6e6a86" })
-vim.api.nvim_set_hl(0, "RosePineNormal", { bg = "NONE", fg = "#e0def4" })
-vim.api.nvim_set_hl(0, "RosePineCursorLine", { bg = "#403d52" })
+-- vim.api.nvim_set_hl(0, "RosePineBorder", { bg = "NONE", fg = "#6e6a86" })
+-- vim.api.nvim_set_hl(0, "RosePineNormal", { bg = "NONE", fg = "#e0def4" })
+-- vim.api.nvim_set_hl(0, "RosePineCursorLine", { bg = "#403d52" })
 
 vim.g.sass_variables_file = "_variables.scss"
 
 cmp.setup({
-	-- matching = {
-	-- 	disallow_fuzzy_matching = true,
-	-- 	disallow_fullfuzzy_matching = true,
-	-- 	disallow_partial_fuzzy_matching = true,
-	-- 	disallow_partial_matching = true,
-	-- 	disallow_prefix_unmatching = false,
-	-- },
 	view = {
 		entries = "custom",
 	},
@@ -120,6 +113,13 @@ cmp.setup({
 			return kind
 		end,
 	},
+	-- matching = {
+	-- 	disallow_fuzzy_matching = true,
+	-- 	disallow_fullfuzzy_matching = true,
+	-- 	disallow_partial_fuzzy_matching = true,
+	-- 	disallow_partial_matching = true,
+	-- 	disallow_prefix_unmatching = false,
+	-- },
 	-- sorting = {
 	-- 	comparators = {
 	-- 		cmp.config.compare.offset,
