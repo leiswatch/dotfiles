@@ -16,7 +16,8 @@ export FZF_DEFAULT_OPTS=" \
 --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
 
 alias ls="eza"
-alias cat="batcat"
+alias cat="bat"
+alias ytdl="youtube-dl"
 
 function vmrss() {
     if [ -n "$1" ]
@@ -31,6 +32,7 @@ function vmrss() {
 }
 
 DISABLE_AUTO_TITLE=true
+FNM_COREPACK_ENABLED=true
 
 function set_win_title(){
     echo -ne "\033]0; Terminal \007"

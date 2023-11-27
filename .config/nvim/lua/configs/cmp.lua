@@ -76,6 +76,7 @@ cmp.setup({
 		{ name = "nvim_lsp" },
 		{ name = "luasnip" },
 		{ name = "sass-variables" },
+		{ name = "codeium" },
 		-- { name = "nvim_lua" },
 	}, {
 		{ name = "buffer" },
@@ -97,18 +98,19 @@ cmp.setup({
 		end
 	end,
 	formatting = {
-		-- 	format = lspkind.cmp_format({
-		-- 		mode = "symbol_text",
-		-- 		maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
-		-- 		ellipsis_char = "...",
-		-- 	}),
+		-- format = lspkind.cmp_format({
+		-- 	mode = "symbol_text",
+		-- 	maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+		-- 	ellipsis_char = "...",
+		-- 	symbol_map = { Codeium = "" },
+		-- }),
 		-- 	-- format = lspkind.cmp_format(),
 		fields = { "kind", "abbr", "menu" },
 		format = function(entry, vim_item)
-			local kind = lspkind.cmp_format({ mode = "symbol_text", maxwidth = 50 })(entry, vim_item)
+			local kind = lspkind.cmp_format({ mode = "symbol_text", maxwidth = 50, symbol_map = { Codeium = "", } })(entry, vim_item)
 			local strings = vim.split(kind.kind, "%s", { trimempty = true })
 			kind.kind = " " .. (strings[1] or "") .. " "
-			kind.menu = "    (" .. (strings[2] or "") .. ")"
+			kind.menu = " (" .. (strings[2] or "") .. ")"
 
 			return kind
 		end,

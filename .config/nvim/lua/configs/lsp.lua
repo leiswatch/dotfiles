@@ -85,19 +85,19 @@ local opts = { noremap = true, silent = true }
 vim.keymap.set(
 	"n",
 	"<leader>e",
-	"<cmd> lua vim.diagnostic.open_float({border='rounded', max_width=100, title='', header='', source='if_many' })<cr>",
+	"<cmd> lua vim.diagnostic.open_float({border='rounded', max_width=100, title='', header='', source=true })<cr>",
 	opts
 )
 vim.keymap.set(
 	"n",
 	"[d",
-	"<cmd> lua vim.diagnostic.goto_prev({float={border='rounded', max_width=100, title='', header='', source='if_many' }})<cr>",
+	"<cmd> lua vim.diagnostic.goto_prev({float={border='rounded', max_width=100, title='', header='', source=true }})<cr>",
 	opts
 )
 vim.keymap.set(
 	"n",
 	"]d",
-	"<cmd> lua vim.diagnostic.goto_next({float={border='rounded', max_width=100, title='', header='', source='if_many' }})<cr>",
+	"<cmd> lua vim.diagnostic.goto_next({float={border='rounded', max_width=100, title='', header='', source=true }})<cr>",
 	opts
 )
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, opts)

@@ -60,7 +60,7 @@ require("lazy").setup({
 	},
 
 	{ "nvim-lualine/lualine.nvim" },
-	{ "j-hui/fidget.nvim", tag = "legacy" },
+	{ "j-hui/fidget.nvim" },
 	{ "nvim-telescope/telescope.nvim", branch = "0.1.x" },
 	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 	{ "ThePrimeagen/harpoon" },
@@ -111,6 +111,20 @@ require("lazy").setup({
 	},
 	{ "stevearc/conform.nvim" },
 	{ "goolord/alpha-nvim" },
+	{ "AndrewRadev/tagalong.vim" },
+	{
+		"Exafunction/codeium.nvim",
+		dependencies = {
+			"nvim-lua/plenary.nvim",
+			"hrsh7th/nvim-cmp",
+		},
+	},
+	{
+		"folke/tokyonight.nvim",
+		lazy = false,
+		priority = 1000,
+		opts = {},
+	},
 	-- { "sbdchd/neoformat" },
 	-- {
 	-- 	"utilyre/barbecue.nvim",
