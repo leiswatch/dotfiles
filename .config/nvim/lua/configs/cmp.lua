@@ -1,6 +1,9 @@
+local colors = require("catppuccin.palettes").get_palette("mocha")
+
 local cmp = require("cmp")
 local luasnip = require("luasnip")
 local lspkind = require("lspkind")
+local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 
 local has_words_before = function()
 	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
@@ -8,14 +11,9 @@ local has_words_before = function()
 end
 
 -- Catppuccin Mocha
-vim.api.nvim_set_hl(0, "CatppuccinBorder", { bg = "NONE", fg = "#45475a" })
-vim.api.nvim_set_hl(0, "CatppuccinNormal", { bg = "NONE", fg = "#cdd6f4" })
-vim.api.nvim_set_hl(0, "CatppucinCursorLine", { bg = "#45475a" })
-
--- Rose Pine
--- vim.api.nvim_set_hl(0, "RosePineBorder", { bg = "NONE", fg = "#6e6a86" })
--- vim.api.nvim_set_hl(0, "RosePineNormal", { bg = "NONE", fg = "#e0def4" })
--- vim.api.nvim_set_hl(0, "RosePineCursorLine", { bg = "#403d52" })
+vim.api.nvim_set_hl(0, "CatppuccinBorder", { bg = "NONE", fg = colors.surface1 })
+vim.api.nvim_set_hl(0, "CatppuccinNormal", { bg = "NONE", fg = colors.text })
+vim.api.nvim_set_hl(0, "CatppucinCursorLine", { bg = colors.surface1 })
 
 vim.g.sass_variables_file = "_variables.scss"
 
@@ -98,16 +96,13 @@ cmp.setup({
 		end
 	end,
 	formatting = {
-		-- format = lspkind.cmp_format({
-		-- 	mode = "symbol_text",
-		-- 	maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
-		-- 	ellipsis_char = "...",
-		-- 	symbol_map = { Codeium = "" },
-		-- }),
-		-- 	-- format = lspkind.cmp_format(),
+		-- format = lspkind.cmp_format(),
 		fields = { "kind", "abbr", "menu" },
 		format = function(entry, vim_item)
-			local kind = lspkind.cmp_format({ mode = "symbol_text", maxwidth = 50, symbol_map = { Codeium = "", } })(entry, vim_item)
+			local kind = lspkind.cmp_format({ mode = "symbol_text", maxwidth = 50, symbol_map = { Codeium = "" } })(
+				entry,
+				vim_item
+			)
 			local strings = vim.split(kind.kind, "%s", { trimempty = true })
 			kind.kind = " " .. (strings[1] or "") .. " "
 			kind.menu = " (" .. (strings[2] or "") .. ")"
@@ -164,3 +159,5 @@ cmp.setup.cmdline(":", {
 		{ name = "cmdline" },
 	}),
 })
+
+cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())

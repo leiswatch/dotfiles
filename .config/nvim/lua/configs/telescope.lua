@@ -1,4 +1,5 @@
 local telescope = require("telescope")
+local lga_actions = require("telescope-live-grep-args.actions")
 
 telescope.setup({
 	defaults = {
@@ -14,7 +15,6 @@ telescope.setup({
 			"--trim",
 			"--fixed-strings",
 		},
-		-- prompt_prefix = "   ",
 		prompt_prefix = "  ",
 		selection_caret = "  ",
 		entry_prefix = "  ",
@@ -24,9 +24,9 @@ telescope.setup({
 		layout_strategy = "horizontal",
 		layout_config = {
 			horizontal = {
-				width = 0.95,
+				width = 0.9,
 				height = 0.9,
-				preview_width = 0.5,
+				preview_width = 0.45,
 				prompt_position = "bottom",
 			},
 		},
@@ -62,19 +62,17 @@ telescope.setup({
 	pickers = {
 		find_files = {
 			find_command = { "fd", "-t", "f", "-i", "-H", "--strip-cwd-prefix" },
-			-- find_command = { "rg", "--files", "--hidden", "--glob", "!**/.git/*" },
 			previewer = false,
-			-- prompt_title = false,
 			layout_config = {
 				horizontal = {
 					width = 0.75,
 					height = 0.75,
 					prompt_position = "top",
+                    preview_cutoff = 120,
 				},
 			},
 		},
 		live_grep = {
-			-- prompt_title = false,
 			layout_config = {
 				horizontal = {
 					prompt_position = "top",
@@ -89,7 +87,22 @@ telescope.setup({
 			override_file_sorter = true, -- override the file sorter
 			case_mode = "ignore_case", -- or "ignore_case" or "respect_case" or "smart_case"
 		},
+		live_grep_args = {
+			auto_quoting = true, -- enable/disable auto-quoting
+			-- define mappings, e.g.
+			mappings = { -- extend mappings
+				i = {
+					["<C-k>"] = lga_actions.quote_prompt(),
+					["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
+				},
+			},
+			-- ... also accepts theme settings, for example:
+			-- theme = "dropdown", -- use dropdown theme
+			-- theme = { }, -- use own theme spec
+			-- layout_config = { mirror=true }, -- mirror preview pane
+		},
 	},
 })
 
 telescope.load_extension("fzf")
+telescope.load_extension("live_grep_args")

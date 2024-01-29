@@ -18,7 +18,7 @@ local format = function()
 		vim.api.nvim_command(":EslintFixAll")
 	end
 
-	conform.format({ timeout_ms = 2000, lsp_fallback = nil })
+	conform.format({ timeout_ms = 3000, lsp_fallback = nil })
 end
 
-vim.keymap.set("n", "<leader>cf", format, opts)
+vim.keymap.set("n", "<leader>f", format, opts)

@@ -3,6 +3,7 @@ local lspconfig = require("lspconfig")
 require("mason").setup({
 	ui = {
 		border = "rounded",
+		height = 0.8,
 	},
 })
 
@@ -44,10 +45,16 @@ require("mason-tool-installer").setup({
 		"eslint_d",
 		"prettier",
 		"prettierd",
+		"goimports",
+		"gofumpt",
+		"black",
+		"yapf",
+		"stylua",
+		"clang-format",
 	},
 	auto_update = false,
 	run_on_start = true,
-	start_delay = 3000, -- 3 second delay
+	start_delay = 10000, -- 10 seconds delay
 	debounce_hours = 5, -- at least 5 hours between attempts to install/update
 })
 
@@ -107,23 +114,47 @@ local custom_on_attach = function(client, bufnr)
 	-- vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 	local bufopts = { noremap = true, silent = true, buffer = bufnr }
 
+	local lsp_formatting = function(bufnr)
+		local filetype = vim.bo.filetype
+
+		if
+			vim.fn.exists(":EslintFixAll") ~= 0
+			and (
+				filetype == "javascript"
+				or filetype == "typescript"
+				or filetype == "typescriptreact"
+				or filetype == "javascriptreact"
+				or filetype == "astro"
+				or filetype == "vue"
+			)
+		then
+			vim.api.nvim_command(":EslintFixAll")
+		end
+
+		vim.lsp.buf.format({
+			filter = function(client)
+				return client.name == "null-ls"
+			end,
+			bufnr = bufnr,
+			timeout_ms = 3000,
+		})
+	end
+
 	vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
 	vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
 	vim.keymap.set("n", "K", vim.lsp.buf.hover, bufopts)
 	vim.keymap.set("n", "gi", vim.lsp.buf.implementation, bufopts)
 	vim.keymap.set("n", "<C-k>", vim.lsp.buf.signature_help, bufopts)
-	vim.keymap.set("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, bufopts)
-	vim.keymap.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, bufopts)
-	vim.keymap.set("n", "<leader>wl", function()
-		print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
-	end, bufopts)
+	-- vim.keymap.set("n", "<leader>wa", vim.lsp.buf.add_workspace_folder, bufopts)
+	-- vim.keymap.set("n", "<leader>wr", vim.lsp.buf.remove_workspace_folder, bufopts)
+	-- vim.keymap.set("n", "<leader>wl", function()
+	-- 	print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
+	-- end, bufopts)
 	vim.keymap.set("n", "gt", vim.lsp.buf.type_definition, bufopts)
 	vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, bufopts)
 	vim.keymap.set({ "v", "n" }, "<leader>ca", vim.lsp.buf.code_action, bufopts)
 	vim.keymap.set("n", "gl", vim.lsp.buf.references, bufopts)
-	-- vim.keymap.set("n", "<leader>cf", function()
-	-- 	vim.lsp.buf.format({ async = false })
-	-- end, bufopts)
+	vim.keymap.set("n", "<leader>f", lsp_formatting, bufopts)
 end
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -235,18 +266,6 @@ lspconfig["prismals"].setup({
 	capabilities = capabilities,
 })
 
--- lspconfig["stylelint_lsp"].setup({
--- 	on_attach = custom_on_attach,
--- 	capabilities = capabilities,
--- 	filetypes = { "css", "less", "sass", "scss", "sugarss", "vue" },
--- 	settings = {
--- 		stylelintplus = {
--- 			autoFixOnSave = false,
--- 			autoFixOnFormat = true,
--- 		},
--- 	},
--- })
-
 lspconfig["eslint"].setup({
 	on_attach = custom_on_attach,
 	capabilities = capabilities,
@@ -273,21 +292,32 @@ lspconfig["eslint"].setup({
 	},
 })
 
+lspconfig["emmet_ls"].setup({
+	on_attach = custom_on_attach,
+	capabilities = capabilities,
+	filetypes = {
+		"css",
+		"html",
+		"javascriptreact",
+		"less",
+		"sass",
+		"scss",
+		"typescriptreact",
+	},
+})
+-- lspconfig["stylelint_lsp"].setup({
+-- 	on_attach = custom_on_attach,
+-- 	capabilities = capabilities,
+-- 	filetypes = { "css", "less", "sass", "scss", "sugarss", "vue" },
+-- 	settings = {
+-- 		stylelintplus = {
+-- 			autoFixOnSave = false,
+-- 			autoFixOnFormat = true,
+-- 		},
+-- 	},
+-- })
+
 -- lspconfig["tailwindcss"].setup({
 -- 	on_attach = custom_on_attach,
 -- 	capabilities = capabilities,
--- })
-
--- lspconfig["emmet_ls"].setup({
--- 	on_attach = custom_on_attach,
--- 	capabilities = capabilities,
--- 	filetypes = {
--- 		"css",
--- 		"html",
--- 		"javascriptreact",
--- 		"less",
--- 		"sass",
--- 		"scss",
--- 		"typescriptreact",
--- 	},
 -- })

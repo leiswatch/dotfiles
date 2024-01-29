@@ -15,7 +15,7 @@ symbol = "󰏗 "
 disabled = true
 
 [username]
-show_always = true
+show_always = false
 
 [aws]
 symbol = "  "
@@ -150,4 +150,3 @@ symbol = " "
 
 [scala]
 symbol = " "
-

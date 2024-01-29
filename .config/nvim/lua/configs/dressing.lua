@@ -1,7 +1,7 @@
 require("dressing").setup({
 	input = {
-    enabled = true,
-    border = "rounded",
+		enabled = true,
+		border = "rounded",
 		win_options = {
 			winblend = 0,
 		},

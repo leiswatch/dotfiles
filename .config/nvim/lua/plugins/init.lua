@@ -61,9 +61,22 @@ require("lazy").setup({
 
 	{ "nvim-lualine/lualine.nvim" },
 	{ "j-hui/fidget.nvim" },
-	{ "nvim-telescope/telescope.nvim", branch = "0.1.x" },
+	{
+		"nvim-telescope/telescope.nvim",
+		branch = "0.1.x",
+		dependencies = {
+			{
+				"nvim-telescope/telescope-live-grep-args.nvim",
+				version = "*",
+			},
+		},
+	},
 	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-	{ "ThePrimeagen/harpoon" },
+	{
+		"ThePrimeagen/harpoon",
+		branch = "harpoon2",
+		dependencies = { "nvim-lua/plenary.nvim" },
+	},
 	{ "NvChad/nvim-colorizer.lua" },
 	{ "lewis6991/gitsigns.nvim" },
 	{ "kylechui/nvim-surround", version = "*" },
@@ -100,7 +113,6 @@ require("lazy").setup({
 	{ "j-morano/buffer_manager.nvim" },
 	{ "folke/todo-comments.nvim", event = "VeryLazy" },
 	{ "sindrets/diffview.nvim" },
-	{ "mfussenegger/nvim-lint" },
 	{ "tpope/vim-fugitive" },
 	{
 		"nvim-neotest/neotest",
@@ -109,9 +121,10 @@ require("lazy").setup({
 			"nvim-neotest/neotest-go",
 		},
 	},
-	{ "stevearc/conform.nvim" },
 	{ "goolord/alpha-nvim" },
 	{ "AndrewRadev/tagalong.vim" },
+	{ "folke/noice.nvim", event = "VeryLazy" },
+	{ "nvimtools/none-ls.nvim" },
 	{
 		"Exafunction/codeium.nvim",
 		dependencies = {
@@ -119,25 +132,17 @@ require("lazy").setup({
 			"hrsh7th/nvim-cmp",
 		},
 	},
-	{
-		"folke/tokyonight.nvim",
-		lazy = false,
-		priority = 1000,
-		opts = {},
-	},
-	-- { "sbdchd/neoformat" },
+	{ "akinsho/bufferline.nvim", version = "*", dependencies = "nvim-tree/nvim-web-devicons" },
+	-- { "stevearc/conform.nvim" },
+	-- { "mfussenegger/nvim-lint" },
+	-- { "lukas-reineke/indent-blankline.nvim", main = "ibl" },
 	-- {
-	-- 	"utilyre/barbecue.nvim",
-	-- 	name = "barbecue",
-	-- 	version = "*",
-	-- 	dependencies = {
-	-- 		"SmiteshP/nvim-navic",
-	-- 	},
+	-- 	"Exafunction/codeium.vim",
+	-- 	event = "BufEnter",
 	-- },
-	-- { "folke/noice.nvim" },
+	-- { "sbdchd/neoformat" },
 	-- { "lukas-reineke/indent-blankline.nvim", branch = "v3" },
 	-- { "HiPhish/rainbow-delimiters.nvim" },
-	-- { "mhartington/formatter.nvim" },
 }, {
 	ui = {
 		size = { width = 0.75, height = 0.75 },

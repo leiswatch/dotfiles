@@ -2,7 +2,7 @@ require("neo-tree").setup({
 	close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
 	popup_border_style = "rounded",
 	enable_git_status = true,
-	enable_diagnostics = true,
+	enable_diagnostics = false,
 	window = {
 		position = "left",
 		width = 75,
@@ -21,8 +21,8 @@ require("neo-tree").setup({
 				".git",
 			},
 		},
-    hijack_netrw_behavior = "open_current",
-    -- hijack_netrw_behavior = "disabled",
+		hijack_netrw_behavior = "open_current",
+		-- hijack_netrw_behavior = "disabled",
 		follow_current_file = {
 			enabled = true,
 		},
@@ -56,6 +56,9 @@ require("neo-tree").setup({
 				staged = "",
 				conflict = "",
 			},
+		},
+		indent = {
+			with_expanders = true,
 		},
 	},
 })
