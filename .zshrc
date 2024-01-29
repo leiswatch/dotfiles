@@ -2,7 +2,7 @@
 export ZSH="$HOME/.oh-my-zsh"
 ZSH_THEME=robbyrussell
 
-plugins=(git npm yarn node docker docker-compose command-not-found you-should-use zsh-syntax-highlighting tmux rust golang autojump)
+plugins=(git npm yarn node docker docker-compose command-not-found you-should-use zsh-syntax-highlighting tmux rust golang ubuntu)
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}
 
 source $ZSH/oh-my-zsh.sh
@@ -17,7 +17,6 @@ export FZF_DEFAULT_OPTS=" \
 
 alias ls="eza"
 alias cat="bat"
-alias ytdl="youtube-dl"
 
 function vmrss() {
     if [ -n "$1" ]
@@ -31,16 +30,10 @@ function vmrss() {
     fi
 }
 
-DISABLE_AUTO_TITLE=true
-FNM_COREPACK_ENABLED=true
+precmd () {print -Pn "\e]0;Terminal\a"}
 
-function set_win_title(){
-    echo -ne "\033]0; Terminal \007"
-}
-
-precmd_functions+=(set_win_title)
-
-autoload -Uz compinit && compinit
+DISABLE_AUTO_TITLE="true"
+FNM_COREPACK_ENABLED="true"
 
 # pnpm
 export PNPM_HOME="/home/leiswatch/.local/share/pnpm"
@@ -52,10 +45,15 @@ esac
 
 # fnm
 export PATH="/home/leiswatch/.local/share/fnm:$PATH"
-eval "$(fnm env --shell zsh)"
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"
 
 # Go path
 export GOPATH="$HOME/.go"
+
+autoload -Uz compinit && compinit
 
 # fzf
 source $HOME/.fzf/key-bindings.zsh
@@ -64,12 +62,11 @@ source $HOME/.fzf/completion.zsh
 # kubectl
 source <(kubectl completion zsh)
 
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-
 # bun completions
 [ -s "/home/leiswatch/.bun/_bun" ] && source "/home/leiswatch/.bun/_bun"
+
+# fnm
+eval "$(fnm env --shell zsh)"
 
 # starship
 eval "$(starship init zsh)"
