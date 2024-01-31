@@ -1,6 +1,6 @@
 require("catppuccin").setup({
 	flavour = "mocha",
-    transparent_background = true,
+	transparent_background = true,
 	term_colors = true,
 	show_end_of_buffer = false,
 	no_italic = true,
@@ -23,7 +23,7 @@ require("catppuccin").setup({
 			FloatBorder = { fg = color.surface1, bg = "NONE" },
 			HarpoonBorder = { fg = color.surface1, bg = "NONE" },
 			NeotreeNormal = { fg = color.text, bg = "NONE" },
-            Neotree = { fg = color.text, bg = "NONE" },
+			Neotree = { fg = color.text, bg = "NONE" },
 			TelescopeBorder = { fg = color.surface1, bg = "NONE" },
 			TelescopePreviewBorder = { fg = color.surface1, bg = "NONE" },
 			TelescopeResultsBorder = { fg = color.surface1, bg = "NONE" },
@@ -51,6 +51,7 @@ require("catppuccin").setup({
 			TreesitterContextLineNumber = { fg = color.text, bg = color.mantle },
 			MatchParen = { bg = color.surface1, fg = color.peach },
 			MatchWord = { bg = color.surface1, fg = color.peach },
+			NeoTreeIndentMarker = { bg = "NONE", fg = color.surface0 },
 		}
 	end,
 	integrations = {

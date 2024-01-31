@@ -59,6 +59,7 @@ require("neo-tree").setup({
 		},
 		indent = {
 			with_expanders = true,
+            indent_marker = "╎",
 		},
 	},
 })

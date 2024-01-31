@@ -9,4 +9,7 @@ require("gitsigns").setup({
 		virt_text_priority = 999,
 	},
 	current_line_blame_formatter = "<author>, <author_time:%R> - <summary>",
+	preview_config = {
+		border = "rounded",
+	},
 })

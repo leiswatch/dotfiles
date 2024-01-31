@@ -133,9 +133,9 @@ require("lazy").setup({
 		},
 	},
 	{ "akinsho/bufferline.nvim", version = "*", dependencies = "nvim-tree/nvim-web-devicons" },
+	{ "lukas-reineke/indent-blankline.nvim", main = "ibl" },
 	-- { "stevearc/conform.nvim" },
 	-- { "mfussenegger/nvim-lint" },
-	-- { "lukas-reineke/indent-blankline.nvim", main = "ibl" },
 	-- {
 	-- 	"Exafunction/codeium.vim",
 	-- 	event = "BufEnter",

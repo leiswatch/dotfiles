@@ -39,7 +39,7 @@ vim.o.colorcolumn = ""
 vim.o.guicursor = ""
 vim.o.hlsearch = false
 vim.o.wrap = false
-vim.o.signcolumn = "yes"
+vim.o.signcolumn = "yes:2"
 vim.o.updatetime = 50
 vim.o.cursorline = false
 vim.diagnostic.config({
