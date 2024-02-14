@@ -37,7 +37,7 @@ null_ls.setup({
 		-- formatting.eslint_d.with({
 		-- 	extra_filetypes = { "astro" },
 		-- }),
-		formatting.prettierd.with({
+		formatting.prettier.with({
 			extra_filetypes = { "astro", "sass" },
 		}),
 		formatting.stylelint,

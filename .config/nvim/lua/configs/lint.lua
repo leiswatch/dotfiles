@@ -1,6 +1,5 @@
 require("lint").linters_by_ft = {
 	go = { "golangcilint" },
-	lua = { "luacheck" },
 	python = { "pylint" },
 	json = { "jsonlint" },
 	yaml = { "yamllint" },
@@ -8,6 +7,7 @@ require("lint").linters_by_ft = {
 	sass = { "stylelint" },
 	css = { "stylelint" },
 	less = { "stylelint" },
+	-- lua = { "luacheck" },
 	-- astro = { "eslint_d" },
 	-- javascript = { "eslint_d" },
 	-- javascriptreact = { "eslint_d" },

@@ -75,7 +75,7 @@ cmp.setup({
 		{ name = "luasnip" },
 		{ name = "sass-variables" },
 		{ name = "codeium" },
-		-- { name = "nvim_lua" },
+		{ name = "nvim_lua" },
 	}, {
 		{ name = "buffer" },
 		{ name = "path" },

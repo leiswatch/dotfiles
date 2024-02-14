@@ -56,6 +56,7 @@ require("lazy").setup({
 			"pontusk/cmp-sass-variables",
 			"rafamadriz/friendly-snippets",
 			"onsails/lspkind.nvim",
+			"mmolhoek/cmp-scss",
 		},
 	},
 
@@ -124,7 +125,6 @@ require("lazy").setup({
 	{ "goolord/alpha-nvim" },
 	{ "AndrewRadev/tagalong.vim" },
 	{ "folke/noice.nvim", event = "VeryLazy" },
-	{ "nvimtools/none-ls.nvim" },
 	{
 		"Exafunction/codeium.nvim",
 		dependencies = {
@@ -132,17 +132,27 @@ require("lazy").setup({
 			"hrsh7th/nvim-cmp",
 		},
 	},
-	{ "akinsho/bufferline.nvim", version = "*", dependencies = "nvim-tree/nvim-web-devicons" },
+	-- { "akinsho/bufferline.nvim", version = "*", dependencies = "nvim-tree/nvim-web-devicons" },
 	{ "lukas-reineke/indent-blankline.nvim", main = "ibl" },
+	{ "nvimtools/none-ls.nvim" },
+	{ "folke/neodev.nvim" },
+	{
+		"utilyre/barbecue.nvim",
+		name = "barbecue",
+		version = "*",
+		dependencies = {
+			"SmiteshP/nvim-navic",
+			"nvim-tree/nvim-web-devicons", -- optional dependency
+		},
+	},
 	-- { "stevearc/conform.nvim" },
 	-- { "mfussenegger/nvim-lint" },
+	-- { "HiPhish/rainbow-delimiters.nvim" },
 	-- {
 	-- 	"Exafunction/codeium.vim",
 	-- 	event = "BufEnter",
 	-- },
 	-- { "sbdchd/neoformat" },
-	-- { "lukas-reineke/indent-blankline.nvim", branch = "v3" },
-	-- { "HiPhish/rainbow-delimiters.nvim" },
 }, {
 	ui = {
 		size = { width = 0.75, height = 0.75 },

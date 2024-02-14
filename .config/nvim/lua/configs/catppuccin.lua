@@ -52,11 +52,18 @@ require("catppuccin").setup({
 			MatchParen = { bg = color.surface1, fg = color.peach },
 			MatchWord = { bg = color.surface1, fg = color.peach },
 			NeoTreeIndentMarker = { bg = "NONE", fg = color.surface0 },
+			Directory = { bg = color.mantle, fg = color.text },
 		}
 	end,
 	integrations = {
 		aerial = false,
 		barbar = false,
+		barbecue = {
+			dim_dirname = true, -- directory name is dimmed by default
+			bold_basename = true,
+			dim_context = true,
+			alt_background = true,
+		},
 		beacon = false,
 		cmp = true,
 		coc_nvim = false,
@@ -94,7 +101,7 @@ require("catppuccin").setup({
 		treesitter_context = true,
 		ts_rainbow = false,
 		ts_rainbow2 = false,
-		rainbow_delimiters = false,
+		rainbow_delimiters = true,
 		vim_sneak = false,
 		vimwiki = true,
 		which_key = false,

@@ -1,5 +1,5 @@
 local lspconfig = require("lspconfig")
-require('lspconfig.ui.windows').default_options.border = 'rounded'
+require("lspconfig.ui.windows").default_options.border = "rounded"
 
 require("mason").setup({
 	ui = {
@@ -93,19 +93,19 @@ local opts = { noremap = true, silent = true }
 vim.keymap.set(
 	"n",
 	"<leader>e",
-	"<cmd> lua vim.diagnostic.open_float({border='rounded', max_width=100, title='', header='', source=true })<cr>",
+	"<cmd> lua vim.diagnostic.open_float({border='rounded', max_width=100, title='Diagnostics', header='', source=false })<cr>",
 	opts
 )
 vim.keymap.set(
 	"n",
 	"[d",
-	"<cmd> lua vim.diagnostic.goto_prev({float={border='rounded', max_width=100, title='', header='', source=true }})<cr>",
+	"<cmd> lua vim.diagnostic.goto_prev({float={border='rounded', max_width=100, title='Diagnostics', header='', source=false }})<cr>",
 	opts
 )
 vim.keymap.set(
 	"n",
 	"]d",
-	"<cmd> lua vim.diagnostic.goto_next({float={border='rounded', max_width=100, title='', header='', source=true }})<cr>",
+	"<cmd> lua vim.diagnostic.goto_next({float={border='rounded', max_width=100, title='Diagnostics', header='', source=false }})<cr>",
 	opts
 )
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, opts)
@@ -207,7 +207,7 @@ lspconfig["tsserver"].setup({
 lspconfig["cssmodules_ls"].setup({
 	on_attach = custom_on_attach,
 	capabilities = capabilities,
-	filetypes = { "typescriptreact", "javascriptreact" },
+	filetypes = { "typescriptreact", "javascriptreact", "css", "scss" },
 })
 
 lspconfig["graphql"].setup({
