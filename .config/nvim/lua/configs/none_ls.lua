@@ -19,17 +19,15 @@ null_ls.setup({
 	sources = {
 		-- FORMATTING
 		-- lua
-		formatting.stylua,
+		-- formatting.stylua,
 		-- python
-		formatting.black,
-		formatting.yapf,
+		-- formatting.black,
+		-- formatting.yapf,
 		-- go
-		formatting.goimports,
-		formatting.gofumpt,
-		-- rust
-		formatting.rustfmt,
+		-- formatting.goimports,
+		-- formatting.gofumpt,
 		-- c/c++
-		formatting.clang_format,
+		-- formatting.clang_format,
 		-- javascript/typescript/json/yaml/graphql/astro/css/sass/less
 		-- formatting.eslint.with({
 		-- 	extra_filetypes = { "astro" },
@@ -37,14 +35,10 @@ null_ls.setup({
 		-- formatting.eslint_d.with({
 		-- 	extra_filetypes = { "astro" },
 		-- }),
-		formatting.prettier.with({
-			extra_filetypes = { "astro", "sass" },
-		}),
-		formatting.stylelint,
-
-		-- extra
-		formatting.trim_newlines,
-		formatting.trim_whitespace,
+		-- formatting.prettier.with({
+		-- 	extra_filetypes = { "astro", "sass" },
+		-- }),
+		-- formatting.stylelint,
 
 		-- DIAGNOSTICS
 		-- go

@@ -48,6 +48,8 @@ require("catppuccin").setup({
 			LineNrBelow = { fg = color.surface1, bg = "NONE" },
 			ColorColumn = { fg = "NONE", bg = color.surface0 },
 			TreesitterContext = { fg = "NONE", bg = color.mantle },
+			TreesitterContextBottom = { bg = color.mantle },
+			TreesitterContextLineNumberBottom = { bg = color.mantle },
 			TreesitterContextLineNumber = { fg = color.text, bg = color.mantle },
 			MatchParen = { bg = color.surface1, fg = color.peach },
 			MatchWord = { bg = color.surface1, fg = color.peach },
@@ -58,12 +60,6 @@ require("catppuccin").setup({
 	integrations = {
 		aerial = false,
 		barbar = false,
-		barbecue = {
-			dim_dirname = true, -- directory name is dimmed by default
-			bold_basename = true,
-			dim_context = true,
-			alt_background = true,
-		},
 		beacon = false,
 		cmp = true,
 		coc_nvim = false,
@@ -106,9 +102,6 @@ require("catppuccin").setup({
 		vimwiki = true,
 		which_key = false,
 		window_picker = true,
-		navic = {
-			enabled = true,
-		},
 		dap = {
 			enabled = false,
 			enable_ui = false,
@@ -137,3 +130,4 @@ require("catppuccin").setup({
 })
 
 vim.cmd.colorscheme("catppuccin")
+

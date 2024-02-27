@@ -115,31 +115,31 @@ local custom_on_attach = function(client, bufnr)
 	-- vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 	local bufopts = { noremap = true, silent = true, buffer = bufnr }
 
-	local lsp_formatting = function(bufnr)
-		local filetype = vim.bo.filetype
+	-- local lsp_formatting = function(bufnr)
+	-- 	local filetype = vim.bo.filetype
 
-		if
-			vim.fn.exists(":EslintFixAll") ~= 0
-			and (
-				filetype == "javascript"
-				or filetype == "typescript"
-				or filetype == "typescriptreact"
-				or filetype == "javascriptreact"
-				or filetype == "astro"
-				or filetype == "vue"
-			)
-		then
-			vim.api.nvim_command(":EslintFixAll")
-		end
+	-- 	if
+	-- 		vim.fn.exists(":EslintFixAll") ~= 0
+	-- 		and (
+	-- 			filetype == "javascript"
+	-- 			or filetype == "typescript"
+	-- 			or filetype == "typescriptreact"
+	-- 			or filetype == "javascriptreact"
+	-- 			or filetype == "astro"
+	-- 			or filetype == "vue"
+	-- 		)
+	-- 	then
+	-- 		vim.api.nvim_command(":EslintFixAll")
+	-- 	end
 
-		vim.lsp.buf.format({
-			filter = function(client)
-				return client.name == "null-ls"
-			end,
-			bufnr = bufnr,
-			timeout_ms = 3000,
-		})
-	end
+	-- 	vim.lsp.buf.format({
+	-- 		filter = function(client)
+	-- 			return client.name == "null-ls"
+	-- 		end,
+	-- 		bufnr = bufnr,
+	-- 		timeout_ms = 3000,
+	-- 	})
+	-- end
 
 	vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
 	vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
@@ -155,7 +155,7 @@ local custom_on_attach = function(client, bufnr)
 	vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, bufopts)
 	vim.keymap.set({ "v", "n" }, "<leader>ca", vim.lsp.buf.code_action, bufopts)
 	vim.keymap.set("n", "gl", vim.lsp.buf.references, bufopts)
-	vim.keymap.set("n", "<leader>f", lsp_formatting, bufopts)
+	-- vim.keymap.set("n", "<leader>f", lsp_formatting, bufopts)
 end
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()

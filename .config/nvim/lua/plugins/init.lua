@@ -132,20 +132,20 @@ require("lazy").setup({
 			"hrsh7th/nvim-cmp",
 		},
 	},
-	-- { "akinsho/bufferline.nvim", version = "*", dependencies = "nvim-tree/nvim-web-devicons" },
-	{ "lukas-reineke/indent-blankline.nvim", main = "ibl" },
 	{ "nvimtools/none-ls.nvim" },
 	{ "folke/neodev.nvim" },
-	{
-		"utilyre/barbecue.nvim",
-		name = "barbecue",
-		version = "*",
-		dependencies = {
-			"SmiteshP/nvim-navic",
-			"nvim-tree/nvim-web-devicons", -- optional dependency
-		},
-	},
-	-- { "stevearc/conform.nvim" },
+	{ "stevearc/conform.nvim" },
+	-- { "akinsho/bufferline.nvim", version = "*", dependencies = "nvim-tree/nvim-web-devicons" },
+	-- { "lukas-reineke/indent-blankline.nvim", main = "ibl" },
+	-- {
+	-- 	"utilyre/barbecue.nvim",
+	-- 	name = "barbecue",
+	-- 	version = "*",
+	-- 	dependencies = {
+	-- 		"SmiteshP/nvim-navic",
+	-- 		"nvim-tree/nvim-web-devicons", -- optional dependency
+	-- 	},
+	-- },
 	-- { "mfussenegger/nvim-lint" },
 	-- { "HiPhish/rainbow-delimiters.nvim" },
 	-- {

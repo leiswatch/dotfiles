@@ -1,4 +1,5 @@
 require("gitsigns").setup({
+	debug_mode = false,
 	signcolumn = true,
 	current_line_blame = false,
 	current_line_blame_opts = {
