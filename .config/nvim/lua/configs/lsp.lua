@@ -1,9 +1,9 @@
 local lspconfig = require("lspconfig")
-require("lspconfig.ui.windows").default_options.border = "rounded"
+require("lspconfig.ui.windows").default_options.border = "single"
 
 require("mason").setup({
 	ui = {
-		border = "rounded",
+		border = "single",
 		height = 0.8,
 	},
 })
@@ -32,6 +32,7 @@ require("mason-lspconfig").setup({
 		"vuels",
 		"yamlls",
 		"clangd",
+		"templ",
 	},
 	automatic_installation = true,
 })
@@ -42,10 +43,10 @@ require("mason-tool-installer").setup({
 		"golangci-lint",
 		"pylint",
 		"yamllint",
-		"jsonlint",
-		"eslint_d",
+		-- "jsonlint",
+		-- "eslint_d",
 		"prettier",
-		"prettierd",
+		-- "prettierd",
 		"goimports",
 		"gofumpt",
 		"black",
@@ -60,17 +61,15 @@ require("mason-tool-installer").setup({
 })
 
 vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-	border = "rounded",
+	border = "single",
 	title = "",
-	max_height = 20,
-	-- max_width = 120,
+    max_width = 100,
 })
 
 vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-	border = "rounded",
+	border = "single",
 	title = "",
-	max_height = 20,
-	-- max_width = 120,
+    max_width = 100,
 })
 
 local signs = { Error = "", Warn = "", Hint = "", Info = "" }
@@ -79,33 +78,33 @@ for type, icon in pairs(signs) do
 	vim.fn.sign_define(hl, { text = icon, texthl = hl, numhl = hl })
 end
 
-local function organize_imports()
-	local params = {
-		command = "_typescript.organizeImports",
-		arguments = { vim.api.nvim_buf_get_name(0) },
-		title = "",
-	}
-	vim.lsp.buf.execute_command(params)
-end
+-- local function organize_imports()
+-- 	local params = {
+-- 		command = "_typescript.organizeImports",
+-- 		arguments = { vim.api.nvim_buf_get_name(0) },
+-- 		title = "",
+-- 	}
+-- 	vim.lsp.buf.execute_command(params)
+-- end
 
 local opts = { noremap = true, silent = true }
 
 vim.keymap.set(
 	"n",
 	"<leader>e",
-	"<cmd> lua vim.diagnostic.open_float({border='rounded', max_width=100, title='Diagnostics', header='', source=false })<cr>",
+	"<cmd> lua vim.diagnostic.open_float({border='single', max_width=100, title='Diagnostics', header='', source=false })<cr>",
 	opts
 )
 vim.keymap.set(
 	"n",
 	"[d",
-	"<cmd> lua vim.diagnostic.goto_prev({float={border='rounded', max_width=100, title='Diagnostics', header='', source=false }})<cr>",
+	"<cmd> lua vim.diagnostic.goto_prev({float={border='single', max_width=100, title='Diagnostics', header='', source=false }})<cr>",
 	opts
 )
 vim.keymap.set(
 	"n",
 	"]d",
-	"<cmd> lua vim.diagnostic.goto_next({float={border='rounded', max_width=100, title='Diagnostics', header='', source=false }})<cr>",
+	"<cmd> lua vim.diagnostic.goto_next({float={border='single', max_width=100, title='Diagnostics', header='', source=false }})<cr>",
 	opts
 )
 vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, opts)
@@ -115,31 +114,31 @@ local custom_on_attach = function(client, bufnr)
 	-- vim.api.nvim_buf_set_option(bufnr, 'omnifunc', 'v:lua.vim.lsp.omnifunc')
 	local bufopts = { noremap = true, silent = true, buffer = bufnr }
 
-	-- local lsp_formatting = function(bufnr)
-	-- 	local filetype = vim.bo.filetype
+	local lsp_formatting = function(bufnr)
+		local filetype = vim.bo.filetype
 
-	-- 	if
-	-- 		vim.fn.exists(":EslintFixAll") ~= 0
-	-- 		and (
-	-- 			filetype == "javascript"
-	-- 			or filetype == "typescript"
-	-- 			or filetype == "typescriptreact"
-	-- 			or filetype == "javascriptreact"
-	-- 			or filetype == "astro"
-	-- 			or filetype == "vue"
-	-- 		)
-	-- 	then
-	-- 		vim.api.nvim_command(":EslintFixAll")
-	-- 	end
+		if
+			vim.fn.exists(":EslintFixAll") ~= 0
+			and (
+				filetype == "javascript"
+				or filetype == "typescript"
+				or filetype == "typescriptreact"
+				or filetype == "javascriptreact"
+				or filetype == "astro"
+				or filetype == "vue"
+			)
+		then
+			vim.api.nvim_command(":EslintFixAll")
+		end
 
-	-- 	vim.lsp.buf.format({
-	-- 		filter = function(client)
-	-- 			return client.name == "null-ls"
-	-- 		end,
-	-- 		bufnr = bufnr,
-	-- 		timeout_ms = 3000,
-	-- 	})
-	-- end
+		vim.lsp.buf.format({
+			-- filter = function(client)
+			-- 	return client.name == "null-ls" or client.name == "rust_analyzer"
+			-- end,
+			bufnr = bufnr,
+			timeout_ms = 3000,
+		})
+	end
 
 	vim.keymap.set("n", "gD", vim.lsp.buf.declaration, bufopts)
 	vim.keymap.set("n", "gd", vim.lsp.buf.definition, bufopts)
@@ -155,7 +154,7 @@ local custom_on_attach = function(client, bufnr)
 	vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, bufopts)
 	vim.keymap.set({ "v", "n" }, "<leader>ca", vim.lsp.buf.code_action, bufopts)
 	vim.keymap.set("n", "gl", vim.lsp.buf.references, bufopts)
-	-- vim.keymap.set("n", "<leader>f", lsp_formatting, bufopts)
+	vim.keymap.set("n", "<leader>f", lsp_formatting, bufopts)
 end
 
 local capabilities = require("cmp_nvim_lsp").default_capabilities()
@@ -193,13 +192,20 @@ lspconfig["astro"].setup({
 lspconfig["tsserver"].setup({
 	on_attach = custom_on_attach,
 	capabilities = capabilities,
-	init_options = {
-		tsserver = { maxTsServerMemory = 2048 },
-	},
-	commands = {
-		OrganizeImports = {
-			organize_imports,
-			description = "Organize Imports",
+	settings = {
+		typescript = {
+			implementationsCodeLens = {
+				enabled = true,
+				showOnInterfaceMethods = true,
+			},
+			referencesCodeLens = {
+				enabled = true,
+				showOnAllFunctions = true,
+			},
+			preferGoToSourceDefinition = true,
+			tsserver = {
+				maxTsServerMemory = 2048,
+			},
 		},
 	},
 })
@@ -248,6 +254,11 @@ lspconfig["pyright"].setup({
 })
 
 lspconfig["gopls"].setup({
+	on_attach = custom_on_attach,
+	capabilities = capabilities,
+})
+
+lspconfig["templ"].setup({
 	on_attach = custom_on_attach,
 	capabilities = capabilities,
 })
@@ -306,17 +317,18 @@ lspconfig["emmet_ls"].setup({
 		"typescriptreact",
 	},
 })
--- lspconfig["stylelint_lsp"].setup({
--- 	on_attach = custom_on_attach,
--- 	capabilities = capabilities,
--- 	filetypes = { "css", "less", "sass", "scss", "sugarss", "vue" },
--- 	settings = {
--- 		stylelintplus = {
--- 			autoFixOnSave = false,
--- 			autoFixOnFormat = true,
--- 		},
--- 	},
--- })
+
+lspconfig["stylelint_lsp"].setup({
+	on_attach = custom_on_attach,
+	capabilities = capabilities,
+	filetypes = { "css", "less", "sass", "scss", "sugarss", "vue" },
+	settings = {
+		stylelintplus = {
+			autoFixOnFormat = true,
+			autoFixOnSave = false,
+		},
+	},
+})
 
 -- lspconfig["tailwindcss"].setup({
 -- 	on_attach = custom_on_attach,

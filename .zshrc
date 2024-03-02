@@ -8,6 +8,7 @@ fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}
 source $ZSH/oh-my-zsh.sh
 
 export BAT_THEME="Catppuccin-mocha"
+export BAT_STYLE="numbers,header,changes"
 
 # Catppuccin
 export FZF_DEFAULT_OPTS=" \
@@ -67,6 +68,9 @@ source <(kubectl completion zsh)
 
 # fnm
 eval "$(fnm env --shell zsh)"
+
+# brew
+eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 # starship
 eval "$(starship init zsh)"

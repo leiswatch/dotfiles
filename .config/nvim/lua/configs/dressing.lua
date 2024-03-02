@@ -1,7 +1,7 @@
 require("dressing").setup({
 	input = {
 		enabled = true,
-		border = "rounded",
+		border = "single",
 		win_options = {
 			winblend = 0,
 		},
@@ -17,7 +17,7 @@ require("dressing").setup({
 		builtin = {
 			-- These are passed to nvim_open_win
 			-- anchor = "NW",
-			border = "rounded",
+			border = "single",
 			-- 'editor' and 'win' will default to being centered
 			relative = "cursor",
 

@@ -45,7 +45,7 @@ telescope.setup({
 		generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
 		winblend = 0,
 		border = true,
-		-- borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+		borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
 		color_devicons = true,
 		previewer = true,
 		prompt_title = true,

@@ -1,10 +1,12 @@
 local opts = { noremap = true, silent = true }
 local yank_group = vim.api.nvim_create_augroup("HighlightYank", {})
 
+vim.filetype.add({ extension = { templ = "templ" } })
+
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = "lspinfo",
 	callback = function()
-		vim.api.nvim_win_set_config(0, { border = "rounded" })
+		vim.api.nvim_win_set_config(0, { border = "single" })
 		vim.opt.colorcolumn = ""
 	end,
 })
@@ -46,12 +48,6 @@ vim.api.nvim_create_autocmd("FileType", {
 		vim.o.colorcolumn = "0"
 	end,
 })
-
--- vim.api.nvim_create_autocmd({ "BufWritePost" }, {
---   callback = function()
---     require("lint").try_lint()
---   end,
--- })
 
 vim.api.nvim_create_autocmd({ "FileType" }, {
 	pattern = { "qf" },

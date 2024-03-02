@@ -19,41 +19,38 @@ null_ls.setup({
 	sources = {
 		-- FORMATTING
 		-- lua
-		-- formatting.stylua,
+		formatting.stylua,
 		-- python
-		-- formatting.black,
-		-- formatting.yapf,
+		formatting.black,
+		formatting.yapf,
 		-- go
-		-- formatting.goimports,
-		-- formatting.gofumpt,
+		formatting.goimports,
+		formatting.gofumpt,
 		-- c/c++
-		-- formatting.clang_format,
+		formatting.clang_format,
 		-- javascript/typescript/json/yaml/graphql/astro/css/sass/less
+		formatting.prettier.with({
+			extra_filetypes = { "astro", "sass" },
+		}),
+		-- formatting.stylelint,
 		-- formatting.eslint.with({
 		-- 	extra_filetypes = { "astro" },
 		-- }),
 		-- formatting.eslint_d.with({
 		-- 	extra_filetypes = { "astro" },
 		-- }),
-		-- formatting.prettier.with({
-		-- 	extra_filetypes = { "astro", "sass" },
-		-- }),
-		-- formatting.stylelint,
 
 		-- DIAGNOSTICS
 		-- go
 		diagnostics.golangci_lint,
-		-- lua
-		-- diagnostics.luacheck,
 		-- python
 		diagnostics.pylint,
-		-- css/scss/sass/less
-		diagnostics.stylelint,
 		-- eslint
 		-- diagnostics.eslint,
+		-- lua
+		-- diagnostics.luacheck,
 
 		-- CODE ACTIONS
 		code_actions.gitsigns,
-		-- code_actions.eslint,
 	},
 })

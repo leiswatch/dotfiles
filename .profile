@@ -1,10 +1,10 @@
 # if running bash
-if [ -n "$BASH_VERSION" ]; then
-    # include .bashrc if it exists
-    if [ -f "$HOME/.bashrc" ]; then
-	. "$HOME/.bashrc"
-    fi
-fi
+#if [ -n "$BASH_VERSION" ]; then
+#    # include .bashrc if it exists
+#    if [ -f "$HOME/.bashrc" ]; then
+#	. "$HOME/.bashrc"
+#    fi
+#fi
 
 # set PATH so it includes user's private bin if it exists
 if [ -d "$HOME/bin" ] ; then
@@ -28,10 +28,6 @@ if [ -d "$HOME/.local/share/pnpm" ] ; then
   PATH="$HOME/.local/share/pnpm:$PATH"
 fi
 
-if [ -d "$HOME/.local/share/bob/nvim-bin" ] ; then
-  PATH="$HOME/.local/share/bob/nvim-bin:$PATH"
-fi
-
 if [ -d "/usr/local/go/bin" ] ; then
   PATH="/usr/local/go/bin:$PATH"
 fi
@@ -39,8 +35,3 @@ fi
 export GOPATH="$HOME/.go"
 export DENO_INSTALL="$HOME/.deno"
 export PATH=$PATH:$DENO_INSTALL/bin
-
-
-# Added by Toolbox App
-export PATH="$PATH:/home/leiswatch/.local/share/JetBrains/Toolbox/scripts"
-

@@ -31,16 +31,12 @@ cmp.setup({
 	},
 	window = {
 		completion = cmp.config.window.bordered({
-			col_offset = -3,
-			side_padding = 0,
-			border = "rounded",
+			border = "single",
 			winhighlight = "Normal:CatppuccinNormal,FloatBorder:CatppuccinBorder,CursorLine:CatppucinCursorLine",
-			-- winhighlight = "Normal:RosePineNormal,FloatBorder:RosePineBorder,CursorLine:RosePineCursorLine",
 		}),
 		documentation = cmp.config.window.bordered({
-			border = "rounded",
+			border = "single",
 			winhighlight = "Normal:CatppuccinNormal,FloatBorder:CatppuccinBorder,CursorLine:CatppucinCursorLine",
-			-- winhighlight = "Normal:RosePineNormal,FloatBorder:RosePineBorder,CursorLine:RosePineCursorLine",
 		}),
 	},
 	mapping = cmp.mapping.preset.insert({

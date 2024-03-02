@@ -4,20 +4,20 @@ require("catppuccin").setup({
 	term_colors = true,
 	show_end_of_buffer = false,
 	no_italic = true,
-	styles = {
-		comments = {},
-		conditionals = {},
-		loops = {},
-		functions = {},
-		keywords = {},
-		strings = {},
-		variables = {},
-		numbers = {},
-		booleans = {},
-		properties = {},
-		types = {},
-		operators = {},
-	},
+	-- styles = {
+	-- 	comments = {},
+	-- 	conditionals = {},
+	-- 	loops = {},
+	-- 	functions = {},
+	-- 	keywords = {},
+	-- 	strings = {},
+	-- 	variables = {},
+	-- 	numbers = {},
+	-- 	booleans = {},
+	-- 	properties = {},
+	-- 	types = {},
+	-- 	operators = {},
+	-- },
 	custom_highlights = function(color)
 		return {
 			FloatBorder = { fg = color.surface1, bg = "NONE" },
@@ -59,6 +59,7 @@ require("catppuccin").setup({
 	end,
 	integrations = {
 		aerial = false,
+        alpha = true,
 		barbar = false,
 		beacon = false,
 		cmp = true,
@@ -66,7 +67,6 @@ require("catppuccin").setup({
 		dashboard = true,
 		fern = false,
 		fidget = true,
-		gitgutter = false,
 		gitsigns = true,
 		harpoon = true,
 		hop = false,
@@ -97,15 +97,12 @@ require("catppuccin").setup({
 		treesitter_context = true,
 		ts_rainbow = false,
 		ts_rainbow2 = false,
-		rainbow_delimiters = true,
+		rainbow_delimiters = false,
 		vim_sneak = false,
 		vimwiki = true,
 		which_key = false,
 		window_picker = true,
-		dap = {
-			enabled = false,
-			enable_ui = false,
-		},
+		dap = true,
 		indent_blankline = {
 			enabled = true,
 			scope_color = "lavender",
@@ -130,4 +127,3 @@ require("catppuccin").setup({
 })
 
 vim.cmd.colorscheme("catppuccin")
-

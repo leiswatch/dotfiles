@@ -17,7 +17,6 @@ require("lazy").setup({
 	{ "nvim-lua/plenary.nvim", lazy = true },
 	{ "MunifTanjim/nui.nvim", lazy = true },
 	{ "nvim-tree/nvim-web-devicons", lazy = true },
-
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = function()
@@ -42,7 +41,6 @@ require("lazy").setup({
 			"WhoIsSethDaniel/mason-tool-installer.nvim",
 		},
 	},
-
 	{
 		"hrsh7th/nvim-cmp",
 		event = "InsertEnter",
@@ -56,10 +54,8 @@ require("lazy").setup({
 			"pontusk/cmp-sass-variables",
 			"rafamadriz/friendly-snippets",
 			"onsails/lspkind.nvim",
-			"mmolhoek/cmp-scss",
 		},
 	},
-
 	{ "nvim-lualine/lualine.nvim" },
 	{ "j-hui/fidget.nvim" },
 	{
@@ -124,7 +120,6 @@ require("lazy").setup({
 	},
 	{ "goolord/alpha-nvim" },
 	{ "AndrewRadev/tagalong.vim" },
-	{ "folke/noice.nvim", event = "VeryLazy" },
 	{
 		"Exafunction/codeium.nvim",
 		dependencies = {
@@ -132,32 +127,22 @@ require("lazy").setup({
 			"hrsh7th/nvim-cmp",
 		},
 	},
-	{ "nvimtools/none-ls.nvim" },
 	{ "folke/neodev.nvim" },
-	{ "stevearc/conform.nvim" },
-	-- { "akinsho/bufferline.nvim", version = "*", dependencies = "nvim-tree/nvim-web-devicons" },
+	{ "nvimtools/none-ls.nvim" },
+	{ "folke/noice.nvim", event = "VeryLazy" },
 	-- { "lukas-reineke/indent-blankline.nvim", main = "ibl" },
-	-- {
-	-- 	"utilyre/barbecue.nvim",
-	-- 	name = "barbecue",
-	-- 	version = "*",
-	-- 	dependencies = {
-	-- 		"SmiteshP/nvim-navic",
-	-- 		"nvim-tree/nvim-web-devicons", -- optional dependency
-	-- 	},
-	-- },
-	-- { "mfussenegger/nvim-lint" },
 	-- { "HiPhish/rainbow-delimiters.nvim" },
 	-- {
 	-- 	"Exafunction/codeium.vim",
 	-- 	event = "BufEnter",
 	-- },
 	-- { "sbdchd/neoformat" },
+	-- { "stevearc/conform.nvim" },
 }, {
 	ui = {
 		size = { width = 0.75, height = 0.75 },
 		wrap = true,
-		border = "rounded",
+		border = "single",
 	},
 	install = {
 		missing = true,
