@@ -49,7 +49,16 @@ require("lazy").setup({
 			"hrsh7th/cmp-buffer",
 			"hrsh7th/cmp-path",
 			"hrsh7th/cmp-cmdline",
-			"L3MON4D3/LuaSnip",
+			{
+				"L3MON4D3/LuaSnip",
+				version = "v2.*",
+				build = (function()
+					if vim.fn.has("win32") == 1 or vim.fn.executable("make") == 0 then
+						return
+					end
+					return "make install_jsregexp"
+				end)(),
+			},
 			"saadparwaiz1/cmp_luasnip",
 			"pontusk/cmp-sass-variables",
 			"rafamadriz/friendly-snippets",
@@ -127,9 +136,23 @@ require("lazy").setup({
 			"hrsh7th/nvim-cmp",
 		},
 	},
-	{ "folke/neodev.nvim" },
 	{ "nvimtools/none-ls.nvim" },
 	{ "folke/noice.nvim", event = "VeryLazy" },
+	{ "nvim-pack/nvim-spectre" },
+	{
+		"folke/which-key.nvim",
+		event = "VeryLazy",
+		init = function()
+			vim.o.timeout = true
+			vim.o.timeoutlen = 300
+		end,
+		opts = {
+			window = {
+				border = "single",
+			},
+		},
+	},
+	-- { 'echasnovski/mini.completion', version = '*' },
 	-- { "lukas-reineke/indent-blankline.nvim", main = "ibl" },
 	-- { "HiPhish/rainbow-delimiters.nvim" },
 	-- {

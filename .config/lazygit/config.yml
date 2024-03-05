@@ -1,6 +1,6 @@
 gui:
   nerdFontsVersion: "3"
-  border: rounded
+  # border: rounded
   showIcons: false
   theme:
     selectedLineBgColor:

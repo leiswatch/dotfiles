@@ -6,6 +6,7 @@ plugins=(git npm yarn node docker docker-compose command-not-found you-should-us
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}
 
 source $ZSH/oh-my-zsh.sh
+source $HOME/.profile
 
 export BAT_THEME="Catppuccin-mocha"
 export BAT_STYLE="numbers,header,changes"
@@ -37,27 +38,17 @@ DISABLE_AUTO_TITLE="true"
 FNM_COREPACK_ENABLED="true"
 
 # pnpm
-export PNPM_HOME="/home/leiswatch/.local/share/pnpm"
 case ":$PATH:" in
   *":$PNPM_HOME:"*) ;;
   *) export PATH="$PNPM_HOME:$PATH" ;;
 esac
 # pnpm end
 
-# fnm
-export PATH="/home/leiswatch/.local/share/fnm:$PATH"
-
-# bun
-export BUN_INSTALL="$HOME/.bun"
-export PATH="$BUN_INSTALL/bin:$PATH"
-
-# Go path
-export GOPATH="$HOME/.go"
 
 autoload -Uz compinit && compinit
 
 # fzf
-source $HOME/.fzf/key-bindings.zsh
+source /usr/share/fzf/shell/key-bindings.zsh
 source $HOME/.fzf/completion.zsh
 
 # kubectl
@@ -68,9 +59,6 @@ source <(kubectl completion zsh)
 
 # fnm
 eval "$(fnm env --shell zsh)"
-
-# brew
-eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
 
 # starship
 eval "$(starship init zsh)"

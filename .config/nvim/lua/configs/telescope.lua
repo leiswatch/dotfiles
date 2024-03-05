@@ -27,7 +27,7 @@ telescope.setup({
 				width = 0.9,
 				height = 0.9,
 				preview_width = 0.45,
-				prompt_position = "bottom",
+				prompt_position = "top",
 			},
 		},
 		file_sorter = require("telescope.sorters").get_fuzzy_file,
@@ -65,8 +65,8 @@ telescope.setup({
 			previewer = false,
 			layout_config = {
 				horizontal = {
-					width = 0.75,
-					height = 0.75,
+					width = 0.85,
+					height = 0.85,
 					prompt_position = "top",
                     preview_cutoff = 120,
 				},

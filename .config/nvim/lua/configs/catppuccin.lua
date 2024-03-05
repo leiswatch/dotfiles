@@ -55,6 +55,7 @@ require("catppuccin").setup({
 			MatchWord = { bg = color.surface1, fg = color.peach },
 			NeoTreeIndentMarker = { bg = "NONE", fg = color.surface0 },
 			Directory = { bg = color.mantle, fg = color.text },
+            IncSearch = {fg = color.base, bg = color.peach},
 		}
 	end,
 	integrations = {
@@ -77,7 +78,7 @@ require("catppuccin").setup({
 		lsp_trouble = true,
 		markdown = true,
 		mason = true,
-		mini = false,
+		mini = true,
 		neogit = false,
 		neotest = true,
 		neotree = true,
@@ -100,7 +101,7 @@ require("catppuccin").setup({
 		rainbow_delimiters = false,
 		vim_sneak = false,
 		vimwiki = true,
-		which_key = false,
+		which_key = true,
 		window_picker = true,
 		dap = true,
 		indent_blankline = {
