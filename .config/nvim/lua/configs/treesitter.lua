@@ -22,11 +22,11 @@ require("nvim-treesitter.configs").setup({
 	highlight = {
 		enable = true,
 		-- disable = {},
-		-- additional_vim_regex_highlighting = true,
+		additional_vim_regex_highlighting = false,
 	},
 	autotag = {
 		enable = true,
-		enable_rename = false,
+		enable_rename = true,
 		enable_close = true,
 		enable_close_on_slash = false,
 		filetypes = {

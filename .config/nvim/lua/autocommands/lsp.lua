@@ -61,10 +61,15 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		-- vim.keymap.set("n", "<leader>wl", function()
 		-- 	print(vim.inspect(vim.lsp.buf.list_workspace_folders()))
 		-- end, opts)
+
+		-- vim.keymap.set("n", "gd", require("telescope.builtin").lsp_definitions, opts)
+		-- vim.keymap.set("n", "<leader>lr", require("telescope.builtin").lsp_references, opts)
+		-- vim.keymap.set("n", "<leader>li", require("telescope.builtin").lsp_implementations, opts)
+
 		vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-		vim.keymap.set("n", "gd", require("telescope.builtin").lsp_definitions, opts)
-		vim.keymap.set("n", "<leader>lr", require("telescope.builtin").lsp_references, opts)
-		vim.keymap.set("n", "<leader>li", require("telescope.builtin").lsp_implementations, opts)
+		vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+		vim.keymap.set("n", "gl", vim.lsp.buf.references, opts)
+		vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
 		vim.keymap.set("n", "<leader>lt", require("telescope.builtin").lsp_type_definitions, opts)
 		vim.keymap.set("n", "<leader>ld", require("telescope.builtin").lsp_document_symbols, opts)
 		vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)

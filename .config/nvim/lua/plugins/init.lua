@@ -128,7 +128,7 @@ require("lazy").setup({
 		},
 	},
 	{ "goolord/alpha-nvim" },
-	{ "AndrewRadev/tagalong.vim" },
+	-- { "AndrewRadev/tagalong.vim" },
 	{
 		"Exafunction/codeium.nvim",
 		dependencies = {
@@ -139,19 +139,6 @@ require("lazy").setup({
 	{ "nvimtools/none-ls.nvim" },
 	{ "folke/noice.nvim", event = "VeryLazy" },
 	{ "nvim-pack/nvim-spectre" },
-	{
-		"folke/which-key.nvim",
-		event = "VeryLazy",
-		init = function()
-			vim.o.timeout = true
-			vim.o.timeoutlen = 300
-		end,
-		opts = {
-			window = {
-				border = "single",
-			},
-		},
-	},
 	-- { 'echasnovski/mini.completion', version = '*' },
 	-- { "lukas-reineke/indent-blankline.nvim", main = "ibl" },
 	-- { "HiPhish/rainbow-delimiters.nvim" },
