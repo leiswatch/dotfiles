@@ -55,7 +55,7 @@ require("catppuccin").setup({
 			MatchWord = { bg = color.surface1, fg = color.peach },
 			NeoTreeIndentMarker = { bg = "NONE", fg = color.surface0 },
 			Directory = { bg = color.mantle, fg = color.text },
-            IncSearch = {fg = color.base, bg = color.peach},
+            IncSearch = {fg = color.base, bg = color.blue},
 		}
 	end,
 	integrations = {
