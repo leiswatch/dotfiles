@@ -5,6 +5,11 @@ require("fidget").setup({
 		ignore_done_already = false, -- Ignore new tasks that are already complete
 		ignore_empty_message = false, -- Ignore new tasks that don't contain a message
 		ignore = { "null-ls" },
+		display = {
+			overrides = { -- Override options from the default notification config
+				["typescript-tools"] = { name = "typescript-server" },
+			},
+		},
 	},
 	notification = {
 		window = {

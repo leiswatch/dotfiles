@@ -60,3 +60,9 @@ vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
 		vim.cmd([[setlocal formatoptions-=ro]])
 	end,
 })
+
+-- vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+-- 	callback = function()
+-- 		require("lint").try_lint()
+-- 	end,
+-- })

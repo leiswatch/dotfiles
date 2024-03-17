@@ -16,24 +16,33 @@ local lsp_formatting = function(bufnr)
 	end
 
 	vim.lsp.buf.format({
-		-- filter = function(client)
-		-- 	return client.name == "null-ls" or client.name == "rust_analyzer"
-		-- end,
+		filter = function(client)
+			return client.name == "null-ls" or client.name == "stylelint_lsp" or client.name == "rust_analyzer"
+		end,
 		bufnr = bufnr,
-		timeout_ms = 3000,
+		timeout_ms = 2000,
+		async = false,
 	})
 end
 
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 	callback = function(ev)
-		-- Enable completion triggered by <c-x><c-o>
 		vim.bo[ev.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 
-		-- Buffer local mappings.
-		-- See `:help vim.lsp.*` for documentation on any of the below functions
 		local opts = { noremap = true, silent = true, buffer = ev.buf }
-		-- Defaults
+
+		vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
+		vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
+		vim.keymap.set("n", "gl", vim.lsp.buf.references, opts)
+		vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
+		vim.keymap.set("n", "<leader>lt", require("telescope.builtin").lsp_type_definitions, opts)
+		vim.keymap.set("n", "<leader>ld", require("telescope.builtin").lsp_document_symbols, opts)
+		vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+		vim.keymap.set("n", "<leader>K", vim.lsp.buf.signature_help, opts)
+		vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
+		vim.keymap.set({ "v", "n" }, "<leader>ca", vim.lsp.buf.code_action, opts)
+		vim.keymap.set("n", "<leader>lf", lsp_formatting, opts)
 
 		-- vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
 		-- vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
@@ -65,17 +74,5 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		-- vim.keymap.set("n", "gd", require("telescope.builtin").lsp_definitions, opts)
 		-- vim.keymap.set("n", "<leader>lr", require("telescope.builtin").lsp_references, opts)
 		-- vim.keymap.set("n", "<leader>li", require("telescope.builtin").lsp_implementations, opts)
-
-		vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-		vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-		vim.keymap.set("n", "gl", vim.lsp.buf.references, opts)
-		vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-		vim.keymap.set("n", "<leader>lt", require("telescope.builtin").lsp_type_definitions, opts)
-		vim.keymap.set("n", "<leader>ld", require("telescope.builtin").lsp_document_symbols, opts)
-		vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-		vim.keymap.set("n", "<leader>K", vim.lsp.buf.signature_help, opts)
-		vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
-		vim.keymap.set({ "v", "n" }, "<leader>ca", vim.lsp.buf.code_action, opts)
-		vim.keymap.set("n", "<leader>f", lsp_formatting, opts)
 	end,
 })

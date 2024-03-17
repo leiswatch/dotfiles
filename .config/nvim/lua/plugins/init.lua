@@ -13,10 +13,22 @@ vim.opt.rtp:prepend(lazypath)
 
 require("lazy").setup({
 	{ "catppuccin/nvim", name = "catppuccin", lazy = false, priority = 1000 },
-	{ "stevearc/dressing.nvim", event = "VeryLazy" },
-	{ "nvim-lua/plenary.nvim", lazy = true },
-	{ "MunifTanjim/nui.nvim", lazy = true },
-	{ "nvim-tree/nvim-web-devicons", lazy = true },
+	{ "stevearc/dressing.nvim", event = "BufEnter" },
+	{ "nvim-lua/plenary.nvim" },
+	{
+		"nvim-tree/nvim-web-devicons",
+		lazy = true,
+		opts = {
+			strict = true,
+			override_by_extension = {
+				["astro"] = {
+					icon = "",
+					color = "#f1502f",
+					name = "Astro",
+				},
+			},
+		},
+	},
 	{
 		"nvim-treesitter/nvim-treesitter",
 		build = function()
@@ -32,8 +44,9 @@ require("lazy").setup({
 			"numToStr/Comment.nvim",
 		},
 	},
-
 	{ "neovim/nvim-lspconfig" },
+	{ "nvimtools/none-ls.nvim" },
+	{ "pmizio/typescript-tools.nvim" },
 	{
 		"williamboman/mason.nvim",
 		dependencies = {
@@ -47,8 +60,9 @@ require("lazy").setup({
 		dependencies = {
 			"hrsh7th/cmp-nvim-lsp",
 			"hrsh7th/cmp-buffer",
-			"hrsh7th/cmp-path",
+			-- "hrsh7th/cmp-path",
 			"hrsh7th/cmp-cmdline",
+			"FelipeLema/cmp-async-path",
 			{
 				"L3MON4D3/LuaSnip",
 				version = "v2.*",
@@ -71,83 +85,65 @@ require("lazy").setup({
 		"nvim-telescope/telescope.nvim",
 		branch = "0.1.x",
 		dependencies = {
-			{
-				"nvim-telescope/telescope-live-grep-args.nvim",
-				version = "*",
-			},
+			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 		},
 	},
-	{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
-	{
-		"ThePrimeagen/harpoon",
-		branch = "harpoon2",
-		dependencies = { "nvim-lua/plenary.nvim" },
-	},
+	{ "ThePrimeagen/harpoon", branch = "harpoon2" },
 	{ "NvChad/nvim-colorizer.lua" },
 	{ "lewis6991/gitsigns.nvim" },
 	{ "kylechui/nvim-surround", version = "*" },
-	{ "folke/trouble.nvim" },
 	{ "famiu/bufdelete.nvim" },
 	{ "kevinhwang91/nvim-bqf" },
 	{
 		"nvim-neo-tree/neo-tree.nvim",
 		branch = "v3.x",
 		dependencies = {
-			{
-				"s1n7ax/nvim-window-picker",
-				version = "v2.*",
-				config = function()
-					require("window-picker").setup({
-						filter_rules = {
-							include_current_win = false,
-							autoselect_one = true,
-							-- filter using buffer options
-							bo = {
-								-- if the file type is one of following, the window will be ignored
-								filetype = { "neo-tree", "neo-tree-popup", "notify" },
-								-- if the buffer type is one of following, the window will be ignored
-								buftype = { "terminal", "quickfix" },
-							},
-						},
-					})
-				end,
-			},
+			"MunifTanjim/nui.nvim",
 		},
 	},
 	{ "mbbill/undotree" },
-	{ "asiryk/auto-hlsearch.nvim" },
+	{ "asiryk/auto-hlsearch.nvim", event = "BufRead", opts = { create_commands = false } },
 	{ "j-morano/buffer_manager.nvim" },
-	{ "folke/todo-comments.nvim", event = "VeryLazy" },
+	{ "folke/todo-comments.nvim", event = "BufEnter" },
 	{ "sindrets/diffview.nvim" },
 	{ "tpope/vim-fugitive" },
+	{ "nvim-pack/nvim-spectre" },
 	{
-		"nvim-neotest/neotest",
-		dependencies = {
-			"haydenmeade/neotest-jest",
-			"nvim-neotest/neotest-go",
-		},
+		"Exafunction/codeium.vim",
+		event = "BufEnter",
+		config = function()
+			vim.keymap.set("i", "<Tab>", function()
+				return vim.fn["codeium#Accept"]()
+			end, { expr = true, silent = true })
+			vim.keymap.set("i", "<c-;>", function()
+				return vim.fn["codeium#CycleCompletions"](1)
+			end, { expr = true, silent = true })
+			vim.keymap.set("i", "<c-,>", function()
+				return vim.fn["codeium#CycleCompletions"](-1)
+			end, { expr = true, silent = true })
+			vim.keymap.set("i", "<c-x>", function()
+				return vim.fn["codeium#Clear"]()
+			end, { expr = true, silent = true })
+		end,
 	},
 	{ "goolord/alpha-nvim" },
-	-- { "AndrewRadev/tagalong.vim" },
 	{
-		"Exafunction/codeium.nvim",
-		dependencies = {
-			"nvim-lua/plenary.nvim",
-			"hrsh7th/nvim-cmp",
-		},
+		"gbprod/cutlass.nvim",
+		opts = {},
 	},
-	{ "nvimtools/none-ls.nvim" },
-	{ "folke/noice.nvim", event = "VeryLazy" },
-	{ "nvim-pack/nvim-spectre" },
-	-- { 'echasnovski/mini.completion', version = '*' },
-	-- { "lukas-reineke/indent-blankline.nvim", main = "ibl" },
-	-- { "HiPhish/rainbow-delimiters.nvim" },
-	-- {
-	-- 	"Exafunction/codeium.vim",
-	-- 	event = "BufEnter",
-	-- },
-	-- { "sbdchd/neoformat" },
+
+	-- { "folke/trouble.nvim" },
 	-- { "stevearc/conform.nvim" },
+	-- { "mfussenegger/nvim-lint" },
+	-- {
+	-- 	"nvim-neotest/neotest",
+	-- 	dependencies = {
+	-- 		"haydenmeade/neotest-jest",
+	-- 		"nvim-neotest/neotest-go",
+	-- 	},
+	-- },
+	-- { "folke/noice.nvim", event = "VeryLazy" },
+	-- { "sbdchd/neoformat" },
 }, {
 	ui = {
 		size = { width = 0.75, height = 0.75 },
