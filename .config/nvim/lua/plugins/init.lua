@@ -88,6 +88,7 @@ require("lazy").setup({
 			{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 		},
 	},
+	-- { "ibhagwan/fzf-lua" },
 	{ "ThePrimeagen/harpoon", branch = "harpoon2" },
 	{ "NvChad/nvim-colorizer.lua" },
 	{ "lewis6991/gitsigns.nvim" },
@@ -127,14 +128,11 @@ require("lazy").setup({
 		end,
 	},
 	{ "goolord/alpha-nvim" },
-	{
-		"gbprod/cutlass.nvim",
-		opts = {},
-	},
+	{ "folke/noice.nvim" },
+	{ "stevearc/conform.nvim" },
+	{ "mfussenegger/nvim-lint" },
 
 	-- { "folke/trouble.nvim" },
-	-- { "stevearc/conform.nvim" },
-	-- { "mfussenegger/nvim-lint" },
 	-- {
 	-- 	"nvim-neotest/neotest",
 	-- 	dependencies = {
@@ -142,7 +140,6 @@ require("lazy").setup({
 	-- 		"nvim-neotest/neotest-go",
 	-- 	},
 	-- },
-	-- { "folke/noice.nvim", event = "VeryLazy" },
 	-- { "sbdchd/neoformat" },
 }, {
 	ui = {

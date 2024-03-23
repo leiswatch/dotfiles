@@ -10,11 +10,17 @@ local project_files = function()
 	end
 end
 
-vim.keymap.set("n", "<leader>ff", builtin.find_files, opts)
 vim.keymap.set("n", "<C-p>", builtin.find_files, opts)
+vim.keymap.set("n", "<leader>ff", builtin.find_files, opts)
 vim.keymap.set("n", "<leader>fg", builtin.live_grep, opts)
 vim.keymap.set("n", "<leader>fw", builtin.grep_string, opts)
 vim.keymap.set("n", "<leader>fb", builtin.buffers, opts)
 vim.keymap.set("n", "<leader>fh", builtin.help_tags, opts)
 vim.keymap.set("n", "<leader>tf", project_files, opts)
 vim.keymap.set("n", "<leader>fj", "<cmd>Telescope harpoon marks<cr>", opts)
+
+-- vim.keymap.set("n", "<C-p>", "<cmd>FzfLua files<CR>", opts)
+-- vim.keymap.set("n", "<leader>ff", "<cmd>FzfLua files<CR>", opts)
+-- vim.keymap.set("n", "<leader>fg", "<cmd>FzfLua live_grep<CR>", opts)
+-- vim.keymap.set("n", "<leader>fw", "<cmd>FzfLua grep_cword<CR>", opts)
+-- vim.keymap.set("v", "<leader>fv", "<cmd>FzfLua grep_visual<CR>", opts)

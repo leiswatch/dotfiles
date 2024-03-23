@@ -14,8 +14,9 @@ export BAT_STYLE="numbers,header,changes"
 # Catppuccin
 export FZF_DEFAULT_OPTS=" \
 --color=bg+:#313244,spinner:#f5e0dc,hl:#f38ba8 \
---color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
---color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8"
+--color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#cdd6f4 \
+--color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
+--color=separator:#45475a,scrollbar:#45475a"
 
 alias ls="eza"
 alias cat="bat"
@@ -48,7 +49,7 @@ esac
 autoload -Uz compinit && compinit
 
 # fzf
-source /usr/share/fzf/shell/key-bindings.zsh
+source $HOME/.fzf/key-bindings.zsh
 source $HOME/.fzf/completion.zsh
 
 # kubectl

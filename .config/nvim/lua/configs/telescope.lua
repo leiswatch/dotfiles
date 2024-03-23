@@ -1,8 +1,14 @@
 local telescope = require("telescope")
+local actions = require("telescope.actions")
 -- local lga_actions = require("telescope-live-grep-args.actions")
 
 telescope.setup({
 	defaults = {
+		mappings = {
+			i = {
+				["<esc>"] = actions.close,
+			},
+		},
 		vimgrep_arguments = {
 			"rg",
 			"--color=never",
@@ -20,7 +26,7 @@ telescope.setup({
 		entry_prefix = "  ",
 		initial_mode = "insert",
 		selection_strategy = "reset",
-		sorting_strategy = "descending",
+		sorting_strategy = "ascending",
 		layout_strategy = "horizontal",
 		layout_config = {
 			horizontal = {
@@ -30,7 +36,6 @@ telescope.setup({
 				prompt_position = "top",
 			},
 		},
-		file_sorter = require("telescope.sorters").get_fuzzy_file,
 		file_ignore_patterns = {
 			"node_modules",
 			"package-lock.json",
@@ -48,31 +53,31 @@ telescope.setup({
 		borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
 		color_devicons = true,
 		previewer = true,
-		prompt_title = true,
+		prompt_title = false,
 		use_less = true,
 		path_display = { "truncate" },
 		set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
-		file_previewer = require("telescope.previewers").vim_buffer_cat.new,
-		grep_previewer = require("telescope.previewers").vim_buffer_vimgrep.new,
-		qflist_previewer = require("telescope.previewers").vim_buffer_qflist.new,
-
-		-- Developer configurations: Not meant for general override
-		buffer_previewer_maker = require("telescope.previewers").buffer_previewer_maker,
+		-- file_previewer = require("telescope.previewers").cat.new,
+		-- grep_previewer = require("telescope.previewers").vimgrep.new,
+		-- qflist_previewer = require("telescope.previewers").qflist.new,
 	},
 	pickers = {
 		find_files = {
 			find_command = { "fd", "-t", "f", "-i", "-H", "--strip-cwd-prefix" },
 			previewer = false,
+			prompt_title = false,
 			layout_config = {
 				horizontal = {
-					width = 0.85,
-					height = 0.85,
+					width = 0.75,
+					height = 0.75,
 					prompt_position = "top",
-                    preview_cutoff = 120,
+					-- preview_cutoff = 120,
+					-- anchor = "N",
 				},
 			},
 		},
 		live_grep = {
+			prompt_title = false,
 			layout_config = {
 				horizontal = {
 					prompt_position = "top",
@@ -87,22 +92,7 @@ telescope.setup({
 			override_file_sorter = true, -- override the file sorter
 			case_mode = "ignore_case", -- or "ignore_case" or "respect_case" or "smart_case"
 		},
-		-- live_grep_args = {
-		-- 	auto_quoting = true, -- enable/disable auto-quoting
-		-- 	-- define mappings, e.g.
-		-- 	mappings = { -- extend mappings
-		-- 		i = {
-		-- 			["<C-k>"] = lga_actions.quote_prompt(),
-		-- 			["<C-i>"] = lga_actions.quote_prompt({ postfix = " --iglob " }),
-		-- 		},
-		-- 	},
-		-- 	-- ... also accepts theme settings, for example:
-		-- 	-- theme = "dropdown", -- use dropdown theme
-		-- 	-- theme = { }, -- use own theme spec
-		-- 	-- layout_config = { mirror=true }, -- mirror preview pane
-		-- },
 	},
 })
 
 telescope.load_extension("fzf")
--- telescope.load_extension("live_grep_args")

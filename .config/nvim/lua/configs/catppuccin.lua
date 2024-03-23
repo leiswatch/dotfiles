@@ -25,6 +25,7 @@ require("catppuccin").setup({
 			HarpoonBorder = { fg = color.surface1, bg = "NONE" },
 			NeotreeNormal = { fg = color.text, bg = "NONE" },
 			Neotree = { fg = color.text, bg = "NONE" },
+
 			TelescopeBorder = { fg = color.surface1, bg = "NONE" },
 			TelescopePreviewBorder = { fg = color.surface1, bg = "NONE" },
 			TelescopeResultsBorder = { fg = color.surface1, bg = "NONE" },
@@ -35,6 +36,8 @@ require("catppuccin").setup({
 			TelescopePromptPrefix = { fg = color.text, bg = "NONE" },
 			TelescopeSelection = { fg = color.text, bg = color.surface1 },
 			TelescopeSelectionCaret = { fg = color.text, bg = color.surface1 },
+            TelescopeMatching = { fg = color.red, bg = "NONE" },
+
 			CodeActionNormal = { fg = color.text, bg = "NONE" },
 			CodeActionBorder = { fg = color.surface1, bg = "NONE" },
 			CodeActionText = { fg = color.text, bg = "NONE" },
@@ -52,15 +55,20 @@ require("catppuccin").setup({
 			TreesitterContextLineNumberBottom = { bg = color.mantle },
 			TreesitterContextLineNumber = { fg = color.text, bg = color.mantle },
 			MatchParen = { bg = color.blue, fg = color.base },
-			MatchWord = { bg = color.blue, fg = color.base },
+			MatchWord = { bg = color.rosewater, fg = color.base },
 			NeoTreeIndentMarker = { bg = "NONE", fg = color.surface0 },
 			Directory = { bg = color.mantle, fg = color.text },
-            IncSearch = {fg = color.base, bg = color.blue},
+			IncSearch = { fg = color.base, bg = color.blue },
+
+			FzfLuaBorder = { fg = color.surface1, bg = "NONE" },
+			FzfLuaCursorLine = { bg = color.surface1 },
+			FzfLuaCursorLineNr = { bg = color.surface1 },
+			FzfLuaPreviewTitle = { fg = color.text, bg = "NONE" },
 		}
 	end,
 	integrations = {
 		aerial = false,
-        alpha = true,
+		alpha = true,
 		barbar = false,
 		beacon = false,
 		cmp = true,

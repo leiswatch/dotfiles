@@ -1,5 +1,5 @@
 vim.g.mapleader = " "
-vim.g.maplocalleader = ' '
+vim.g.maplocalleader = " "
 vim.g.skip_ts_context_commentstring_module = true
 vim.g.tagalong_mappings = { "c", "C", "i", "a" }
 vim.g.undotree_WindowLayout = 2
@@ -18,7 +18,7 @@ vim.opt.undodir = vim.fn.stdpath("config") .. "/undodir"
 vim.opt.undolevels = 1000
 vim.opt.undofile = true
 vim.opt.incsearch = true
-vim.opt.inccommand = 'split'
+vim.opt.inccommand = "split"
 vim.opt.hidden = true
 vim.opt.completeopt = "menuone,noinsert,noselect"
 vim.opt.shortmess = vim.o.shortmess .. "c"
@@ -69,7 +69,6 @@ vim.diagnostic.config({
 	},
 })
 
-
 vim.cmd([[
   filetype on
   filetype plugin on
@@ -79,6 +78,9 @@ vim.cmd([[
   set mouse=
 ]])
 
-
 -- EXTENSIONS
 vim.filetype.add({ extension = { templ = "templ" } })
+
+vim.g.codeium_filetypes = {
+	TelescopePrompt = false,
+}
