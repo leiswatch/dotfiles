@@ -45,7 +45,8 @@ require("lazy").setup({
 		},
 	},
 	{ "neovim/nvim-lspconfig" },
-	{ "nvimtools/none-ls.nvim" },
+	{ "stevearc/conform.nvim" },
+	{ "mfussenegger/nvim-lint" },
 	{ "pmizio/typescript-tools.nvim" },
 	{
 		"williamboman/mason.nvim",
@@ -129,9 +130,8 @@ require("lazy").setup({
 	},
 	{ "goolord/alpha-nvim" },
 	{ "folke/noice.nvim" },
-	{ "stevearc/conform.nvim" },
-	{ "mfussenegger/nvim-lint" },
 
+	-- { "nvimtools/none-ls.nvim" },
 	-- { "folke/trouble.nvim" },
 	-- {
 	-- 	"nvim-neotest/neotest",

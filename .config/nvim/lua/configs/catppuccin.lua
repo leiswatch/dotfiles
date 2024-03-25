@@ -54,11 +54,11 @@ require("catppuccin").setup({
 			TreesitterContextBottom = { bg = color.mantle },
 			TreesitterContextLineNumberBottom = { bg = color.mantle },
 			TreesitterContextLineNumber = { fg = color.text, bg = color.mantle },
-			MatchParen = { bg = color.blue, fg = color.base },
-			MatchWord = { bg = color.rosewater, fg = color.base },
+			MatchParen = { bg = color.surface1, fg = "NONE" },
+			MatchWord = { bg = color.surface1, fg = "NONE" },
 			NeoTreeIndentMarker = { bg = "NONE", fg = color.surface0 },
 			Directory = { bg = color.mantle, fg = color.text },
-			IncSearch = { fg = color.base, bg = color.blue },
+			IncSearch = { fg = color.red, bg = color.rosewater },
 
 			FzfLuaBorder = { fg = color.surface1, bg = "NONE" },
 			FzfLuaCursorLine = { bg = color.surface1 },
@@ -96,7 +96,7 @@ require("catppuccin").setup({
 		overseer = false,
 		pounce = false,
 		semantic_tokens = true,
-		symbols_outline = false,
+		symbols_out = false,
 		telekasten = false,
 		telescope = {
 			enabled = true,
@@ -112,7 +112,7 @@ require("catppuccin").setup({
 		which_key = false,
 		window_picker = false,
 		dap = false,
-		indent_blankline = {
+		indent_blank = {
 			enabled = false,
 			scope_color = "lavender",
 			colored_indent_levels = false,
@@ -125,11 +125,11 @@ require("catppuccin").setup({
 				warnings = { "italic" },
 				information = { "italic" },
 			},
-			underlines = {
-				errors = { "underline" },
-				hints = { "underline" },
-				warnings = { "underline" },
-				information = { "underline" },
+			unders = {
+				errors = { "under" },
+				hints = { "under" },
+				warnings = { "under" },
+				information = { "under" },
 			},
 		},
 	},
