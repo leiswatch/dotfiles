@@ -83,4 +83,6 @@ vim.filetype.add({ extension = { templ = "templ" } })
 
 vim.g.codeium_filetypes = {
 	TelescopePrompt = false,
+	["neo-tree"] = false,
+	["neo-tree-popup"] = false,
 }

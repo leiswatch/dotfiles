@@ -80,6 +80,12 @@ require("lazy").setup({
 			"onsails/lspkind.nvim",
 		},
 	},
+	{
+		"jdrupal-dev/css-vars.nvim",
+		config = function()
+			require("css-vars").setup()
+		end,
+	},
 	{ "nvim-lualine/lualine.nvim" },
 	{ "j-hui/fidget.nvim" },
 	{
