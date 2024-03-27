@@ -25,9 +25,11 @@ local config = {
 		theme = cattpuccin_mocha,
 		globalstatus = true,
 		component_separators = "",
-		-- section_separators = "",
-        section_separators = { left = '', right = ''},
+		section_separators = "",
+        -- section_separators = { left = '', right = ''},
 		-- section_separators = { left = "", right = "" },
+        -- section_separators = { left = "", right = "" },
+
 		disabled_filetypes = { -- Filetypes to disable lualine for.
 			statusline = {}, -- only ignores the ft for statusline.
 			winbar = {}, -- only ignores the ft for winbar.

@@ -54,16 +54,15 @@ require("catppuccin").setup({
 			TreesitterContextBottom = { bg = color.mantle },
 			TreesitterContextLineNumberBottom = { bg = color.mantle },
 			TreesitterContextLineNumber = { fg = color.text, bg = color.mantle },
-			MatchParen = { bg = color.surface1, fg = "NONE" },
-			MatchWord = { bg = color.surface1, fg = "NONE" },
 			NeoTreeIndentMarker = { bg = "NONE", fg = color.surface0 },
 			Directory = { bg = color.mantle, fg = color.text },
-			IncSearch = { fg = color.red, bg = color.rosewater },
-
-			FzfLuaBorder = { fg = color.surface1, bg = "NONE" },
-			FzfLuaCursorLine = { bg = color.surface1 },
-			FzfLuaCursorLineNr = { bg = color.surface1 },
-			FzfLuaPreviewTitle = { fg = color.text, bg = "NONE" },
+			-- MatchParen = { bg = color.surface1, fg = "NONE" },
+			-- IncSearch = { fg = "NONE", bg = color.rosewater },
+			-- MatchWord = { bg = color.surface1, fg = "NONE" },
+			-- FzfLuaBorder = { fg = color.surface1, bg = "NONE" },
+			-- FzfLuaCursorLine = { bg = color.surface1 },
+			-- FzfLuaCursorLineNr = { bg = color.surface1 },
+			-- FzfLuaPreviewTitle = { fg = color.text, bg = "NONE" },
 		}
 	end,
 	integrations = {
