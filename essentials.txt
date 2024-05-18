@@ -1,0 +1,14 @@
+git
+delta
+fzf
+ripgrep
+fd
+eza
+bat
+autojump
+vim
+neovim
+lazygit
+tokei
+bottom
+btop
