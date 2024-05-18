@@ -1,0 +1,55 @@
+[global]
+    gap_size = 5
+    monitor = 0
+    width = (200, 400)
+    height = 300
+    notification_limit = 20
+    origin = top-right
+    class       = Dunst
+    alignment   = center
+    frame_color = "#89b4fa"
+    frame_width = 2
+    font        = JetBrains Mono 12
+    offset      = 15x55
+    min_icon_size = 0
+    max_icon_size = 32 
+    show_age_threshold = -1
+    icon_position = left
+    icon_theme = Papirus
+    enable_recursive_icon_lookup = true
+    notification_limit = 5
+    progress_bar = true
+    progress_bar_height = 10
+    progress_bar_frame_width = 2
+    progress_bar_min_width = 150
+    progress_bar_max_width = 300
+    indicate_hidden = yes
+    show_indicators = no
+    separator_color= frame
+    corner_radius = 0
+    highlight = "#89b4fa"
+    sticky_history = yes
+    mouse_left_click = open_url, do_action, close_current
+    mouse_right_click = close_all
+
+[urgency_low]
+    background = "#181825"
+    foreground = "#cdd6f4"
+    timeout = 5
+
+[urgency_normal]
+    background = "#181825"
+    foreground = "#cdd6f4"
+    timeout = 5
+
+[urgency_critical]
+    background  = "#181825"
+    foreground  = "#cdd6f4"
+    timeout = 5
+
+[fullscreen_delay_everything]
+    fullscreen = delay
+
+[fullscreen_show_critical]
+    msg_urgency = critical
+    fullscreen = show
