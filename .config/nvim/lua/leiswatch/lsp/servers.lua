@@ -6,7 +6,17 @@ local servers = {
 	awk_ls = {},
 	bashls = {},
 	dockerls = {},
-	gopls = {},
+	gopls = {
+		settings = {
+			gopls = {
+				["ui.inlayhint.hints"] = {
+					compositeLiteralFields = true,
+					constantValues = true,
+					parameterNames = true,
+				},
+			},
+		},
+	},
 	html = {},
 	htmx = {},
 	jsonls = {},

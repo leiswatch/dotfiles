@@ -14,7 +14,7 @@ return {
 			term_colors = true,
 			show_end_of_buffer = false,
 			no_italic = false,
-			no_bold = true,
+			no_bold = false,
 			no_underline = false,
 			default_integrations = false,
 			custom_highlights = function(color)
@@ -108,7 +108,7 @@ return {
 						information = { "underline" },
 					},
 					inlay_hints = {
-						background = false,
+						background = true,
 					},
 				},
 			},

@@ -1,11 +1,3 @@
-vim.lsp.handlers["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, {
-	border = "single",
-})
-
-vim.lsp.handlers["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, {
-	border = "single",
-})
-
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 	callback = function(event)
@@ -39,6 +31,17 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			})
 		end, opts)
 		vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, opts)
+		vim.keymap.set({ "n", "i", "s" }, "<c-f>", function()
+			if not require("noice.lsp").scroll(4) then
+				return "<c-f>"
+			end
+		end, { silent = true, expr = true })
+
+		vim.keymap.set({ "n", "i", "s" }, "<c-b>", function()
+			if not require("noice.lsp").scroll(-4) then
+				return "<c-b>"
+			end
+		end, { silent = true, expr = true })
 
 		local client = vim.lsp.get_client_by_id(event.data.client_id)
 

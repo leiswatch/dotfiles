@@ -10,7 +10,7 @@ return {
 		local lspconfig = require("lspconfig")
 		require("lspconfig.ui.windows").default_options.border = "single"
 
-		-- require("leiswatch.lsp.textDocument")
+		require("leiswatch.lsp.textDocument")
 		require("leiswatch.lsp.signs")
 
 		local capabilities = vim.lsp.protocol.make_client_capabilities()
