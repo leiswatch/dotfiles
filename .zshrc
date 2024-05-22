@@ -63,12 +63,11 @@ precmd() {
 	print -Pn "\e]0;Terminal\a"
 }
 
-# fzf
-source $HOME/.fzf/key-bindings.zsh
-source $HOME/.fzf/completion.zsh
-
 # kubectl
 source <(kubectl completion zsh)
+
+#fzf
+source <(fzf --zsh)
 
 # bun completions
 [ -s "/home/leiswatch/.bun/_bun" ] && source "/home/leiswatch/.bun/_bun"

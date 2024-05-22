@@ -1,2 +1,4 @@
 plugged
 undodir
+.ssh/*
+!.ssh/config

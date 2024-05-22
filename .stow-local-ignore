@@ -22,12 +22,13 @@ _darcs
 ^/LICENSE.*
 ^/COPYING
 
-\fonts_mint.txt
-\fonts_fedora.txt
-\essentials.txt
-\ublock.txt
-\etc
-\.xprofile
-\.Xresources
+fonts_mint.txt
+fonts_fedora.txt
+essentials.txt
+ublock.txt
+etc
+.xprofile
+.Xresources
 \.config/mimeapps.list
 \.config/autostart
+\.config/i3/config

@@ -43,7 +43,6 @@ exec --no-startup-id picom --config /home/leiswatch/.config/picom/picom.conf
 exec --no-startup-id xfce4-power-manager --daemonize
 exec --no-startup-id /usr/libexec/polkit-gnome-authentication-agent-1
 
-
 exec --no-startup-id feh --bg-fill /home/leiswatch/Pictures/Wallpapers/firewatch.jpg
 exec --no-startup-id redshift -r -b 1.0:1.0 -t 6500:3500 -l 54.3:18.6
 
