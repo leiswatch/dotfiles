@@ -8,7 +8,8 @@ return {
 			win_height = 25,
 		},
 		func_map = {
-			openc = "o",
+			open = "o",
+			openc = "<CR>",
 		},
 	},
 }
