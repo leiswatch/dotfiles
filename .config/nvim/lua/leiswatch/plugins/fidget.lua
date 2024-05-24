@@ -9,7 +9,6 @@ return {
 			display = {
 				done_icon = "",
 				overrides = { -- Override options from the default notification config
-					["typescript-tools"] = { name = "typescript" },
 					["tsserver"] = { name = "typescript" },
 					["lua_ls"] = { name = "lua" },
 					["gopls"] = { name = "go" },

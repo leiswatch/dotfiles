@@ -21,6 +21,9 @@ return {
 				return {
 					FloatBorder = { fg = color.surface1, bg = "NONE" },
 					FloatTitle = { fg = color.text, bg = "NONE" },
+					BufferManagerNormal = { fg = color.text, bg = "NONE" },
+					BufferManagerBorder = { fg = color.surface1, bg = "NONE" },
+					BufferManagerFloatTitle = { fg = color.text, bg = "NONE" },
 					HarpoonBorder = { fg = color.surface1, bg = "NONE" },
 					NeotreeNormal = { fg = color.text, bg = "NONE" },
 					Neotree = { fg = color.text, bg = "NONE" },

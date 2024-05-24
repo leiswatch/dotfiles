@@ -27,7 +27,6 @@ vim.api.nvim_create_autocmd("FileType", {
 		"lspinfo",
 		"lsp-installer",
 		"null-ls-info",
-		"buffer_manager",
 		"harpoon",
 		"TelescopePrompt",
 		"mason",

@@ -61,7 +61,7 @@ return {
 				},
 				lualine_c = {
 					"%=",
-					{ colored = true, icon_only = true, "filetype" },
+					{ colored = true, icon_only = true, "filetype", padding = { right = 0 } },
 					{ "filename", padding = { left = 0 } },
 				},
 				lualine_x = {
@@ -74,7 +74,7 @@ return {
 					"diagnostics",
 					{
 						"encoding",
-						color = { fg = colors.sapphire }
+						color = { fg = colors.sapphire },
 					},
 					{
 						"fileformat",

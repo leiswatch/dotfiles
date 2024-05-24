@@ -1,0 +1,26 @@
+import = ["/home/leiswatch/.config/alacritty/themes/catppuccin-mocha.toml"]
+
+[window]
+dimensions = { columns = 120, lines = 30 }
+padding = { x = 5, y = 5 }
+opacity = 0.97
+blur = false
+startup_mode = "Windowed"
+
+[scrolling]
+history = 99999
+
+[font]
+normal = { family = "JetBrainsMono Nerd Font", style = "Medium" }
+bold = { family = "JetBrainsMono Nerd Font", style = "Bold" }
+italic = { family = "JetBrainsMono Nerd Font", style = "Medium Italic" }
+bold_italic = { family = "JetBrainsMono Nerd Font", style = "Bold Italic" }
+offset = { x = 0, y = 4 }
+glyph_offset = { x = 0, y = 2 }
+size = 13
+
+[cursor]
+style = { shape = "Block", blinking = "Never" }
+
+[mouse]
+hide_when_typing = true

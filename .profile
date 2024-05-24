@@ -2,6 +2,7 @@ export PNPM_HOME="$HOME/.local/share/pnpm"
 export GOPATH="$HOME/.go"
 export DENO_INSTALL="$HOME/.deno"
 export BUN_INSTALL="$HOME/.bun"
+export GTK_THEME=adw-gtk3-dark
 
 export DISABLE_AUTO_TITLE=true
 export FNM_COREPACK_ENABLED=true
