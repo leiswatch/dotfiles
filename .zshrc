@@ -75,7 +75,7 @@ precmd() {
 source <(kubectl completion zsh)
 
 #fzf
-source <(fzf --zsh)
+eval "$(fzf --zsh)"
 
 # bun completions
 [ -s "/home/leiswatch/.bun/_bun" ] && source "/home/leiswatch/.bun/_bun"

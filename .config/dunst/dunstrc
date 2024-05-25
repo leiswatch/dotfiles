@@ -10,7 +10,7 @@
     frame_color = "#cba6f7"
     frame_width = 2
     font        = JetBrains Mono 12
-    offset      = 15x50
+    offset      = 10x50
     min_icon_size = 32
     max_icon_size = 48
     show_age_threshold = -1
