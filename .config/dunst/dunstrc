@@ -11,7 +11,7 @@
     frame_width = 2
     font        = JetBrains Mono 12
     offset      = 10x50
-    min_icon_size = 32
+    min_icon_size = 24
     max_icon_size = 48
     show_age_threshold = -1
     icon_position = left
