@@ -27,8 +27,7 @@ fonts_fedora.txt
 essentials.txt
 ublock.txt
 etc
-.xprofile
-.Xresources
+\.xprofile
+\.Xresources
 \.config/mimeapps.list
 \.config/autostart
-\.config/i3/config
