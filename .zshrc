@@ -11,8 +11,9 @@ ZSH_THEME=robbyrussell
 # ZSH_THEME="powerlevel10k/powerlevel10k"
 
 plugins=(
-    archlinux
+    # archlinux
 	command-not-found
+	dnf
 	docker
 	docker-compose
 	fzf-tab

@@ -27,7 +27,12 @@ fonts_fedora.txt
 essentials.txt
 ublock.txt
 etc
-\.xprofile
-\.Xresources
+.xprofile
+.Xresources
 \.config/mimeapps.list
 \.config/autostart
+\.config/betterlockscreen
+\.config/dunst
+\.config/i3
+\.config/redsfhit
+\.config/rofi

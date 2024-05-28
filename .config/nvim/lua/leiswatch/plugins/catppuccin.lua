@@ -17,6 +17,21 @@ return {
 			no_bold = false,
 			no_underline = false,
 			default_integrations = false,
+			styles = { -- Handles the styles of general hi groups (see `:h highlight-args`):
+				comments = { "italic" }, -- Change the style of comments
+				conditionals = {},
+				loops = {},
+				functions = {},
+				keywords = {},
+				strings = {},
+				variables = {},
+				numbers = {},
+				booleans = {},
+				properties = {},
+				types = {},
+				operators = {},
+				miscs = {}, -- Uncomment to turn off hard-coded styles
+			},
 			custom_highlights = function(color)
 				return {
 					FloatBorder = { fg = color.surface1, bg = "NONE" },
