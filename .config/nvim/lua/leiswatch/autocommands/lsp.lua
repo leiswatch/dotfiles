@@ -4,8 +4,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.bo[event.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 
 		local opts = { noremap = true, silent = true, buffer = event.buf }
-		local diagnostic_opts =
-			{ border = "single", max_width = 100, title = "Diagnostics", header = "", source = false }
+		local diagnostic_opts = { border = "single", max_width = 100, header = "", source = false }
 
 		vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
 		vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)

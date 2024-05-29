@@ -2,3 +2,4 @@ plugged
 undodir
 .ssh/*
 !.ssh/config
+.config/btop/btop.log

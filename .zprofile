@@ -13,7 +13,6 @@ export FZF_DEFAULT_OPTS=" \
 --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
 --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
 --color=separator:#45475a,scrollbar:#45475a,border:#313244,label:#cdd6f4 \
---border=sharp \
 --pointer=󰁔 \
 --prompt='  ' \
 --info=inline-right \
