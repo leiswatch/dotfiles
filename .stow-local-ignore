@@ -35,4 +35,12 @@ etc
 \.config/dunst
 \.config/i3
 \.config/redsfhit
-\.config/rofi
+\.config/picom
+\.config/polybar
+\.config/redshift
+\.config/dunst
+\.config/chromium-flags.conf
+\.config/chrome-unstable-flags.conf
+\.config/chrome-flags.conf
+\.config/chrome-beta-flags.conf
+\.config/brave-flags.conf

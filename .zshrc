@@ -72,7 +72,7 @@ precmd() {
 }
 
 # kubectl
-source <(kubectl completion zsh)
+# source <(kubectl completion zsh)
 
 #fzf
 eval "$(fzf --zsh)"

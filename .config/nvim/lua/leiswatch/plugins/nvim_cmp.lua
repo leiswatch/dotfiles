@@ -69,7 +69,7 @@ return {
 			Event = "  ",
 			Operator = "  ",
 			TypeParameter = "  ",
-			-- Codeium = " ",
+			Supermaven = " ",
 		}
 
 		cmp.setup({
@@ -134,6 +134,7 @@ return {
 			sources = cmp.config.sources({
 				{ name = "nvim_lsp" },
 				{ name = "luasnip" },
+				{ name = "supermaven" },
 				-- { name = "codeium" },
 				-- { name = "sass-variables" },
 				{ name = "css_vars" },

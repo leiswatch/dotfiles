@@ -127,6 +127,17 @@ local servers = {
 			--     importModuleSpecifierPreference = "relative",
 			-- },
 		},
+		filetypes = {
+			"javascript",
+			"javascriptreact",
+			"javascript.jsx",
+			"typescript",
+			"typescriptreact",
+			"typescript.tsx",
+			"vue",
+			"svelte",
+			-- "astro",
+		},
 	},
 
 	-- emmet_ls = {

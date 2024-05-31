@@ -1,6 +1,6 @@
 return {
 	"folke/noice.nvim",
-	enabled = false,
+	enabled = true,
 	dependencies = {
 		"MunifTanjim/nui.nvim",
 	},
@@ -29,14 +29,6 @@ return {
 			},
 			signature = {
 				enabled = true,
-				-- 	-- auto_open = {
-				-- 	-- 	enabled = true,
-				-- 	-- 	trigger = true, -- Automatically show signature help when typing a trigger character from the LSP
-				-- 	-- 	luasnip = true, -- Will open signature help when jumping to Luasnip insert nodes
-				-- 	-- 	throttle = 50, -- Debounce lsp signature help request by 50ms
-				-- 	-- },
-				-- 	view = "hover", -- when nil, use defaults from documentation
-				-- 	---@type NoiceViewOptions
 				opts = {
 					border = "single",
 					size = {
@@ -51,20 +43,6 @@ return {
 				view = "notify",
 				opts = {},
 			},
-			-- defaults for hover and signature help
-			-- documentation = {
-			-- 	view = "hover",
-			-- 	---@type NoiceViewOptions
-			-- 	opts = {
-			-- 		border = "single",
-			-- 		-- lang = "markdown",
-			-- 		-- replace = true,
-			-- 		-- render = "plain",
-			-- 		-- format = { "{message}" },
-			-- 		-- win_options = { concealcursor = "n", conceallevel = 3 },
-			-- 	},
-			-- },
-			-- override markdown rendering so that **cmp** and other plugins use **Treesitter**
 		},
 		cmdline = {
 			enabled = false, -- enables the Noice cmdline UI

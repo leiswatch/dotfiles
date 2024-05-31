@@ -102,7 +102,7 @@ vim.cmd([[
 ]])
 
 -- EXTENSIONS
-vim.filetype.add({ extension = { templ = "templ" } })
+vim.filetype.add({ extension = { templ = "templ", astro = "astro" } })
 
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
