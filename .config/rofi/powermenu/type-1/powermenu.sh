@@ -98,7 +98,7 @@ case ${chosen} in
         ;;
     $lock)
 		if [[ -x '/usr/bin/betterlockscreen' ]]; then
-			betterlockscreen -l
+			betterlockscreen -l dimblur
 		elif [[ -x '/usr/bin/i3lock' ]]; then
 			i3lock
 		elif [[ -x '/usr/bin/swaylock' ]]; then

@@ -1,4 +1,4 @@
-require("leiswatch.core")
+require("leiswatch.config")
 require("leiswatch.lazy")
-require("leiswatch.autocommands")
 require("leiswatch.keymap")
+require("leiswatch.autocommands")

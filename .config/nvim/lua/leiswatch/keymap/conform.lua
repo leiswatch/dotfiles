@@ -43,7 +43,7 @@ local format = function()
 		vim.api.nvim_command(":EslintFixAll")
 	end
 
-    conform.format({
+	conform.format({
 		timeout_ms = 2000,
 		lsp_fallback = lsp_fallback[vim.bo[bufnr].filetype][1],
 		async = false,

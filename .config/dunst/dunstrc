@@ -7,7 +7,7 @@
     origin = top-right
     class       = Dunst
     alignment   = center
-    frame_color = "#cba6f7"
+    frame_color = "#f5e0dc"
     frame_width = 2
     font        = JetBrains Mono 12
     offset      = 10x50
@@ -27,7 +27,7 @@
     show_indicators = no
     separator_color= frame
     corner_radius = 0
-    highlight = "#cba6f7"
+    highlight = "#f5e0dc"
     sticky_history = yes
     mouse_left_click = open_url, do_action, close_current
     mouse_right_click = close_all
