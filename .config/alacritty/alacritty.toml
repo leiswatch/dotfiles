@@ -3,7 +3,7 @@ import = ["/home/leiswatch/.config/alacritty/themes/catppuccin-mocha.toml"]
 [window]
 dimensions = { columns = 120, lines = 30 }
 padding = { x = 5, y = 5 }
-opacity = 0.97
+opacity = 1
 blur = false
 startup_mode = "Windowed"
 

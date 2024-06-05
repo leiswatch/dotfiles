@@ -8,8 +8,6 @@ return {
 		"saadparwaiz1/cmp_luasnip",
 		"rafamadriz/friendly-snippets",
 		"onsails/lspkind.nvim",
-		-- "pontusk/cmp-sass-variables",
-		-- "Exafunction/codeium.nvim",
 		{
 			"L3MON4D3/LuaSnip",
 			version = "v2.*",
@@ -34,14 +32,6 @@ return {
 			local line, col = unpack(vim.api.nvim_win_get_cursor(0))
 			return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 		end
-
-		-- Catppuccin Mocha
-		-- local colors = require("catppuccin.palettes").get_palette("mocha")
-		-- vim.api.nvim_set_hl(0, "CatppuccinBorder", { bg = "NONE", fg = colors.surface1 })
-		-- vim.api.nvim_set_hl(0, "CatppuccinNormal", { bg = "NONE", fg = colors.text })
-		-- vim.api.nvim_set_hl(0, "CatppucinCursorLine", { fg = colors.base, bg = colors.blue })
-
-		-- vim.g.sass_variables_file = "_variables.scss"
 
 		local cmp_kinds = {
 			Text = "  ",
@@ -69,7 +59,6 @@ return {
 			Event = "  ",
 			Operator = "  ",
 			TypeParameter = "  ",
-			Supermaven = " ",
 		}
 
 		cmp.setup({
@@ -135,8 +124,6 @@ return {
 				{ name = "nvim_lsp" },
 				{ name = "luasnip" },
 				{ name = "supermaven" },
-				-- { name = "codeium" },
-				-- { name = "sass-variables" },
 				{ name = "css_vars" },
 				{ name = "nvim_lua" },
 			}, {
@@ -148,10 +135,12 @@ return {
 			enabled = function()
 				-- disable completion in comments
 				local context = require("cmp.config.context")
-				local buftype = vim.api.nvim_buf_get_option(0, "buftype")
+				local buftype = vim.api.nvim_get_option_value("buftype", { buf = 0 })
+
 				if buftype == "prompt" then
 					return false
 				end
+
 				-- keep command mode completion enabled when cursor is in a comment
 				if vim.api.nvim_get_mode().mode == "c" then
 					return true
@@ -160,6 +149,7 @@ return {
 				end
 			end,
 			formatting = {
+				expandable_indicator = true,
 				fields = { "kind", "abbr" },
 				format = lspkind.cmp_format({
 					mode = "symbol", -- show only symbol annotations
@@ -189,7 +179,6 @@ return {
 
 		cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 
-		-- require("codeium").setup()
 		require("luasnip.loaders.from_vscode").lazy_load()
 	end,
 }

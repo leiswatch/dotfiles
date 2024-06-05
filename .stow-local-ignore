@@ -27,5 +27,12 @@ fonts_fedora.txt
 essentials.txt
 ublock.txt
 etc
+.xprofile
+.Xresources
 \.config/mimeapps.list
 \.config/autostart
+\.config/brave-flags.conf
+\.config/chrome-flags.conf
+\.config/chrome-beta-flags.conf
+\.config/chromium-flags.conf
+\.config/chrome-unstable-flags.conf
