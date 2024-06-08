@@ -24,6 +24,7 @@ local servers = {
 	pyright = {},
 	svelte = {},
 	templ = {},
+	taplo = {},
 	yamlls = {},
 
 	lua_ls = {

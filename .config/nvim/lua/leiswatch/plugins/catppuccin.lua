@@ -18,7 +18,7 @@ return {
 			no_underline = false,
 			default_integrations = false,
 			styles = { -- Handles the styles of general hi groups (see `:h highlight-args`):
-				comments = { "italic" }, -- Change the style of comments
+				comments = {}, -- Change the style of comments
 				conditionals = {},
 				loops = {},
 				functions = {},

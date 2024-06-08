@@ -19,6 +19,7 @@ local M = {
 		"stylelint_lsp",
 		"svelte",
 		"tailwindcss",
+        "taplo",
 		"templ",
 		"tsserver",
 		"yamlls",

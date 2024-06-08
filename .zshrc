@@ -1,30 +1,53 @@
-# Path to your oh-my-zsh installation.
-export ZSH="$HOME/.oh-my-zsh"
-ZSH_THEME=robbyrussell
+# zmodload zsh/zprof
 
-plugins=(
-	command-not-found
-	docker
-	docker-compose
-	fzf-tab
-	git
-	golang
-	node
-	npm
-	rust
-	tmux
-	ubuntu
-	yarn
-	you-should-use
-	zsh-syntax-highlighting
-)
-fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}
-fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}/plugins/zsh-completions/src
+ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
+[ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
+[ ! -d $ZINIT_HOME/.git ] && git clone https://github.com/zdharma-continuum/zinit.git "$ZINIT_HOME"
 
-source $ZSH/oh-my-zsh.sh
+source "${ZINIT_HOME}/zinit.zsh"
+
+ZINIT_COMPLETIONS="$ZSH_CACHE_DIR/completions"
+[ ! -d $ZINIT_COMPLETIONS ] && mkdir -p "$(dirname $ZINIT_COMPLETIONS)"
+
+# Plugins
+zinit ice wait lucid
+zinit light zsh-users/zsh-syntax-highlighting
+zinit ice wait"1" lucid
+zinit light zsh-users/zsh-completions
+zinit ice wait"1" lucid
+zinit light MichaelAquilina/zsh-you-should-use
+zinit ice wait"1" lucid
+zinit light Aloxaf/fzf-tab
+
+# Snippets
+zinit ice wait"1" lucid
+zinit snippet OMZP::dnf
+zinit ice wait"1" lucid
+zinit snippet OMZP::docker
+zinit ice wait"1" lucid
+zinit snippet OMZP::docker-compose
+zinit ice wait"1" lucid
+zinit snippet OMZP::fnm
+zinit ice wait"1" lucid
+zinit snippet OMZP::git
+zinit ice wait"1" lucid
+zinit snippet OMZP::golang
+zinit ice wait"1" lucid
+zinit snippet OMZP::kubectl
+zinit ice wait"1" lucid
+zinit snippet OMZP::node
+zinit ice wait"1" lucid
+zinit snippet OMZP::rust
+zinit ice wait"1" lucid
+zinit snippet OMZP::yarn
+
+(( ${fpath[(Ie)"$ZINIT_COMPLETIONS"]} )) || fpath=("$ZINIT_COMPLETIONS" $fpath)
 
 # Load completions
-autoload -Uz compinit && compinit
+autoload -Uz compinit
+compinit
+
+zinit cdreplay -q
 
 # Keybindings
 bindkey -e
@@ -43,10 +66,25 @@ setopt hist_ignore_all_dups
 setopt hist_save_no_dups
 setopt hist_ignore_dups
 setopt hist_find_no_dups
+setopt promptsubst
 
+zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
+zstyle ':completion:*' menu no
+
+
+# Aliases
 alias ls="eza"
-alias cat="bat --map-syntax='*.astro:HTML'"
-alias fsb="git branch | grep -v \"^\*\" | fzf --height=30% --reverse --info=inline | xargs git switch"
+alias cat="bat"
+alias cd="z"
+alias tksv='tmux kill-server'
+
+function gcfun() {
+    git commit -m "$(curl -s https://whatthecommit.com/index.txt)"
+}
+
+function fsb() {
+    git branch | grep -v \"^\*\" | fzf --height=30% --reverse --info=inline | xargs git switch
+}
 
 function vmrss() {
 	if [ -n "$1" ]; then
@@ -58,17 +96,19 @@ function vmrss() {
 	fi
 }
 
-precmd() {
-	print -Pn "\e]0;Kitty\a"
+function set_win_title(){
+    echo -ne "\033]0; Kitty \007"
 }
 
-# kubectl
-source <(kubectl completion zsh)
+precmd_functions+=(set_win_title)
 
-#fzf
+# kubectl
+eval "$(kubectl completion zsh)"
+
+# fzf
 eval "$(fzf --zsh)"
 
-# bun completions
+# bun
 [ -s "/home/leiswatch/.bun/_bun" ] && source "/home/leiswatch/.bun/_bun"
 
 # fnm
@@ -79,3 +119,5 @@ eval "$(zoxide init zsh)"
 
 # starship
 eval "$(starship init zsh)"
+
+# zprof

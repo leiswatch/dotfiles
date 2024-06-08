@@ -1,0 +1,3 @@
+--theme="Catppuccin-mocha"
+--style="numbers,header,changes"
+--map-syntax "*.astro:HTML"
