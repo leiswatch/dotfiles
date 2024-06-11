@@ -39,6 +39,8 @@ zinit snippet OMZP::node
 zinit ice wait"1" lucid
 zinit snippet OMZP::rust
 zinit ice wait"1" lucid
+zinit snippet OMZP::tmux
+zinit ice wait"1" lucid
 zinit snippet OMZP::yarn
 
 (( ${fpath[(Ie)"$ZINIT_COMPLETIONS"]} )) || fpath=("$ZINIT_COMPLETIONS" $fpath)
@@ -76,7 +78,6 @@ zstyle ':completion:*' menu no
 alias ls="eza"
 alias cat="bat"
 alias cd="z"
-alias tksv='tmux kill-server'
 
 function gcwtc() {
     git commit -m "$(curl -s https://whatthecommit.com/index.txt)"
