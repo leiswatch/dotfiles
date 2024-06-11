@@ -90,9 +90,9 @@ local servers = {
 			format = true,
 			run = "onType",
 			validate = "on",
-			-- workingDirectories = {
-			-- 	mode = "location",
-			-- },
+			workingDirectories = {
+				mode = "location",
+			},
 		},
 	},
 

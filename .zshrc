@@ -78,12 +78,12 @@ alias cat="bat"
 alias cd="z"
 alias tksv='tmux kill-server'
 
-function gcfun() {
+function gcwtc() {
     git commit -m "$(curl -s https://whatthecommit.com/index.txt)"
 }
 
 function fsb() {
-    git branch | grep -v \"^\*\" | fzf --height=30% --reverse --info=inline | xargs git switch
+    git switch $(git branch | grep -v \"^\*\" | fzf --height=30% --reverse --info=inline)
 }
 
 function vmrss() {
