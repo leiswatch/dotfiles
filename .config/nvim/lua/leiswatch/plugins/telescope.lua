@@ -27,7 +27,7 @@ return {
 					"--hidden",
 					"--trim",
 					"--fixed-strings",
-					"--sort=path",
+					-- "--sort=path",
 				},
 				prompt_prefix = "   ",
 				selection_caret = "  ",
@@ -40,7 +40,7 @@ return {
 					horizontal = {
 						width = 0.9,
 						height = 0.9,
-						preview_width = 0.45,
+						preview_width = 0.5,
 						prompt_position = "top",
 					},
 				},
@@ -51,10 +51,12 @@ return {
 					"%.DS_STORE",
 					"%.next",
 					"%.md",
+                    "%.nx",
 					"%.keystone",
 					"yarn%.lock",
 					"package%-lock%.json",
 					"node%_modules",
+                    "!.env"
 				},
 				generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
 				winblend = 0,
@@ -64,28 +66,28 @@ return {
 				previewer = true,
 				prompt_title = false,
 				use_less = true,
-				path_display = {
-					filename_first = {
-						reverse_directories = false,
-					},
-					-- "truncate",
-				},
+				-- path_display = {
+				-- 	filename_first = {
+				-- 		reverse_directories = false,
+				-- 	},
+				-- 	"truncate",
+				-- },
 				-- path_display = function(opts, path)
 				-- 	local tail = require("telescope.utils").path_tail(path)
 				-- 	return string.format("%s (%s)", tail, path)
 				-- end,
-				set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
+				-- set_env = { ["COLORTERM"] = "truecolor" }, -- default = nil,
 			},
 			pickers = {
 				find_files = {
-					find_command = { "fd", "-t", "f", "-i", "-u", "--strip-cwd-prefix" },
+					find_command = { "fd", "-t", "f", "-i", "-H", "--strip-cwd-prefix", "-c", "never", --[[ "-u" ]] },
 					previewer = false,
 					prompt_title = false,
 					results_title = false,
 					layout_config = {
 						horizontal = {
-							width = 0.75,
-							height = 0.75,
+							width = 0.6,
+							height = 0.6,
 							prompt_position = "top",
 						},
 					},

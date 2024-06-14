@@ -32,6 +32,11 @@ return {
 				operators = {},
 				miscs = {}, -- Uncomment to turn off hard-coded styles
 			},
+			color_overrides = {
+				mocha = {
+					bse = "#1c1c2c",
+				},
+			},
 			custom_highlights = function(color)
 				return {
 					FloatBorder = { fg = color.surface1, bg = color.none },
@@ -67,18 +72,18 @@ return {
 					LineNrAbove = { fg = color.surface1, bg = color.none },
 					LineNrBelow = { fg = color.surface1, bg = color.none },
 					ColorColumn = { fg = color.none, bg = color.surface0 },
-					TreesitterContext = { fg = color.none, bg = color.none },
-					TreesitterContextBottom = { bg = color.none, sp = color.surface1 },
-					TreesitterContextLineNumberBottom = { bg = color.none, sp = color.surface1, underline = true },
-					TreesitterContextLineNumber = { fg = color.flamingo, bg = color.none },
+					TreesitterContext = { fg = color.none, bg = color.surface0 },
+					TreesitterContextBottom = { bg = color.none, sp = color.surface0 },
+					TreesitterContextLineNumberBottom = { bg = color.none, sp = color.surface0, underline = true },
+					TreesitterContextLineNumber = { fg = color.flamingo, bg = color.surface0 },
 					NeoTreeIndentMarker = { bg = color.none, fg = color.surface0 },
 					Directory = { bg = color.none, fg = color.text },
 					CmpItemKindCodeium = { fg = color.sapphire },
-					IncSearch = { fg = color.base, bg = color.peach },
-					CurSearch = { fg = color.base, bg = color.peach },
+					IncSearch = { fg = color.base, bg = color.flamingo },
+					CurSearch = { fg = color.base, bg = color.flamingo },
 					Search = { fg = color.none, bg = color.surface1 },
-					MatchWord = { bg = color.peach, fg = color.base, bold = false },
-					MatchParen = { bg = color.peach, fg = color.base, bold = false },
+					MatchWord = { bg = color.flamingo, fg = color.base, bold = false },
+					MatchParen = { bg = color.flamingo, fg = color.base, bold = false },
 					DiagnosticVirtualTextError = {
 						bg = darken(color.red, darkening_percentage, color.base),
 					},
@@ -122,10 +127,10 @@ return {
 						information = { "italic" },
 					},
 					underlines = {
-						errors = { "underline" },
-						hints = { "underline" },
-						warnings = { "underline" },
-						information = { "underline" },
+						errors = { "undercurl" },
+						hints = { "undercurl" },
+						warnings = { "undercurl" },
+						information = { "undercurl" },
 					},
 					inlay_hints = {
 						background = true,

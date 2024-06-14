@@ -4,7 +4,7 @@ return {
 	opts = {
 		short_file_names = false,
 		short_term_names = true,
-		width = 0.7,
+		width = 0.5,
 		borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
 		highlight = "Normal:FloatBorder",
 		win_extra_options = {

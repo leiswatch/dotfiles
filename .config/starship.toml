@@ -6,8 +6,8 @@ command_timeout = 2000
 [character]
 # success_symbol = "[󰁔](bold green)"
 # error_symbol = "[󰁔](bold red)"
-success_symbol = '[](bold #cba6f7)'
-error_symbol = '[](bold red)'
+# success_symbol = '[](bold green)'
+# error_symbol = '[](bold red)'
 
 [os]
 disabled = true

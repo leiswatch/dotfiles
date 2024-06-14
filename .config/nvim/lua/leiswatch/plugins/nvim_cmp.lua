@@ -136,8 +136,9 @@ return {
 				-- disable completion in comments
 				local context = require("cmp.config.context")
 				local buftype = vim.api.nvim_get_option_value("buftype", { buf = 0 })
+				local filetype = vim.api.nvim_get_option_value("filetype", { buf = 0 })
 
-				if buftype == "prompt" then
+				if buftype == "prompt" or filetype == "oil" then
 					return false
 				end
 

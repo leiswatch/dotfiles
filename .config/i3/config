@@ -41,18 +41,22 @@ exec --no-startup-id picom --config /home/leiswatch/.config/picom/picom.conf
 exec --no-startup-id xfce4-power-manager --daemonize
 exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=ssh
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+# exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd
 
-exec --no-startup-id feh --bg-fill /home/leiswatch/Pictures/Wallpapers/firewatch.jpg
+exec --no-startup-id feh --bg-fill /home/leiswatch/Pictures/Wallpapers/girl_in_rain_scaled.png
 exec --no-startup-id redshift
 exec --no-startup-id caffeine start -a
 exec --no-startup-id discord --start-minimized
+exec --no-startup-id /opt/docker-desktop/bin/docker-desktop
 
 exec --no-startup-id "sh /home/leiswatch/.config/polybar/launch.sh --forest"
 
+exec --no-startup-id "/home/leiswatch/.config/i3/scripts/xob.py | xob"
+
 # Use pactl to adjust volume in PulseAudio.
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5% && /home/leiswatch/.config/i3/scripts/volume.sh
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5% && /home/leiswatch/.config/i3/scripts/volume.sh
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle && /home/leiswatch/.config/i3/scripts/volume.sh
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 # Use Mouse+$mod to drag floating windows to their wanted position
@@ -225,16 +229,22 @@ set $mantle #181825
 set $crust #11111b
 
 # class                  border    bground text   indicator  child_border
-client.focused           $mauve     $mauve   $base  $mauve      $mauve
+client.focused           $blue     $blue   $base  $blue      $blue
 client.focused_inactive  $overlay0 $base   $text  $overlay0  $overlay0
-client.unfocused         $mauve     $base   $text  $overlay0  $overlay0
+client.unfocused         $blue     $base   $text  $overlay0  $overlay0
 client.urgent            $red      $base   $red   $overlay0  $red
 client.placeholder       $overlay0 $base   $text  $overlay0  $overlay0
 client.background        $base
 
+focus_on_window_activation focus
+focus_follows_mouse yes
+title_align left
+
 default_border pixel 2
+default_floating_border pixel 2
 for_window [all] border pixel 2
 for_window [class=".*"] title_format " %title "
+for_window [class="Xfce4-notifyd"] border pixel 0
 # for_window [window_role="Popup"] border pixel 0
 # for_window [window_role="pop-up"] border pixel 0
 for_window [class="pavucontrol"] floating enable, move center
@@ -242,7 +252,7 @@ for_window [class="Blueman-manager"] floating enable, move center
 for_window [class="Gnome-calculator"] floating enable, move center
 for_window [title="Picture-in-Picture"] floating enable, sticky enable
 for_window [title="Picture in picture"] floating enable, sticky enable
-gaps inner 5
+gaps inner 10
 
 # Start i3bar to display a workspace bar (plus the system information i3status
 # finds out, if available)

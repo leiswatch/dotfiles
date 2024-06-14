@@ -1,33 +1,56 @@
 return {
 	"nvim-lualine/lualine.nvim",
 	config = function()
-		local colors = require("catppuccin.palettes").get_palette("mocha")
+		local mocha_colors = require("catppuccin.palettes").get_palette("mocha")
 
-		local cattpuccin_mocha = {
+		local catppuccin_mocha = {
 			normal = {
-				a = { fg = colors.crust, bg = colors.blue },
-				b = { fg = colors.mauve, bg = colors.surface0 },
-				z = { fg = colors.crust, bg = colors.lavender },
-				c = { fg = colors.text, bg = colors.crust },
-				x = { fg = colors.text, bg = colors.crust },
-				y = { fg = colors.teal, bg = colors.crust },
+				a = { fg = mocha_colors.crust, bg = mocha_colors.blue },
+				b = { fg = mocha_colors.mauve, bg = mocha_colors.crust },
+				z = { fg = mocha_colors.crust, bg = mocha_colors.lavender },
+				c = { fg = mocha_colors.text, bg = mocha_colors.crust },
+				x = { fg = mocha_colors.text, bg = mocha_colors.crust },
+				y = { fg = mocha_colors.teal, bg = mocha_colors.crust },
 			},
 			insert = {
-				a = { fg = colors.crust, bg = colors.green },
-				z = { fg = colors.crust, bg = colors.lavender },
+				a = { fg = mocha_colors.crust, bg = mocha_colors.green },
+				z = { fg = mocha_colors.crust, bg = mocha_colors.lavender },
 			},
-			visual = { a = { fg = colors.crust, bg = colors.mauve } },
-			replace = { a = { fg = colors.crust, bg = colors.blue } },
+			visual = { a = { fg = mocha_colors.crust, bg = mocha_colors.mauve } },
+			replace = { a = { fg = mocha_colors.crust, bg = mocha_colors.blue } },
 			inactive = {
-				a = { fg = colors.text, bg = colors.crust },
-				b = { fg = colors.text, bg = colors.crust },
-				c = { fg = colors.crust, bg = colors.black },
+				a = { fg = mocha_colors.text, bg = mocha_colors.crust },
+				b = { fg = mocha_colors.text, bg = mocha_colors.crust },
+				c = { fg = mocha_colors.crust, bg = mocha_colors.black },
 			},
 		}
 
+		-- local tokyonight_colors = require("tokyonight.colors").setup()
+		-- local tokyonight = {
+		-- 	normal = {
+		-- 		a = { fg = tokyonight_colors.bg_dark, bg = tokyonight_colors.blue },
+		-- 		b = { fg = tokyonight_colors.purple, bg = tokyonight_colors.bg_dark },
+		-- 		z = { fg = tokyonight_colors.bg_dark, bg = tokyonight_colors.blue },
+		-- 		c = { fg = tokyonight_colors.fg, bg = tokyonight_colors.bg_dark },
+		-- 		x = { fg = tokyonight_colors.fg, bg = tokyonight_colors.bg_dark },
+		-- 		y = { fg = tokyonight_colors.teal, bg = tokyonight_colors.bg_dark },
+		-- 	},
+		-- 	insert = {
+		-- 		a = { fg = tokyonight_colors.bg_dark, bg = tokyonight_colors.green },
+		-- 		z = { fg = tokyonight_colors.bg_dark, bg = tokyonight_colors.blue },
+		-- 	},
+		-- 	visual = { a = { fg = tokyonight_colors.bg_dark, bg = tokyonight_colors.purple } },
+		-- 	replace = { a = { fg = tokyonight_colors.bg_dark, bg = tokyonight_colors.blue } },
+		-- 	inactive = {
+		-- 		a = { fg = tokyonight_colors.fg, bg = tokyonight_colors.bg_dark },
+		-- 		b = { fg = tokyonight_colors.fg, bg = tokyonight_colors.bg_dark },
+		-- 		c = { fg = tokyonight_colors.bg_dark, bg = tokyonight_colors.black },
+		-- 	},
+		-- }
+
 		require("lualine").setup({
 			options = {
-				theme = cattpuccin_mocha,
+				theme = catppuccin_mocha,
 				component_separators = { left = "", right = "" },
 				section_separators = { left = "", right = "" },
 				globalstatus = true,
@@ -44,13 +67,16 @@ return {
 					},
 				},
 				lualine_b = {
-					{ "branch", icon = "󰘬", colored = true },
+					{ "branch", icon = " 󰘬", colored = true },
 					{
 						"diff",
 						diff_color = {
-							added = { fg = colors.green },
-							modified = { fg = colors.yellow },
-							removed = { fg = colors.red },
+							added = { fg = mocha_colors.green },
+							modified = { fg = mocha_colors.yellow },
+							removed = { fg = mocha_colors.red },
+							-- added = { fg = tokyonight_colors.green },
+							-- modified = { fg = tokyonight_colors.yellow },
+							-- removed = { fg = tokyonight_colors.red },
 						},
 						symbols = {
 							modified = " ",
@@ -69,12 +95,14 @@ return {
 						"searchcount",
 						icons_enabled = true,
 						icon = "",
-						color = { fg = colors.peach },
+						color = { fg = mocha_colors.peach },
+						-- color = { fg = tokyonight_colors.orange },
 					},
 					"diagnostics",
 					{
 						"encoding",
-						color = { fg = colors.sapphire },
+						color = { fg = mocha_colors.sapphire },
+						-- color = { fg = tokyonight_colors.blue5 },
 					},
 					{
 						"fileformat",
