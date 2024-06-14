@@ -34,7 +34,6 @@ export FZF_DEFAULT_OPTS=" \
 #   --color=scrollbar:#27a1b9 \
 #   --color=separator:#ff9e64 \
 #   --color=spinner:#ff007c \
-#   --pointer= \
 #   --prompt='  ' \
 #   --info=inline-right \
 #   -i \

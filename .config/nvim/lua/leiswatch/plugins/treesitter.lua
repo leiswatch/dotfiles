@@ -11,6 +11,7 @@ return {
 		"windwp/nvim-autopairs",
 		"numToStr/Comment.nvim",
 		"andymass/vim-matchup",
+		-- "HiPhish/rainbow-delimiters.nvim",
 	},
 
 	config = function()

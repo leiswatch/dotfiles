@@ -228,12 +228,19 @@ set $base #1e1e2e
 set $mantle #181825
 set $crust #11111b
 
+# Tokyonight
+# set $blue #7aa2f7
+# set $base   #1a1b26
+# set $red  #f7768e
+# set $text   #c0caf5
+# set $overlay0 #3b4261
+
 # class                  border    bground text   indicator  child_border
-client.focused           $blue     $blue   $base  $blue      $blue
-client.focused_inactive  $overlay0 $base   $text  $overlay0  $overlay0
-client.unfocused         $blue     $base   $text  $overlay0  $overlay0
-client.urgent            $red      $base   $red   $overlay0  $red
-client.placeholder       $overlay0 $base   $text  $overlay0  $overlay0
+client.focused           $blue     $blue $base    $blue      $blue
+client.focused_inactive  $surface2 $base   $text  $surface2  $surface2
+client.unfocused         $blue     $base   $text  $surface2  $surface2
+client.urgent            $red      $base   $red   $surface2  $red
+client.placeholder       $surface2 $base   $text  $surface2  $surface2
 client.background        $base
 
 focus_on_window_activation focus
