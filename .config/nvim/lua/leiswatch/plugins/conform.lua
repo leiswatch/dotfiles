@@ -26,6 +26,7 @@ return {
 			jsonc = { "prettierd" },
 			bash = { "shfmt" },
 			zsh = { "shfmt" },
+			zig = { "zigfmt" },
 			["*"] = { "trim_newlines", "trim_whitespace" },
 		},
 	},

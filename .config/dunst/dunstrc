@@ -7,9 +7,10 @@
     origin = top-right
     class       = Dunst
     alignment   = center
-    frame_color = "#cba6f7"
     frame_width = 2
-    font        = JetBrains Mono Regular 12
+    frame_color = "#89b4fa"
+    separator_color = frame
+    font        = Fira Sans 13
     offset      = 17x57
     min_icon_size = 24
     max_icon_size = 48
@@ -27,7 +28,7 @@
     show_indicators = no
     separator_color= frame
     corner_radius = 0
-    highlight = "#cba6f7"
+    highlight = "#89b4fa"
     sticky_history = yes
     mouse_left_click = open_url, do_action, close_current
     mouse_right_click = close_all
@@ -45,6 +46,7 @@
 [urgency_critical]
     background  = "#1e1e2e"
     foreground  = "#cdd6f4"
+    frame_color = "#fab387"
     timeout = 5
 
 [fullscreen_delay_everything]

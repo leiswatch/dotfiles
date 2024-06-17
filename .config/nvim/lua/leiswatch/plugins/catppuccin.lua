@@ -32,11 +32,6 @@ return {
 				operators = {},
 				miscs = {}, -- Uncomment to turn off hard-coded styles
 			},
-			color_overrides = {
-				mocha = {
-					bse = "#1c1c2c",
-				},
-			},
 			custom_highlights = function(color)
 				return {
 					FloatBorder = { fg = color.surface1, bg = color.none },

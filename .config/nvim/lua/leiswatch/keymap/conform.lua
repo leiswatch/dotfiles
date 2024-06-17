@@ -25,10 +25,10 @@ local function stylelint_filter(client)
 end
 
 local lsp_fallback = setmetatable({
-	css = { "always", "stylelint_lsp", stylelint_filter },
-	scss = { "always", "stylelint_lsp", stylelint_filter },
-	sass = { "always", "stylelint_lsp", stylelint_filter },
-	less = { "always", "stylelint_lsp", stylelint_filter },
+	css = { "last", "stylelint_lsp", stylelint_filter },
+	scss = { "last", "stylelint_lsp", stylelint_filter },
+	sass = { "last", "stylelint_lsp", stylelint_filter },
+	less = { "last", "stylelint_lsp", stylelint_filter },
 }, {
 	__index = function()
 		return { false, nil, nil }
@@ -45,7 +45,7 @@ local format = function()
 
 	conform.format({
 		timeout_ms = 2000,
-		lsp_fallback = lsp_fallback[vim.bo[bufnr].filetype][1],
+		lsp_format = lsp_fallback[vim.bo[bufnr].filetype][1],
 		async = false,
 		name = lsp_fallback[vim.bo[bufnr].filetype][2],
 		filter = lsp_fallback[vim.bo[bufnr].filetype][3],
