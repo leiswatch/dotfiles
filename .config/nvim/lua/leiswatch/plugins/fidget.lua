@@ -6,10 +6,12 @@ return {
 			suppress_on_insert = false, -- Suppress new messages while in insert mode
 			ignore_done_already = false, -- Ignore new tasks that are already complete
 			ignore_empty_message = false, -- Ignore new tasks that don't contain a message
+			ignore = { "null-ls" },
 			display = {
 				done_icon = "",
 				overrides = { -- Override options from the default notification config
 					["tsserver"] = { name = "typescript" },
+					["vtsls"] = { name = "typescript" },
 					["lua_ls"] = { name = "lua" },
 					["gopls"] = { name = "go" },
 					["rust_analyzer"] = { name = "rust" },

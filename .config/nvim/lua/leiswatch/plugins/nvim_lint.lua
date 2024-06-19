@@ -1,6 +1,7 @@
 return {
 	"mfussenegger/nvim-lint",
 	event = "BufEnter",
+    enabled = false,
 	config = function()
 		require("lint").linters_by_ft = {
 			python = { "pylint" },

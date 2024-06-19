@@ -75,7 +75,6 @@ zstyle ':completion:*' menu no
 # Aliases
 alias ls="eza"
 alias cat="bat"
-alias cd="z"
 
 function gcwtc() {
     git commit -m "$(curl -s https://whatthecommit.com/index.txt)"

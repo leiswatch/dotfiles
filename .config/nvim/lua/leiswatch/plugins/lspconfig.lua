@@ -44,15 +44,15 @@ return {
 		})
 
 		require("mason-lspconfig").setup({
-			handlers = handlers,
+			-- handlers = handlers,
 			ensure_installed = mason_config.lsp,
 			automatic_installation = true,
 		})
 
-		-- for server_name, _ in pairs(servers) do
-		-- 	local server = servers[server_name] or {}
-		-- 	server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-		-- 	lspconfig[server_name].setup(server)
-		-- end
+		for server_name, _ in pairs(servers) do
+			local server = servers[server_name] or {}
+			server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
+			lspconfig[server_name].setup(server)
+		end
 	end,
 }

@@ -1,8 +1,8 @@
 [global]
     gap_size = 5
     monitor = 0
-    width = (200, 400)
-    height = 300
+    width = 300
+    height = (0, 300)
     notification_limit = 20
     origin = top-right
     class       = Dunst
@@ -10,13 +10,13 @@
     frame_width = 2
     frame_color = "#89b4fa"
     separator_color = frame
-    font        = Fira Sans 13
+    font        = JetBrains Mono 12
     offset      = 17x57
-    min_icon_size = 24
-    max_icon_size = 48
+    min_icon_size = 32 
+    max_icon_size = 64
     show_age_threshold = -1
     icon_position = left
-    icon_theme = Papirus-Dark
+    icon_theme = Papirus
     enable_recursive_icon_lookup = true
     notification_limit = 5
     progress_bar = true

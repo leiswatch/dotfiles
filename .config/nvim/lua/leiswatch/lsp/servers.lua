@@ -37,7 +37,7 @@ local servers = {
 				runtime = {
 					-- Tell the language server which version of Lua you're using
 					-- (most likely LuaJIT in the case of Neovim)
-					version = "Lua 5.1",
+					version = "Lua 5.4",
 				},
 			},
 		},
@@ -107,27 +107,28 @@ local servers = {
 			},
 		},
 	},
+    vtsls = {},
 
-	tsserver = {
-		init_options = {
-			hostInfo = "neovim",
-			maxTsServerMemory = 2048,
-			-- preferences = {
-			--     importModuleSpecifierPreference = "relative",
-			-- },
-		},
-		filetypes = {
-			"javascript",
-			"javascriptreact",
-			"javascript.jsx",
-			"typescript",
-			"typescriptreact",
-			"typescript.tsx",
-			"vue",
-			"svelte",
-			-- "astro",
-		},
-	},
+	-- tsserver = {
+	-- 	init_options = {
+	-- 		hostInfo = "neovim",
+	-- 		maxTsServerMemory = 2048,
+	-- 		-- preferences = {
+	-- 		--     importModuleSpecifierPreference = "relative",
+	-- 		-- },
+	-- 	},
+	-- 	filetypes = {
+	-- 		"javascript",
+	-- 		"javascriptreact",
+	-- 		"javascript.jsx",
+	-- 		"typescript",
+	-- 		"typescriptreact",
+	-- 		"typescript.tsx",
+	-- 		"vue",
+	-- 		"svelte",
+	-- 		-- "astro",
+	-- 	},
+	-- },
 
 	-- emmet_ls = {
 	-- 	filetypes = {
