@@ -1,8 +1,8 @@
 [global]
     gap_size = 5
     monitor = 0
-    width = 300
-    height = (0, 300)
+    width = (200, 400)
+    height = (0, 400)
     notification_limit = 20
     origin = top-right
     class       = Dunst

@@ -46,7 +46,7 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id feh --bg-fill /home/leiswatch/Pictures/Wallpapers/girl_in_rain_scaled.png
 exec --no-startup-id redshift
 exec --no-startup-id caffeine start -a
-exec --no-startup-id discord --start-minimized
+# exec --no-startup-id discord --start-minimized
 exec --no-startup-id /opt/docker-desktop/bin/docker-desktop
 
 exec --no-startup-id "sh /home/leiswatch/.config/polybar/launch.sh --forest"
