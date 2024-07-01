@@ -53,7 +53,7 @@ exec --no-startup-id /usr/bin/discord --start-minimized
 
 exec --no-startup-id "python3 ~/.config/i3/scripts/xob.py | xob"
 
-exec --no-startup-id sleep 2 && ~/.config/polybar/forest/launch.sh
+exec --no-startup-id sleep 2 && ~/.config/polybar/catppuccin/launch.sh
 
 # Use pactl to adjust volume in PulseAudio.
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
