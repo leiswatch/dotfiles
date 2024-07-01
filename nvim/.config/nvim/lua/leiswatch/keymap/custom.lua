@@ -1,0 +1,16 @@
+local opts = { noremap = true, silent = true }
+
+vim.keymap.set("n", "<leader>vv", "<C-^>", opts)
+vim.keymap.set("n", "<leader>ss", ":split<Return><C-w>w", opts)
+vim.keymap.set("n", "<leader>sv", ":vsplit<Return><C-w>w", opts)
+vim.keymap.set("v", "J", ":m '>+1<CR>gv=gv", opts)
+vim.keymap.set("v", "K", ":m '<-2<CR>gv=gv", opts)
+vim.keymap.set("n", "<C-d>", "<C-d>zz", opts)
+vim.keymap.set("n", "<C-u>", "<C-u>zz", opts)
+vim.keymap.set("i", "<C-c>", "<Esc>", opts)
+vim.keymap.set("x", "<leader>p", '"_dP', opts)
+vim.keymap.set("n", "<leader>y", '"+y', opts)
+vim.keymap.set("v", "<leader>y", '"+y', opts)
+vim.keymap.set("n", "<leader>Y", '"+Y', opts)
+vim.keymap.set("n", "n", "nzzzv")
+vim.keymap.set("n", "N", "Nzzzv")
