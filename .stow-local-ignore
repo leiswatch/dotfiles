@@ -27,6 +27,3 @@ fonts_fedora.txt
 essentials.txt
 ublock.txt
 etc
-\.config/mimeapps.list
-\.config/autostart
-\.local/bin/xautocfg

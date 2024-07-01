@@ -1,5 +1,7 @@
 plugged
 undodir
-.ssh/*
-!.ssh/config
 .config/btop/btop.log
+nvim/.config/nvim/undodir
+ssh/.ssh/*
+!ssh/.ssh/config
+.config
