@@ -33,43 +33,7 @@ return {
 			return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 		end
 
-		local cmp_kinds = {
-			Text = "  ",
-			Method = "  ",
-			Function = "  ",
-			Constructor = "  ",
-			Field = "  ",
-			Variable = "  ",
-			Class = "  ",
-			Interface = "  ",
-			Module = "  ",
-			Property = "  ",
-			Unit = "  ",
-			Value = "  ",
-			Enum = "  ",
-			Keyword = "  ",
-			Snippet = "  ",
-			Color = "  ",
-			File = "  ",
-			Reference = "  ",
-			Folder = "  ",
-			EnumMember = "  ",
-			Constant = "  ",
-			Struct = "  ",
-			Event = "  ",
-			Operator = "  ",
-			TypeParameter = "  ",
-		}
-
 		cmp.setup({
-			performance = {
-				debounce = 30,
-				throttle = 15,
-				fetching_timeout = 250,
-				confirm_resolve_timeout = 40,
-				async_budget = 1,
-				max_view_entries = 200,
-			},
 			view = {
 				entries = "custom",
 			},
@@ -82,6 +46,7 @@ return {
 				completion = {
 					border = "single",
 					winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:CursorLine,Search:Search",
+					side_padding = 1,
 				},
 				documentation = {
 					border = "single",
@@ -164,10 +129,62 @@ return {
 				format = lspkind.cmp_format({
 					mode = "symbol", -- show only symbol annotations
 					maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+					preset = "codicons",
 					ellipsis_char = "...", -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
 					show_labelDetails = true, -- show labelDetails in menu. Disabled by default
-					symbol_map = cmp_kinds,
+					-- symbol_map = cmp_kinds,
+					symbol_map = {
+						Text = "  ",
+						Method = "  ",
+						Function = "  ",
+						Constructor = "  ",
+						Field = "  ",
+						Variable = "  ",
+						Class = "  ",
+						Interface = "  ",
+						Module = "  ",
+						Property = "  ",
+						Unit = "  ",
+						Value = "  ",
+						Enum = "  ",
+						Keyword = "  ",
+						Snippet = "  ",
+						Color = "  ",
+						File = "  ",
+						Reference = "  ",
+						Folder = "  ",
+						EnumMember = "  ",
+						Constant = "  ",
+						Struct = "  ",
+						Event = "  ",
+						Operator = "  ",
+						TypeParameter = "  ",
+					},
 				}),
+			},
+			sorting = {
+				comparators = {
+					cmp.config.compare.offset,
+					cmp.config.compare.exact,
+					cmp.config.compare.score,
+
+					function(entry1, entry2)
+						local _, entry1_under = entry1.completion_item.label:find("^_+")
+						local _, entry2_under = entry2.completion_item.label:find("^_+")
+						entry1_under = entry1_under or 0
+						entry2_under = entry2_under or 0
+						if entry1_under > entry2_under then
+							return false
+						elseif entry1_under < entry2_under then
+							return true
+						end
+					end,
+
+					cmp.config.compare.kind,
+					cmp.config.compare.sort_text,
+					cmp.config.compare.length,
+					cmp.config.compare.order,
+				},
 			},
 		})
 

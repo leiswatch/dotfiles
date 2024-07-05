@@ -51,11 +51,13 @@ local format = function()
 
 	conform.format({
 		timeout_ms = 2000,
-		lsp_format = lsp_fallback[vim.bo[bufnr].filetype][1],
 		async = false,
+		lsp_format = lsp_fallback[vim.bo[bufnr].filetype][1],
 		name = lsp_fallback[vim.bo[bufnr].filetype][2],
 		filter = lsp_fallback[vim.bo[bufnr].filetype][3],
 	})
+
+	vim.notify("File formatted", vim.log.levels.INFO)
 end
 
 vim.keymap.set({ "n", "v" }, "<C-i>", format, opts)

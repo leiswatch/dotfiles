@@ -15,8 +15,8 @@
 [rerere]
     enabled = true
 [include]
-	path = /home/leiswatch/.config/delta/catppuccin-gitconfig
-	; path = /home/leiswatch/.config/delta/tokyonight-gitconfig
+    ; path = /home/leiswatch/.config/delta/catppuccin-gitconfig
+	path = /home/leiswatch/.config/delta/tokyonight-gitconfig
 [delta]
     navigate = true    # use n and N to move between diff sections
     light = false      # set to true if you're in a terminal w/ a light background color (e.g. the default macOS terminal)

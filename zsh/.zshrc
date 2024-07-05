@@ -5,22 +5,20 @@ ZSH_THEME=robbyrussell
 DISABLE_AUTO_TITLE="true"
 
 plugins=(
-    archlinux
-	command-not-found
-	docker
-	docker-compose
-	fzf-tab
-	git
-	golang
+    command-not-found
+    docker
+    docker-compose
+    fzf-tab
+    git
+    golang
     kubectl
-	node
-	npm
-	rust
-	# tmux
-	yarn
-	you-should-use
-    # zsh-autosuggestions
-	zsh-syntax-highlighting
+    node
+    npm
+    rust
+    ubuntu
+    yarn
+    you-should-use
+    zsh-syntax-highlighting
 )
 
 fpath+=${ZSH_CUSTOM:-${ZSH:-~/.oh-my-zsh}/custom}
@@ -56,7 +54,7 @@ alias cat="bat"
 alias tksv="tmux kill-server"
 
 function gcwtc() {
-    git commit -m "$(curl -s https://whatthecommit.com/index.txt)"
+    git commit -m "$(curl -s https://whatthecommit.com/index.txt)" $@
 }
 
 function fsb() {
@@ -64,17 +62,17 @@ function fsb() {
 }
 
 function vmrss() {
-	if [ -n "$1" ]; then
-		while true; do
-			sync
-			cat /proc/"$1"/status | grep --color=auto "VmRSS" | grep --color=auto -o '[0-9]\+' | awk '{print $1/1024 " MB"}'
-			sleep 1
-		done
-	fi
+    if [ -n "$1" ]; then
+        while true; do
+            sync
+            cat /proc/"$1"/status | grep --color=auto "VmRSS" | grep --color=auto -o '[0-9]\+' | awk '{print $1/1024 " MB"}'
+            sleep 1
+        done
+    fi
 }
 
 function precmd() {
-	print -Pn "\e]0;Terminal\a"
+    print -Pn "\e]0;Terminal\a"
 }
 
 # kubectl

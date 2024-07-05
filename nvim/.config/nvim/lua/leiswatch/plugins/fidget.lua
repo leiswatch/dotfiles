@@ -12,6 +12,7 @@ return {
 				overrides = { -- Override options from the default notification config
 					["tsserver"] = { name = "typescript" },
 					["vtsls"] = { name = "typescript" },
+					["typescript-tools"] = { name = "typescript" },
 					["lua_ls"] = { name = "lua" },
 					["gopls"] = { name = "go" },
 					["rust_analyzer"] = { name = "rust" },
