@@ -10,6 +10,10 @@ if [ -d "$HOME/.cargo/env" ]; then
 	. "$HOME/.cargo/env"
 fi
 
+if [ -d "$HOME/.cargo/bin" ]; then
+	PATH="$HOME/.cargo/bin:$PATH"
+fi
+
 if [ -d "$GOPATH/bin" ]; then
 	PATH="$GOPATH/bin:$PATH"
 fi

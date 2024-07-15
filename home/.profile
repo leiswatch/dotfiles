@@ -9,36 +9,26 @@ export FNM_COREPACK_ENABLED=true
 # Mocha
 # export FZF_DEFAULT_OPTS=" \
 # --color=bg+:#313244,spinner:#f5e0dc,hl:#f38ba8 \
-# --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#f5e0dc \
+# --color=fg:#cdd6f4,header:#f38ba8,info:#cba6f7,pointer:#89b4fa \
 # --color=marker:#f5e0dc,fg+:#cdd6f4,prompt:#cba6f7,hl+:#f38ba8 \
-# --color=separator:#45475a,scrollbar:#45475a,border:#313244,label:#cdd6f4 \
-# --pointer=󰁔 \
+# --color=separator:#313244,scrollbar:#f5e0dc,border:#313244,label:#cdd6f4 \
 # --prompt='  ' \
-# --info=inline-right \
+# --info=right \
 # -i \
-# --reverse"
+# --reverse \
+# --padding 0,1"
 
 # Tokyonight
-export FZF_DEFAULT_OPTS="
-  --color=bg+:#283457 \
-  --color=border:#27a1b9 \
-  --color=fg:#c0caf5 \
-  --color=gutter:#16161e \
-  --color=header:#ff9e64 \
-  --color=hl+:#2ac3de \
-  --color=hl:#2ac3de \
-  --color=info:#545c7e \
-  --color=marker:#ff007c \
-  --color=pointer:#ff007c \
-  --color=prompt:#2ac3de \
-  --color=query:#c0caf5:regular \
-  --color=scrollbar:#27a1b9 \
-  --color=separator:#ff9e64 \
-  --color=spinner:#ff007c \
-  --prompt='  ' \
-  --info=inline-right \
-  -i \
-  --reverse"
+export FZF_DEFAULT_OPTS=" \
+--color=bg+:#3b4261,spinner:#2ac3de,hl:#f7768e \
+--color=fg:#c0caf5,header:#f7768e,info:#cba6f7,pointer:#2ac3de \
+--color=marker:#2ac3de,fg+:#c0caf5,prompt:#cba6f7,hl+:#f7768e \
+--color=separator:#3b4261,scrollbar:#2ac3de,border:#3b4261,label:#c0caf5 \
+--prompt='  ' \
+--info=right \
+-i \
+--reverse \
+--padding 0,1"
 
 # PATH="$DENO_INSTALL/bin:$PNPM_HOME:$BUN_INSTALL/bin:$PATH"
 

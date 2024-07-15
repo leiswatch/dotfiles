@@ -1,3 +1,4 @@
+---
 # gui:
 #   nerdFontsVersion: "3"
 #   border: single
@@ -35,14 +36,14 @@ gui:
       - "#7aa2f7"
       - "bold"
     inactiveBorderColor:
-      - "#565f89"
+      - "#3b4261"
     searchingActiveBorderColor:
       - "#7aa2f7"
       - "bold"
     optionsTextColor:
       - "#7aa2f7"
     selectedLineBgColor:
-      - "#283457"
+      - "#292e42"
     cherryPickedCommitFgColor:
       - "#7aa2f7"
     cherryPickedCommitBgColor:

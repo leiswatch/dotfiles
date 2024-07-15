@@ -11,10 +11,10 @@ startup_mode = "Windowed"
 history = 99999
 
 [font]
-normal = { family = "IosevkaTerm Nerd Font", style = "Medium" }
-bold = { family = "IosevkaTerm Nerd Font", style = "Bold" }
-italic = { family = "IosevkaTerm Nerd Font", style = "Medium Italic" }
-bold_italic = { family = "IosevkaTerm Nerd Font", style = "Bold Italic" }
+normal = { family = "IosevkaTerm Nerd Font Propo", style = "Medium" }
+bold = { family = "IosevkaTerm Nerd Font Propo", style = "Bold" }
+italic = { family = "IosevkaTerm Nerd Font Propo", style = "Medium Italic" }
+bold_italic = { family = "IosevkaTerm Nerd Font Propo", style = "Bold Italic" }
 offset = { x = 1, y = 4 }
 glyph_offset = { x = 0, y = 2 }
 size = 14

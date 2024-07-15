@@ -13,7 +13,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:Ubuntu 8
+font pango:Ubuntu 9
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -35,10 +35,9 @@ exec --no-startup-id xss-lock --transfer-sleep-lock -- betterlockscreen -l dimbl
 exec --no-startup-id picom --config ~/.config/picom/picom.conf
 exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=ssh
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-# exec --no-startup-id feh --bg-fill ~/Pictures/Wallpapers/4417301.png
 exec --no-startup-id nitrogen --restore
 
-exec --no-startup-id xautocfg
+# exec --no-startup-id xautocfg
 exec --no-startup-id redshift
 exec --no-startup-id xfce4-power-manager --daemonize
 # exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd
@@ -48,12 +47,13 @@ exec --no-startup-id blueman-applet
 exec --no-startup-id flameshot
 exec --no-startup-id system-config-printer-applet
 exec --no-startup-id caffeine start -a
-exec --no-startup-id /opt/docker-desktop/bin/docker-desktop
+# exec --no-startup-id /opt/docker-desktop/bin/docker-desktop
 exec --no-startup-id /usr/bin/discord --start-minimized
 
 exec --no-startup-id "python3 ~/.config/i3/scripts/xob.py | xob"
 
-exec --no-startup-id sleep 2 && ~/.config/polybar/catppuccin/launch.sh
+# exec --no-startup-id ~/.config/polybar/catppuccin/launch.sh
+exec --no-startup-id ~/.config/polybar/tokyonight/launch.sh
 
 # Use pactl to adjust volume in PulseAudio.
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
@@ -75,7 +75,7 @@ bindsym $mod+Shift+q kill
 bindsym $mod+d exec --no-startup-id "sh ~/.config/rofi/launchers/type-1/launcher.sh"
 bindsym $mod+Shift+p exec --no-startup-id "sh ~/.config/rofi/powermenu/type-1/powermenu.sh"
 bindsym $mod+Shift+s exec --no-startup-id flameshot gui
-bindsym $mod+Shift+e exec --no-startup-id nemo
+bindsym $mod+Shift+e exec --no-startup-id thunar
 # A more modern dmenu replacement is rofi:
 # bindcode $mod+40 exec "rofi -modi drun,run -show drun"
 # There also is i3-dmenu-desktop which only displays applications shipping a
@@ -178,27 +178,27 @@ bindsym $mod+Shift+r restart
 
 # resize window (you can also use the mouse for that)
 mode "resize" {
-        # These bindings trigger as soon as you enter the resize mode
+    # These bindings trigger as soon as you enter the resize mode
 
-        # Pressing left will shrink the window’s width.
-        # Pressing right will grow the window’s width.
-        # Pressing up will shrink the window’s height.
-        # Pressing down will grow the window’s height.
-        bindsym l resize shrink width 10 px or 10 ppt
-        bindsym j resize grow height 10 px or 10 ppt
-        bindsym k resize shrink height 10 px or 10 ppt
-        bindsym h resize grow width 10 px or 10 ppt
+    # Pressing left will shrink the window’s width.
+    # Pressing right will grow the window’s width.
+    # Pressing up will shrink the window’s height.
+    # Pressing down will grow the window’s height.
+    bindsym l resize shrink width 10 px or 10 ppt
+    bindsym j resize grow height 10 px or 10 ppt
+    bindsym k resize shrink height 10 px or 10 ppt
+    bindsym h resize grow width 10 px or 10 ppt
 
-        # same bindings, but for the arrow keys
-        bindsym Left resize shrink width 10 px or 10 ppt
-        bindsym Down resize grow height 10 px or 10 ppt
-        bindsym Up resize shrink height 10 px or 10 ppt
-        bindsym Right resize grow width 10 px or 10 ppt
+    # same bindings, but for the arrow keys
+    bindsym Left resize shrink width 10 px or 10 ppt
+    bindsym Down resize grow height 10 px or 10 ppt
+    bindsym Up resize shrink height 10 px or 10 ppt
+    bindsym Right resize grow width 10 px or 10 ppt
 
-        # back to normal: Enter or Escape or $mod+r
-        bindsym Return mode "default"
-        bindsym Escape mode "default"
-        bindsym $mod+r mode "default"
+    # back to normal: Enter or Escape or $mod+r
+    bindsym Return mode "default"
+    bindsym Escape mode "default"
+    bindsym $mod+r mode "default"
 }
 
 bindsym $mod+r mode "resize"
@@ -230,15 +230,8 @@ set $base #1e1e2e
 set $mantle #181825
 set $crust #11111b
 
-# Tokyonight
-# set $blue #7aa2f7
-# set $base   #1a1b26
-# set $red  #f7768e
-# set $text   #c0caf5
-# set $overlay0 #3b4261
-
 # Default
-# class                 border  backgr. text    indicator child_border
+# class                   border  backgr. text    indicator child_border
 # client.focused          #4c7899 #285577 #ffffff #285577   #285577
 # client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
 # client.unfocused        #333333 #222222 #888888 #292d2e   #222222
@@ -246,10 +239,19 @@ set $crust #11111b
 # client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 # client.background       #ffffff
 
+# Tokyonight
+set $blue #7aa2f7
+set $base #1a1b26
+set $surface1 #3b4261
+set $subtext0 #a9b1d6
+set $red #f7768e
+set $text #c0caf5
+set $overlay0 #545c7e
+
 # class                  border        bground       text          indicator      child_border
 client.focused           $blue         $blue         $base         $blue          $blue
-client.focused_inactive  $surface0     $surface0     $overlay0     $surface0      $surface0
-client.unfocused         $surface0     $surface0     $overlay0     $surface0      $surface0
+client.focused_inactive  $surface1     $base         $subtext0     $surface1      $surface1
+client.unfocused         $surface1     $base         $subtext0     $surface1      $surface1
 client.urgent            $red          $base         $red          $overlay0      $red
 client.placeholder       $overlay0     $base         $text         $overlay0      $overlay0
 client.background        $base

@@ -6,8 +6,7 @@ return {
 	config = function()
 		require("tokyonight").setup({
 			style = "night", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
-			light_style = "day", -- The theme is used when the background is set to light
-			transparent = true, -- Enable this to disable setting the background color
+			light_style = "day", -- The theme is used when the background is set to light transparent = true, -- Enable this to disable setting the background color
 			terminal_colors = true, -- Configure the colors used when opening a `:terminal` in [Neovim](https://github.com/neovim/neovim)
 			styles = {
 				comments = { italic = true },
@@ -23,8 +22,6 @@ return {
 			dim_inactive = false, -- dims inactive windows
 			lualine_bold = false, -- When `true`, section headers in the lualine theme will be bold
 			on_colors = function() end,
-			---@param hl Highlights
-			---@param color ColorScheme
 			on_highlights = function(hl, color)
 				hl.FloatBorder = { fg = color.fg_gutter, bg = color.none }
 				hl.FloatTitle = { fg = color.fg, bg = color.none }
@@ -68,9 +65,11 @@ return {
 				hl.IncSearch = { fg = color.bg, bg = color.orange }
 				hl.CurSearch = { fg = color.bg, bg = color.orange }
 				hl.Search = { fg = color.none, bg = color.fg_gutter }
-				hl.MatchWord = { bg = color.orange, fg = color.bg, bold = false }
-				hl.MatchParen = { bg = color.orange, fg = color.bg, bold = false }
-                hl.CmpItemKindVariable = { bg = color.none, fg = color.purple }
+				hl.MatchWord = { bg = color.bg_highlight, fg = color.none, bold = false }
+				hl.MatchParen = { bg = color.bg_highlight, fg = color.none, bold = false }
+				hl.CmpItemKindVariable = { bg = color.none, fg = color.magenta }
+				hl.CmpItemAbbrMatch = { bg = color.none, fg = color.red }
+				hl.CmpItemAbbrMatchFuzzy = { bg = color.none, fg = color.red }
 			end,
 		})
 

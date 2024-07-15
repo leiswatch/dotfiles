@@ -107,6 +107,7 @@ local servers = {
 			},
 		},
 	},
+    vtsls = {},
 
 	-- tsserver = {
 	-- 	init_options = {

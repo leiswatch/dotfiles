@@ -134,7 +134,7 @@ return {
 					show_labelDetails = true, -- show labelDetails in menu. Disabled by default
 					-- symbol_map = cmp_kinds,
 					symbol_map = {
-						Text = "  ",
+                        Text = '  ',
 						Method = "  ",
 						Function = "  ",
 						Constructor = "  ",
@@ -162,30 +162,30 @@ return {
 					},
 				}),
 			},
-			sorting = {
-				comparators = {
-					cmp.config.compare.offset,
-					cmp.config.compare.exact,
-					cmp.config.compare.score,
+			-- sorting = {
+				-- comparators = {
+				-- 	cmp.config.compare.offset,
+				-- 	cmp.config.compare.exact,
+				-- 	cmp.config.compare.score,
 
-					function(entry1, entry2)
-						local _, entry1_under = entry1.completion_item.label:find("^_+")
-						local _, entry2_under = entry2.completion_item.label:find("^_+")
-						entry1_under = entry1_under or 0
-						entry2_under = entry2_under or 0
-						if entry1_under > entry2_under then
-							return false
-						elseif entry1_under < entry2_under then
-							return true
-						end
-					end,
+				-- 	function(entry1, entry2)
+				-- 		local _, entry1_under = entry1.completion_item.label:find("^_+")
+				-- 		local _, entry2_under = entry2.completion_item.label:find("^_+")
+				-- 		entry1_under = entry1_under or 0
+				-- 		entry2_under = entry2_under or 0
+				-- 		if entry1_under > entry2_under then
+				-- 			return false
+				-- 		elseif entry1_under < entry2_under then
+				-- 			return true
+				-- 		end
+				-- 	end,
 
-					cmp.config.compare.kind,
-					cmp.config.compare.sort_text,
-					cmp.config.compare.length,
-					cmp.config.compare.order,
-				},
-			},
+				-- 	cmp.config.compare.kind,
+				-- 	cmp.config.compare.sort_text,
+				-- 	cmp.config.compare.length,
+				-- 	cmp.config.compare.order,
+				-- },
+			-- },
 		})
 
 		cmp.setup.cmdline({ "/", "?" }, {

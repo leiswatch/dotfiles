@@ -5,6 +5,7 @@ ZSH_THEME=robbyrussell
 DISABLE_AUTO_TITLE="true"
 
 plugins=(
+    archlinux
     command-not-found
     docker
     docker-compose
@@ -15,9 +16,10 @@ plugins=(
     node
     npm
     rust
-    ubuntu
+    tmux
     yarn
     you-should-use
+    zsh-autosuggestions
     zsh-syntax-highlighting
 )
 
@@ -45,21 +47,14 @@ setopt hist_ignore_dups
 setopt hist_find_no_dups
 setopt promptsubst
 
-zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' menu no
 
 # Aliases
-alias ls="eza"
-alias cat="bat"
-alias tksv="tmux kill-server"
-
-function gcwtc() {
-    git commit -m "$(curl -s https://whatthecommit.com/index.txt)" $@
-}
-
-function fsb() {
-    git switch $(git branch | grep -v \"^\*\" | fzf --height=30% --reverse --info=inline)
-}
+alias ls='eza'
+alias cat='bat'
+# alias tksv='tmux kill-server'
+alias gcwtc='git commit -m "$(curl -s https://whatthecommit.com/index.txt)"'
+alias fsb='git switch $(git branch | grep -v \"^\*\" | fzf --height=30% --reverse --info=inline)'
 
 function vmrss() {
     if [ -n "$1" ]; then
@@ -79,7 +74,10 @@ function precmd() {
 eval "$(kubectl completion zsh)"
 
 # fzf
-eval "$(fzf --zsh)"
+source <(fzf --zsh)
+
+# atuin
+eval "$(atuin init zsh)"
 
 # bun
 [ -s "/home/leiswatch/.bun/_bun" ] && source "/home/leiswatch/.bun/_bun"
@@ -92,5 +90,8 @@ eval "$(fnm env --shell zsh)"
 
 # starship
 eval "$(starship init zsh)"
+
+# eval "$(oh-my-posh init zsh)"
+# eval "$(oh-my-posh init zsh --config /home/leiswatch/.cache/oh-my-posh/themes/spaceship.omp.json)"
 
 # zprof

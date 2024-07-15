@@ -3,7 +3,7 @@
 add_newline = false
 command_timeout = 2000
 
-[character]
+# [character]
 # success_symbol = "[󰁔](bold green)"
 # error_symbol = "[󰁔](bold red)"
 # success_symbol = '[](bold green)'
@@ -44,6 +44,7 @@ symbol = " "
 read_only = " 󰌾"
 
 [docker_context]
+disabled = true
 symbol = " "
 
 [elixir]

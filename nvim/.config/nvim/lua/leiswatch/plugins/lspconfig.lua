@@ -4,9 +4,6 @@ return {
 		"williamboman/mason.nvim",
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 		"williamboman/mason-lspconfig.nvim",
-		{
-			"pmizio/typescript-tools.nvim",
-		},
 	},
 
 	config = function()
@@ -58,19 +55,19 @@ return {
 			lspconfig[server_name].setup(server)
 		end
 
-		require("typescript-tools").setup({
-			capabilities = capabilities,
-			filetypes = {
-				"javascript",
-				"javascriptreact",
-				"javascript.jsx",
-				"typescript",
-				"typescriptreact",
-				"typescript.tsx",
-				"vue",
-				"svelte",
-				-- "astro",
-			},
-		})
+		-- require("typescript-tools").setup({
+		-- 	capabilities = capabilities,
+		-- 	filetypes = {
+		-- 		"javascript",
+		-- 		"javascriptreact",
+		-- 		"javascript.jsx",
+		-- 		"typescript",
+		-- 		"typescriptreact",
+		-- 		"typescript.tsx",
+		-- 		"vue",
+		-- 		"svelte",
+		-- 		-- "astro",
+		-- 	},
+		-- })
 	end,
 }

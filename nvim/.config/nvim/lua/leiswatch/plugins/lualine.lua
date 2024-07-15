@@ -3,7 +3,7 @@ return {
 	config = function()
 		-- local mocha_colors = require("catppuccin.palettes").get_palette("mocha")
 
-		-- local catppuccin_mocha = {
+		-- local catppuccin = {
 		-- 	normal = {
 		-- 		a = { fg = mocha_colors.crust, bg = mocha_colors.blue },
 		-- 		b = { fg = mocha_colors.mauve, bg = mocha_colors.crust },
