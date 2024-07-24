@@ -19,17 +19,39 @@ local servers = {
 	},
 	html = {},
 	htmx = {},
-	jsonls = {},
+	jsonls = {
+		settings = {
+			json = {
+				schemas = require("schemastore").json.schemas(),
+				validate = { enable = true },
+			},
+		},
+	},
 	prismals = {},
 	pyright = {},
 	svelte = {},
 	templ = {},
 	taplo = {},
-	yamlls = {},
+	yamlls = {
+		settings = {
+			yaml = {
+				schemaStore = {
+					-- You must disable built-in schemaStore support if you want to use
+					-- this plugin and its advanced options like `ignore`.
+					enable = false,
+					-- Avoid TypeError: Cannot read properties of undefined (reading 'length')
+					url = "",
+				},
+				schemas = require("schemastore").yaml.schemas(),
+			},
+		},
+	},
 
 	lua_ls = {
 		settings = {
 			Lua = {
+				hint = { enable = true },
+				telemetry = { enable = false },
 				completion = {
 					callSnippet = "Replace",
 				},
@@ -107,7 +129,35 @@ local servers = {
 			},
 		},
 	},
-    vtsls = {},
+	-- vtsls = {
+	-- 	settings = {
+	-- 		vtsls = {
+	-- 			autoUseWorkspaceTsdk = true,
+	-- 		},
+	-- 		typescript = {
+	-- 			preferGoToSourceDefinition = true,
+	-- 			inlayHints = {
+	-- 				parameterNames = { enabled = "literals" },
+	-- 				parameterTypes = { enabled = true },
+	-- 				variableTypes = { enabled = true },
+	-- 				propertyDeclarationTypes = { enabled = true },
+	-- 				functionLikeReturnTypes = { enabled = true },
+	-- 				enumMemberValues = { enabled = true },
+	-- 			},
+	-- 		},
+	-- 		javascript = {
+	-- 			preferGoToSourceDefinition = true,
+	-- 			inlayHints = {
+	-- 				parameterNames = { enabled = "literals" },
+	-- 				parameterTypes = { enabled = true },
+	-- 				variableTypes = { enabled = true },
+	-- 				propertyDeclarationTypes = { enabled = true },
+	-- 				functionLikeReturnTypes = { enabled = true },
+	-- 				enumMemberValues = { enabled = true },
+	-- 			},
+	-- 		},
+	-- 	},
+	-- },
 
 	-- tsserver = {
 	-- 	init_options = {
@@ -117,17 +167,17 @@ local servers = {
 	-- 		--     importModuleSpecifierPreference = "relative",
 	-- 		-- },
 	-- 	},
-		-- filetypes = {
-		-- 	"javascript",
-		-- 	"javascriptreact",
-		-- 	"javascript.jsx",
-		-- 	"typescript",
-		-- 	"typescriptreact",
-		-- 	"typescript.tsx",
-		-- 	"vue",
-		-- 	"svelte",
-		-- 	-- "astro",
-		-- },
+	-- filetypes = {
+	-- 	"javascript",
+	-- 	"javascriptreact",
+	-- 	"javascript.jsx",
+	-- 	"typescript",
+	-- 	"typescriptreact",
+	-- 	"typescript.tsx",
+	-- 	"vue",
+	-- 	"svelte",
+	-- 	-- "astro",
+	-- },
 	-- },
 
 	-- emmet_ls = {

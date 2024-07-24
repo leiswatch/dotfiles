@@ -13,7 +13,7 @@ return {
 		},
 		current_line_blame_formatter = "<author>, <author_time:%R> - <summary>",
 		preview_config = {
-			border = "single",
+			border = "rounded",
 		},
 		on_attach = function()
 			local gitsigns = require("gitsigns")

@@ -7,13 +7,13 @@ return {
 			"icon",
 		},
 		keymaps_help = {
-			border = "single",
+			border = "rounded",
 		},
 		float = {
 			padding = 2,
 			max_width = 150,
 			max_height = 30,
-			border = "single",
+			border = "rounded",
 			win_options = {
 				winblend = 0,
 			},
@@ -22,7 +22,7 @@ return {
 			show_hidden = true,
 		},
 		preview = {
-			border = "single",
+			border = "rounded",
 		},
 		keymaps = {
 			["g?"] = "actions.show_help",

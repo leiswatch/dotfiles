@@ -1,4 +1,4 @@
-import = ["/home/leiswatch/.config/alacritty/themes/catppuccin-mocha.toml"]
+import = ["/home/leiswatch/.config/alacritty/themes/tokyonight-night.toml"]
 
 [window]
 dimensions = { columns = 120, lines = 30 }
@@ -11,13 +11,13 @@ startup_mode = "Windowed"
 history = 99999
 
 [font]
-normal = { family = "IosevkaTerm Nerd Font Propo", style = "Medium" }
-bold = { family = "IosevkaTerm Nerd Font Propo", style = "Bold" }
-italic = { family = "IosevkaTerm Nerd Font Propo", style = "Medium Italic" }
-bold_italic = { family = "IosevkaTerm Nerd Font Propo", style = "Bold Italic" }
-offset = { x = 1, y = 4 }
-glyph_offset = { x = 0, y = 2 }
-size = 14
+normal = { family = "JetBrainsMono Nerd Font", style = "Medium" }
+bold = { family = "JetBrainsMono Nerd Font", style = "SemiBold" }
+italic = { family = "JetBrainsMono Nerd Font", style = "Medium Italic" }
+bold_italic = { family = "JetBrainsMono Nerd Font", style = "SemiBold Italic" }
+offset = { x = 0, y = 2 }
+glyph_offset = { x = 0, y = 1 }
+size = 13.5
 
 [cursor]
 style = { shape = "Block", blinking = "Never" }

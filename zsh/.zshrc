@@ -19,7 +19,6 @@ plugins=(
     tmux
     yarn
     you-should-use
-    zsh-autosuggestions
     zsh-syntax-highlighting
 )
 
@@ -66,9 +65,9 @@ function vmrss() {
     fi
 }
 
-function precmd() {
-    print -Pn "\e]0;Terminal\a"
-}
+# function precmd() {
+#     print -Pn "\e]0;Terminal\a"
+# }
 
 # kubectl
 eval "$(kubectl completion zsh)"

@@ -3,7 +3,7 @@ return {
 	name = "catppuccin",
 	lazy = false,
 	priority = 1000,
-	enabled = false,
+	enabled = true,
 	config = function()
 		local darken = require("catppuccin.utils.colors").darken
 		local darkening_percentage = 0.095
@@ -134,6 +134,6 @@ return {
 			},
 		})
 
-		-- vim.cmd.colorscheme("catppuccin")
+		vim.cmd.colorscheme("catppuccin")
 	end,
 }

@@ -19,11 +19,12 @@ require("lazy").setup({
 	ui = {
 		size = { width = 0.75, height = 0.75 },
 		wrap = true,
-		border = "single",
+		border = "rounded",
+        backdrop = 100,
 	},
 	install = {
 		missing = true,
-		colorscheme = { "catppuccin" },
+		colorscheme = { "tokyonight" },
 	},
 	change_detection = {
 		enabled = true,

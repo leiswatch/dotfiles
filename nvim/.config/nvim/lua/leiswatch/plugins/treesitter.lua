@@ -10,7 +10,7 @@ return {
 		"windwp/nvim-ts-autotag",
 		"windwp/nvim-autopairs",
 		"numToStr/Comment.nvim",
-		-- "andymass/vim-matchup",
+		"andymass/vim-matchup",
 		-- "HiPhish/rainbow-delimiters.nvim",
 	},
 
@@ -47,7 +47,7 @@ return {
 				enable = true,
 			},
 			matchup = {
-				enable = false,
+				enable = true,
 				include_match_words = false,
 			},
 			modules = {},

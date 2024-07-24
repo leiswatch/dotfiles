@@ -1,58 +1,58 @@
 ---
+gui:
+  nerdFontsVersion: "3"
+  border: rounded
+  showIcons: false
+  theme:
+    activeBorderColor:
+      - "#89b4fa"
+      - bold
+    inactiveBorderColor:
+      - "#585b70"
+    optionsTextColor:
+      - "#89b4fa"
+    selectedLineBgColor:
+      - "#313244"
+    cherryPickedCommitBgColor:
+      - "#45475a"
+    cherryPickedCommitFgColor:
+      - "#89b4fa"
+    unstagedChangesColor:
+      - "#f38ba8"
+    defaultFgColor:
+      - "#cdd6f4"
+    searchingActiveBorderColor:
+      - "#f9e2af"
+  authorColors:
+    "*": "#b4befe"
+
+# Tokyonight
 # gui:
 #   nerdFontsVersion: "3"
 #   border: single
 #   showIcons: false
 #   theme:
 #     activeBorderColor:
-#       - "#89b4fa"
-#       - bold
+#       - "#7aa2f7"
+#       - "bold"
 #     inactiveBorderColor:
-#       - "#585b70"
-#     optionsTextColor:
-#       - "#89b4fa"
-#     selectedLineBgColor:
-#       - "#313244"
-#     cherryPickedCommitBgColor:
-#       - "#45475a"
-#     cherryPickedCommitFgColor:
-#       - "#89b4fa"
-#     unstagedChangesColor:
-#       - "#f38ba8"
-#     defaultFgColor:
-#       - "#cdd6f4"
+#       - "#3b4261"
 #     searchingActiveBorderColor:
-#       - "#f9e2af"
-#   authorColors:
-#     "*": "#b4befe"
-
-# Tokyonight
-gui:
-  nerdFontsVersion: "3"
-  border: single
-  showIcons: false
-  theme:
-    activeBorderColor:
-      - "#7aa2f7"
-      - "bold"
-    inactiveBorderColor:
-      - "#3b4261"
-    searchingActiveBorderColor:
-      - "#7aa2f7"
-      - "bold"
-    optionsTextColor:
-      - "#7aa2f7"
-    selectedLineBgColor:
-      - "#292e42"
-    cherryPickedCommitFgColor:
-      - "#7aa2f7"
-    cherryPickedCommitBgColor:
-      - "#bb9af7"
-    markedBaseCommitFgColor:
-      - "#7aa2f7"
-    markedBaseCommitBgColor:
-      - "#e0af68"
-    unstagedChangesColor:
-      - "#db4b4b"
-    defaultFgColor:
-      - "#c0caf5"
+#       - "#7aa2f7"
+#       - "bold"
+#     optionsTextColor:
+#       - "#7aa2f7"
+#     selectedLineBgColor:
+#       - "#292e42"
+#     cherryPickedCommitFgColor:
+#       - "#7aa2f7"
+#     cherryPickedCommitBgColor:
+#       - "#bb9af7"
+#     markedBaseCommitFgColor:
+#       - "#7aa2f7"
+#     markedBaseCommitBgColor:
+#       - "#e0af68"
+#     unstagedChangesColor:
+#       - "#db4b4b"
+#     defaultFgColor:
+#       - "#c0caf5"

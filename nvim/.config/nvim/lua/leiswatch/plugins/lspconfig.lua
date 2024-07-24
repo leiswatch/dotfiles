@@ -4,11 +4,12 @@ return {
 		"williamboman/mason.nvim",
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 		"williamboman/mason-lspconfig.nvim",
+		"pmizio/typescript-tools.nvim",
+		"b0o/schemastore.nvim",
 	},
-
 	config = function()
 		local lspconfig = require("lspconfig")
-		require("lspconfig.ui.windows").default_options.border = "single"
+		require("lspconfig.ui.windows").default_options.border = "rounded"
 
 		require("leiswatch.lsp.textDocument")
 		require("leiswatch.lsp.signs")
@@ -30,7 +31,7 @@ return {
 
 		require("mason").setup({
 			ui = {
-				border = "single",
+				border = "rounded",
 				height = 0.8,
 			},
 		})
@@ -55,19 +56,19 @@ return {
 			lspconfig[server_name].setup(server)
 		end
 
-		-- require("typescript-tools").setup({
-		-- 	capabilities = capabilities,
-		-- 	filetypes = {
-		-- 		"javascript",
-		-- 		"javascriptreact",
-		-- 		"javascript.jsx",
-		-- 		"typescript",
-		-- 		"typescriptreact",
-		-- 		"typescript.tsx",
-		-- 		"vue",
-		-- 		"svelte",
-		-- 		-- "astro",
-		-- 	},
-		-- })
+		require("typescript-tools").setup({
+			capabilities = capabilities,
+			filetypes = {
+				"javascript",
+				"javascriptreact",
+				"javascript.jsx",
+				"typescript",
+				"typescriptreact",
+				"typescript.tsx",
+				"vue",
+				"svelte",
+				-- "astro",
+			},
+		})
 	end,
 }

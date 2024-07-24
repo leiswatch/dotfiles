@@ -139,7 +139,7 @@ return {
 					},
 				},
 				diff1 = {
-					-- Mappings in single window diff layouts
+					-- Mappings in rounded window diff layouts
 					{ "n", "g?", actions.help({ "view", "diff1" }), { desc = "Open the help panel" } },
 				},
 				diff2 = {

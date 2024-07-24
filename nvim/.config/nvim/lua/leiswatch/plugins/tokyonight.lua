@@ -2,17 +2,18 @@ return {
 	"folke/tokyonight.nvim",
 	lazy = false,
 	priority = 1000,
-	enabled = true,
+	enabled = false,
 	config = function()
 		require("tokyonight").setup({
 			style = "night", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
 			light_style = "day", -- The theme is used when the background is set to light transparent = true, -- Enable this to disable setting the background color
+			transparent = false,
 			terminal_colors = true, -- Configure the colors used when opening a `:terminal` in [Neovim](https://github.com/neovim/neovim)
 			styles = {
 				comments = { italic = true },
-				keywords = {},
-				functions = {},
-				variables = {},
+				keywords = { italic = false },
+				functions = { italic = false },
+				variables = { italic = false },
 				sidebars = "transparent", -- style for sidebars, see below
 				floats = "transparent", -- style for floating windows
 			},
@@ -56,23 +57,23 @@ return {
 				hl.LineNrAbove = { fg = color.fg_gutter, bg = color.none }
 				hl.LineNrBelow = { fg = color.fg_gutter, bg = color.none }
 				hl.ColorColumn = { fg = color.none, bg = color.bg_highlight }
-				hl.TreesitterContext = { fg = color.none, bg = color.bg_highlight }
-				hl.TreesitterContextBottom = { bg = color.none, sp = color.none }
+				hl.TreesitterContext = { fg = color.none, bg = color.bg_dark }
+				hl.TreesitterContextBottom = { bg = color.none, sp = color.none, underline = false }
 				hl.TreesitterContextLineNumberBottom = { bg = color.none, sp = color.none, underline = false }
-				hl.TreesitterContextLineNumber = { fg = color.blue, bg = color.bg_highlight }
+				hl.TreesitterContextLineNumber = { fg = color.blue, bg = color.bg_dark, underline = false }
 				hl.NeoTreeIndentMarker = { bg = color.none, fg = color.bg_highlight }
 				hl.Directory = { bg = color.none, fg = color.fg }
 				hl.IncSearch = { fg = color.bg, bg = color.orange }
 				hl.CurSearch = { fg = color.bg, bg = color.orange }
 				hl.Search = { fg = color.none, bg = color.fg_gutter }
-				hl.MatchWord = { bg = color.bg_highlight, fg = color.none, bold = false }
-				hl.MatchParen = { bg = color.bg_highlight, fg = color.none, bold = false }
+				hl.MatchWord = { bg = color.orange, fg = color.bg, bold = false }
+				hl.MatchParen = { bg = color.orange, fg = color.bg, bold = false }
 				hl.CmpItemKindVariable = { bg = color.none, fg = color.magenta }
 				hl.CmpItemAbbrMatch = { bg = color.none, fg = color.red }
 				hl.CmpItemAbbrMatchFuzzy = { bg = color.none, fg = color.red }
 			end,
 		})
 
-		vim.cmd("colorscheme tokyonight")
+		-- vim.cmd("colorscheme tokyonight")
 	end,
 }
