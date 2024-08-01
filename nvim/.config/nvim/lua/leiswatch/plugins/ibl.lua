@@ -9,8 +9,8 @@ return {
             show_end = false,
             show_exact_scope = false,
 		},
-		indent = {
-			char = "╎",
-		},
+		-- indent = {
+		-- 	char = "╎",
+		-- },
 	},
 }

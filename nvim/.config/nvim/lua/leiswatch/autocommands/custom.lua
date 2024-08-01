@@ -83,3 +83,8 @@ vim.api.nvim_create_autocmd("CursorMoved", {
 		end
 	end,
 })
+
+vim.api.nvim_create_autocmd("VimResized", {
+  pattern = '*',
+  command = 'lua require("fzf-lua").redraw()'
+})

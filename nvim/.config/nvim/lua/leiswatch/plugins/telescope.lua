@@ -5,6 +5,7 @@ return {
 		"nvim-lua/plenary.nvim",
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 	},
+    enabled = false,
 	config = function()
 		local telescope = require("telescope")
 		local actions = require("telescope.actions")
@@ -18,7 +19,7 @@ return {
 				},
 				vimgrep_arguments = {
 					"rg",
-					"--color=never",
+					-- "--color=always",
 					"--no-heading",
 					"--with-filename",
 					"--line-number",
@@ -27,11 +28,11 @@ return {
 					"--hidden",
 					"--trim",
 					"--fixed-strings",
-					-- "--sort=path",
+					"--sort=path",
 				},
 				prompt_prefix = "   ",
 				selection_caret = "  ",
-				entry_prefix = "  ",
+				entry_prefix = "   ",
 				initial_mode = "insert",
 				selection_strategy = "reset",
 				sorting_strategy = "ascending",

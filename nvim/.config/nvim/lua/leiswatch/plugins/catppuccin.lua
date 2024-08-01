@@ -3,7 +3,7 @@ return {
 	name = "catppuccin",
 	lazy = false,
 	priority = 1000,
-	enabled = true,
+	enabled = false,
 	config = function()
 		local darken = require("catppuccin.utils.colors").darken
 		local darkening_percentage = 0.095

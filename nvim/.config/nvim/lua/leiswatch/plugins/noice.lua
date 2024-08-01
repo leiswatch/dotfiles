@@ -22,7 +22,7 @@ return {
 					border = "rounded",
 					size = {
 						max_height = 20,
-						max_width = 150,
+						max_width = 120,
 					},
 				}, -- merged with defaults from documentation
 			},
@@ -32,7 +32,7 @@ return {
 					border = "rounded",
 					size = {
 						max_height = 20,
-						max_width = 150,
+						max_width = 120,
 					},
 				}, -- merged with defaults from documentation
 			},

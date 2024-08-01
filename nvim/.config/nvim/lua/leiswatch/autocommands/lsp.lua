@@ -1,12 +1,12 @@
-local function contains(tab, val)
-	for _, value in ipairs(tab) do
-		if value == val then
-			return true
-		end
-	end
+-- local function contains(tab, val)
+-- 	for _, value in ipairs(tab) do
+-- 		if value == val then
+-- 			return true
+-- 		end
+-- 	end
 
-	return false
-end
+-- 	return false
+-- end
 
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("UserLspConfig", {}),
@@ -20,8 +20,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
 		vim.keymap.set("n", "gl", vim.lsp.buf.references, opts)
 		vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-		vim.keymap.set("n", "<leader>lt", require("telescope.builtin").lsp_type_definitions, opts)
-		vim.keymap.set("n", "<leader>ld", require("telescope.builtin").lsp_document_symbols, opts)
+		vim.keymap.set("n", "<leader>lt", require("fzf-lua").lsp_typedefs, opts)
+		vim.keymap.set("n", "<leader>ld", require("fzf-lua").lsp_document_symbols, opts)
 		vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 		vim.keymap.set("n", "<leader>k", vim.lsp.buf.signature_help, opts)
 		vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)

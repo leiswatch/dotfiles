@@ -2,7 +2,7 @@ return {
 	"folke/tokyonight.nvim",
 	lazy = false,
 	priority = 1000,
-	enabled = false,
+	enabled = true,
 	config = function()
 		require("tokyonight").setup({
 			style = "night", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
@@ -32,6 +32,7 @@ return {
 				hl.HarpoonBorder = { fg = color.fg_gutter, bg = color.none }
 				hl.NeotreeNormal = { fg = color.fg, bg = color.none }
 				hl.Neotree = { fg = color.fg, bg = color.none }
+				hl.NeotreeDirectoryIcon = { bg = color.none, fg = color.blue }
 
 				hl.TelescopeBorder = { fg = color.fg_gutter, bg = color.none }
 				hl.TelescopePreviewBorder = { fg = color.fg_gutter, bg = color.none }
@@ -71,9 +72,19 @@ return {
 				hl.CmpItemKindVariable = { bg = color.none, fg = color.magenta }
 				hl.CmpItemAbbrMatch = { bg = color.none, fg = color.red }
 				hl.CmpItemAbbrMatchFuzzy = { bg = color.none, fg = color.red }
+
+				hl.DiagnosticUnderlineError = { underline = true, sp = color.red }
+				hl.DiagnosticUnderlineWarn = { underline = true, sp = color.yellow }
+				hl.DiagnosticUnderlineInfo = { underline = true, sp = color.blue2 }
+				hl.DiagnosticUnderlineHint = { underline = true, sp = color.teal }
+
+                hl.FzfLuaBackdrop = { fg = color.none, bg = color.bg }
+                hl.FzfLuaBorder = { fg = color.fg_gutter, bg = color.none  }
+                hl.FzfLuaTitle = { fg = color.fg, bg = color.none  }
+                hl.FzfLuaPreviewTitle = { fg = color.fg, bg = color.none  }
 			end,
 		})
 
-		-- vim.cmd("colorscheme tokyonight")
+		vim.cmd("colorscheme tokyonight")
 	end,
 }

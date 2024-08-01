@@ -75,20 +75,20 @@ eval "$(kubectl completion zsh)"
 # fzf
 source <(fzf --zsh)
 
-# atuin
-eval "$(atuin init zsh)"
-
 # bun
 [ -s "/home/leiswatch/.bun/_bun" ] && source "/home/leiswatch/.bun/_bun"
 
 # fnm
 eval "$(fnm env --shell zsh)"
 
+# starship
+eval "$(starship init zsh)"
+
 # zoxide
 # eval "$(zoxide init zsh)"
 
-# starship
-eval "$(starship init zsh)"
+# atuin
+# eval "$(atuin init zsh)"
 
 # eval "$(oh-my-posh init zsh)"
 # eval "$(oh-my-posh init zsh --config /home/leiswatch/.cache/oh-my-posh/themes/spaceship.omp.json)"

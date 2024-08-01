@@ -129,35 +129,22 @@ local servers = {
 			},
 		},
 	},
-	-- vtsls = {
-	-- 	settings = {
-	-- 		vtsls = {
-	-- 			autoUseWorkspaceTsdk = true,
-	-- 		},
-	-- 		typescript = {
-	-- 			preferGoToSourceDefinition = true,
-	-- 			inlayHints = {
-	-- 				parameterNames = { enabled = "literals" },
-	-- 				parameterTypes = { enabled = true },
-	-- 				variableTypes = { enabled = true },
-	-- 				propertyDeclarationTypes = { enabled = true },
-	-- 				functionLikeReturnTypes = { enabled = true },
-	-- 				enumMemberValues = { enabled = true },
-	-- 			},
-	-- 		},
-	-- 		javascript = {
-	-- 			preferGoToSourceDefinition = true,
-	-- 			inlayHints = {
-	-- 				parameterNames = { enabled = "literals" },
-	-- 				parameterTypes = { enabled = true },
-	-- 				variableTypes = { enabled = true },
-	-- 				propertyDeclarationTypes = { enabled = true },
-	-- 				functionLikeReturnTypes = { enabled = true },
-	-- 				enumMemberValues = { enabled = true },
-	-- 			},
-	-- 		},
-	-- 	},
-	-- },
+	vtsls = {
+		settings = {
+			vtsls = {
+				autoUseWorkspaceTsdk = true,
+			},
+			typescript = {
+				preferGoToSourceDefinition = true,
+				tsserver = {
+					maxTsServerMemory = 8192,
+				},
+			},
+			javascript = {
+				preferGoToSourceDefinition = true,
+			},
+		},
+	},
 
 	-- tsserver = {
 	-- 	init_options = {
