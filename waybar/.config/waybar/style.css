@@ -1,0 +1,216 @@
+/* @import "mocha.css"; */
+
+* {
+  border: none;
+  border-radius: 0;
+  min-height: 0;
+}
+
+window#waybar {
+  font-family: "JetBrainsMono Nerd Font";
+  background-color: #1a1b26;
+  transition-property: background-color;
+  transition-duration: 0.5s;
+  font-size: 13px;
+}
+
+window#waybar.hidden {
+  opacity: 0.5;
+}
+
+#workspaces {
+  /* background-color: transparent; */
+  background-color: #1f2335;
+  border-radius: 4px;
+  margin: 4px 4px;
+  padding: 4px;
+}
+
+#workspaces button {
+  all: initial; /* Remove GTK theme values (waybar #1351) */
+  min-width: 0; /* Fix weird spacing in materia (waybar #450) */
+  padding: 4px 8px;
+  margin: 0 4px;
+  border-radius: 4px;
+  background-color: #292e42;
+  font-weight: 400;
+  color: #c0caf5;
+}
+
+#workspaces button.active {
+  color: #1a1b26;
+  font-weight: 600;
+  background-color: #7aa2f7;
+}
+
+#workspaces button.focused {
+  color: #1a1b26;
+  font-weight: 600;
+  background-color: #7aa2f7;
+}
+
+#workspaces button:hover {
+  box-shadow: inherit;
+  text-shadow: inherit;
+  color: #1a1b26;
+  background-color: #c0caf5;
+  font-weight: 600;
+}
+
+#workspaces button.urgent {
+  background-color: #f7768e;
+}
+
+#memory,
+#custom-power,
+#custom-notification,
+#battery,
+#backlight,
+#pulseaudio,
+#network,
+#clock,
+#tray,
+#cpu,
+#disk,
+#mode,
+#idle_inhibitor,
+#keyboard-state,
+#scratchpad,
+#custom-updates,
+#custom-logo,
+#language {
+  border-radius: 4px;
+  margin: 6px 4px;
+  padding: 4px 8px;
+  background-color: #1f2335;
+  color: #1a1b26;
+  font-weight: 400;
+}
+
+#custom-updates {
+  background-color: #e0af68;
+}
+
+#scratchpad {
+  background-color: #ff9e64;
+}
+
+#tray {
+  background-color: #1f2335;
+  margin-right: 6px;
+}
+
+#tray menu {
+  font-family: Ubuntu;
+  font-weight: 400;
+}
+
+#keyboard-state {
+  /* background-color: #ff9e64; */
+  color: #c0caf5;
+}
+
+#keyboard-state label.locked {
+  color: #f7768e;
+}
+
+#custom-power {
+  margin-right: 6px;
+}
+
+#custom-logo {
+  font-size: 22px;
+  color: #7aa2f7;
+}
+
+#memory {
+  background-color: #7dcfff; /* Use box-shadow instead of border so the text isn't offset */
+}
+
+#disk {
+  background-color: #bb9af7; /* Use box-shadow instead of border so the text isn't offset */
+}
+
+#cpu {
+  background-color: #7aa2f7; /* Use box-shadow instead of border so the text isn't offset */
+}
+
+#language {
+  background-color: #e0af68;
+}
+
+#idle_inhibitor {
+  background-color: #1abc9c;
+}
+
+#custom-notification {
+  background-color: #73daca;
+  color: #1a1b26;
+}
+
+@keyframes blink {
+  to {
+    background-color: #f38ba8;
+    color: #181825;
+  }
+}
+
+#battery.warning,
+#battery.critical,
+#battery.urgent {
+  background-color: #ff0048;
+  color: #181825;
+  animation-name: blink;
+  animation-duration: 0.5s;
+  animation-timing-function: linear;
+  animation-iteration-count: infinite;
+  animation-direction: alternate;
+}
+#battery.charging {
+  background-color: #a6e3a1;
+}
+
+#backlight {
+  background-color: #fab387;
+}
+
+#pulseaudio {
+  background-color: #9ece6a; /* Use box-shadow instead of border so the text isn't offset */
+}
+
+#pulseaudio.muted {
+  background-color: #f7768e; /* Use box-shadow instead of border so the text isn't offset */
+}
+
+#network {
+  background-color: #94e2d5;
+  padding-right: 17px;
+}
+
+#clock {
+  font-weight: 400;
+  background-color: #737aa2;
+}
+
+#custom-power {
+  background-color: #f2cdcd;
+}
+
+#mode {
+  font-style: normal;
+  font-weight: 600;
+  background-color: #f7768e;
+}
+
+tooltip {
+  border-radius: 4px;
+  padding: 12px;
+  background-color: #1a1b26;
+  font-family: Ubuntu;
+}
+
+tooltip label {
+  padding: 4px;
+  background-color: #1a1b26;
+  font-family: Ubuntu;
+}

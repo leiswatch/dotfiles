@@ -101,7 +101,9 @@ case ${chosen} in
 			betterlockscreen -l dimblur
 		elif [[ -x '/usr/bin/i3lock' ]]; then
 			i3lock
-		elif [[ -x '/usr/bin/swaylock' ]]; then
+		elif [[ -x '/usr/bin/hyprlock' ]]; then
+			hyprlock
+		elif [[ -x '/bin/swaylock' ]]; then
 			swaylock -f
 		fi
         ;;
