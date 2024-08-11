@@ -22,7 +22,7 @@ window#waybar.hidden {
   /* background-color: transparent; */
   background-color: #1f2335;
   border-radius: 4px;
-  margin: 4px 4px;
+  margin: 6px 4px;
   padding: 4px;
 }
 
@@ -189,7 +189,8 @@ window#waybar.hidden {
 
 #clock {
   font-weight: 400;
-  background-color: #737aa2;
+  color: #c0caf5;
+  background-color: transparent;
 }
 
 #custom-power {

@@ -106,6 +106,7 @@
             "activated": "Idle: On",
             "deactivated": "Idle: Off",
         },
+        "start-activated": true,
     },
     "tray": {
         "icon-size": 22,
@@ -207,11 +208,11 @@
     "pulseaudio": {
         "scroll-step": 5, // %, can be a float
         "format": "Vol: {volume}%",
-        "format-bluetooth": "{volume}% {icon}",
-        "format-bluetooth-muted": "{icon}",
+        "format-bluetooth": " Vol: {volume}%",
+        "format-bluetooth-muted": " Vol: Muted",
         "format-muted": "Vol: Muted",
-        "format-source": "{volume}% ",
-        "format-source-muted": "",
+        "format-source": ": {volume}%",
+        "format-source-muted": " : Muted",
         "format-icons": {
             "headphone": "󰋋",
             "hands-free": "󰋎",
