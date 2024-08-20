@@ -25,6 +25,7 @@
         // "backlight",
         // "custom/updates",
         "idle_inhibitor",
+        "custom/pacman",
         // "keyboard-state",
         // "sway/language",
         // "custom/notification",
@@ -281,5 +282,11 @@
         "format": "Updates: {}",
         "exec": "sh /home/leiswatch/.config/waybar/scripts/updates.sh",
         "tooltip": false,
+    },
+    "custom/pacman": {
+        "format": "Updates: {}",
+        "interval": 1800, // every hour
+        "exec": "checkupdates | wc -l", // # of updates
+        "exec-if": "exit 0", // always run; consider advanced run conditions
     },
 }

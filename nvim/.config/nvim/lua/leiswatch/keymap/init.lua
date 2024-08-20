@@ -1,6 +1,6 @@
 require("leiswatch.keymap.bufdelete")
 require("leiswatch.keymap.buffer_manager")
-require("leiswatch.keymap.conform")
+-- require("leiswatch.keymap.conform")
 require("leiswatch.keymap.custom")
 require("leiswatch.keymap.diffview")
 require("leiswatch.keymap.harpoon")

@@ -107,3 +107,5 @@ vim.filetype.add({ extension = { templ = "templ" } })
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 -- vim.g.virtcolumn_char = "▕" -- by default
+
+vim.lsp.log.set_level(vim.log.levels.OFF)

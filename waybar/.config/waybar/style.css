@@ -23,16 +23,16 @@ window#waybar.hidden {
   background-color: #1f2335;
   border-radius: 4px;
   margin: 6px 4px;
-  padding: 4px;
+  padding: 0;
 }
 
 #workspaces button {
   all: initial; /* Remove GTK theme values (waybar #1351) */
   min-width: 0; /* Fix weird spacing in materia (waybar #450) */
   padding: 4px 8px;
-  margin: 0 4px;
+  margin: 0;
   border-radius: 4px;
-  background-color: #292e42;
+  /* background-color: #292e42; */
   font-weight: 400;
   color: #c0caf5;
 }
@@ -78,6 +78,7 @@ window#waybar.hidden {
 #scratchpad,
 #custom-updates,
 #custom-logo,
+#custom-pacman,
 #language {
   border-radius: 4px;
   margin: 6px 4px;
@@ -85,6 +86,10 @@ window#waybar.hidden {
   background-color: #1f2335;
   color: #1a1b26;
   font-weight: 400;
+}
+
+#custom-pacman {
+  background-color: #e0af68;
 }
 
 #custom-updates {
@@ -190,7 +195,6 @@ window#waybar.hidden {
 #clock {
   font-weight: 400;
   color: #c0caf5;
-  background-color: transparent;
 }
 
 #custom-power {

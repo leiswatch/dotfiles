@@ -18,7 +18,7 @@ local servers = {
 		},
 	},
 	html = {},
-	htmx = {},
+	-- htmx = {},
 	jsonls = {
 		settings = {
 			json = {
@@ -145,6 +145,7 @@ local servers = {
 			},
 		},
 	},
+	zls = {},
 
 	-- tsserver = {
 	-- 	init_options = {

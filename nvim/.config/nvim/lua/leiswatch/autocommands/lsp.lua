@@ -1,12 +1,4 @@
--- local function contains(tab, val)
--- 	for _, value in ipairs(tab) do
--- 		if value == val then
--- 			return true
--- 		end
--- 	end
-
--- 	return false
--- end
+local helpers = require("leiswatch.helpers")
 
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("UserLspConfig", {}),
@@ -26,16 +18,16 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set("n", "<leader>k", vim.lsp.buf.signature_help, opts)
 		vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
 		vim.keymap.set({ "v", "n" }, "<leader>ca", vim.lsp.buf.code_action, opts)
-		-- vim.keymap.set({ "v", "n" }, "<C-i>", function()
-		-- 	vim.lsp.buf.format({
-		-- 		timeout_ms = 3000,
-		-- 		filter = function(client)
-		-- 			local clients = { "null-ls", "stylelint_lsp", "eslint", "rust_analyzer", "templ" }
+		vim.keymap.set({ "v", "n" }, "<C-i>", function()
+			vim.lsp.buf.format({
+				timeout_ms = 3000,
+				filter = function(client)
+					local clients = { "null-ls", "stylelint_lsp", "eslint", "rust_analyzer", "templ", "zls" }
 
-		-- 			return contains(clients, client.name)
-		-- 		end,
-		-- 	})
-		-- end, opts)
+					return helpers.contains(clients, client.name)
+				end,
+			})
+		end, opts)
 		vim.keymap.set("n", "<leader>e", function()
 			vim.diagnostic.open_float(diagnostic_opts)
 		end, opts)

@@ -25,7 +25,7 @@ set $gnome-schema org.gnome.desktop.interface
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /home/leiswatch/Pictures/Wallpapers/lucy_edgerunners.jpg fill
+# output * bg /home/leiswatch/Pictures/Wallpapers/frieren1.jpg fill
 
 font pango:Ubuntu 10
 
@@ -53,6 +53,7 @@ input "type:pointer" {
 
 exec_always {
     gsettings set $gnome-schema gtk-theme 'adw-gtk3-dark'
+    # gsettings set $gnome-schema gtk-theme 'Tokyonight-Dark'
     gsettings set $gnome-schema icon-theme 'Papirus-Dark'
     gsettings set $gnome-schema cursor-theme 'Simp1e-Dark'
     gsettings set $gnome-schema cursor-size '24'
@@ -62,7 +63,10 @@ exec_always {
     gsettings set $gnome-schema color-scheme 'prefer-dark'
     gsettings set $gnome-schema monospace-font-name 'JetBrains Mono 10'
     gsettings set $gnome-schema font-antialisaing 'rgba'
+    gsettings set org.gnome.desktop.wm.preferences button-layout ''
 }
+
+exec /home/leiswatch/.azotebg
 
 seat seat0 xcursor_theme Simp1e-Dark 24
 
@@ -76,7 +80,7 @@ exec sh /home/leiswatch/.config/sway/scripts/nm.sh
 exec sh /home/leiswatch/.config/sway/scripts/blueman.sh
 exec sh /home/leiswatch/.config/sway/scripts/gammastep.sh
 exec sh /home/leiswatch/.config/sway/scripts/solaar.sh
-exec sh /home/leiswatch/.config/sway/scripts/octopi.sh
+# exec sh /home/leiswatch/.config/sway/scripts/octopi.sh
 exec sh /home/leiswatch/.config/sway/scripts/waybar.sh
 exec sh /home/leiswatch/.config/sway/scripts/hypridle.sh
 
@@ -120,6 +124,7 @@ exec sh /home/leiswatch/.config/sway/scripts/hypridle.sh
     # Start your launcher
     # bindsym $mod+d exec $menu
     bindsym $mod+d exec /home/leiswatch/.config/rofi/launchers/launcher.sh
+    bindsym $mod+n exec /home/leiswatch/.config/rofi/launchers/vpn.sh
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.

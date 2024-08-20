@@ -9,7 +9,6 @@ vim.keymap.set("n", "<leader>h", function()
 	harpoon.ui:toggle_quick_menu(harpoon:list(), {
 		title_pos = "center",
 		border = "rounded",
-		ui_max_width = vim.api.nvim_win_get_width(0) * 0.75,
 	})
 end, opts)
 vim.keymap.set("n", "<C-h>", function()

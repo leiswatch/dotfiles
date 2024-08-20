@@ -1,6 +1,6 @@
 return {
 	"nvimtools/none-ls.nvim",
-	enabled = false,
+	enabled = true,
 	config = function()
 		local none_ls = require("null-ls")
 
@@ -10,7 +10,7 @@ return {
 				none_ls.builtins.formatting.stylua,
 
 				-- Javascript/Typescript
-				none_ls.builtins.formatting.prettierd,
+				none_ls.builtins.formatting.prettier,
 
 				-- Python
 				none_ls.builtins.formatting.black,
@@ -25,7 +25,7 @@ return {
 
 				-- Go
 				none_ls.builtins.formatting.goimports,
-				none_ls.builtins.formatting.gofumpt,
+				none_ls.builtins.formatting.gofmt,
 				none_ls.builtins.diagnostics.golangci_lint,
 
 				-- YAML
