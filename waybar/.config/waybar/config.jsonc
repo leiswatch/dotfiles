@@ -8,9 +8,10 @@
     // Choose the order of the modules
     "modules-left": [
         // "custom/logo",
-        "sway/workspaces",
-        "sway/mode",
-        "sway/scratchpad",
+        // "sway/workspaces",
+        // "sway/mode",
+        // "sway/scratchpad",
+        "hyprland/workspaces",
     ],
     "modules-center": [
         "clock"
@@ -25,7 +26,7 @@
         // "backlight",
         // "custom/updates",
         "idle_inhibitor",
-        "custom/pacman",
+        // "custom/pacman",
         // "keyboard-state",
         // "sway/language",
         // "custom/notification",
@@ -50,6 +51,16 @@
     //         "10": " 󰽽 ",
     //     },
     // },
+    "hyprland/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+            "active": "",
+            "default": "",
+        },
+        "persistent-workspaces": {
+            "*": 9, // 5 workspaces by default on every monitor
+        },
+    },
     "keyboard-state": {
         "numlock": true,
         "capslock": true,

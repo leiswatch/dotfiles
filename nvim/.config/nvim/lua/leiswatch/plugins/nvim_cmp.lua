@@ -25,7 +25,7 @@ return {
 		local cmp = require("cmp")
 		local luasnip = require("luasnip")
 		local lspkind = require("lspkind")
-		local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+		-- local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 
 		local has_words_before = function()
 			unpack = unpack or table.unpack
@@ -46,7 +46,9 @@ return {
 				completion = {
 					border = "rounded",
 					winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:CursorLine,Search:Search",
-					side_padding = 1,
+					-- side_padding = 1,
+					col_offset = -3,
+					side_padding = 0,
 				},
 				documentation = {
 					border = "rounded",
@@ -125,66 +127,82 @@ return {
 			end,
 			formatting = {
 				expandable_indicator = true,
-				fields = { "kind", "abbr" },
-				format = lspkind.cmp_format({
-					mode = "symbol", -- show only symbol annotations
-					maxwidth = 50, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
-					preset = "codicons",
-					ellipsis_char = "...", -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
-					show_labelDetails = true, -- show labelDetails in menu. Disabled by default
-					-- symbol_map = cmp_kinds,
-					symbol_map = {
-                        Text = '  ',
-						Method = "  ",
-						Function = "  ",
-						Constructor = "  ",
-						Field = "  ",
-						Variable = "  ",
-						Class = "  ",
-						Interface = "  ",
-						Module = "  ",
-						Property = "  ",
-						Unit = "  ",
-						Value = "  ",
-						Enum = "  ",
-						Keyword = "  ",
-						Snippet = "  ",
-						Color = "  ",
-						File = "  ",
-						Reference = "  ",
-						Folder = "  ",
-						EnumMember = "  ",
-						Constant = "  ",
-						Struct = "  ",
-						Event = "  ",
-						Operator = "  ",
-						TypeParameter = "  ",
-					},
-				}),
+				fields = { "kind", "abbr", "menu" },
+				format = function(entry, vim_item)
+					local kind = require("lspkind").cmp_format({
+						mode = "symbol_text",
+						maxwidth = 120,
+						preset = "codicons",
+					})(entry, vim_item)
+					local strings = vim.split(kind.kind, "%s", { trimempty = true })
+					kind.kind = " " .. (strings[1] or "") .. " "
+					kind.menu = "    (" .. (strings[2] or "") .. ")"
+
+					return kind
+				end,
 			},
-			-- sorting = {
-				-- comparators = {
-				-- 	cmp.config.compare.offset,
-				-- 	cmp.config.compare.exact,
-				-- 	cmp.config.compare.score,
-
-				-- 	function(entry1, entry2)
-				-- 		local _, entry1_under = entry1.completion_item.label:find("^_+")
-				-- 		local _, entry2_under = entry2.completion_item.label:find("^_+")
-				-- 		entry1_under = entry1_under or 0
-				-- 		entry2_under = entry2_under or 0
-				-- 		if entry1_under > entry2_under then
-				-- 			return false
-				-- 		elseif entry1_under < entry2_under then
-				-- 			return true
-				-- 		end
-				-- 	end,
-
-				-- 	cmp.config.compare.kind,
-				-- 	cmp.config.compare.sort_text,
-				-- 	cmp.config.compare.length,
-				-- 	cmp.config.compare.order,
-				-- },
+			-- formatting = {
+			-- 	expandable_indicator = true,
+			-- 	fields = { "abbr", "kind" },
+			-- 	format = lspkind.cmp_format({
+			-- 		mode = "symbol_text", -- show only symbol annotations
+			-- 		-- preset = "codicons",
+			-- 		maxwidth = 120, -- prevent the popup from showing more than provided characters (e.g 50 will not show more than 50 characters)
+			-- 		ellipsis_char = "...", -- when popup menu exceed maxwidth, the truncated part would show ellipsis_char instead (must define maxwidth first)
+			-- 		show_labelDetails = true, -- show labelDetails in menu. Disabled by default
+			-- 		-- symbol_map = {
+			-- 		-- Text = " ",
+			-- 		-- Method = "󰆧 ",
+			-- 		-- Function = "󰊕 ",
+			-- 		-- Constructor = " ",
+			-- 		-- Field = "󰇽 ",
+			-- 		-- Variable = "󰂡 ",
+			-- 		-- Class = "󰠱 ",
+			-- 		-- Interface = " ",
+			-- 		-- Module = " ",
+			-- 		-- Property = "󰜢 ",
+			-- 		-- Unit = " ",
+			-- 		-- Value = "󰎠 ",
+			-- 		-- Enum = " ",
+			-- 		-- Keyword = "󰌋 ",
+			-- 		-- Snippet = " ",
+			-- 		-- Color = "󰏘 ",
+			-- 		-- File = "󰈙 ",
+			-- 		-- Reference = " ",
+			-- 		-- Folder = "󰉋 ",
+			-- 		-- EnumMember = " ",
+			-- 		-- Constant = "󰏿 ",
+			-- 		-- Struct = " ",
+			-- 		-- Event = " ",
+			-- 		-- Operator = "󰆕 ",
+			-- 		-- TypeParameter = "󰅲 ",
+			-- 		-- Text = "  ",
+			-- 		-- Method = "  ",
+			-- 		-- Function = "  ",
+			-- 		-- Constructor = "  ",
+			-- 		-- Field = "  ",
+			-- 		-- Variable = "  ",
+			-- 		-- Class = "  ",
+			-- 		-- Interface = "  ",
+			-- 		-- Module = "  ",
+			-- 		-- Property = "  ",
+			-- 		-- Unit = "  ",
+			-- 		-- Value = "  ",
+			-- 		-- Enum = "  ",
+			-- 		-- Keyword = "  ",
+			-- 		-- Snippet = "  ",
+			-- 		-- Color = "  ",
+			-- 		-- File = "  ",
+			-- 		-- Reference = "  ",
+			-- 		-- Folder = "  ",
+			-- 		-- EnumMember = "  ",
+			-- 		-- Constant = "  ",
+			-- 		-- Struct = "  ",
+			-- 		-- Event = "  ",
+			-- 		-- Operator = "  ",
+			-- 		-- TypeParameter = "  ",
+			-- 		-- },
+			-- 	}),
 			-- },
 		})
 
@@ -204,7 +222,7 @@ return {
 			}),
 		})
 
-		cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+		-- cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 
 		require("luasnip.loaders.from_vscode").lazy_load()
 	end,

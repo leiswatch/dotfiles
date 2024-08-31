@@ -51,7 +51,7 @@ zstyle ':completion:*' menu no
 # Aliases
 alias ls='eza'
 alias cat='bat'
-# alias tksv='tmux kill-server'
+alias lg='lazygit'
 alias gcwtc='git commit -m "$(curl -s https://whatthecommit.com/index.txt)"'
 alias fsb='git switch $(git branch | grep -v \"^\*\" | fzf --height=30% --reverse --info=inline)'
 
@@ -94,3 +94,7 @@ eval "$(starship init zsh)"
 # eval "$(oh-my-posh init zsh --config /home/leiswatch/.cache/oh-my-posh/themes/spaceship.omp.json)"
 
 # zprof
+
+# bun
+export BUN_INSTALL="$HOME/.bun"
+export PATH="$BUN_INSTALL/bin:$PATH"

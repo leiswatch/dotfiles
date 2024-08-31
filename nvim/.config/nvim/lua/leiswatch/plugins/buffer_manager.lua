@@ -1,5 +1,5 @@
 return {
-	"j-morano/buffer_manager.nvim",
+	"leiswatch/buffer_manager.nvim",
 	dependencies = { "nvim-lua/plenary.nvim" },
 	opts = {
 		short_file_names = false,

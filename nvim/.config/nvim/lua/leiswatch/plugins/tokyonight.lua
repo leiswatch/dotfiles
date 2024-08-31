@@ -66,9 +66,9 @@ return {
 				hl.Directory = { bg = color.none, fg = color.fg }
 				hl.IncSearch = { fg = color.bg, bg = color.orange }
 				hl.CurSearch = { fg = color.bg, bg = color.orange }
-				hl.Search = { fg = color.none, bg = color.fg_gutter }
-				hl.MatchWord = { bg = color.orange, fg = color.bg, bold = false }
-				hl.MatchParen = { bg = color.orange, fg = color.bg, bold = false }
+				hl.Search = { fg = color.none, bg = color.bg_highlight }
+				hl.MatchWord = { bg = color.bg_highlight, fg = color.none, bold = false }
+				hl.MatchParen = { bg = color.bg_highlight, fg = color.none, bold = false }
 				hl.CmpItemKindVariable = { bg = color.none, fg = color.magenta }
 				hl.CmpItemAbbrMatch = { bg = color.none, fg = color.red }
 				hl.CmpItemAbbrMatchFuzzy = { bg = color.none, fg = color.red }

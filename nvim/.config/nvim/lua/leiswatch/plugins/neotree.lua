@@ -81,8 +81,8 @@ return {
 				-- indent_marker = "╎",
 			},
 			file_size = {
-				enabled = true,
-				required_width = 64, -- min width of window required to show this column
+				enabled = false,
+				-- required_width = 64, -- min width of window required to show this column
 			},
 			type = {
 				enabled = false,

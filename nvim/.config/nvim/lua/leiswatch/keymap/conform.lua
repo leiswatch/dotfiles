@@ -1,15 +1,6 @@
 local conform = require("conform")
 local opts = { noremap = true, silent = true }
-
-local function contains(tab, val)
-	for _, value in ipairs(tab) do
-		if value == val then
-			return true
-		end
-	end
-
-	return false
-end
+local helpers = require("leiswatch.helpers")
 
 local eslint_filetypes = {
 	"javascript",
@@ -28,6 +19,10 @@ local function json_filter(client)
 	return client.name == "jsonls"
 end
 
+-- local function eslint_filter(client)
+-- 	return client.name == "eslint"
+-- end
+
 local lsp_fallback = setmetatable({
 	css = { "last", "stylelint_lsp", stylelint_filter },
 	scss = { "last", "stylelint_lsp", stylelint_filter },
@@ -35,6 +30,15 @@ local lsp_fallback = setmetatable({
 	less = { "last", "stylelint_lsp", stylelint_filter },
 	json = { "last", "jsonls", json_filter },
 	jsonc = { "last", "jsonls", json_filter },
+	-- javascript = { "first", "eslint", eslint_filter },
+	-- typescript = { "first", "eslint", eslint_filter },
+	-- javascriptreact = { "first", "eslint", eslint_filter },
+	-- typescriptreact = { "first", "eslint", eslint_filter },
+	-- ["javscript.jsx"] = { "first", "eslint", eslint_filter },
+	-- ["typescript.tsx"] = { "first", "eslint", eslint_filter },
+	-- astro = { "first", "eslint", eslint_filter },
+	-- svelte = { "first", "eslint", eslint_filter },
+	-- vue = { "first", "eslint", eslint_filter },
 }, {
 	__index = function()
 		return { false, nil, nil }
@@ -42,19 +46,18 @@ local lsp_fallback = setmetatable({
 })
 
 local format = function()
-	local filetype = vim.bo.filetype
-	local bufnr = vim.api.nvim_get_current_buf()
+	local filetype = vim.api.nvim_get_option_value("filetype", { buf = 0 })
 
-	if vim.fn.exists(":EslintFixAll") ~= 0 and contains(eslint_filetypes, filetype) then
+	if vim.fn.exists(":EslintFixAll") ~= 0 and helpers.contains(eslint_filetypes, filetype) then
 		vim.api.nvim_command(":EslintFixAll")
 	end
 
 	conform.format({
 		timeout_ms = 3000,
 		async = false,
-		lsp_format = lsp_fallback[vim.bo[bufnr].filetype][1],
-		name = lsp_fallback[vim.bo[bufnr].filetype][2],
-		filter = lsp_fallback[vim.bo[bufnr].filetype][3],
+		lsp_format = lsp_fallback[filetype][1],
+		name = lsp_fallback[filetype][2],
+		filter = lsp_fallback[filetype][3],
 	})
 end
 

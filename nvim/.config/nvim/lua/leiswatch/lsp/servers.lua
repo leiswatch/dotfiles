@@ -74,12 +74,12 @@ local servers = {
 		},
 	},
 
-	cssmodules_ls = {
-		capabilities = {
-			definitionProvider = false,
-		},
-		filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
-	},
+	cssmodules_ls = {},
+	tailwindcss = {},
+	-- capabilities = {
+	-- 	definitionProvider = false,
+	-- },
+	-- filetypes = { "javascript", "javascriptreact", "typescript", "typescriptreact" },
 
 	graphql = {
 		filetypes = { "graphql" },
@@ -180,7 +180,6 @@ local servers = {
 	-- 	},
 	-- },
 
-	-- tailwindcss = {},
 	-- "denols",
 }
 

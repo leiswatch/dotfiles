@@ -9,6 +9,9 @@ return {
 			ignore = { "null-ls" },
 			display = {
 				done_icon = "",
+				overrides = { -- Override options from the default notification config
+					vtsls = { name = "typescript" },
+				},
 			},
 		},
 		notification = {

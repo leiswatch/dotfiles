@@ -3,9 +3,9 @@ return {
 	branch = "0.1.x",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
-		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
+        { 'nvim-telescope/telescope-fzf-native.nvim', build = 'make' }
 	},
-    enabled = false,
+	enabled = false,
 	config = function()
 		local telescope = require("telescope")
 		local actions = require("telescope.actions")
@@ -19,7 +19,7 @@ return {
 				},
 				vimgrep_arguments = {
 					"rg",
-					-- "--color=always",
+					"--color=never",
 					"--no-heading",
 					"--with-filename",
 					"--line-number",
@@ -52,12 +52,12 @@ return {
 					"%.DS_STORE",
 					"%.next",
 					"%.md",
-                    "%.nx",
+					"%.nx",
 					"%.keystone",
 					"yarn%.lock",
 					"package%-lock%.json",
 					"node%_modules",
-                    "!.env"
+					"!.env",
 				},
 				generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
 				winblend = 0,
@@ -81,7 +81,15 @@ return {
 			},
 			pickers = {
 				find_files = {
-					find_command = { "fd", "-t", "f", "-i", "-H", "--strip-cwd-prefix", "-c", "never", --[[ "-u" ]] },
+					find_command = {
+						"fd",
+						"--type",
+						"f",
+						"--ignore-case",
+						"--hidden",
+						"--strip-cwd-prefix=always",
+						"--color=never",
+					},
 					previewer = false,
 					prompt_title = false,
 					results_title = false,

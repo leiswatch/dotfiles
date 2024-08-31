@@ -23,14 +23,14 @@ window#waybar.hidden {
   background-color: #1f2335;
   border-radius: 4px;
   margin: 6px 4px;
-  padding: 0;
+  padding: 0 4px;
 }
 
 #workspaces button {
   all: initial; /* Remove GTK theme values (waybar #1351) */
   min-width: 0; /* Fix weird spacing in materia (waybar #450) */
   padding: 4px 8px;
-  margin: 0;
+  margin: 4px 0;
   border-radius: 4px;
   /* background-color: #292e42; */
   font-weight: 400;
@@ -38,18 +38,23 @@ window#waybar.hidden {
 }
 
 #workspaces button.active {
+  border-radius: 99px;
+  margin: 4px 0;
   color: #1a1b26;
   font-weight: 600;
-  background-color: #7aa2f7;
+  background-color: #7dcfff;
 }
 
 #workspaces button.focused {
+  border-radius: 99px;
+  margin: 4px 0;
   color: #1a1b26;
   font-weight: 600;
-  background-color: #7aa2f7;
+  background-color: #7dcfff;
 }
 
 #workspaces button:hover {
+  border-radius: 99px;
   box-shadow: inherit;
   text-shadow: inherit;
   color: #1a1b26;
@@ -59,6 +64,10 @@ window#waybar.hidden {
 
 #workspaces button.urgent {
   background-color: #f7768e;
+}
+
+#workspaces button.empty {
+  color: #3b4261;
 }
 
 #memory,
@@ -129,7 +138,7 @@ window#waybar.hidden {
 }
 
 #memory {
-  background-color: #7dcfff; /* Use box-shadow instead of border so the text isn't offset */
+  background-color: #b4f9f8; /* Use box-shadow instead of border so the text isn't offset */
 }
 
 #disk {

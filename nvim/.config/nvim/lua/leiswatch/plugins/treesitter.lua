@@ -8,9 +8,9 @@ return {
 		"nvim-treesitter/nvim-treesitter-context",
 		"JoosepAlviste/nvim-ts-context-commentstring",
 		"windwp/nvim-ts-autotag",
-		"windwp/nvim-autopairs",
 		"numToStr/Comment.nvim",
 		"andymass/vim-matchup",
+		-- "windwp/nvim-autopairs",
 		-- "HiPhish/rainbow-delimiters.nvim",
 	},
 
@@ -24,7 +24,7 @@ return {
 				"graphql",
 				"html",
 				"javascript",
-                "json",
+				"json",
 				"lua",
 				"markdown",
 				"markdown_inline",
@@ -47,7 +47,7 @@ return {
 				enable = true,
 			},
 			matchup = {
-				enable = true,
+				enable = false,
 				include_match_words = false,
 			},
 			modules = {},
@@ -62,11 +62,11 @@ return {
 			mode = "topline",
 		})
 
-		require("nvim-autopairs").setup({
-			disable_filetype = { "TelescopePrompt" },
-			enable_check_bracket_line = false,
-			check_ts = true,
-		})
+		-- require("nvim-autopairs").setup({
+		-- 	disable_filetype = { "TelescopePrompt" },
+		-- 	enable_check_bracket_line = false,
+		-- 	check_ts = true,
+		-- })
 
 		require("Comment").setup({
 			ignore = "^$",
@@ -79,9 +79,9 @@ return {
 
 		require("nvim-ts-autotag").setup({
 			opts = {
-				enable_close = true, -- Auto close tags
+				enable_close = false, -- Auto close tags
 				enable_rename = true, -- Auto rename pairs of tags
-				enable_close_on_slash = true, -- Auto close on trailing </
+				enable_close_on_slash = false, -- Auto close on trailing </
 			},
 		})
 	end,

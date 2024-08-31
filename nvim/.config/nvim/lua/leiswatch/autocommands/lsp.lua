@@ -18,16 +18,16 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set("n", "<leader>k", vim.lsp.buf.signature_help, opts)
 		vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
 		vim.keymap.set({ "v", "n" }, "<leader>ca", vim.lsp.buf.code_action, opts)
-		vim.keymap.set({ "v", "n" }, "<C-i>", function()
-			vim.lsp.buf.format({
-				timeout_ms = 3000,
-				filter = function(client)
-					local clients = { "null-ls", "stylelint_lsp", "eslint", "rust_analyzer", "templ", "zls" }
+		-- vim.keymap.set({ "v", "n" }, "<C-i>", function()
+		-- 	vim.lsp.buf.format({
+		-- 		timeout_ms = 3000,
+		-- 		filter = function(client)
+		-- 			local clients = { "null-ls", "stylelint_lsp", "eslint", "rust_analyzer", "templ", "zls" }
 
-					return helpers.contains(clients, client.name)
-				end,
-			})
-		end, opts)
+		-- 			return helpers.contains(clients, client.name)
+		-- 		end,
+		-- 	})
+		-- end, opts)
 		vim.keymap.set("n", "<leader>e", function()
 			vim.diagnostic.open_float(diagnostic_opts)
 		end, opts)

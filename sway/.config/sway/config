@@ -25,7 +25,7 @@ set $gnome-schema org.gnome.desktop.interface
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-# output * bg /home/leiswatch/Pictures/Wallpapers/frieren1.jpg fill
+output * bg /home/leiswatch/Pictures/Wallpapers/astrounaut.jpeg fill
 
 font pango:Ubuntu 10
 
@@ -65,8 +65,6 @@ exec_always {
     gsettings set $gnome-schema font-antialisaing 'rgba'
     gsettings set org.gnome.desktop.wm.preferences button-layout ''
 }
-
-exec /home/leiswatch/.azotebg
 
 seat seat0 xcursor_theme Simp1e-Dark 24
 
