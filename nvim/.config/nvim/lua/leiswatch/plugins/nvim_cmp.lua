@@ -25,7 +25,7 @@ return {
 		local cmp = require("cmp")
 		local luasnip = require("luasnip")
 		local lspkind = require("lspkind")
-		-- local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+		local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 
 		local has_words_before = function()
 			unpack = unpack or table.unpack
@@ -129,7 +129,7 @@ return {
 				expandable_indicator = true,
 				fields = { "kind", "abbr", "menu" },
 				format = function(entry, vim_item)
-					local kind = require("lspkind").cmp_format({
+					local kind = lspkind.cmp_format({
 						mode = "symbol_text",
 						maxwidth = 120,
 						preset = "codicons",
@@ -222,7 +222,7 @@ return {
 			}),
 		})
 
-		-- cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+		cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 
 		require("luasnip.loaders.from_vscode").lazy_load()
 	end,

@@ -10,7 +10,7 @@ return {
 		"windwp/nvim-ts-autotag",
 		"numToStr/Comment.nvim",
 		"andymass/vim-matchup",
-		-- "windwp/nvim-autopairs",
+		"windwp/nvim-autopairs",
 		-- "HiPhish/rainbow-delimiters.nvim",
 	},
 
@@ -62,11 +62,9 @@ return {
 			mode = "topline",
 		})
 
-		-- require("nvim-autopairs").setup({
-		-- 	disable_filetype = { "TelescopePrompt" },
-		-- 	enable_check_bracket_line = false,
-		-- 	check_ts = true,
-		-- })
+		require("nvim-autopairs").setup({
+			disable_filetype = { "TelescopePrompt", "FzfLuaFzfPrompt" },
+		})
 
 		require("Comment").setup({
 			ignore = "^$",

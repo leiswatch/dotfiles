@@ -12,6 +12,7 @@
         // "sway/mode",
         // "sway/scratchpad",
         "hyprland/workspaces",
+        "hyprland/submap",
     ],
     "modules-center": [
         "clock"
@@ -52,14 +53,24 @@
     //     },
     // },
     "hyprland/workspaces": {
-        "format": "{icon}",
+        "format": "{name}",
         "format-icons": {
-            "active": "",
-            "default": "",
+            "active": "",
+            "empty": "",
+            "default": "",
         },
         "persistent-workspaces": {
             "*": 9, // 5 workspaces by default on every monitor
         },
+    },
+    "hyprland/submap": {
+        "format": "{}",
+        "tooltip": false,
+    },
+    "hyprland/window": {
+        "tooltip": false,
+        "icon": true,
+        "icon-size": 22,
     },
     "keyboard-state": {
         "numlock": true,

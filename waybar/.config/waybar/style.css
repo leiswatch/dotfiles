@@ -23,51 +23,42 @@ window#waybar.hidden {
   background-color: #1f2335;
   border-radius: 4px;
   margin: 6px 4px;
-  padding: 0 4px;
+  padding: 4px 8px;
 }
 
 #workspaces button {
   all: initial; /* Remove GTK theme values (waybar #1351) */
   min-width: 0; /* Fix weird spacing in materia (waybar #450) */
   padding: 4px 8px;
-  margin: 4px 0;
   border-radius: 4px;
   /* background-color: #292e42; */
-  font-weight: 400;
+  font-weight: 600;
   color: #c0caf5;
 }
 
+#workspaces button.empty {
+  color: #737aa2;
+}
+
 #workspaces button.active {
-  border-radius: 99px;
-  margin: 4px 0;
   color: #1a1b26;
-  font-weight: 600;
   background-color: #7dcfff;
 }
 
 #workspaces button.focused {
-  border-radius: 99px;
-  margin: 4px 0;
   color: #1a1b26;
-  font-weight: 600;
   background-color: #7dcfff;
 }
 
 #workspaces button:hover {
-  border-radius: 99px;
   box-shadow: inherit;
   text-shadow: inherit;
   color: #1a1b26;
-  background-color: #c0caf5;
-  font-weight: 600;
+  background-color: #b4f9f8;
 }
 
 #workspaces button.urgent {
   background-color: #f7768e;
-}
-
-#workspaces button.empty {
-  color: #3b4261;
 }
 
 #memory,
@@ -88,13 +79,23 @@ window#waybar.hidden {
 #custom-updates,
 #custom-logo,
 #custom-pacman,
-#language {
+#language,
+#submap,
+#window {
   border-radius: 4px;
   margin: 6px 4px;
   padding: 4px 8px;
   background-color: #1f2335;
   color: #1a1b26;
   font-weight: 400;
+}
+
+#submap {
+  background-color: #f7768e;
+}
+
+#window {
+  color: #c0caf5;
 }
 
 #custom-pacman {

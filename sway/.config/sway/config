@@ -25,7 +25,7 @@ set $gnome-schema org.gnome.desktop.interface
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /home/leiswatch/Pictures/Wallpapers/astrounaut.jpeg fill
+output * bg /home/leiswatch/Pictures/Wallpapers/lucy_edgerunners.jpg fill
 
 font pango:Ubuntu 10
 
@@ -283,6 +283,7 @@ bindsym $mod+r mode "resize"
 
 # Tokyonight
 set $blue #7aa2f7
+set $cyan #7dcfff
 set $base #1a1b26
 set $surface1 #3b4261
 set $subtext0 #a9b1d6
@@ -291,14 +292,14 @@ set $text #c0caf5
 set $overlay0 #545c7e
 
 # class                  border        bground       text          indicator      child_border
-client.focused           $blue         $blue         $base         $blue          $blue
+client.focused           $cyan         $cyan         $base         $cyan          $cyan
 client.focused_inactive  $surface1     $base         $subtext0     $surface1      $surface1
 client.unfocused         $surface1     $base         $subtext0     $surface1      $surface1
 client.urgent            $red          $base         $red          $overlay0      $red
 client.placeholder       $overlay0     $base         $text         $overlay0      $overlay0
 client.background        $base
 
-focus_on_window_activation focus
+focus_on_window_activation smart
 focus_follows_mouse yes
 
 default_border pixel 2
@@ -310,6 +311,11 @@ for_window [all] titlebar_border_thickness 2
 
 for_window [title="Picture-in-Picture"] floating enable, sticky enable, border pixel 2
 for_window [title="Picture in picture"] floating enable, sticky enable, border pixel 2
-for_window [title="Open File"] floating enable, border none
+for_window [app_id="kitty"] blur enable
+# for_window [title="Open File"] floating enable, border none
 
-gaps inner 0
+gaps inner 10
+corner_radius 4
+blur disable
+blur_xray disable
+shadows disable
