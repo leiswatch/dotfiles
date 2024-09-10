@@ -147,7 +147,7 @@ local servers = {
 	},
 	zls = {},
 
-	-- tsserver = {
+	-- ts_ls = {
 	-- 	init_options = {
 	-- 		hostInfo = "neovim",
 	-- 		maxTsServerMemory = 2048,

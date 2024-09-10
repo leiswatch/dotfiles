@@ -20,7 +20,7 @@ local M = {
 		"svelte",
 		"tailwindcss",
 		"templ",
-		"tsserver",
+		"ts_ls",
 		"yamlls",
 		"bashls",
 		"taplo",

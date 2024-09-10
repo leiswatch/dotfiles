@@ -22,7 +22,7 @@ return {
 		enable_diagnostics = false,
 		window = {
 			position = "left",
-			width = "35%",
+			width = "25%",
 			mapping_options = {
 				noremap = true,
 				nowait = true,

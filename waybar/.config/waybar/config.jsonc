@@ -31,6 +31,7 @@
         // "keyboard-state",
         // "sway/language",
         // "custom/notification",
+        "custom/updates",
         "tray",
     ],
     // Modules configuration
@@ -126,8 +127,8 @@
     "idle_inhibitor": {
         "format": "{icon}",
         "format-icons": {
-            "activated": "Idle: On",
-            "deactivated": "Idle: Off",
+            "activated": "Caffeine: On",
+            "deactivated": "Caffeine: Off",
         },
         "start-activated": true,
     },
@@ -143,13 +144,48 @@
         // "format-alt": "{:%Y-%m-%d}"
     },
     "cpu": {
+        "interval": "2",
         "format": "Cpu: {usage}%",
         "on-click": "gnome-system-monitor",
     },
     "memory": {
+        "interval": "2",
         "format": "Mem: {}%",
         "on-click": "gnome-system-monitor",
     },
+    // "memory": {
+    //     "interval": 1,
+    //     // "rotate": 270,
+    //     "format": "{icon} {}%",
+    //     "format-icons": [
+    //         "󰝦",
+    //         "󰪞",
+    //         "󰪟",
+    //         "󰪠",
+    //         "󰪡",
+    //         "󰪢",
+    //         "󰪣",
+    //         "󰪤",
+    //         "󰪥"
+    //     ],
+    //     "max-length": 10,
+    // },
+    // "cpu": {
+    //     "interval": 1,
+    //     "format": "{icon} {usage}%",
+    //     // "rotate": 270,
+    //     "format-icons": [
+    //         "󰝦",
+    //         "󰪞",
+    //         "󰪟",
+    //         "󰪠",
+    //         "󰪡",
+    //         "󰪢",
+    //         "󰪣",
+    //         "󰪤",
+    //         "󰪥"
+    //     ],
+    // },
     "disk": {
         "interval": 30,
         "format": "Disk: {specific_free:0.0f}GB",

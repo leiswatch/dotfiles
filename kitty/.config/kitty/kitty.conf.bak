@@ -1,5 +1,8 @@
+# include catppuccin.conf
+include tokyonight.conf
+
 # BEGIN_KITTY_FONTS
-font_family      family="JetBrainsMono Nerd Font"
+font_family      family="Cascadia Code NF"
 bold_font        auto
 italic_font      auto
 bold_italic_font auto
@@ -32,6 +35,3 @@ tab_bar_min_tabs 2
 confirm_os_window_close 0
 text_composition_strategy 1.7 0
 # linux_display_server x11
-
-include tokyonight.conf
-# include catppuccin.conf

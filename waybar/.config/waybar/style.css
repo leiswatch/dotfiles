@@ -7,7 +7,7 @@
 }
 
 window#waybar {
-  font-family: "JetBrainsMono Nerd Font";
+  font-family: JetBrains Mono;
   background-color: #1a1b26;
   transition-property: background-color;
   transition-duration: 0.5s;
@@ -19,18 +19,19 @@ window#waybar.hidden {
 }
 
 #workspaces {
-  /* background-color: transparent; */
-  background-color: #1f2335;
+  background-color: transparent;
+  /* background-color: #1f2335; */
+  margin: 0 4px;
+  padding: 0 4px;
   border-radius: 4px;
-  margin: 6px 4px;
-  padding: 4px 8px;
 }
 
 #workspaces button {
   all: initial; /* Remove GTK theme values (waybar #1351) */
   min-width: 0; /* Fix weird spacing in materia (waybar #450) */
-  padding: 4px 8px;
+  padding: 0 8px;
   border-radius: 4px;
+  margin: 8px 0;
   /* background-color: #292e42; */
   font-weight: 600;
   color: #c0caf5;
@@ -83,9 +84,9 @@ window#waybar.hidden {
 #submap,
 #window {
   border-radius: 4px;
-  margin: 6px 4px;
-  padding: 4px 8px;
-  background-color: #1f2335;
+  margin: 4px;
+  padding: 0 8px;
+  /* background-color: #1f2335; */
   color: #1a1b26;
   font-weight: 400;
 }
@@ -111,7 +112,9 @@ window#waybar.hidden {
 }
 
 #tray {
-  background-color: #1f2335;
+  margin: 0 4px;
+  padding: 0 8px;
+  /* background-color: #1f2335; */
   margin-right: 6px;
 }
 
@@ -155,7 +158,7 @@ window#waybar.hidden {
 }
 
 #idle_inhibitor {
-  background-color: #1abc9c;
+  background-color: #89ddff;
 }
 
 #custom-notification {
