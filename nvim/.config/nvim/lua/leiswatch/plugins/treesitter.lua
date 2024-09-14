@@ -47,7 +47,7 @@ return {
 				enable = true,
 			},
 			matchup = {
-				enable = false,
+				enable = true,
 				include_match_words = false,
 			},
 			modules = {},

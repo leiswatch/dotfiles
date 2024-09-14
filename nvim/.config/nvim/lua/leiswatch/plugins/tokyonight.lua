@@ -64,8 +64,8 @@ return {
 				hl.TreesitterContextLineNumber = { fg = color.blue, bg = color.bg_dark, underline = false }
 				hl.NeoTreeIndentMarker = { bg = color.none, fg = color.bg_highlight }
 				hl.Directory = { bg = color.none, fg = color.fg }
-				hl.IncSearch = { fg = color.bg, bg = color.orange }
-				hl.CurSearch = { fg = color.bg, bg = color.orange }
+				hl.IncSearch = { fg = color.bg, bg = color.blue2 }
+				hl.CurSearch = { fg = color.bg, bg = color.blue2 }
 				hl.Search = { fg = color.none, bg = color.bg_highlight }
 				hl.MatchWord = { bg = color.bg_highlight, fg = color.none, bold = false }
 				hl.MatchParen = { bg = color.bg_highlight, fg = color.none, bold = false }

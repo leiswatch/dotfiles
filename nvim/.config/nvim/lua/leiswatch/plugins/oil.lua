@@ -9,6 +9,7 @@ return {
 		keymaps_help = {
 			border = "rounded",
 		},
+		skip_confirm_for_simple_edits = true,
 		float = {
 			padding = 2,
 			max_width = 150,

@@ -74,7 +74,7 @@ local servers = {
 		},
 	},
 
-	cssmodules_ls = {},
+	-- cssmodules_ls = {},
 	tailwindcss = {},
 	-- capabilities = {
 	-- 	definitionProvider = false,
@@ -129,22 +129,22 @@ local servers = {
 			},
 		},
 	},
-	vtsls = {
-		settings = {
-			vtsls = {
-				autoUseWorkspaceTsdk = true,
-			},
-			typescript = {
-				preferGoToSourceDefinition = true,
-				tsserver = {
-					maxTsServerMemory = 8192,
-				},
-			},
-			javascript = {
-				preferGoToSourceDefinition = true,
-			},
-		},
-	},
+	-- vtsls = {
+	-- 	settings = {
+	-- 		vtsls = {
+	-- 			autoUseWorkspaceTsdk = true,
+	-- 		},
+	-- 		typescript = {
+	-- 			preferGoToSourceDefinition = true,
+	-- 			tsserver = {
+	-- 				maxTsServerMemory = "auto",
+	-- 			},
+	-- 		},
+	-- 		javascript = {
+	-- 			preferGoToSourceDefinition = true,
+	-- 		},
+	-- 	},
+	-- },
 	zls = {},
 
 	-- ts_ls = {

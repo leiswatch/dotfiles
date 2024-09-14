@@ -11,6 +11,7 @@ return {
 				done_icon = "",
 				overrides = { -- Override options from the default notification config
 					vtsls = { name = "typescript" },
+					["typescript-tools"] = { name = "tsserver" },
 				},
 			},
 		},
