@@ -78,10 +78,13 @@ return {
 				hl.DiagnosticUnderlineInfo = { underline = true, sp = color.blue2 }
 				hl.DiagnosticUnderlineHint = { underline = true, sp = color.teal }
 
-                hl.FzfLuaBackdrop = { fg = color.none, bg = color.bg }
-                hl.FzfLuaBorder = { fg = color.fg_gutter, bg = color.none  }
-                hl.FzfLuaTitle = { fg = color.fg, bg = color.none  }
-                hl.FzfLuaPreviewTitle = { fg = color.fg, bg = color.none  }
+				hl.FzfLuaBackdrop = { fg = color.none, bg = color.bg }
+				hl.FzfLuaBorder = { fg = color.fg_gutter, bg = color.none }
+				hl.FzfLuaTitle = { fg = color.fg, bg = color.none }
+				hl.FzfLuaPreviewTitle = { fg = color.fg, bg = color.none }
+
+				hl.IblIndent = { fg = color.bg_highlight }
+				hl.IblScope = { fg = color.fg_gutter }
 			end,
 		})
 
