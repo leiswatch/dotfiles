@@ -3,7 +3,8 @@ export GOPATH="$HOME/.go"
 export DENO_INSTALL="$HOME/.deno"
 export BUN_INSTALL="$HOME/.bun"
 
-export FNM_COREPACK_ENABLED=true
+# export FNM_COREPACK_ENABLED=true
+export ASDF_NODEJS_AUTO_ENABLE_COREPACK=true
 
 # Mocha
 # export FZF_DEFAULT_OPTS=" \

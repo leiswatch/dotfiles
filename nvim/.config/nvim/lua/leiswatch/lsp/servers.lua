@@ -129,22 +129,22 @@ local servers = {
 			},
 		},
 	},
-	-- vtsls = {
-	-- 	settings = {
-	-- 		vtsls = {
-	-- 			autoUseWorkspaceTsdk = true,
-	-- 		},
-	-- 		typescript = {
-	-- 			preferGoToSourceDefinition = true,
-	-- 			tsserver = {
-	-- 				maxTsServerMemory = "auto",
-	-- 			},
-	-- 		},
-	-- 		javascript = {
-	-- 			preferGoToSourceDefinition = true,
-	-- 		},
-	-- 	},
-	-- },
+	vtsls = {
+		settings = {
+			vtsls = {
+				autoUseWorkspaceTsdk = true,
+			},
+			typescript = {
+				preferGoToSourceDefinition = true,
+				tsserver = {
+					maxTsServerMemory = "auto",
+				},
+			},
+			javascript = {
+				preferGoToSourceDefinition = true,
+			},
+		},
+	},
 	zls = {},
 
 	-- ts_ls = {

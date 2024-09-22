@@ -16,7 +16,7 @@ return {
 				multiprocess = true,
 				winopts = {
 					width = 0.75,
-					height = 0.5,
+					height = 0.75,
 					preview = { hidden = "hidden" },
 				},
 				cwd_prompt = false,

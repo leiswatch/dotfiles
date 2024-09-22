@@ -8,9 +8,9 @@
     class       = Dunst
     alignment   = center
     frame_width = 2
-    frame_color = "#7dcfff"
+    frame_color = "#e0af68"
     separator_color = frame
-    font        = JetBrains Mono 12
+    font        = JetBrains Mono 13
     offset      = 17x17
     min_icon_size = 32
     max_icon_size = 64

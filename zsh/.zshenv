@@ -26,9 +26,9 @@ if [ -d "/usr/local/go/bin" ]; then
 	PATH="/usr/local/go/bin:$PATH"
 fi
 
-if [ -d "$HOME/.local/share/fnm" ]; then
-	PATH="$HOME/.local/share/fnm:$PATH"
-fi
+# if [ -d "$HOME/.local/share/fnm" ]; then
+# 	PATH="$HOME/.local/share/fnm:$PATH"
+# fi
 
 if [ -d "$DENO_INSTALL/bin" ]; then
 	PATH="$DENO_INSTALL/bin:$PATH"

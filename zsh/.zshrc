@@ -5,6 +5,7 @@ ZSH_THEME=robbyrussell
 DISABLE_AUTO_TITLE="true"
 
 plugins=(
+    asdf
     archlinux
     command-not-found
     docker
@@ -79,7 +80,10 @@ source <(fzf --zsh)
 [ -s "/home/leiswatch/.bun/_bun" ] && source "/home/leiswatch/.bun/_bun"
 
 # fnm
-eval "$(fnm env --shell zsh)"
+# eval "$(fnm env --shell zsh)"
+
+# asdf
+# . /opt/asdf-vm/asdf.sh
 
 # starship
 eval "$(starship init zsh)"

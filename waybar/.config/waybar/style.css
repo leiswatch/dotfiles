@@ -1,4 +1,5 @@
 /* @import "mocha.css"; */
+@import "tokyonight.css";
 
 * {
   border: none;
@@ -8,11 +9,12 @@
 
 window#waybar {
   font-family: JetBrainsMono Nerd Font;
-  background-color: #1a1b26;
+  background-color: @bg;
   transition-property: background-color;
   transition-duration: 0.5s;
-  font-size: 13px;
+  font-size: 14px;
   font-weight: 500;
+  font-feature-settings: "ss02";
 }
 
 window#waybar.hidden {
@@ -21,46 +23,45 @@ window#waybar.hidden {
 
 #workspaces {
   background-color: transparent;
-  background-color: #1f2335;
+  background-color: @bg;
   margin: 8px;
-  padding: 0 4px;
-  border-radius: 4px;
+  padding: 0;
 }
 
 #workspaces button {
   all: initial; /* Remove GTK theme values (waybar #1351) */
   min-width: 0; /* Fix weird spacing in materia (waybar #450) */
   padding: 0 8px;
-  border-radius: 4px;
-  /* margin: 4px 0; */
-  /* background-color: #292e42; */
+  margin: 0 2px;
   font-weight: 600;
-  color: #c0caf5;
+  color: @fg;
+  border-radius: 4px;
 }
 
 #workspaces button.empty {
-  color: #565f89;
+  color: @comment;
 }
 
 #workspaces button.active {
-  /* color: #1a1b26; */
-  color: #ff9e64;
+  background-color: @blue;
+  color: @bg;
 }
 
 #workspaces button.focused {
-  /* color: #1a1b26; */
-  color: #ff9e64;
+  background-color: @blue;
+  color: @bg;
 }
 
 #workspaces button:hover {
   box-shadow: inherit;
   text-shadow: inherit;
-  /* color: #1a1b26; */
-  color: #b4f9f8;
+  background-color: @blue;
+  color: @bg;
 }
 
 #workspaces button.urgent {
-  color: #f7768e;
+  background-color: @red;
+  color: @bg;
 }
 
 #memory,
@@ -77,15 +78,15 @@ window#waybar.hidden {
 #language,
 #submap,
 #window {
-  border-radius: 4px;
-  padding: 0 8px;
-  background-color: #1f2335;
-  margin: 8px 4px;
-  color: #1a1b26;
+  /* border-radius: 4px; */
+  /* padding: 0 4px; */
+  background-color: @bg;
+  margin: 0;
+  color: @fg;
 }
 
 #submap {
-  color: #f7768e;
+  color: @red;
 }
 
 #window {
@@ -93,19 +94,17 @@ window#waybar.hidden {
 }
 
 #custom-updates {
-  color: #e0af68;
+  color: @yellow;
 }
 
 #scratchpad {
-  background-color: #ff9e64;
+  background-color: @orange;
 }
 
 #tray {
-  border-radius: 4px;
+  background-color: @bg;
   padding: 0;
-  background-color: #1f2335;
-  padding: 0 8px;
-  margin: 8px 8px 8px 4px;
+  margin: 0 8px 0 0;
 }
 
 #tray menu {
@@ -115,67 +114,65 @@ window#waybar.hidden {
 }
 
 #keyboard-state {
-  /* background-color: #ff9e64; */
-  color: #c0caf5;
+  color: @fg;
 }
 
 #keyboard-state label.locked {
-  color: #f7768e;
+  color: @red;
 }
 
 #memory {
-  color: #b4f9f8; /* Use box-shadow instead of border so the text isn't offset */
+  color: @blue6; /* Use box-shadow instead of border so the text isn't offset */
 }
 
 #disk {
-  color: #bb9af7; /* Use box-shadow instead of border so the text isn't offset */
+  color: @magenta; /* Use box-shadow instead of border so the text isn't offset */
 }
 
 #cpu {
-  color: #7aa2f7; /* Use box-shadow instead of border so the text isn't offset */
+  color: @blue; /* Use box-shadow instead of border so the text isn't offset */
 }
 
 #language {
-  background-color: #e0af68;
+  background-color: @yellow;
 }
 
 #idle_inhibitor {
-  padding: 0 16px 0 8px;
-  color: #41a6b5;
+  padding: 0 6px 0 0;
+  color: @fg;
 }
 
 #idle_inhibitor.deactivated {
-  color: #db4b4b;
+  color: @fg_gutter;
 }
 
 #pulseaudio {
-  color: #9ece6a; /* Use box-shadow instead of border so the text isn't offset */
+  color: @green; /* Use box-shadow instead of border so the text isn't offset */
 }
 
 #pulseaudio.muted {
-  color: #f7768e; /* Use box-shadow instead of border so the text isn't offset */
+  color: @red; /* Use box-shadow instead of border so the text isn't offset */
 }
 
 #clock {
   font-weight: 500;
-  color: #c0caf5;
 }
 
 #mode {
   font-style: normal;
   font-weight: 600;
-  background-color: #f7768e;
+  background-color: @red;
 }
 
 tooltip {
   border-radius: 4px;
   padding: 12px;
-  background-color: #1a1b26;
+  background-color: @bg_dark;
   font-family: Ubuntu;
 }
 
 tooltip label {
   padding: 4px;
-  background-color: #1a1b26;
+  background-color: @bg_dark;
   font-family: Ubuntu;
 }

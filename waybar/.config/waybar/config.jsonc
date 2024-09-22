@@ -2,9 +2,10 @@
 {
     "layer": "bottom", // Waybar at bottom layer
     "position": "top", // Waybar position (top|bottom|left|right)
-    "height": 45, // Waybar height (to be removed for auto height)
-    "spacing": 4, // Gaps between modules (4px)
+    "height": 35, // Waybar height (to be removed for auto height)
+    "spacing": 16, // Gaps between modules (4px)
     // Choose the order of the modules
+    "reload_style_on_change": true,
     "modules-left": [
         // "sway/workspaces",
         // "sway/mode",
@@ -46,11 +47,11 @@
     //     },
     // },
     "hyprland/workspaces": {
-        "format": "{icon}",
+        "format": "{name}",
         "format-icons": {
-            "active": "<span font=\"12\"></span>",
-            "empty": "<span font=\"12\"></span>",
-            "default": "<span font=\"12\"></span>",
+            "active": "<span font=\"14\"></span>",
+            "empty": "<span font=\"10\"></span>",
+            "default": "<span font=\"10\"></span>",
         },
         "persistent-workspaces": {
             "*": 9, // 5 workspaces by default on every monitor
@@ -103,46 +104,53 @@
         //     "deactivated": "Caffeine: Off",
         // },
         "format-icons": {
-            "activated": "<span font=\"12\"></span>",
-            "deactivated": "<span font=\"12\"></span>",
+            "activated": "<span font=\"14\">󰒳</span>",
+            "deactivated": "<span font=\"14\">󰒲</span>",
         },
         "start-activated": true,
     },
     "tray": {
         "icon-size": 22,
-        "spacing": 8,
+        "spacing": 12,
         "show-passive-items": true,
     },
     "clock": {
         "format": "{:%a %b %d %H:%M}",
         "timezone": "Europe/Warsaw",
-        "tooltip-format": "<big>{:%Y %B}</big>\n<tt><small>{calendar}</small></tt>",
+        "tooltip-format": "<big>{:%Y %B}</big>\n<tt>{calendar}</tt>",
+        "calendar": {
+            "mode": "month",
+            "mode-mon-col": 3,
+        },
+        "actions": {
+            "on-click": "mode",
+        },
         // "format-alt": "{:%Y-%m-%d}"
     },
     "cpu": {
         "interval": "2",
-        "format": "<span font=\"11\"> </span> {usage}%",
+        "format": "<span font=\"11\"></span>  {usage}%",
         "on-click": "gnome-system-monitor",
     },
     "memory": {
         "interval": "2",
-        "format": "<span font=\"10\"> </span> {}%",
+        "format": "<span font=\"10\"></span>  {}%",
         "on-click": "gnome-system-monitor",
     },
     "disk": {
         "interval": 30,
-        // "format": "Disk: {specific_free:0.0f}GB",
-        "format": "<span font=\"11\"> </span> {percentage_used}%",
+        // "format": "<span font=\"11\"></span>  {specific_free:0.0f}GB",
+        "format": "<span font=\"11\"></span>  {percentage_used}%",
         "unit": "GB",
         "path": "/",
         "on-click": "baobab",
     },
     "pulseaudio": {
         "scroll-step": 5, // %, can be a float
-        "format": "<span font=\"10\"> </span> {volume}%",
-        "format-bluetooth": "<span font=\"10\"></span> <span font=\"10\"> </span> {volume}%",
-        "format-bluetooth-muted": "<span font=\"10\"></span> <span font=\"10\"> </span> Muted",
-        "format-muted": "<span font=\"10\"> </span> Muted",
+        "format": "<span font=\"10\"></span>  {volume}%",
+        "format-bluetooth": "<span font=\"10\"></span> <span font=\"10\"></span>  {volume}%",
+        "format-bluetooth-muted": "<span font=\"10\"></span> <span font=\"10\"></span>  Muted",
+        "format-muted": "<span font=\"10\"></span>  Muted",
         "format-source": "<span font=\"10\"></span> {volume}%",
         "format-source-muted": "<span font=\"10\"></span> Muted",
         "format-icons": {
