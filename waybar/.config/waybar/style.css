@@ -9,7 +9,7 @@
 
 window#waybar {
   font-family: JetBrainsMono Nerd Font;
-  background-color: @bg;
+  background-color: @bg_dark;
   transition-property: background-color;
   transition-duration: 0.5s;
   font-size: 14px;
@@ -23,7 +23,7 @@ window#waybar.hidden {
 
 #workspaces {
   background-color: transparent;
-  background-color: @bg;
+  /* background-color: @bg; */
   margin: 8px;
   padding: 0;
 }
@@ -79,8 +79,9 @@ window#waybar.hidden {
 #submap,
 #window {
   /* border-radius: 4px; */
-  /* padding: 0 4px; */
-  background-color: @bg;
+  /* border: 1px solid @fg_gutter; */
+  /* padding: 0 8px; */
+  /* background-color: @bg; */
   margin: 0;
   color: @fg;
 }
@@ -102,7 +103,7 @@ window#waybar.hidden {
 }
 
 #tray {
-  background-color: @bg;
+  /* background-color: @bg; */
   padding: 0;
   margin: 0 8px 0 0;
 }
