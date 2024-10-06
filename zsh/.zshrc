@@ -7,9 +7,11 @@ DISABLE_AUTO_TITLE="true"
 plugins=(
     archlinux
     asdf
+    bun
     command-not-found
     docker
     docker-compose
+    fzf
     fzf-tab
     git
     golang
@@ -71,10 +73,10 @@ function vmrss() {
 }
 
 # fzf
-source <(fzf --zsh)
+# source <(fzf --zsh)
 
 # bun
-[ -s "/home/leiswatch/.bun/_bun" ] && source "/home/leiswatch/.bun/_bun"
+# [ -s "/home/leiswatch/.bun/_bun" ] && source "/home/leiswatch/.bun/_bun"
 
 # function precmd() {
 #     print -Pn "\e]0;Terminal\a"
