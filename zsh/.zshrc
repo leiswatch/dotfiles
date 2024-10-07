@@ -6,7 +6,6 @@ DISABLE_AUTO_TITLE="true"
 
 plugins=(
     archlinux
-    asdf
     bun
     command-not-found
     docker
@@ -20,7 +19,7 @@ plugins=(
     npm
     rust
     starship
-    tmux
+    # tmux
     yarn
     you-should-use
     zoxide
@@ -58,7 +57,7 @@ zstyle ':fzf-tab:*' fzf-flags --color=bg+:#3b4261,spinner:#2ac3de,hl:#f7768e,fg:
 alias ls='eza'
 alias cat='bat'
 alias cd='z'
-alias lg='lazygit'
+alias tksv='tmux kill-server'
 alias gcwtc='git commit -m "$(curl -s https://whatthecommit.com/index.txt)"'
 alias fsb='git switch $(git branch | grep -v \"^\*\" | fzf --height=30% --reverse --info=inline)'
 
@@ -72,6 +71,9 @@ function vmrss() {
     fi
 }
 
+# fnm
+eval "$(fnm env --shell zsh --use-on-cd --version-file-strategy=recursive --corepack-enabled --resolve-engines --log-level error)"
+
 # fzf
 # source <(fzf --zsh)
 
@@ -84,10 +86,6 @@ function vmrss() {
 
 # kubectl
 # eval "$(kubectl completion zsh)"
-
-
-# fnm
-# eval "$(fnm env --shell zsh)"
 
 # asdf
 # . /opt/asdf-vm/asdf.sh

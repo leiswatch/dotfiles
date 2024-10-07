@@ -24,18 +24,18 @@ window#waybar.hidden {
 #workspaces {
   background-color: transparent;
   /* background-color: @bg; */
-  margin: 8px;
+  margin: 0 0 0 8px;
   padding: 0;
 }
 
 #workspaces button {
   all: initial; /* Remove GTK theme values (waybar #1351) */
   min-width: 0; /* Fix weird spacing in materia (waybar #450) */
-  padding: 0 8px;
-  margin: 0 2px;
+  /* padding: 0 8px; */
+  margin: 0 8px;
   font-weight: 600;
   color: @fg;
-  border-radius: 4px;
+  /* border-radius: 4px; */
 }
 
 #workspaces button.empty {
@@ -43,25 +43,23 @@ window#waybar.hidden {
 }
 
 #workspaces button.active {
-  background-color: @blue;
-  color: @bg;
+  /* background-color: @blue; */
+  color: @cyan;
 }
 
 #workspaces button.focused {
-  background-color: @blue;
-  color: @bg;
+  /* background-color: @blue; */
+  color: @cyan;
 }
 
 #workspaces button:hover {
   box-shadow: inherit;
   text-shadow: inherit;
-  background-color: @blue;
-  color: @bg;
+  color: @blue;
 }
 
 #workspaces button.urgent {
-  background-color: @red;
-  color: @bg;
+  color: @red;
 }
 
 #memory,

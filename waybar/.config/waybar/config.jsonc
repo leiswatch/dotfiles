@@ -2,7 +2,7 @@
 {
     "layer": "bottom", // Waybar at bottom layer
     "position": "top", // Waybar position (top|bottom|left|right)
-    "height": 35, // Waybar height (to be removed for auto height)
+    "height": 40, // Waybar height (to be removed for auto height)
     "spacing": 16, // Gaps between modules (4px)
     // Choose the order of the modules
     "reload_style_on_change": true,
@@ -47,11 +47,11 @@
     //     },
     // },
     "hyprland/workspaces": {
-        "format": "{name}",
+        "format": "{icon}",
         "format-icons": {
-            "active": "<span font=\"14\"></span>",
-            "empty": "<span font=\"10\"></span>",
-            "default": "<span font=\"10\"></span>",
+            "active": "<span font=\"14\">󰮯</span>",
+            "empty": "<span font=\"14\">󰧵</span>",
+            "default": "<span font=\"14\">󰊠</span>",
         },
         "persistent-workspaces": {
             "*": 9, // 5 workspaces by default on every monitor

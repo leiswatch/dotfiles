@@ -5,7 +5,7 @@ local M = {
 		"cssls",
 		"cssmodules_ls",
 		"dockerls",
-		"eslint@4.8.0",
+		"eslint",
 		"gopls",
 		"graphql",
 		"html",
