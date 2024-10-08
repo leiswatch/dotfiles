@@ -1,5 +1,7 @@
 return {
 	"hrsh7th/nvim-cmp",
+	-- "iguanacucumber/magazine.nvim",
+	-- name = "nvim-cmp", -- Otherwise highlighting gets messed up
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-buffer",
@@ -36,6 +38,14 @@ return {
 		cmp.setup({
 			view = {
 				entries = "custom",
+			},
+			performance = {
+				debounce = 30,
+				throttle = 15,
+				fetching_timeout = 500,
+				confirm_resolve_timeout = 80,
+				async_budget = 1,
+				max_view_entries = 300,
 			},
 			snippet = {
 				expand = function(args)

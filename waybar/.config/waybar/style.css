@@ -44,12 +44,12 @@ window#waybar.hidden {
 
 #workspaces button.active {
   /* background-color: @blue; */
-  color: @cyan;
+  color: @yellow;
 }
 
 #workspaces button.focused {
   /* background-color: @blue; */
-  color: @cyan;
+  color: @yellow;
 }
 
 #workspaces button:hover {

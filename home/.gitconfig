@@ -26,4 +26,4 @@
 [diff]
     colorMoved = default
 [includeIf "gitdir:~/Projects/bold/"]
-	path = ~/.gitconfig-bold
+	path = /home/leiswatch/.gitconfig-bold

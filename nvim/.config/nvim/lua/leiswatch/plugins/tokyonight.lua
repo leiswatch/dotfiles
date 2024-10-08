@@ -67,6 +67,7 @@ return {
 				hl.IncSearch = { fg = color.bg, bg = color.blue2 }
 				hl.CurSearch = { fg = color.bg, bg = color.blue2 }
 				hl.Search = { fg = color.none, bg = color.bg_highlight }
+				hl.Substitute = { fg = color.bg, bg = color.cyan }
 				hl.MatchWord = { bg = color.bg_highlight, fg = color.none, bold = false }
 				hl.MatchParen = { bg = color.bg_highlight, fg = color.none, bold = false }
 				hl.CmpItemKindVariable = { bg = color.none, fg = color.magenta }
