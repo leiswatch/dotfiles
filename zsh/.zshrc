@@ -60,7 +60,7 @@ zstyle ':fzf-tab:*' fzf-flags --color=bg+:#3b4261,spinner:#2ac3de,hl:#f7768e,fg:
 # zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'eza --color=always -x $realpath'
 
 # Aliases
-alias ls='eza -F auto'
+alias ls='eza'
 alias cat='bat'
 alias tksv='tmux kill-server'
 alias gcwtc='git commit -m "$(curl -s https://whatthecommit.com/index.txt)"'
@@ -77,6 +77,12 @@ function vmrss() {
     fi
 }
 
+function set_win_title(){
+    echo -ne "\033]0; Kitty \007"
+}
+
+precmd_functions+=(set_win_title)
+
 # bun
 [ -s "/home/leiswatch/.bun/_bun" ] && source "/home/leiswatch/.bun/_bun"
 
@@ -85,3 +91,6 @@ function vmrss() {
 
 # fnm
 eval "$(fnm env --shell zsh --use-on-cd --version-file-strategy=recursive --corepack-enabled --resolve-engines --log-level error)"
+
+# oh-my-posh
+# eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/config.toml)"

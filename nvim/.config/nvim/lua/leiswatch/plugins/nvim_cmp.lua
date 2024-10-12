@@ -1,7 +1,8 @@
 return {
-	"hrsh7th/nvim-cmp",
-	-- "iguanacucumber/magazine.nvim",
-	-- name = "nvim-cmp", -- Otherwise highlighting gets messed up
+	-- "hrsh7th/nvim-cmp",
+	"iguanacucumber/magazine.nvim",
+	name = "nvim-cmp", -- Otherwise highlighting gets messed up
+	enabled = true,
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-buffer",
@@ -39,14 +40,6 @@ return {
 			view = {
 				entries = "custom",
 			},
-			performance = {
-				debounce = 30,
-				throttle = 15,
-				fetching_timeout = 500,
-				confirm_resolve_timeout = 80,
-				async_budget = 1,
-				max_view_entries = 300,
-			},
 			snippet = {
 				expand = function(args)
 					luasnip.lsp_expand(args.body) -- For `luasnip` users.
@@ -54,17 +47,17 @@ return {
 			},
 			window = {
 				completion = {
-					border = "rounded",
+					border = "single",
 					winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:CursorLine,Search:Search",
 					-- side_padding = 1,
 					col_offset = -3,
 					side_padding = 0,
 				},
 				documentation = {
-					border = "rounded",
+					border = "single",
 					max_width = 120,
 					max_height = 20,
-					winhighlight = "FloatBorder:FloatBorder",
+					winhighlight = "Normal:Normal,FloatBorder:FloatBorder",
 				},
 			},
 			mapping = cmp.mapping.preset.insert({
@@ -142,7 +135,7 @@ return {
 					local kind = lspkind.cmp_format({
 						mode = "symbol_text",
 						maxwidth = 120,
-						preset = "codicons",
+						-- preset = "codicons",
 					})(entry, vim_item)
 					local strings = vim.split(kind.kind, "%s", { trimempty = true })
 					kind.kind = " " .. (strings[1] or "") .. " "

@@ -10,14 +10,18 @@ return {
 	},
 	config = function()
 		local lspconfig = require("lspconfig")
-		require("lspconfig.ui.windows").default_options.border = "rounded"
+		require("lspconfig.ui.windows").default_options.border = "single"
 
 		require("leiswatch.lsp.textDocument")
 		require("leiswatch.lsp.signs")
 
 		local capabilities = vim.lsp.protocol.make_client_capabilities()
-		capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
+		-- capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 		capabilities.textDocument.completion.completionItem.snippetSupport = true
+		capabilities.textDocument.foldingRange = {
+			dynamicRegistration = false,
+			lineFoldingOnly = true,
+		}
 
 		local servers = require("leiswatch.lsp.servers")
 		local mason_config = require("leiswatch.lsp.mason_config")

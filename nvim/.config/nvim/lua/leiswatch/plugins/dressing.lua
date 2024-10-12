@@ -3,7 +3,7 @@ return {
 	opts = {
 		input = {
 			enabled = true,
-			border = "rounded",
+			border = "single",
 			title_pos = "center",
 			win_options = {
 				winblend = 0,

@@ -28,4 +28,5 @@ export FZF_DEFAULT_OPTS=" \
 --info=right \
 -i \
 --reverse \
---padding 0,1"
+--padding 0,1
+"

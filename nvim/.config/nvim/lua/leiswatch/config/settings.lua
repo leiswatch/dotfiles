@@ -3,6 +3,9 @@ vim.g.maplocalleader = " "
 vim.g.skip_ts_context_commentstring_module = true
 vim.g.tagalong_mappings = { "c", "C", "i", "a" }
 vim.g.undotree_WindowLayout = 2
+vim.g.loaded_netrw = 1
+vim.g.loaded_netrwPlugin = 1
+-- vim.g.virtcolumn_char = "▕" -- by default
 
 vim.opt.autoindent = true
 vim.opt.autoread = true
@@ -53,7 +56,24 @@ vim.opt.undofile = true
 vim.opt.undolevels = 1000
 vim.opt.updatetime = 250
 vim.opt.wrap = true
--- vim.opt.statuscolumn = '%=%{v:relnum?v:relnum:v:lnum} '
+vim.opt.wildignore:append("*/node_modules/**")
+vim.opt.matchpairs:append("<:>")
+vim.opt.mouse = "a"
+
+vim.opt.foldmethod = "manual"
+vim.opt.foldcolumn = "0"
+vim.opt.foldlevel = 99
+vim.opt.foldlevelstart = 99
+vim.opt.foldenable = true
+
+vim.cmd("filetype on")
+vim.cmd("filetype plugin on")
+vim.cmd("filetype indent on")
+vim.cmd("filetype plugin indent on")
+
+vim.filetype.add({ extension = { templ = "templ" } })
+
+vim.lsp.log.set_level(vim.log.levels.OFF)
 
 vim.diagnostic.config({
 	virtual_text = {
@@ -91,21 +111,3 @@ vim.diagnostic.config({
 		prefix = "",
 	},
 })
-
-vim.cmd([[
-  filetype on
-  filetype plugin on
-  filetype plugin indent on
-  set mps+=<:>
-  set wildignore+=*/node_modules/**
-  set mouse=
-]])
-
--- EXTENSIONS
-vim.filetype.add({ extension = { templ = "templ" } })
-
-vim.g.loaded_netrw = 1
-vim.g.loaded_netrwPlugin = 1
--- vim.g.virtcolumn_char = "▕" -- by default
-
-vim.lsp.log.set_level(vim.log.levels.OFF)

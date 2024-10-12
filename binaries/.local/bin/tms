@@ -3,7 +3,7 @@
 if [[ $# -eq 1 ]]; then
 	selected=$1
 else
-	selected=$(fd . ~/Projects/dev ~/Projects/bold /home/ --type d --min-depth 1 --max-depth 1 | sort | fzf --tmux --reverse --border=rounded --no-info --padding 0)
+	selected=$(fd . ~/Projects/dev ~/Projects/bold /home/ --type d --min-depth 1 --max-depth 1 | sort | fzf --tmux --reverse --border=sharp --no-info --padding 0)
 fi
 
 if [[ -z $selected ]]; then

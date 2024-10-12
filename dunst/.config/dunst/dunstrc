@@ -16,7 +16,7 @@
     max_icon_size = 64
     show_age_threshold = -1
     icon_position = left
-    icon_theme = Papirus
+    icon_theme = Papirus-Dark
     enable_recursive_icon_lookup = true
     notification_limit = 5
     progress_bar = true
@@ -27,7 +27,7 @@
     indicate_hidden = yes
     show_indicators = no
     separator_color= frame
-    corner_radius = 4
+    corner_radius = 0
     highlight = "#7dcfff"
     sticky_history = yes
     mouse_left_click = do_action, open_url, close_current

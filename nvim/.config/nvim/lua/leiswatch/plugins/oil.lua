@@ -1,13 +1,16 @@
 return {
 	"stevearc/oil.nvim",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
+	keys = {
+		{ "<leader>o", "<cmd>Oil --float<cr>" },
+	},
 	opts = {
 		default_file_explorer = false,
 		columns = {
 			"icon",
 		},
 		keymaps_help = {
-			border = "rounded",
+			border = "single",
 		},
 		skip_confirm_for_simple_edits = true,
 		float = {

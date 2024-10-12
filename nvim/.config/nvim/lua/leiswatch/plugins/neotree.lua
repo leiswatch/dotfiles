@@ -15,9 +15,22 @@ return {
 		-- 	end,
 		-- },
 	},
+	keys = {
+		{
+			"<C-n>",
+			function()
+				require("neo-tree.command").execute({
+					action = "focus",
+					toggle = true,
+					position = "left",
+					reveal_force_cwd = true,
+				})
+			end,
+		},
+	},
 	opts = {
 		close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
-		popup_border_style = "rounded",
+		popup_border_style = "single",
 		enable_git_status = true,
 		enable_diagnostics = false,
 		window = {

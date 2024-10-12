@@ -4,6 +4,7 @@ return {
 	dependencies = {
 		"MunifTanjim/nui.nvim",
 	},
+	event = { "InsertEnter", "CmdlineEnter" },
 	opts = {
 		lsp = {
 			override = {
@@ -19,7 +20,7 @@ return {
 				silent = true, -- set to true to not show a message if hover is not available
 				view = nil, -- when nil, use defaults from documentation
 				opts = {
-					border = "rounded",
+					border = "single",
 					size = {
 						max_height = 20,
 						max_width = 120,

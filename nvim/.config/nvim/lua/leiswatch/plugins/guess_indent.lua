@@ -1,5 +1,6 @@
 return {
 	"nmac427/guess-indent.nvim",
+	event = { "BufRead" },
 	config = function()
 		require("guess-indent").setup({
 			auto_cmd = true, -- Set to false to disable automatic execution

@@ -1,6 +1,6 @@
 return {
 	"folke/todo-comments.nvim",
-	event = "VeryLazy",
+	event = { "BufRead" },
 	opts = {
 		signs = false,
 		merge_keywords = true,

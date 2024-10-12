@@ -1,8 +1,7 @@
 local opts = { noremap = true, silent = true }
-local yank_group = vim.api.nvim_create_augroup("HighlightYank", {})
 
 vim.api.nvim_create_autocmd("TextYankPost", {
-	group = yank_group,
+	group = vim.api.nvim_create_augroup("HighlightYank", { clear = true }),
 	pattern = "*",
 	callback = function()
 		vim.highlight.on_yank({
@@ -54,10 +53,12 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 	end,
 })
 
-vim.api.nvim_create_autocmd({ "BufNewFile", "BufRead" }, {
+vim.api.nvim_create_autocmd({ "FileType" }, {
+	group = vim.api.nvim_create_augroup("FormatOptions", { clear = true }),
 	pattern = { "*" },
 	callback = function()
-		vim.cmd([[setlocal formatoptions-=ro]])
+		vim.opt_local.fo:remove("o")
+		vim.opt_local.fo:remove("r")
 	end,
 })
 
@@ -70,7 +71,10 @@ vim.api.nvim_create_autocmd({ "BufWritePost" }, {
 vim.api.nvim_create_autocmd("VimResized", {
 	desc = "auto resize splited windows",
 	pattern = "*",
-	command = "tabdo wincmd =",
+	callback = function()
+		vim.cmd("tabdo wincmd =")
+		require("fzf-lua").redraw()
+	end,
 })
 
 vim.api.nvim_create_autocmd("CursorMoved", {
@@ -82,9 +86,4 @@ vim.api.nvim_create_autocmd("CursorMoved", {
 			end)
 		end
 	end,
-})
-
-vim.api.nvim_create_autocmd("VimResized", {
-	pattern = "*",
-	command = 'lua require("fzf-lua").redraw()',
 })

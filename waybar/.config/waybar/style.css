@@ -9,7 +9,7 @@
 
 window#waybar {
   font-family: JetBrainsMono Nerd Font;
-  background-color: @bg_dark;
+  background-color: @bg;
   transition-property: background-color;
   transition-duration: 0.5s;
   font-size: 14px;
@@ -75,6 +75,7 @@ window#waybar.hidden {
 #custom-updates,
 #language,
 #submap,
+#custom-notifications,
 #window {
   /* border-radius: 4px; */
   /* border: 1px solid @fg_gutter; */
@@ -94,6 +95,11 @@ window#waybar.hidden {
 
 #custom-updates {
   color: @yellow;
+}
+
+#custom-notifications {
+  color: @fg;
+  padding-right: 4px;
 }
 
 #scratchpad {

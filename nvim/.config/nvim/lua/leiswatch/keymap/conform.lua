@@ -1,4 +1,3 @@
-local conform = require("conform")
 local opts = { noremap = true, silent = true }
 local helpers = require("leiswatch.helpers")
 
@@ -52,7 +51,7 @@ local format = function()
 		vim.api.nvim_command(":EslintFixAll")
 	end
 
-	conform.format({
+	require("conform").format({
 		timeout_ms = 3000,
 		async = false,
 		lsp_format = lsp_fallback[filetype][1],
