@@ -54,6 +54,7 @@ return {
 				hl.ActionPreviewBorder = { fg = color.fg_gutter, bg = color.none }
 				hl.ActionPreviewTitle = { fg = color.fg, bg = color.none }
 				hl.CursorLineNr = { fg = color.blue5, bg = color.none }
+				hl.CursorLine = { fg = color.none, bg = color.bg_highlight }
 				hl.LineNr = { fg = color.blue, bg = color.none }
 				hl.LineNrAbove = { fg = color.fg_gutter, bg = color.none }
 				hl.LineNrBelow = { fg = color.fg_gutter, bg = color.none }
@@ -64,8 +65,8 @@ return {
 				hl.TreesitterContextLineNumber = { fg = color.blue, bg = color.bg_dark, underline = false }
 				hl.NeoTreeIndentMarker = { bg = color.none, fg = color.bg_highlight }
 				hl.Directory = { bg = color.none, fg = color.fg }
-				hl.IncSearch = { fg = color.bg, bg = color.yellow }
-				hl.CurSearch = { fg = color.bg, bg = color.yellow }
+				hl.IncSearch = { fg = color.bg, bg = color.orange }
+				hl.CurSearch = { fg = color.bg, bg = color.orange }
 				hl.Search = { fg = color.none, bg = color.bg_highlight }
 				hl.Substitute = { fg = color.none, bg = color.bg_highlight }
 				hl.MatchWord = { bg = color.bg_highlight, fg = color.none, bold = false }

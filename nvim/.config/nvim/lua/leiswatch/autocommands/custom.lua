@@ -40,8 +40,8 @@ vim.api.nvim_create_autocmd("FileType", {
 vim.api.nvim_create_autocmd({ "FileType" }, {
 	pattern = { "qf" },
 	callback = function()
-		vim.keymap.set("n", "q", "<CMD>ccl<CR>", opts)
-		vim.keymap.set("n", "<ESC>", "<CMD>ccl<CR>", opts)
+		vim.keymap.set("n", "q", "<cmd>ccl<CR>", opts)
+		vim.keymap.set("n", "<ESC>", "<cmd>ccl<CR>", opts)
 	end,
 })
 

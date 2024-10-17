@@ -91,6 +91,3 @@ precmd_functions+=(set_win_title)
 
 # fnm
 eval "$(fnm env --shell zsh --use-on-cd --version-file-strategy=recursive --corepack-enabled --resolve-engines --log-level error)"
-
-# oh-my-posh
-# eval "$(oh-my-posh init zsh --config $HOME/.config/ohmyposh/config.toml)"

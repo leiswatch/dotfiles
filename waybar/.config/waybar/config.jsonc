@@ -2,7 +2,7 @@
 {
     "layer": "bottom", // Waybar at bottom layer
     "position": "top", // Waybar position (top|bottom|left|right)
-    "height": 40, // Waybar height (to be removed for auto height)
+    "height": 30, // Waybar height (to be removed for auto height)
     "spacing": 16, // Gaps between modules (4px)
     // Choose the order of the modules
     "reload_style_on_change": true,
@@ -24,6 +24,7 @@
         "memory",
         "disk",
         "custom/updates",
+        "bluetooth",
         "idle_inhibitor",
         "tray",
     ],
@@ -49,9 +50,9 @@
     "hyprland/workspaces": {
         "format": "{icon}",
         "format-icons": {
-            "active": "<span font=\"14\">󰮯</span>",
-            "empty": "<span font=\"14\">󰧵</span>",
-            "default": "<span font=\"14\">󰊠</span>",
+            "active": "<span font=\"16\">󰮯</span>",
+            "empty": "<span font=\"18\">󰧵</span>",
+            "default": "<span font=\"16\">󰊠</span>",
         },
         "persistent-workspaces": {
             "*": 9, // 5 workspaces by default on every monitor
@@ -146,7 +147,7 @@
         "on-click": "baobab",
     },
     "pulseaudio": {
-        "scroll-step": 5, // %, can be a float
+        "scroll-step": 2, // %, can be a float
         "format": "<span font=\"10\"></span>  {volume}%",
         "format-bluetooth": "<span font=\"10\"></span> <span font=\"10\"></span>  {volume}%",
         "format-bluetooth-muted": "<span font=\"10\"></span> <span font=\"10\"></span>  Muted",
@@ -203,5 +204,15 @@
         "on-click": "swaync-client -t -sw",
         "on-click-right": "swaync-client -d -sw",
         "escape": true,
+    },
+    "bluetooth": {
+        "format": "<span font=\"11\">󰥉</span> {status}",
+        "format-connected": "<span font=\"11\">󰥉</span> {device_alias}",
+        "format-connected-battery": "<span font=\"11\">󰥉</span> {device_battery_percentage}%",
+        // "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device
+        "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
+        "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
+        "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
+        "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
     },
 }

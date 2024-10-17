@@ -1,6 +1,19 @@
 return {
 	"NvChad/nvim-colorizer.lua",
-	event = { "BufRead" },
+	ft = {
+		"css",
+		"scss",
+		"sass",
+		"less",
+		"vue",
+		"svelte",
+		"astro",
+		"javascript",
+		"typescript",
+		"javascriptreact",
+		"typescriptreact",
+		"templ",
+	},
 	config = function()
 		require("colorizer").setup({
 			filetypes = {

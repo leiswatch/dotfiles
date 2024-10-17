@@ -1,3 +1,3 @@
 local opts = { noremap = true, silent = true }
 
-vim.keymap.set("n", "<leader>gt", '<CMD>BlameToggle<CR>', opts)
+vim.keymap.set("n", "<leader>gt", '<cmd>BlameToggle<CR>', opts)

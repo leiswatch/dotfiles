@@ -62,6 +62,7 @@ window#waybar.hidden {
   color: @red;
 }
 
+#bluetooth,
 #memory,
 #pulseaudio,
 #network,
@@ -83,6 +84,10 @@ window#waybar.hidden {
   /* background-color: @bg; */
   margin: 0;
   color: @fg;
+}
+
+#bluetooth {
+  color: @blue6;
 }
 
 #submap {
@@ -127,7 +132,7 @@ window#waybar.hidden {
 }
 
 #memory {
-  color: @blue6; /* Use box-shadow instead of border so the text isn't offset */
+  color: @blue5; /* Use box-shadow instead of border so the text isn't offset */
 }
 
 #disk {

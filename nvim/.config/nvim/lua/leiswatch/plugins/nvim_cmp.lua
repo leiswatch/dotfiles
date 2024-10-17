@@ -135,7 +135,7 @@ return {
 					local kind = lspkind.cmp_format({
 						mode = "symbol_text",
 						maxwidth = 120,
-						-- preset = "codicons",
+						preset = "codicons",
 					})(entry, vim_item)
 					local strings = vim.split(kind.kind, "%s", { trimempty = true })
 					kind.kind = " " .. (strings[1] or "") .. " "

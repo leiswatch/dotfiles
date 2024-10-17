@@ -1,12 +1,12 @@
 [global]
     gap_size = 5
     monitor = 0
-    width = (200, 400)
+    width = (200, 450)
     height = 500
     notification_limit = 20
     origin = top-right
     class       = Dunst
-    alignment   = center
+    alignment   = left
     frame_width = 2
     frame_color = "#e0af68"
     separator_color = frame

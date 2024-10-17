@@ -8,6 +8,6 @@ vim.keymap.set("n", "<leader>fg", function()
 		exec_empty_query = false,
 	})
 end, opts)
-vim.keymap.set("n", "<leader>fw", function()
+vim.keymap.set({ "n", "v" }, "<leader>fw", function()
 	require("fzf-lua").grep_cword()
 end, opts)

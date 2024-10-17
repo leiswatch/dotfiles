@@ -8,6 +8,7 @@ return {
 	dependencies = {
 		"nvim-treesitter/nvim-treesitter-context",
 		"JoosepAlviste/nvim-ts-context-commentstring",
+		"RRethy/nvim-treesitter-endwise",
 		"windwp/nvim-ts-autotag",
 		"numToStr/Comment.nvim",
 		"andymass/vim-matchup",
@@ -53,6 +54,9 @@ return {
 			indent = {
 				enable = true,
 			},
+			endwise = {
+				enable = false,
+			},
 			matchup = {
 				enable = true,
 				include_match_words = false,
@@ -71,6 +75,8 @@ return {
 
 		require("nvim-autopairs").setup({
 			disable_filetype = { "TelescopePrompt", "FzfLuaFzfPrompt" },
+			enable_check_bracket_line = true,
+			ignored_next_char = "[%w%.]", -- will ignore alphanumeric and `.` symbol
 		})
 
 		require("Comment").setup({
