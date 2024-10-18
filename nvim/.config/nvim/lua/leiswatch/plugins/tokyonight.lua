@@ -87,6 +87,8 @@ return {
 
 				hl.IblIndent = { fg = color.bg_highlight }
 				hl.IblScope = { fg = color.fg_gutter }
+
+				hl.CmpNormal = { bg = color.black }
 			end,
 		})
 

@@ -30,7 +30,7 @@ return {
 			signature = {
 				enabled = true,
 				opts = {
-					border = "rounded",
+					border = "single",
 					size = {
 						max_height = 20,
 						max_width = 120,

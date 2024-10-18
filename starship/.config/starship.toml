@@ -4,6 +4,11 @@
 add_newline = false
 command_timeout = 3000
 
+[character]
+success_symbol = "[](green)"
+error_symbol = "[](red)"
+vimcmd_symbol = "[](purple)"
+
 [os]
 disabled = true
 

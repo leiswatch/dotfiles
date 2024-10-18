@@ -49,7 +49,6 @@ return {
 				completion = {
 					border = "single",
 					winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:CursorLine,Search:Search",
-					-- side_padding = 1,
 					col_offset = -3,
 					side_padding = 0,
 				},
