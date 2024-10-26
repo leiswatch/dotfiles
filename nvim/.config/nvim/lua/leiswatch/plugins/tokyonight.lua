@@ -65,12 +65,12 @@ return {
 				hl.TreesitterContextLineNumber = { fg = color.blue, bg = color.bg_dark, underline = false }
 				hl.NeoTreeIndentMarker = { bg = color.none, fg = color.bg_highlight }
 				hl.Directory = { bg = color.none, fg = color.fg }
-				hl.IncSearch = { fg = color.bg, bg = color.orange }
-				hl.CurSearch = { fg = color.bg, bg = color.orange }
-				hl.Search = { fg = color.none, bg = color.bg_highlight }
-				hl.Substitute = { fg = color.none, bg = color.bg_highlight }
-				hl.MatchWord = { bg = color.bg_highlight, fg = color.none, bold = false }
-				hl.MatchParen = { bg = color.bg_highlight, fg = color.none, bold = false }
+				hl.IncSearch = { fg = color.bg, bg = color.blue }
+				hl.CurSearch = { fg = color.bg, bg = color.blue }
+				hl.Search = { fg = color.none, bg = color.fg_gutter }
+				hl.Substitute = { fg = color.none, bg = color.fg_gutter }
+				hl.MatchWord = { bg = color.fg_gutter, fg = color.none, bold = false }
+				hl.MatchParen = { bg = color.fg_gutter, fg = color.none, bold = false }
 				hl.CmpItemKindVariable = { bg = color.none, fg = color.magenta }
 				hl.CmpItemAbbrMatch = { bg = color.none, fg = color.red }
 				hl.CmpItemAbbrMatchFuzzy = { bg = color.none, fg = color.red }

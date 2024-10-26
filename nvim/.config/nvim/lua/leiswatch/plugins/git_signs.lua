@@ -13,7 +13,7 @@ return {
 		},
 		current_line_blame_formatter = "<author>, <author_time:%R> - <summary>",
 		preview_config = {
-			border = "single",
+			border = "rounded",
 		},
 		on_attach = function()
 			local gitsigns = require("gitsigns")
@@ -27,8 +27,8 @@ return {
 			vim.keymap.set("v", "<leader>gs", function()
 				gitsigns.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
 			end, opts)
-			vim.keymap.set("n", "<leader>gu", gitsigns.undo_stage_hunk, opts)
-			vim.keymap.set("n", "<leader>gp", gitsigns.preview_hunk, opts)
+			vim.keymap.set({ "n", "v" }, "<leader>gu", gitsigns.undo_stage_hunk, opts)
+			vim.keymap.set({ "n", "v" }, "<leader>gp", gitsigns.preview_hunk, opts)
 		end,
 	},
 }

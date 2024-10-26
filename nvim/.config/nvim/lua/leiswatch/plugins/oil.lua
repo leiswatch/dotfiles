@@ -10,7 +10,7 @@ return {
 			"icon",
 		},
 		keymaps_help = {
-			border = "single",
+			border = "rounded",
 		},
 		skip_confirm_for_simple_edits = true,
 		float = {

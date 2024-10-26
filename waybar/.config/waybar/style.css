@@ -8,13 +8,13 @@
 }
 
 window#waybar {
-  font-family: JetBrainsMono Nerd Font;
+  font-family: 'JetBrainsMono Nerd Font';
   background-color: @bg;
   transition-property: background-color;
   transition-duration: 0.5s;
   font-size: 14px;
   font-weight: 500;
-  font-feature-settings: "ss02";
+  /* font-feature-settings: "ss02"; */
 }
 
 window#waybar.hidden {
@@ -44,12 +44,12 @@ window#waybar.hidden {
 
 #workspaces button.active {
   /* background-color: @blue; */
-  color: @yellow;
+  color: @orange;
 }
 
 #workspaces button.focused {
   /* background-color: @blue; */
-  color: @yellow;
+  color: @orange;
 }
 
 #workspaces button:hover {

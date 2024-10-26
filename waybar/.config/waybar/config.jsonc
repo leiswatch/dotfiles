@@ -50,9 +50,16 @@
     "hyprland/workspaces": {
         "format": "{icon}",
         "format-icons": {
-            "active": "<span font=\"16\"></span>",
-            "empty": "<span font=\"16\"></span>",
-            "default": "<span font=\"16\"></span>",
+            "1": "<span font=\"20\">󰲠</span>",
+            "2": "<span font=\"20\">󰲢</span>",
+            "3": "<span font=\"20\">󰲤</span>",
+            "4": "<span font=\"20\">󰲦</span>",
+            "5": "<span font=\"20\">󰲨</span>",
+            "6": "<span font=\"20\">󰲪</span>",
+            "7": "<span font=\"20\">󰲬</span>",
+            "8": "<span font=\"20\">󰲮</span>",
+            "9": "<span font=\"20\">󰲰</span>",
+            "10": "<span font=\"20\">󰿬</span>",
         },
         "persistent-workspaces": {
             "*": 9, // 5 workspaces by default on every monitor

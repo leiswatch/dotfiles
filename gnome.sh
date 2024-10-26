@@ -1,17 +1,17 @@
 #!/usr/bin/env bash
 
 # GTK Settings
-gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-Dark'
-gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Dark'
-gsettings set org.gnome.desktop.interface cursor-theme 'Simp1e-Dark'
-gsettings set org.gnome.desktop.interface cursor-size '24'
-gsettings set org.gnome.desktop.interface document-font-name 'Roboto Slab 10'
-gsettings set org.gnome.desktop.interface text-scaling-factor '1.0'
-gsettings set org.gnome.desktop.interface font-name 'Ubuntu 10'
-gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
-gsettings set org.gnome.desktop.interface monospace-font-name 'JetBrains Mono 10'
-gsettings set org.gnome.desktop.interface font-antialisaing 'rgba'
-gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:minimize,maximize,close'
+# gsettings set org.gnome.desktop.interface gtk-theme 'Adwaita-Dark'
+# gsettings set org.gnome.desktop.interface icon-theme 'Papirus-Dark'
+# gsettings set org.gnome.desktop.interface cursor-theme 'Simp1e-Dark'
+# gsettings set org.gnome.desktop.interface cursor-size '24'
+# gsettings set org.gnome.desktop.interface document-font-name 'Roboto Slab 10'
+# gsettings set org.gnome.desktop.interface text-scaling-factor '1.0'
+# gsettings set org.gnome.desktop.interface font-name 'Ubuntu 10'
+# gsettings set org.gnome.desktop.interface color-scheme 'prefer-dark'
+# gsettings set org.gnome.desktop.interface monospace-font-name 'JetBrains Mono 10'
+# gsettings set org.gnome.desktop.interface font-antialisaing 'rgba'
+# gsettings set org.gnome.desktop.wm.preferences button-layout 'appmenu:minimize,maximize,close'
 
 gsettings set org.gnome.shell.keybindings switch-to-application-1 "[]"
 gsettings set org.gnome.shell.keybindings switch-to-application-2 "[]"
@@ -45,10 +45,9 @@ gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-8 "['<Super><Sh
 gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-9 "['<Super><Shift>9']"
 gsettings set org.gnome.desktop.wm.keybindings move-to-workspace-10 "['<Super><Shift>0']"
 
-gsettings set org.gnome.desktop.wm.keybindings close "['<Alt>F4', '<Super><Shift>q']"
+gsettings set org.gnome.desktop.wm.keybindings close "['<Alt>F4', '<Super>c']"
 gsettings set org.gnome.desktop.wm.keybindings move-to-center "['<Super><Shift>c']"
 gsettings set org.gnome.desktop.wm.keybindings toggle-fullscreen "['<Super>f']"
 gsettings set org.gnome.desktop.wm.keybindings toggle-maximized "['<Super>m']"
 
-gsettings set org.gnome.settings-daemon.plugins.media-keys volume-step "5"
-
+gsettings set org.gnome.settings-daemon.plugins.media-keys volume-step "2"

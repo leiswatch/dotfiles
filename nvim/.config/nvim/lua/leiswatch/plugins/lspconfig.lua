@@ -10,7 +10,7 @@ return {
 	},
 	config = function()
 		local lspconfig = require("lspconfig")
-		require("lspconfig.ui.windows").default_options.border = "single"
+		require("lspconfig.ui.windows").default_options.border = "rounded"
 
 		require("leiswatch.lsp.textDocument")
 		require("leiswatch.lsp.signs")

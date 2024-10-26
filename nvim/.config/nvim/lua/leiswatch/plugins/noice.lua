@@ -20,7 +20,7 @@ return {
 				silent = true, -- set to true to not show a message if hover is not available
 				view = nil, -- when nil, use defaults from documentation
 				opts = {
-					border = "single",
+					border = "rounded",
 					size = {
 						max_height = 20,
 						max_width = 120,
@@ -30,7 +30,7 @@ return {
 			signature = {
 				enabled = true,
 				opts = {
-					border = "single",
+					border = "rounded",
 					size = {
 						max_height = 20,
 						max_width = 120,

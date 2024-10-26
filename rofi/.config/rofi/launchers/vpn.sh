@@ -80,7 +80,7 @@ determine_menu_title() {
 }
 
 generate_rofi_menu() {
-	PICKED_ENTRY=$(echo -e "$CONNECTION_LIST" | rofi -dmenu -mesg "$MENU_TITLE" -no-show-icons -theme "${dir}/${theme}.rasi")
+	PICKED_ENTRY=$(echo -e "$CONNECTION_LIST" | rofi -dmenu -mesg "$MENU_TITLE" -theme "${dir}/${theme}.rasi")
 
 	return 0
 }

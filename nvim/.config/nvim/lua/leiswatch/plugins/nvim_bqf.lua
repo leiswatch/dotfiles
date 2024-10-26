@@ -4,7 +4,7 @@ return {
 		auto_enable = true,
 		preview = {
 			winblend = 0,
-			border = "single",
+			border = "rounded",
 			win_height = 25,
 		},
 		func_map = {

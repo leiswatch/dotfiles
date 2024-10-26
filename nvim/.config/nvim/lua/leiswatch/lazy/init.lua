@@ -19,7 +19,7 @@ require("lazy").setup({
 	ui = {
 		size = { width = 0.75, height = 0.75 },
 		wrap = true,
-		border = "single",
+		border = "rounded",
         backdrop = 100,
 	},
 	install = {

@@ -35,7 +35,7 @@ return {
 			autocomplete = {
 				min_width = 15,
 				max_height = 10,
-				border = "single",
+				border = "rounded",
 				winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:CursorLine,Search:Search",
 				-- keep the cursor X lines away from the top/bottom of the window
 				scrolloff = 2,
@@ -62,7 +62,7 @@ return {
 				},
 			},
 			documentation = {
-				border = "single",
+				border = "rounded",
 				max_height = 20,
 				max_width = 120,
 				min_width = 10,
@@ -82,7 +82,7 @@ return {
 				min_width = 1,
 				max_width = 100,
 				max_height = 10,
-				border = "single",
+				border = "rounded",
 				winhighlight = "Normal:Normal,FloatBorder:FloatBorder",
 			},
 		},

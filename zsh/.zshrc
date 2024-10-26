@@ -63,6 +63,7 @@ zstyle ':fzf-tab:*' fzf-flags --color=bg+:#3b4261,spinner:#2ac3de,hl:#f7768e,fg:
 alias ls='eza'
 alias cat='bat'
 alias tksv='tmux kill-server'
+alias tmux='tmux a || tmux'
 alias gcwtc='git commit -m "$(curl -s https://whatthecommit.com/index.txt)"'
 alias fsb='git switch $(git branch | grep -v \"^\*\" | fzf --height=30% --reverse --info=inline)'
 
@@ -90,4 +91,4 @@ precmd_functions+=(set_win_title)
 # source <(fzf --zsh)
 
 # fnm
-eval "$(fnm env --shell zsh --use-on-cd --version-file-strategy=recursive --corepack-enabled --resolve-engines --log-level error)"
+eval "$(fnm env --shell zsh --use-on-cd --version-file-strategy=recursive --corepack-enabled --resolve-engines)"

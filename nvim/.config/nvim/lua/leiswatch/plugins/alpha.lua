@@ -1,6 +1,6 @@
 return {
 	"goolord/alpha-nvim",
-	enabled = true,
+	enabled = false,
 	config = function()
 		require("alpha").setup(require("alpha.themes.startify").config)
 		-- local dashboard = require("alpha.themes.dashboard")

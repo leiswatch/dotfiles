@@ -11,8 +11,8 @@ return {
 		"RRethy/nvim-treesitter-endwise",
 		"windwp/nvim-ts-autotag",
 		"numToStr/Comment.nvim",
-		"andymass/vim-matchup",
 		"windwp/nvim-autopairs",
+		-- "andymass/vim-matchup",
 		-- "HiPhish/rainbow-delimiters.nvim",
 	},
 
@@ -49,7 +49,7 @@ return {
 			auto_install = true,
 			highlight = {
 				enable = true,
-				additional_vim_regex_highlighting = false,
+				additional_vim_regex_highlighting = true,
 			},
 			indent = {
 				enable = true,
@@ -58,7 +58,7 @@ return {
 				enable = false,
 			},
 			matchup = {
-				enable = true,
+				enable = false,
 				include_match_words = false,
 			},
 			modules = {},

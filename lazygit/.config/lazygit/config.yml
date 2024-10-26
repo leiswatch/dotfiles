@@ -29,14 +29,14 @@
 # Tokyonight
 gui:
   nerdFontsVersion: "3"
-  border: single
+  border: rounded
   showIcons: false
   theme:
     activeBorderColor:
-      - "#7aa2f7"
+      - "#9ece6a"
       - "bold"
     inactiveBorderColor:
-      - "#3b4261"
+      - "#545c7e"
     searchingActiveBorderColor:
       - "#7aa2f7"
       - "bold"

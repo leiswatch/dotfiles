@@ -18,7 +18,12 @@ return {
 		},
 		{
 			"jdrupal-dev/css-vars.nvim",
-			opts = {},
+			opts = {
+				".css",
+				".scss",
+				".sass",
+				".less",
+			},
 		},
 		-- "FelipeLema/cmp-async-path",
 	},
@@ -47,13 +52,13 @@ return {
 			},
 			window = {
 				completion = {
-					border = "single",
+					border = "rounded",
 					winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:CursorLine,Search:Search",
 					col_offset = -3,
 					side_padding = 0,
 				},
 				documentation = {
-					border = "single",
+					border = "rounded",
 					max_width = 120,
 					max_height = 20,
 					winhighlight = "Normal:Normal,FloatBorder:FloatBorder",
