@@ -16,7 +16,7 @@ return {
 		require("leiswatch.lsp.signs")
 
 		local capabilities = vim.lsp.protocol.make_client_capabilities()
-		-- capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
+		capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 		capabilities.textDocument.completion.completionItem.snippetSupport = true
 		capabilities.textDocument.foldingRange = {
 			dynamicRegistration = false,
@@ -35,6 +35,7 @@ return {
 		-- }
 
 		require("mason").setup({
+			max_concurrent_installers = 1,
 			ui = {
 				border = "rounded",
 				height = 0.8,

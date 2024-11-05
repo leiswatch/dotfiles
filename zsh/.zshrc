@@ -78,7 +78,7 @@ function vmrss() {
     fi
 }
 
-function set_win_title(){
+function set_win_title() {
     echo -ne "\033]0; Kitty \007"
 }
 

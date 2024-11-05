@@ -8,7 +8,7 @@
     class       = Dunst
     alignment   = left
     frame_width = 2
-    frame_color = "#e0af68"
+    frame_color = "#3b4261"
     separator_color = frame
     font        = JetBrains Mono 13
     offset      = 17x17
@@ -27,7 +27,7 @@
     indicate_hidden = yes
     show_indicators = no
     separator_color= frame
-    corner_radius = 0
+    corner_radius = 4
     highlight = "#7dcfff"
     sticky_history = yes
     mouse_left_click = do_action, open_url, close_current

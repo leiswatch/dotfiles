@@ -49,5 +49,6 @@ gsettings set org.gnome.desktop.wm.keybindings close "['<Alt>F4', '<Super>c']"
 gsettings set org.gnome.desktop.wm.keybindings move-to-center "['<Super><Shift>c']"
 gsettings set org.gnome.desktop.wm.keybindings toggle-fullscreen "['<Super>f']"
 gsettings set org.gnome.desktop.wm.keybindings toggle-maximized "['<Super>m']"
+gsettings set org.gnome.shell.keybindings toggle-message-tray "['<Super>v']"
 
 gsettings set org.gnome.settings-daemon.plugins.media-keys volume-step "2"

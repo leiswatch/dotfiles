@@ -27,3 +27,5 @@
     colorMoved = default
 [includeIf "gitdir:~/Projects/bold/"]
 	path = /home/leiswatch/.gitconfig-bold
+[push]
+	autoSetupRemote = true
