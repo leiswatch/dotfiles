@@ -25,7 +25,7 @@ set $gnome-schema org.gnome.desktop.interface
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /home/leiswatch/Pictures/Wallpapers/the_valley.jpg fill
+output * bg /home/leiswatch/Pictures/Wallpapers/girl_in_rain_scaled.png fill
 
 font pango:Ubuntu 10
 

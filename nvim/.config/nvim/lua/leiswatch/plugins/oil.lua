@@ -24,6 +24,15 @@ return {
 		},
 		view_options = {
 			show_hidden = true,
+			natural_order = false,
+			-- Sort file and directory names case insensitive
+			case_insensitive = false,
+			sort = {
+				-- sort order can be "asc" or "desc"
+				-- see :help oil-columns to see which columns are sortable
+				{ "type", "asc" },
+				{ "name", "desc" },
+			},
 		},
 		preview = {
 			border = "rounded",

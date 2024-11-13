@@ -90,33 +90,34 @@ local servers = {
 	},
 	somesass_ls = {},
 
-	eslint = {
-		settings = {
-			codeAction = {
-				disableRuleComment = {
-					enable = true,
-					location = "separateLine",
-				},
-				showDocumentation = {
-					enable = true,
-				},
-			},
-			codeActionOnSave = {
-				enable = true,
-				mode = "all",
-			},
-			experimental = {
-				useFlatConfig = false,
-			},
-			runtime = "node",
-			format = true,
-			run = "onType",
-			validate = "on",
-			workingDirectories = {
-				mode = "location",
-			},
-		},
-	},
+	-- eslint = {
+	-- 	settings = {
+	-- 		codeAction = {
+	-- 			disableRuleComment = {
+	-- 				enable = true,
+	-- 				location = "separateLine",
+	-- 			},
+	-- 			showDocumentation = {
+	-- 				enable = true,
+	-- 			},
+	-- 		},
+	-- 		codeActionOnSave = {
+	-- 			enable = true,
+	-- 			mode = "all",
+	-- 		},
+	-- 		useFlatConfig = true,
+	-- 		experimental = {
+	-- 			useFlatConfig = false,
+	-- 		},
+	-- 		runtime = "node",
+	-- 		format = true,
+	-- 		run = "onType",
+	-- 		validate = "on",
+	-- 		workingDirectories = {
+	-- 			mode = "location",
+	-- 		},
+	-- 	},
+	-- },
 
 	stylelint_lsp = {
 		filetypes = { "css", "less", "sass", "scss", "sugarss", "vue" },

@@ -47,9 +47,9 @@ local lsp_fallback = setmetatable({
 local format = function()
 	local filetype = vim.api.nvim_get_option_value("filetype", { buf = 0 })
 
-	if vim.fn.exists(":EslintFixAll") ~= 0 and helpers.contains(eslint_filetypes, filetype) then
-		vim.api.nvim_command(":EslintFixAll")
-	end
+	-- if vim.fn.exists(":EslintFixAll") ~= 0 and helpers.contains(eslint_filetypes, filetype) then
+	-- 	vim.api.nvim_command(":EslintFixAll")
+	-- end
 
 	require("conform").format({
 		timeout_ms = 3000,

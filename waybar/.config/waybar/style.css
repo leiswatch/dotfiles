@@ -23,7 +23,7 @@ window#waybar.hidden {
 #workspaces {
   background-color: @bg_dark_alt;
   border-radius: 4px;
-  margin: 8px 0 8px 8px;
+  margin: 6px 0 6px 8px;
   padding: 0 4px;
 }
 
@@ -31,7 +31,7 @@ window#waybar.hidden {
   all: initial; /* Remove GTK theme values (waybar #1351) */
   min-width: 0; /* Fix weird spacing in materia (waybar #450) */
   /* padding: 0 8px; */
-  margin: 0 4px;
+  margin: 0 6px;
   color: @fg_dark;
   /* border-radius: 4px; */
 }
@@ -42,18 +42,18 @@ window#waybar.hidden {
 
 #workspaces button.active {
   /* background-color: @blue; */
-  color: @orange;
+  color: @yellow;
 }
 
 #workspaces button.focused {
   /* background-color: @blue; */
-  color: @orange;
+  color: @yellow;
 }
 
 #workspaces button:hover {
   box-shadow: inherit;
   text-shadow: inherit;
-  color: @yellow;
+  color: @orange;
 }
 
 #workspaces button.urgent {
@@ -81,7 +81,7 @@ window#waybar.hidden {
   /* border: 1px solid @fg_gutter; */
   padding: 0 8px;
   background-color: @bg_dark_alt;
-  margin: 8px 0;
+  margin: 6px 0;
   color: @fg;
 }
 
@@ -118,7 +118,7 @@ window#waybar.hidden {
   background-color: @bg_dark_alt;
   border-radius: 4px;
   padding: 0 8px;
-  margin: 8px 8px 8px 0;
+  margin: 6px 8px 6px 0;
 }
 
 #tray menu {
@@ -148,7 +148,7 @@ window#waybar.hidden {
 }
 
 #language {
-  color: @orange;
+  color: @yellow;
 }
 
 #idle_inhibitor {

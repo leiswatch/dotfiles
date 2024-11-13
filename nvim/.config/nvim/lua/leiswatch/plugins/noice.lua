@@ -4,7 +4,6 @@ return {
 	dependencies = {
 		"MunifTanjim/nui.nvim",
 	},
-	event = { "InsertEnter", "CmdlineEnter" },
 	opts = {
 		lsp = {
 			override = {

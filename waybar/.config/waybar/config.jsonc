@@ -2,7 +2,7 @@
 {
     "layer": "bottom", // Waybar at bottom layer
     "position": "top", // Waybar position (top|bottom|left|right)
-    "height": 35, // Waybar height (to be removed for auto height)
+    "height": 40, // Waybar height (to be removed for auto height)
     "spacing": 10, // Gaps between modules (4px)
     // Choose the order of the modules
     "reload_style_on_change": true,
@@ -24,7 +24,6 @@
         "disk",
         "custom/updates",
         "bluetooth",
-        "hyprland/language",
         "idle_inhibitor",
         "pulseaudio",
         "tray",
@@ -51,16 +50,19 @@
     "hyprland/workspaces": {
         "format": "{icon}",
         "format-icons": {
-            "1": "<span font=\"20\">󰎤</span>",
-            "2": "<span font=\"20\">󰎧</span>",
-            "3": "<span font=\"20\">󰎪</span>",
-            "4": "<span font=\"20\">󰎭</span>",
-            "5": "<span font=\"20\">󰎱</span>",
-            "6": "<span font=\"20\">󰎳</span>",
-            "7": "<span font=\"20\">󰎶</span>",
-            "8": "<span font=\"20\">󰎹</span>",
-            "9": "<span font=\"20\">󰎼</span>",
-            "10": "<span font=\"20\">󰽽</span>",
+            // "1": "<span font=\"20\">󰎤</span>",
+            // "2": "<span font=\"20\">󰎧</span>",
+            // "3": "<span font=\"20\">󰎪</span>",
+            // "4": "<span font=\"20\">󰎭</span>",
+            // "5": "<span font=\"20\">󰎱</span>",
+            // "6": "<span font=\"20\">󰎳</span>",
+            // "7": "<span font=\"20\">󰎶</span>",
+            // "8": "<span font=\"20\">󰎹</span>",
+            // "9": "<span font=\"20\">󰎼</span>",
+            // "10": "<span font=\"20\">󰽽</span>",
+            "active": "<span font=\"16\">󰮯</span>",
+            "default": "<span font=\"16\">󰊠</span>",
+            "empty": "<span font=\"16\">󰊠</span>",
         },
         "persistent-workspaces": {
             "*": 9, // 5 workspaces by default on every monitor
@@ -119,7 +121,7 @@
         "show-passive-items": true,
     },
     "clock": {
-        "format": " {:%a %b %d %H:%M}",
+        "format": "{:%a %b %d, %H:%M}",
         "timezone": "Europe/Warsaw",
         "tooltip-format": "<big>{:%Y %B}</big>\n<tt>{calendar}</tt>",
         "calendar": {
@@ -211,7 +213,7 @@
     "bluetooth": {
         "format": "<span font=\"12\">󰥉</span> {status}",
         "format-connected": "<span font=\"12\">󰥉</span> {device_alias}",
-        "format-connected-battery": "<span font=\"12\">󰥉</span> {device_battery_percentage}%",
+        "format-connected-battery": "<span font=\"12\">󰥉</span> {device_alias} {device_battery_percentage}%",
         // "format-device-preference": [ "device1", "device2" ], // preference list deciding the displayed device
         "tooltip-format": "{controller_alias}\t{controller_address}\n\n{num_connections} connected",
         "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",

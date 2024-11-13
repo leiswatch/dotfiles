@@ -23,7 +23,7 @@ window {
     location:                    center;
     anchor:                      center;
     fullscreen:                  false;
-    width:                       600px;
+    width:                       400px;
     x-offset:                    0px;
     y-offset:                    0px;
 
@@ -48,7 +48,7 @@ mainbox {
     border-radius:               4px;
     border-color:                @selected;
     background-color:            transparent;
-    children:                    [ "inputbar", "listview" ];
+    children:                    [ "listview" ];
 }
 
 /*****----- Inputbar -----*****/
