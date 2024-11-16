@@ -1,0 +1,24 @@
+#!/usr/bin/env bash
+
+if [[ $# -eq 1 ]]; then
+ name=$1
+else
+ name=$(nmcli connection | grep "vpn" | awk '{print $1}' | fzf)
+ uuid=$(nmcli connection | grep "$name" | awk '{print $2}')
+fi
+
+if [[ -z $uuid ]]; then
+ exit 0
+fi
+
+active_name=$(nmcli connection show --active | grep "vpn" | awk '{print $1}')
+
+if [[ -z $active_name ]]; then
+ exit 0
+fi
+
+if [[ "$name" == "$active_name" ]]; then
+ nmcli connection down uuid "$uuid"
+else
+ nmcli connection up uuid "$uuid"
+fi

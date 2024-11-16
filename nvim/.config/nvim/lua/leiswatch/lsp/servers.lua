@@ -134,6 +134,11 @@ local servers = {
 		settings = {
 			vtsls = {
 				autoUseWorkspaceTsdk = true,
+				experimental = {
+					completion = {
+						enableServerSideFuzzyMatch = true,
+					},
+				},
 			},
 			typescript = {
 				preferGoToSourceDefinition = true,
