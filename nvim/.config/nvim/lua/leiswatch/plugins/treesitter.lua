@@ -11,7 +11,7 @@ return {
 		"RRethy/nvim-treesitter-endwise",
 		"windwp/nvim-ts-autotag",
 		"numToStr/Comment.nvim",
-		"windwp/nvim-autopairs",
+		-- "windwp/nvim-autopairs",
 		-- "andymass/vim-matchup",
 		-- "HiPhish/rainbow-delimiters.nvim",
 	},
@@ -73,11 +73,11 @@ return {
 			mode = "topline",
 		})
 
-		require("nvim-autopairs").setup({
-			disable_filetype = { "TelescopePrompt", "FzfLuaFzfPrompt" },
-			enable_check_bracket_line = true,
-			ignored_next_char = "[%w%.]", -- will ignore alphanumeric and `.` symbol
-		})
+		-- require("nvim-autopairs").setup({
+		-- 	disable_filetype = { "TelescopePrompt", "FzfLuaFzfPrompt" },
+		-- 	enable_check_bracket_line = true,
+		-- 	ignored_next_char = "[%w%.]", -- will ignore alphanumeric and `.` symbol
+		-- })
 
 		require("Comment").setup({
 			ignore = "^$",

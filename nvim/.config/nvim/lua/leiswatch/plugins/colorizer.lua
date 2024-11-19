@@ -1,19 +1,6 @@
 return {
 	"NvChad/nvim-colorizer.lua",
-	ft = {
-		"css",
-		"scss",
-		"sass",
-		"less",
-		"vue",
-		"svelte",
-		"astro",
-		"javascript",
-		"typescript",
-		"javascriptreact",
-		"typescriptreact",
-		"templ",
-	},
+	event = "BufReadPre",
 	config = function()
 		require("colorizer").setup({
 			filetypes = {
@@ -46,7 +33,7 @@ return {
 				-- True is same as normal
 				tailwind = true, -- Enable tailwind colors
 				-- parsers can contain values used in |user_default_options|
-				sass = { enable = true, parsers = { "css" } }, -- Enable sass colors
+				sass = { enable = false, parsers = { "css" } }, -- Enable sass colors
 				virtualtext = "■",
 				-- update color values even if buffer is not focused
 				-- example use: cmp_menu, cmp_docs

@@ -33,7 +33,7 @@ return {
 		local cmp = require("cmp")
 		local luasnip = require("luasnip")
 		local lspkind = require("lspkind")
-		local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+		-- local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 
 		local has_words_before = function()
 			unpack = unpack or table.unpack
@@ -229,7 +229,7 @@ return {
 			}),
 		})
 
-		cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+		-- cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 
 		require("luasnip.loaders.from_vscode").lazy_load()
 	end,
