@@ -1,5 +1,6 @@
 return {
 	"esmuellert/nvim-eslint",
+	enabled = true,
 	ft = {
 		"javascript",
 		"javascriptreact",
@@ -45,9 +46,7 @@ return {
 				format = true,
 				run = "onType",
 				validate = "on",
-				workingDirectory = function(bufnr)
-					return { directory = vim.fs.root(bufnr, { "package.json", 'eslint.config.js', '.git' }) }
-				end,
+				workingDirectory = { mode = "location" },
 				workspaceFolder = function(bufnr)
 					local git_dir = eslint.resolve_git_dir(bufnr)
 

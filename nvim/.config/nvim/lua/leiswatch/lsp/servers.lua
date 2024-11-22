@@ -90,6 +90,20 @@ local servers = {
 	},
 	somesass_ls = {},
 
+	stylelint_lsp = {
+		filetypes = { "css", "less", "sass", "scss", "sugarss", "vue" },
+		settings = {
+			stylelintplus = {
+				autoFixOnFormat = true,
+				autoFixOnSave = false,
+				validateOnSave = false,
+				validateOnType = true,
+			},
+		},
+	},
+
+	zls = {},
+
 	-- eslint = {
 	-- 	settings = {
 	-- 		codeAction = {
@@ -119,39 +133,27 @@ local servers = {
 	-- 	},
 	-- },
 
-	stylelint_lsp = {
-		filetypes = { "css", "less", "sass", "scss", "sugarss", "vue" },
-		settings = {
-			stylelintplus = {
-				autoFixOnFormat = true,
-				autoFixOnSave = false,
-				validateOnSave = false,
-				validateOnType = true,
-			},
-		},
-	},
-	vtsls = {
-		settings = {
-			vtsls = {
-				autoUseWorkspaceTsdk = true,
-				experimental = {
-					completion = {
-						enableServerSideFuzzyMatch = true,
-					},
-				},
-			},
-			typescript = {
-				preferGoToSourceDefinition = true,
-				tsserver = {
-					maxTsServerMemory = "auto",
-				},
-			},
-			javascript = {
-				preferGoToSourceDefinition = true,
-			},
-		},
-	},
-	zls = {},
+	-- vtsls = {
+	-- 	settings = {
+	-- 		vtsls = {
+	-- 			autoUseWorkspaceTsdk = true,
+	-- 			experimental = {
+	-- 				completion = {
+	-- 					enableServerSideFuzzyMatch = true,
+	-- 				},
+	-- 			},
+	-- 		},
+	-- 		typescript = {
+	-- 			preferGoToSourceDefinition = true,
+	-- 			tsserver = {
+	-- 				maxTsServerMemory = "auto",
+	-- 			},
+	-- 		},
+	-- 		javascript = {
+	-- 			preferGoToSourceDefinition = true,
+	-- 		},
+	-- 	},
+	-- },
 
 	-- ts_ls = {
 	-- 	init_options = {

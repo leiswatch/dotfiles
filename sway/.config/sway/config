@@ -81,11 +81,11 @@ exec /usr/bin/xdg-user-dirs-update
 # exec sh /home/leiswatch/.config/sway/scripts/octopi.sh
 exec sh /home/leiswatch/.config/sway/scripts/waybar.sh
 exec sh /home/leiswatch/.config/sway/scripts/nm.sh
+exec sh /home/leiswatch/.config/sway/scripts/dunst.sh
 exec sh /home/leiswatch/.config/sway/scripts/solaar.sh
 exec sh /home/leiswatch/.config/sway/scripts/gammastep.sh
 exec sh /home/leiswatch/.config/sway/scripts/blueman.sh
 exec sh /home/leiswatch/.config/sway/scripts/hypridle.sh
-
 
 ### Idle configuration
 #

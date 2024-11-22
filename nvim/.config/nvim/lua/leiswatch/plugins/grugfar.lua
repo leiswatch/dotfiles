@@ -2,7 +2,7 @@ return {
 	"MagicDuck/grug-far.nvim",
 	keys = {
 		{
-			"<leader>gs",
+			"<leader>go",
 			"<cmd>GrugFar<cr>",
 		},
 	},
