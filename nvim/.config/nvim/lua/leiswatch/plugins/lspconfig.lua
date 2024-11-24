@@ -5,8 +5,8 @@ return {
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 		"williamboman/mason-lspconfig.nvim",
 		"b0o/schemastore.nvim",
-		"pmizio/typescript-tools.nvim",
-		-- "yioneko/nvim-vtsls",
+		"yioneko/nvim-vtsls",
+		-- "pmizio/typescript-tools.nvim",
 	},
 	config = function()
 		local lspconfig = require("lspconfig")
@@ -56,25 +56,25 @@ return {
 			automatic_installation = true,
 		})
 
-		-- require("lspconfig.configs").vtsls = require("vtsls").lspconfig
+		require("lspconfig.configs").vtsls = require("vtsls").lspconfig
 
-		require("typescript-tools").setup({
-			capabilities = capabilities,
-			filetypes = {
-				"javascript",
-				"javascriptreact",
-				"javascript.jsx",
-				"typescript",
-				"typescriptreact",
-				"typescript.tsx",
-				"vue",
-				"svelte",
-				-- "astro",
-			},
-			settings = {
-				separate_diagnostic_server = false,
-			},
-		})
+		-- require("typescript-tools").setup({
+		-- 	capabilities = capabilities,
+		-- 	filetypes = {
+		-- 		"javascript",
+		-- 		"javascriptreact",
+		-- 		"javascript.jsx",
+		-- 		"typescript",
+		-- 		"typescriptreact",
+		-- 		"typescript.tsx",
+		-- 		"vue",
+		-- 		"svelte",
+		-- 		-- "astro",
+		-- 	},
+		-- 	settings = {
+		-- 		separate_diagnostic_server = false,
+		-- 	},
+		-- })
 
 		for server_name, _ in pairs(servers) do
 			local server = servers[server_name] or {}

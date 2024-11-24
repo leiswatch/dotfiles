@@ -8,11 +8,10 @@ return {
 	dependencies = {
 		"nvim-treesitter/nvim-treesitter-context",
 		"JoosepAlviste/nvim-ts-context-commentstring",
-		"RRethy/nvim-treesitter-endwise",
 		"windwp/nvim-ts-autotag",
 		"numToStr/Comment.nvim",
 		"windwp/nvim-autopairs",
-		"andymass/vim-matchup",
+		-- "andymass/vim-matchup",
 		-- "HiPhish/rainbow-delimiters.nvim",
 	},
 	config = function()
@@ -53,11 +52,8 @@ return {
 			indent = {
 				enable = true,
 			},
-			endwise = {
-				enable = false,
-			},
 			matchup = {
-				enable = true,
+				enable = false,
 				include_match_words = false,
 				disable_virtual_text = true,
 			},

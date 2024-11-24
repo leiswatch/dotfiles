@@ -102,58 +102,58 @@ local servers = {
 		},
 	},
 
+	vtsls = {
+		settings = {
+			vtsls = {
+				autoUseWorkspaceTsdk = true,
+				experimental = {
+					completion = {
+						enableServerSideFuzzyMatch = true,
+					},
+				},
+			},
+			typescript = {
+				preferGoToSourceDefinition = true,
+				tsserver = {
+					maxTsServerMemory = "auto",
+				},
+			},
+			javascript = {
+				preferGoToSourceDefinition = true,
+			},
+		},
+	},
+
 	zls = {},
 
-	-- eslint = {
-	-- 	settings = {
-	-- 		codeAction = {
-	-- 			disableRuleComment = {
-	-- 				enable = true,
-	-- 				location = "separateLine",
-	-- 			},
-	-- 			showDocumentation = {
-	-- 				enable = true,
-	-- 			},
-	-- 		},
-	-- 		codeActionOnSave = {
-	-- 			enable = true,
-	-- 			mode = "all",
-	-- 		},
-	-- 		useFlatConfig = true,
-	-- 		experimental = {
-	-- 			useFlatConfig = false,
-	-- 		},
-	-- 		runtime = "node",
-	-- 		format = true,
-	-- 		run = "onType",
-	-- 		validate = "on",
-	-- 		workingDirectories = {
-	-- 			mode = "location",
-	-- 		},
-	-- 	},
-	-- },
-
-	-- vtsls = {
-	-- 	settings = {
-	-- 		vtsls = {
-	-- 			autoUseWorkspaceTsdk = true,
-	-- 			experimental = {
-	-- 				completion = {
-	-- 					enableServerSideFuzzyMatch = true,
-	-- 				},
-	-- 			},
-	-- 		},
-	-- 		typescript = {
-	-- 			preferGoToSourceDefinition = true,
-	-- 			tsserver = {
-	-- 				maxTsServerMemory = "auto",
-	-- 			},
-	-- 		},
-	-- 		javascript = {
-	-- 			preferGoToSourceDefinition = true,
-	-- 		},
-	-- 	},
-	-- },
+	eslint = {
+		settings = {
+			codeAction = {
+				disableRuleComment = {
+					enable = true,
+					location = "separateLine",
+				},
+				showDocumentation = {
+					enable = true,
+				},
+			},
+			codeActionOnSave = {
+				enable = true,
+				mode = "all",
+			},
+			useFlatConfig = true,
+			experimental = {
+				useFlatConfig = false,
+			},
+			runtime = "node",
+			format = true,
+			run = "onType",
+			validate = "on",
+			workingDirectories = {
+				mode = "location",
+			},
+		},
+	},
 
 	-- ts_ls = {
 	-- 	init_options = {

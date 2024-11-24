@@ -11,29 +11,15 @@ return {
 		"saadparwaiz1/cmp_luasnip",
 		"rafamadriz/friendly-snippets",
 		"onsails/lspkind.nvim",
-		{
-			"L3MON4D3/LuaSnip",
-			version = "v2.*",
-			build = "make install_jsregexp",
-		},
-		{
-			"jdrupal-dev/css-vars.nvim",
-			opts = {
-				".css",
-				".scss",
-				".sass",
-				".less",
-			},
-		},
+		{ "L3MON4D3/LuaSnip", version = "v2.*", build = "make install_jsregexp" },
 		-- "FelipeLema/cmp-async-path",
 	},
 	event = { "InsertEnter", "CmdlineEnter" },
-
 	config = function()
 		local cmp = require("cmp")
-		local luasnip = require("luasnip")
 		local lspkind = require("lspkind")
-		-- local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+		local luasnip = require("luasnip")
+		local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 
 		local has_words_before = function()
 			unpack = unpack or table.unpack
@@ -41,13 +27,15 @@ return {
 			return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
 		end
 
+		require("luasnip.loaders.from_vscode").lazy_load()
+
 		cmp.setup({
 			view = {
 				entries = "custom",
 			},
 			snippet = {
 				expand = function(args)
-					luasnip.lsp_expand(args.body) -- For `luasnip` users.
+					luasnip.lsp_expand(args.body)
 				end,
 			},
 			window = {
@@ -106,8 +94,7 @@ return {
 			sources = cmp.config.sources({
 				{ name = "nvim_lsp" },
 				{ name = "luasnip" },
-				{ name = "supermaven" },
-				{ name = "css_vars" },
+				-- { name = "css_vars" },
 				{ name = "nvim_lua" },
 			}, {
 				{ name = "buffer" },
@@ -139,34 +126,7 @@ return {
 					local kind = lspkind.cmp_format({
 						mode = "symbol_text",
 						maxwidth = 120,
-						-- preset = "codicons",
-						symbol_map = {
-							Text = "",
-							Method = "",
-							Function = "",
-							Constructor = "",
-							Field = "",
-							Variable = "",
-							Class = "",
-							Interface = "",
-							Module = "",
-							Property = "",
-							Unit = "",
-							Value = "",
-							Enum = "",
-							Keyword = "",
-							Snippet = "",
-							Color = "",
-							File = "",
-							Reference = "",
-							Folder = "",
-							EnumMember = "",
-							Constant = "",
-							Struct = "",
-							Event = "",
-							Operator = "",
-							TypeParameter = "",
-						},
+						preset = "codicons",
 					})(entry, vim_item)
 					local strings = vim.split(kind.kind, "%s", { trimempty = true })
 					kind.kind = " " .. (strings[1] or "") .. " "
@@ -176,39 +136,6 @@ return {
 				end,
 			},
 		})
-
-		  kind_icons = {
-    Text = '󰉿',
-    Method = '󰊕',
-    Function = '󰊕',
-    Constructor = '󰒓',
-
-    Field = '󰜢',
-    Variable = '󰆦',
-    Property = '󰖷',
-
-    Class = '󱡠',
-    Interface = '󱡠',
-    Struct = '󱡠',
-    Module = '󰅩',
-
-    Unit = '󰪚',
-    Value = '󰦨',
-    Enum = '󰦨',
-    EnumMember = '󰦨',
-
-    Keyword = '󰻾',
-    Constant = '󰏿',
-
-    Snippet = '󱄽',
-    Color = '󰏘',
-    File = '󰈔',
-    Reference = '󰬲',
-    Folder = '󰉋',
-    Event = '󱐋',
-    Operator = '󰪚',
-    TypeParameter = '󰬛',
-  },
 
 		cmp.setup.cmdline({ "/", "?" }, {
 			mapping = cmp.mapping.preset.cmdline(),
@@ -226,8 +153,6 @@ return {
 			}),
 		})
 
-		-- cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
-
-		require("luasnip.loaders.from_vscode").lazy_load()
+		cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 	end,
 }
