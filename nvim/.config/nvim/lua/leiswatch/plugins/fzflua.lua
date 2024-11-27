@@ -18,7 +18,7 @@ return {
 					width = 0.75,
 					height = 0.75,
 					preview = { hidden = "hidden" },
-					border = 'rounded',
+					border = "rounded",
 				},
 				cwd_prompt = false,
 				prompt = "  ",
@@ -45,7 +45,7 @@ return {
 					preview = {
 						horizontal = "right:40%", -- right|left:size
 					},
-					border = 'rounded',
+					border = "rounded",
 				},
 				cwd_prompt = false,
 				prompt = "  ",

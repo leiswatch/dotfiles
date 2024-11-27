@@ -5,7 +5,7 @@ local opts = { noremap = true, silent = true }
 vim.keymap.set("n", "<leader>m", function()
 	harpoon:list():add()
 end, opts)
-vim.keymap.set("n", "<leader>h", function()
+vim.keymap.set("n", "H", function()
 	harpoon.ui:toggle_quick_menu(harpoon:list(), {
 		title_pos = "center",
 		border = "rounded",

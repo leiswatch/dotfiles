@@ -47,7 +47,7 @@ return {
 			auto_install = true,
 			highlight = {
 				enable = true,
-				additional_vim_regex_highlighting = true,
+				additional_vim_regex_highlighting = false,
 			},
 			indent = {
 				enable = true,
@@ -56,6 +56,15 @@ return {
 				enable = false,
 				include_match_words = false,
 				disable_virtual_text = true,
+			},
+			incremental_selection = {
+				enable = true,
+				keymaps = {
+					init_selection = "<CR>",
+					scope_incremental = "<CR>",
+					node_incremental = "<CR>",
+					node_decremental = "<TAB>",
+				},
 			},
 			modules = {},
 			ignore_install = {},

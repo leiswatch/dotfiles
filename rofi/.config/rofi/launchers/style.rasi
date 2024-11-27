@@ -99,7 +99,7 @@ inputbar {
     enabled:                     true;
     spacing:                     10px;
     margin:                      0px;
-    padding:                     0px;
+    padding:                     8px;
     border:                      0px solid;
     border-radius:               4px;
     border-color:                @border-colour;
@@ -114,10 +114,10 @@ prompt {
     text-color:                  inherit;
 }
 textbox-prompt-colon {
-    enabled:                     true;
-    padding:                     5px 0px;
+    enabled:                     false;
+    padding:                     5px;
     expand:                      false;
-    str:                         " ";
+    str:                         "";
     background-color:            inherit;
     text-color:                  inherit;
 }
@@ -128,7 +128,7 @@ entry {
     text-color:                  inherit;
     cursor:                      text;
     placeholder:                 "Search...";
-    placeholder-color:           inherit;
+    placeholder-color:           @foreground-gutter;
 }
 num-filtered-rows {
     enabled:                     true;

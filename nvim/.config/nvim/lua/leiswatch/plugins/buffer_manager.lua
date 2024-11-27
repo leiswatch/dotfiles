@@ -3,10 +3,11 @@ return {
 	dependencies = { "nvim-lua/plenary.nvim" },
 	keys = {
 		{
-			"<leader>j",
+			"J",
 			function()
 				require("buffer_manager.ui").toggle_quick_menu()
 			end,
+			{ noremap = true, silent = true },
 		},
 	},
 	opts = {

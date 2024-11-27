@@ -47,8 +47,8 @@ return {
 				},
 				documentation = {
 					border = "rounded",
-					max_width = 120,
-					max_height = 20,
+					-- max_width = 120,
+					-- max_height = 20,
 					winhighlight = "Normal:Normal,FloatBorder:FloatBorder",
 				},
 			},

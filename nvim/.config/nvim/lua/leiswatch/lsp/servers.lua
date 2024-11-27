@@ -102,27 +102,27 @@ local servers = {
 		},
 	},
 
-	vtsls = {
-		settings = {
-			vtsls = {
-				autoUseWorkspaceTsdk = true,
-				experimental = {
-					completion = {
-						enableServerSideFuzzyMatch = true,
-					},
-				},
-			},
-			typescript = {
-				preferGoToSourceDefinition = true,
-				tsserver = {
-					maxTsServerMemory = "auto",
-				},
-			},
-			javascript = {
-				preferGoToSourceDefinition = true,
-			},
-		},
-	},
+	-- vtsls = {
+	-- 	settings = {
+	-- 		vtsls = {
+	-- 			autoUseWorkspaceTsdk = true,
+	-- 			experimental = {
+	-- 				completion = {
+	-- 					enableServerSideFuzzyMatch = true,
+	-- 				},
+	-- 			},
+	-- 		},
+	-- 		typescript = {
+	-- 			preferGoToSourceDefinition = true,
+	-- 			tsserver = {
+	-- 				maxTsServerMemory = "auto",
+	-- 			},
+	-- 		},
+	-- 		javascript = {
+	-- 			preferGoToSourceDefinition = true,
+	-- 		},
+	-- 	},
+	-- },
 
 	zls = {},
 

@@ -3,7 +3,8 @@ return {
 	keys = {
 		{
 			"<leader>go",
-			"<cmd>GrugFar<cr>",
+			vim.cmd.GrugFar,
+			{ noremap = true, silent = true },
 		},
 	},
 	config = function()

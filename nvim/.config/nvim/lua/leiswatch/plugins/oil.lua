@@ -2,7 +2,13 @@ return {
 	"stevearc/oil.nvim",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	keys = {
-		{ "<leader>o", "<cmd>Oil --float<cr>" },
+		{
+			"<leader>o",
+			function()
+				vim.cmd({ cmd = "Oil", args = { "--float" } })
+			end,
+			{ noremap = true, silent = true },
+		},
 	},
 	opts = {
 		default_file_explorer = false,

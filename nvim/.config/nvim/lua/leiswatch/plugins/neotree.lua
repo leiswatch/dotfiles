@@ -26,6 +26,7 @@ return {
 					reveal_force_cwd = true,
 				})
 			end,
+			{ noremap = true, silent = true },
 		},
 	},
 	opts = {

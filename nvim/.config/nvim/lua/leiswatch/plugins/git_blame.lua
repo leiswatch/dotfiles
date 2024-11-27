@@ -1,7 +1,7 @@
 return {
 	"FabijanZulj/blame.nvim",
 	keys = {
-		{ "<leader>gt", "<cmd>BlameToggle<cr>" },
+		{ "<leader>gt", vim.cmd.BlameToggle, { noremap = true, silent = true } },
 	},
 	opts = {},
 }

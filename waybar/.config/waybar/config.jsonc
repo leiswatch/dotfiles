@@ -19,11 +19,11 @@
     "modules-right": [
         // "keyboard-state",
         // "sway/language",
+        // "bluetooth",
         "cpu",
         "memory",
         "disk",
         "custom/updates",
-        "bluetooth",
         "pulseaudio",
         "idle_inhibitor",
         "tray",

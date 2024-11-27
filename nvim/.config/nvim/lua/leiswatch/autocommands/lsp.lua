@@ -1,47 +1,55 @@
-local helpers = require("leiswatch.helpers")
-
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 	callback = function(event)
+		local fzflua = require("fzf-lua")
+
 		vim.bo[event.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 
 		local opts = { noremap = true, silent = true, buffer = event.buf }
-		local diagnostic_opts = { border = "rounded", max_width = 100, header = "", source = false }
+		-- local diagnostic_opts = { border = "rounded", max_width = 100, header = "", source = false, scope = "line" }
+		local diagnostic_opts = { border = "rounded", header = "", source = false, scope = "line" }
 
 		vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
 		vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
 		vim.keymap.set("n", "gl", vim.lsp.buf.references, opts)
 		vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-		vim.keymap.set("n", "<leader>lt", require("fzf-lua").lsp_typedefs, opts)
-		vim.keymap.set("n", "<leader>ld", require("fzf-lua").lsp_document_symbols, opts)
+		vim.keymap.set("n", "<leader>lt", fzflua.lsp_typedefs, opts)
+		vim.keymap.set("n", "<leader>ld", fzflua.lsp_document_symbols, opts)
 		vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
 		vim.keymap.set("n", "<leader>k", vim.lsp.buf.signature_help, opts)
 		vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
 		vim.keymap.set({ "v", "n" }, "<leader>ca", vim.lsp.buf.code_action, opts)
-		-- vim.keymap.set({ "v", "n" }, "<C-i>", function()
-		-- 	vim.lsp.buf.format({
-		-- 		timeout_ms = 3000,
-		-- 		filter = function(client)
-		-- 			local clients = { "null-ls", "stylelint_lsp", "eslint", "rust_analyzer", "templ", "zls" }
-
-		-- 			return helpers.contains(clients, client.name)
-		-- 		end,
+		-- vim.keymap.set({ "v", "n" }, "<leader>ca", function()
+		-- 	fzflua.lsp_code_actions({
+		-- 		winopts = {
+		-- 			relative = "cursor",
+		-- 			row = 1.01,
+		-- 			col = 0,
+		-- 			height = 0.3,
+		-- 			width = 0.3,
+		-- 			preview = { hidden = "hidden" },
+		-- 		},
 		-- 	})
 		-- end, opts)
+
 		vim.keymap.set("n", "<leader>e", function()
 			vim.diagnostic.open_float(diagnostic_opts)
 		end, opts)
+
 		vim.keymap.set("n", "[d", function()
 			vim.diagnostic.goto_prev({
 				float = diagnostic_opts,
 			})
 		end, opts)
+
 		vim.keymap.set("n", "]d", function()
 			vim.diagnostic.goto_next({
 				float = diagnostic_opts,
 			})
 		end, opts)
+
 		vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, opts)
+
 		-- vim.keymap.set({ "n", "i", "s" }, "<c-f>", function()
 		--     if not require("noice.lsp").scroll(4) then
 		--         return "<c-f>"

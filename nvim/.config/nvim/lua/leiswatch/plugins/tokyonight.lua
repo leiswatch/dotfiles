@@ -7,7 +7,7 @@ return {
 		require("tokyonight").setup({
 			style = "night", -- The theme comes in three styles, `storm`, `moon`, a darker variant `night` and `day`
 			light_style = "day", -- The theme is used when the background is set to light transparent = true, -- Enable this to disable setting the background color
-			transparent = false,
+			transparent = true,
 			terminal_colors = true, -- Configure the colors used when opening a `:terminal` in [Neovim](https://github.com/neovim/neovim)
 			styles = {
 				comments = { italic = true },
@@ -87,6 +87,10 @@ return {
 
 				hl.IblIndent = { fg = color.bg_highlight }
 				hl.IblScope = { fg = color.fg_gutter }
+
+				hl.PounceMatch = { bg = color.fg_gutter, fg = color.bg }
+				hl.PounceAccept = { bg = color.orange, fg = color.bg }
+				hl.PounceAcceptBest = { bg = color.orange, fg = color.bg }
 
 				hl.CmpNormal = { bg = color.black }
 			end,

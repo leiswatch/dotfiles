@@ -11,9 +11,23 @@ vim.keymap.set("n", "<leader>fl", function()
 		exec_empty_query = false,
 	})
 end, opts)
+
 vim.keymap.set("n", "<leader>fw", function()
 	require("fzf-lua").grep_cword()
 end, opts)
+
 vim.keymap.set("v", "<leader>fw", function()
 	require("fzf-lua").grep_visual()
 end, opts)
+
+-- vim.keymap.set("n", "<leader>j", function()
+-- 	require("fzf-lua").buffers({
+-- 		winopts = {
+-- 			row = 0.5,
+-- 			col = 0.5,
+-- 			height = 0.4,
+-- 			width = 0.4,
+-- 			preview = { hidden = "hidden" },
+-- 		},
+-- 	})
+-- end, opts)
