@@ -1,10 +1,12 @@
 local M = {
-	lsp = {
+	ensure_installed = {
 		"astro",
+		"basedpyright",
 		"bashls",
 		"clangd",
 		"cssls",
 		"cssmodules_ls",
+		"denols",
 		"dockerls",
 		"eslint",
 		"gopls",
@@ -13,7 +15,6 @@ local M = {
 		"jsonls",
 		"lua_ls",
 		"prismals",
-		"pyright",
 		"rust_analyzer",
 		"somesass_ls",
 		"stylelint_lsp",
@@ -21,17 +22,16 @@ local M = {
 		"tailwindcss",
 		"taplo",
 		"templ",
+		"ts_ls",
 		"vtsls",
 		"yamlls",
 		"zls",
-		"ts_ls",
 		-- "htmx",
 		-- "terraformls",
 		-- "vuels",
 		-- "emmet_ls",
-		-- "denols",
 	},
-	tools = {
+	ensure_installed_tools = {
 		"black",
 		"clang-format",
 		"gofumpt",

@@ -92,13 +92,13 @@ return {
 				end, { "i", "s" }),
 			}),
 			sources = cmp.config.sources({
+				{ name = "lazydev", group_index = 0 },
 				{ name = "nvim_lsp" },
 				{ name = "luasnip" },
-				-- { name = "css_vars" },
 				{ name = "nvim_lua" },
-			}, {
 				{ name = "buffer" },
 				{ name = "path" },
+				-- { name = "css_vars" },
 				-- { name = "async_path" },
 				-- { name = "spell", keyword_length = 3, keyword_pattern = [[\w\+]] },
 			}),

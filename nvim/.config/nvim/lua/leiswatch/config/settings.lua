@@ -77,7 +77,7 @@ vim.lsp.log.set_level(vim.log.levels.OFF)
 
 vim.diagnostic.config({
 	virtual_text = {
-		update_in_insert = true,
+		update_in_insert = false,
 		underline = true,
 		signs = true,
 		source = false,
@@ -107,6 +107,8 @@ vim.diagnostic.config({
 				-- return " " .. sourceCapitalized .. diagnostic.message .. " "
 				return " " .. sourceCapitalized .. diagnostic.message .. " "
 			end
+
+			return " " .. sourceCapitalized .. diagnostic.message .. " "
 		end,
 		prefix = "",
 	},

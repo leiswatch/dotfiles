@@ -20,6 +20,7 @@ ZOXIDE_CMD_OVERRIDE="cd"
 
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
+zinit light zsh-users/zsh-autosuggestions
 zinit light Aloxaf/fzf-tab
 zinit light MichaelAquilina/zsh-you-should-use
 
@@ -72,7 +73,7 @@ zstyle ':fzf-tab:*' fzf-flags --color=bg+:#3b4261,spinner:#2ac3de,hl:#f7768e,fg:
 # Aliases
 alias ls='eza'
 alias cat='bat'
-alias tksv='tmux kill-server'
+alias tksv='/usr/bin/tmux kill-server'
 alias tmux='tmux a || tmux'
 alias gcwtc='git commit -m "$(curl -s https://whatthecommit.com/index.txt)"'
 alias fsb='git switch $(git branch | grep -v \"^\*\" | fzf --height=30% --reverse --info=inline)'
@@ -88,11 +89,11 @@ function vmrss() {
     fi
 }
 
-function set_win_title() {
-    echo -ne "\033]0; Kitty \007"
-}
+# function set_win_title() {
+#     echo -ne "\033]0; Kitty \007"
+# }
 
-precmd_functions+=(set_win_title)
+# precmd_functions+=(set_win_title)
 
 # bun
 [ -s "/home/leiswatch/.bun/_bun" ] && source "/home/leiswatch/.bun/_bun"
