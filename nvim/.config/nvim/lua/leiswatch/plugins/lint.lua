@@ -3,11 +3,19 @@ return {
 	event = "BufEnter",
 	enabled = true,
 	config = function()
-		require("lint").linters_by_ft = {
+		local lint = require("lint")
+
+		lint.linters_by_ft = {
 			python = { "pylint" },
 			go = { "golangcilint" },
 			yaml = { "yamllint" },
 			zsh = { "zsh" },
 		}
+
+		vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+			callback = function()
+				lint.try_lint()
+			end,
+		})
 	end,
 }

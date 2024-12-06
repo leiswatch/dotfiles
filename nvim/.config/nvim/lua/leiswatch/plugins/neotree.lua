@@ -6,14 +6,6 @@ return {
 		"nvim-lua/plenary.nvim",
 		"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
 		"MunifTanjim/nui.nvim",
-		-- {
-		-- 	"3rd/image.nvim",
-		-- 	config = function()
-		-- 		require("image").setup({
-		-- 			backend = "kitty",
-		-- 		})
-		-- 	end,
-		-- },
 	},
 	keys = {
 		{
@@ -32,11 +24,11 @@ return {
 	opts = {
 		close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
 		popup_border_style = "rounded",
-		enable_git_status = true,
+		enable_git_status = false,
 		enable_diagnostics = false,
 		window = {
 			position = "left",
-			width = "25%",
+			width = "30%",
 			mapping_options = {
 				noremap = true,
 				nowait = true,

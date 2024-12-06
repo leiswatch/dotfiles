@@ -5,8 +5,8 @@ return {
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 		"williamboman/mason-lspconfig.nvim",
 		"b0o/schemastore.nvim",
-		"pmizio/typescript-tools.nvim",
-		-- "yioneko/nvim-vtsls",
+		"yioneko/nvim-vtsls",
+		-- "pmizio/typescript-tools.nvim",
 	},
 	config = function()
 		local servers = {
@@ -68,19 +68,17 @@ return {
 				},
 			},
 
-			cssmodules_ls = {},
-			tailwindcss = {},
 			graphql = {
 				filetypes = { "graphql" },
 			},
 
-			cssls = {
-				filetypes = { "css", "less", "sass", "scss", "sugarss", "vue" },
-			},
+			cssls = {},
 			somesass_ls = {},
+			-- tailwindcss = {},
+			-- css_variables = {},
+			-- cssmodules_ls = {},
 
 			stylelint_lsp = {
-				filetypes = { "css", "less", "sass", "scss", "sugarss", "vue" },
 				settings = {
 					stylelintplus = {
 						autoFixOnFormat = true,
@@ -99,53 +97,51 @@ return {
 							location = "separateLine",
 						},
 						showDocumentation = {
-							enable = false,
+							enable = true,
 						},
 					},
 					codeActionOnSave = {
-						enable = true,
+						enable = false,
 						mode = "all",
 					},
-					useFlatConfig = true,
 					experimental = {
 						useFlatConfig = false,
 					},
-					runtime = "node",
 					format = true,
-					run = "onType",
-					validate = "on",
-					workingDirectories = {
-						mode = "location",
+					nodePath = "",
+					onIgnoredFiles = "off",
+					problems = {
+						shortenToSingleLine = false,
 					},
-					workingDirectory = {
-						mode = "location",
+					quiet = false,
+					run = "onType",
+					useESLintClass = false,
+					validate = "on",
+					workingDirectory = { mode = "location" },
+				},
+			},
+			vtsls = {
+				settings = {
+					vtsls = {
+						autoUseWorkspaceTsdk = true,
+						experimental = {
+							completion = {
+								enableServerSideFuzzyMatch = true,
+							},
+						},
+					},
+					typescript = {
+						preferGoToSourceDefinition = true,
+						tsserver = {
+							maxTsServerMemory = "auto",
+						},
+					},
+					javascript = {
+						preferGoToSourceDefinition = true,
 					},
 				},
 			},
-
 			zls = {},
-
-			-- vtsls = {
-			-- 	settings = {
-			-- 		vtsls = {
-			-- 			autoUseWorkspaceTsdk = true,
-			-- 			experimental = {
-			-- 				completion = {
-			-- 					enableServerSideFuzzyMatch = true,
-			-- 				},
-			-- 			},
-			-- 		},
-			-- 		typescript = {
-			-- 			preferGoToSourceDefinition = true,
-			-- 			tsserver = {
-			-- 				maxTsServerMemory = "auto",
-			-- 			},
-			-- 		},
-			-- 		javascript = {
-			-- 			preferGoToSourceDefinition = true,
-			-- 		},
-			-- 	},
-			-- },
 
 			-- ts_ls = {
 			-- 	init_options = {
@@ -189,25 +185,34 @@ return {
 
 		local capabilities = vim.lsp.protocol.make_client_capabilities()
 		capabilities.textDocument.completion.completionItem.snippetSupport = true
+		capabilities.textDocument.completion.completionItem.resolveSupport = {
+			properties = {
+				"documentation",
+				"detail",
+				"additionalTextEdits",
+			},
+		}
 		capabilities.textDocument.foldingRange = {
 			dynamicRegistration = false,
 			lineFoldingOnly = true,
 		}
 		capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 
+		require("lspconfig.configs").vtsls = require("vtsls").lspconfig
+
 		local mason_config = require("leiswatch.lsp.mason_config")
 
-		local handlers = {
-			function(server_name)
-				if not servers[server_name] then
-					return
-				end
+		-- local handlers = {
+		-- 	function(server_name)
+		-- 		if not servers[server_name] then
+		-- 			return
+		-- 		end
 
-				local server = servers[server_name]
-				server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-				lspconfig[server_name].setup(server)
-			end,
-		}
+		-- 		local server = servers[server_name]
+		-- 		server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
+		-- 		lspconfig[server_name].setup(server)
+		-- 	end,
+		-- }
 
 		require("mason").setup({
 			max_concurrent_installers = 1,
@@ -226,35 +231,33 @@ return {
 		})
 
 		require("mason-lspconfig").setup({
-			handlers = handlers,
+			-- handlers = handlers,
 			ensure_installed = mason_config.ensure_installed,
 			automatic_installation = true,
 		})
 
-		require("typescript-tools").setup({
-			capabilities = capabilities,
-			filetypes = {
-				"javascript",
-				"javascriptreact",
-				"javascript.jsx",
-				"typescript",
-				"typescriptreact",
-				"typescript.tsx",
-				"vue",
-				"svelte",
-				-- "astro",
-			},
-			settings = {
-				separate_diagnostic_server = false,
-			},
-		})
+		-- require("typescript-tools").setup({
+		-- 	capabilities = capabilities,
+		-- 	filetypes = {
+		-- 		"javascript",
+		-- 		"javascriptreact",
+		-- 		"javascript.jsx",
+		-- 		"typescript",
+		-- 		"typescriptreact",
+		-- 		"typescript.tsx",
+		-- 		"vue",
+		-- 		"svelte",
+		-- 		-- "astro",
+		-- 	},
+		-- 	settings = {
+		-- 		separate_diagnostic_server = false,
+		-- 	},
+		-- })
 
-		-- require("lspconfig.configs").vtsls = require("vtsls").lspconfig
-
-		-- for server_name, _ in pairs(servers) do
-		-- 	local server = servers[server_name] or {}
-		-- 	server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-		-- 	lspconfig[server_name].setup(server)
-		-- end
+		for server_name, _ in pairs(servers) do
+			local server = servers[server_name] or {}
+			server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
+			lspconfig[server_name].setup(server)
+		end
 	end,
 }

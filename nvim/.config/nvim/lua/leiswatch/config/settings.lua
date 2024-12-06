@@ -7,6 +7,11 @@ vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 -- vim.g.virtcolumn_char = "▕" -- by default
 
+vim.g.lazygit_use_custom_config_file_path = 0
+vim.g.lazygit_floating_window_scaling_factor = 1
+vim.g.lazygit_floating_window_use_plenary = 0
+vim.g.lazygit_floating_window_border_chars = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" }
+
 vim.opt.autoindent = true
 vim.opt.autoread = true
 vim.opt.background = "dark"
@@ -77,7 +82,7 @@ vim.lsp.log.set_level(vim.log.levels.OFF)
 
 vim.diagnostic.config({
 	virtual_text = {
-		update_in_insert = false,
+		update_in_insert = true,
 		underline = true,
 		signs = true,
 		source = false,

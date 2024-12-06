@@ -19,6 +19,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set("n", "<leader>k", vim.lsp.buf.signature_help, opts)
 		vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
 		vim.keymap.set({ "v", "n" }, "<leader>ca", vim.lsp.buf.code_action, opts)
+		vim.keymap.set({ "v", "n" }, "<leader>cf", function(bufnr)
+			vim.lsp.buf.format({ timeout_ms = 3000, bufnr = bufnr })
+		end, opts)
 		-- vim.keymap.set({ "v", "n" }, "<leader>ca", function()
 		-- 	fzflua.lsp_code_actions({
 		-- 		winopts = {

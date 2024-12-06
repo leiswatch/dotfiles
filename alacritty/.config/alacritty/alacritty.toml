@@ -1,3 +1,4 @@
+[general]
 import = ["/home/leiswatch/.config/alacritty/themes/tokyonight-night.toml"]
 
 [window]
@@ -11,13 +12,14 @@ startup_mode = "Windowed"
 history = 99999
 
 [font]
-normal = { family = "JetBrainsMono Nerd Font", style = "Medium" }
-bold = { family = "JetBrainsMono Nerd Font", style = "SemiBold" }
-italic = { family = "JetBrainsMono Nerd Font", style = "Medium Italic" }
-bold_italic = { family = "JetBrainsMono Nerd Font", style = "SemiBold Italic" }
-offset = { x = 0, y = 2 }
-glyph_offset = { x = 0, y = 1 }
-size = 13.5
+normal = { family = "JetBrainsMono Nerd Font Propo", style = "Medium" }
+bold = { family = "JetBrainsMono Nerd Font Propo", style = "SemiBold" }
+italic = { family = "JetBrainsMono Nerd Font Propo", style = "Medium Italic" }
+bold_italic = { family = "JetBrainsMono Nerd Font Propo", style = "SemiBold Italic" }
+offset = { x = 0, y = 6 }
+glyph_offset = { x = 0, y = 3 }
+size = 13
+builtin_box_drawing = true
 
 [cursor]
 style = { shape = "Block", blinking = "Never" }

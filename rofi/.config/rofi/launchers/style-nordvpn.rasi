@@ -10,7 +10,7 @@
 /*****----- Configuration -----*****/
 configuration {
 	modi:                       "drun,run,filebrowser,window";
-    show-icons:                 false;
+    show-icons:                 true;
     display-drun:               "  Apps";
     display-run:                "  Run";
     display-filebrowser:        "  Files";
@@ -115,9 +115,9 @@ prompt {
 }
 textbox-prompt-colon {
     enabled:                     false;
-    padding:                     5px 0px;
+    padding:                     5px;
     expand:                      false;
-    str:                         " ";
+    str:                         "";
     background-color:            inherit;
     text-color:                  inherit;
 }
@@ -162,7 +162,7 @@ listview {
     lines:                       5;
     cycle:                       true;
     dynamic:                     true;
-    scrollbar:                   false;
+    scrollbar:                   true;
     layout:                      vertical;
     reverse:                     false;
     fixed-height:                true;
@@ -180,9 +180,9 @@ listview {
 scrollbar {
     handle-width:                8px;
     handle-color:                @handle-colour;
-    border-radius:               4px;
+    border-radius:               99px;
     background-color:            @alternate-background;
-    margin:                      0 0 0 10px;
+    margin:                      0 0 0 8px;
 }
 
 /*****----- Elements -----*****/
@@ -190,7 +190,7 @@ element {
     enabled:                     true;
     spacing:                     10px;
     margin:                      0px;
-    padding:                     10px 20px;
+    padding:                     10px;
     border:                      0px solid;
     border-radius:               4px;
     border-color:                @border-colour;
@@ -236,7 +236,7 @@ element alternate.active {
 }
 element-icon {
     background-color:            transparent;
-    text-color:                  #ff0000;
+    text-color:                  inherit;
     size:                        0px;
     cursor:                      inherit;
 }

@@ -93,6 +93,8 @@ return {
 				hl.PounceAcceptBest = { bg = color.orange, fg = color.bg }
 
 				hl.CmpNormal = { bg = color.black }
+
+				hl.LazyGitBorder = { fg = color.fg_gutter, bg = color.none }
 			end,
 		})
 
