@@ -12,14 +12,18 @@ return {
 		"rafamadriz/friendly-snippets",
 		"onsails/lspkind.nvim",
 		{ "L3MON4D3/LuaSnip", version = "v2.*", build = "make install_jsregexp" },
-		-- "FelipeLema/cmp-async-path",
+		{ "https://codeberg.org/FelipeLema/cmp-async-path" },
+		-- { "iguanacucumber/mag-nvim-lsp", name = "cmp-nvim-lsp", opts = {} },
+		-- { "iguanacucumber/mag-nvim-lua", name = "cmp-nvim-lua" },
+		-- { "iguanacucumber/mag-buffer", name = "cmp-buffer" },
+		-- { "iguanacucumber/mag-cmdline", name = "cmp-cmdline" },
 	},
 	event = { "InsertEnter", "CmdlineEnter" },
 	config = function()
 		local cmp = require("cmp")
 		local lspkind = require("lspkind")
 		local luasnip = require("luasnip")
-		local cmp_autopairs = require("nvim-autopairs.completion.cmp")
+		-- local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 
 		local has_words_before = function()
 			unpack = unpack or table.unpack
@@ -97,9 +101,10 @@ return {
 				{ name = "luasnip" },
 				{ name = "nvim_lua" },
 				{ name = "buffer" },
-				{ name = "path" },
+				{ name = "treesitter" },
+				{ name = "async_path" },
+				-- { name = "path" },
 				-- { name = "css_vars" },
-				-- { name = "async_path" },
 				-- { name = "spell", keyword_length = 3, keyword_pattern = [[\w\+]] },
 			}),
 			enabled = function()
@@ -153,6 +158,6 @@ return {
 			}),
 		})
 
-		cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+		-- cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
 	end,
 }

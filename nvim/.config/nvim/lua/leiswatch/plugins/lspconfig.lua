@@ -6,6 +6,8 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		"b0o/schemastore.nvim",
 		"yioneko/nvim-vtsls",
+		"esmuellert/nvim-eslint",
+		-- "saghen/blink.cmp",
 		-- "pmizio/typescript-tools.nvim",
 	},
 	config = function()
@@ -74,9 +76,9 @@ return {
 
 			cssls = {},
 			somesass_ls = {},
+			cssmodules_ls = {},
 			-- tailwindcss = {},
 			-- css_variables = {},
-			-- cssmodules_ls = {},
 
 			stylelint_lsp = {
 				settings = {
@@ -89,37 +91,38 @@ return {
 				},
 			},
 
-			eslint = {
-				settings = {
-					codeAction = {
-						disableRuleComment = {
-							enable = true,
-							location = "separateLine",
-						},
-						showDocumentation = {
-							enable = true,
-						},
-					},
-					codeActionOnSave = {
-						enable = false,
-						mode = "all",
-					},
-					experimental = {
-						useFlatConfig = false,
-					},
-					format = true,
-					nodePath = "",
-					onIgnoredFiles = "off",
-					problems = {
-						shortenToSingleLine = false,
-					},
-					quiet = false,
-					run = "onType",
-					useESLintClass = false,
-					validate = "on",
-					workingDirectory = { mode = "location" },
-				},
-			},
+			-- eslint = {
+			-- 	settings = {
+			-- 		codeAction = {
+			-- 			disableRuleComment = {
+			-- 				enable = true,
+			-- 				location = "separateLine",
+			-- 			},
+			-- 			showDocumentation = {
+			-- 				enable = true,
+			-- 			},
+			-- 		},
+			-- 		codeActionOnSave = {
+			-- 			enable = false,
+			-- 			mode = "all",
+			-- 		},
+			-- 		useFlatConfig = true,
+			-- 		experimental = {
+			-- 			useFlatConfig = false,
+			-- 		},
+			-- 		format = true,
+			-- 		quiet = false,
+			-- 		nodePath = nil,
+			-- 		onIgnoredFiles = "off",
+			-- 		problems = {
+			-- 			shortenToSingleLine = false,
+			-- 		},
+			-- 		run = "onType",
+			-- 		useESLintClass = true,
+			-- 		validate = "on",
+			-- 		workingDirectory = { mode = "location" },
+			-- 	},
+			-- },
 			vtsls = {
 				settings = {
 					vtsls = {
@@ -177,11 +180,11 @@ return {
 			-- },
 		}
 
+		local helpers = require("leiswatch.helpers")
 		local lspconfig = require("lspconfig")
 		require("lspconfig.ui.windows").default_options.border = "rounded"
 
-		require("leiswatch.lsp.textDocument")
-		require("leiswatch.lsp.signs")
+		local eslint = require("nvim-eslint")
 
 		local capabilities = vim.lsp.protocol.make_client_capabilities()
 		capabilities.textDocument.completion.completionItem.snippetSupport = true
@@ -197,6 +200,7 @@ return {
 			lineFoldingOnly = true,
 		}
 		capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
+		-- capabilities = vim.tbl_deep_extend("force", capabilities, require("blink.cmp").get_lsp_capabilities(capabilities))
 
 		require("lspconfig.configs").vtsls = require("vtsls").lspconfig
 
@@ -259,5 +263,39 @@ return {
 			server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
 			lspconfig[server_name].setup(server)
 		end
+
+		eslint.setup({
+			root_dir = function(bufnr)
+				local dir = eslint.resolve_git_dir(bufnr) or vim.uv.cwd()
+				return dir
+			end,
+			capabilities = capabilities,
+			settings = {
+				validate = "on",
+				useESLintClass = true,
+				useFlatConfig = helpers.use_eslint_flat_config,
+				experimental = { useFlatConfig = false },
+				codeAction = {
+					disableRuleComment = { enable = true, location = "separateLine" },
+					showDocumentation = { enable = true },
+				},
+				codeActionOnSave = { mode = "all" },
+				format = true,
+				quiet = false,
+				nodePath = eslint.resolve_node_path,
+				onIgnoredFiles = "off",
+				run = "onType",
+				problems = { shortenToSingleLine = false },
+				workingDirectory = { mode = "location" },
+				workspaceFolder = function(bufnr)
+					local git_dir = eslint.resolve_git_dir(bufnr) or vim.uv.cwd()
+
+					return {
+						uri = vim.uri_from_fname(git_dir),
+						name = vim.fn.fnamemodify(git_dir, ":t"),
+					}
+				end,
+			},
+		})
 	end,
 }

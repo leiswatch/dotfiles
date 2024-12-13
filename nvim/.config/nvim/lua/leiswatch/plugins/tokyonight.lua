@@ -68,12 +68,14 @@ return {
 				hl.IncSearch = { fg = color.bg, bg = color.blue }
 				hl.CurSearch = { fg = color.bg, bg = color.blue }
 				hl.Search = { fg = color.none, bg = color.fg_gutter }
-				hl.Substitute = { fg = color.none, bg = color.fg_gutter }
+				hl.Substitute = { fg = color.bg, bg = color.blue }
 				hl.MatchWord = { bg = color.fg_gutter, fg = color.none, bold = false }
-				hl.MatchParen = { bg = color.fg_gutter, fg = color.none, bold = false }
+				hl.MatchParen = { bg = color.blue, fg = color.bg, bold = false }
+
 				hl.CmpItemKindVariable = { bg = color.none, fg = color.magenta }
 				hl.CmpItemAbbrMatch = { bg = color.none, fg = color.red }
 				hl.CmpItemAbbrMatchFuzzy = { bg = color.none, fg = color.red }
+				hl.CmpNormal = { bg = color.black }
 
 				hl.DiagnosticUnderlineError = { underline = true, sp = color.red }
 				hl.DiagnosticUnderlineWarn = { underline = true, sp = color.yellow }
@@ -85,16 +87,13 @@ return {
 				hl.FzfLuaTitle = { fg = color.fg, bg = color.none }
 				hl.FzfLuaPreviewTitle = { fg = color.fg, bg = color.none }
 
-				hl.IblIndent = { fg = color.bg_highlight }
-				hl.IblScope = { fg = color.fg_gutter }
-
-				hl.PounceMatch = { bg = color.fg_gutter, fg = color.bg }
-				hl.PounceAccept = { bg = color.orange, fg = color.bg }
-				hl.PounceAcceptBest = { bg = color.orange, fg = color.bg }
-
-				hl.CmpNormal = { bg = color.black }
-
 				hl.LazyGitBorder = { fg = color.fg_gutter, bg = color.none }
+
+				hl.HopNextKey = { fg = color.red, bg = color.terminal_black }
+				hl.HopNextKey1 = { fg = color.red, bg = color.terminal_black }
+				hl.HopNextKey2 = { fg = color.teal, bg = color.terminal_black }
+				hl.HopPreview = { fg = color.red, bg = color.terminal_black }
+				hl.HopUnmatched = { fg = color.fg_gutter, bg = color.none }
 			end,
 		})
 

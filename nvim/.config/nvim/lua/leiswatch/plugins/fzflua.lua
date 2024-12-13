@@ -1,6 +1,5 @@
 return {
 	"ibhagwan/fzf-lua",
-	-- optional for icon support
 	dependencies = { "nvim-tree/nvim-web-devicons" },
 	enabled = true,
 	config = function()
@@ -15,15 +14,20 @@ return {
 			files = {
 				multiprocess = true,
 				winopts = {
-					width = 0.75,
-					height = 0.75,
+					width = 0.9,
+					height = 0.6,
 					preview = { hidden = "hidden" },
 					border = "rounded",
+					col = 0.5,
+					row = 0.1,
+					title = "Files",
+					title_pos = "center",
 				},
 				cwd_prompt = false,
 				prompt = "  ",
 			},
 			grep = {
+				rg_opts = "--column --line-number --no-heading --color=always --smart-case --trim --max-columns=4096 -e",
 				multiprocess = true,
 				file_ignore_patterns = {
 					"%.git",
@@ -42,8 +46,10 @@ return {
 				winopts = {
 					width = 0.95,
 					height = 0.95,
+					title = "Search",
+					title_pos = "center",
 					preview = {
-						horizontal = "right:40%", -- right|left:size
+						horizontal = "right:50%", -- right|left:size
 					},
 					border = "rounded",
 				},
@@ -56,26 +62,49 @@ return {
 					},
 				},
 			},
-
 			keymap = {
-				false,
+				true,
 				-- Below are the default binds, setting any value in these tables will override
 				-- the defaults, to inherit from the defaults change [1] from `false` to `true`
 				builtin = {
-					-- neovim `:tmap` mappings for the fzf win
-					["<M-Esc>"] = "hide", -- hide fzf-lua, `:FzfLua resume` to continue
-					["<F1>"] = "toggle-help",
-					["<F2>"] = "toggle-fullscreen",
-					-- Only valid with the 'builtin' previewer
-					["<F3>"] = "toggle-preview-wrap",
-					["<F4>"] = "toggle-preview",
-					-- Rotate preview clockwise/counter-clockwise
-					["<F5>"] = "toggle-preview-ccw",
-					["<F6>"] = "toggle-preview-cw",
+					true,
 					["<C-d>"] = "preview-page-down",
 					["<C-u>"] = "preview-page-up",
-					["<M-S-down>"] = "preview-down",
-					["<M-S-up>"] = "preview-up",
+				},
+
+				fzf = {
+					true, -- do not inherit from defaults
+					["ctrl-z"] = "abort",
+					["ctrl-u"] = "unix-line-discard",
+					["ctrl-f"] = "half-page-down",
+					["ctrl-b"] = "half-page-up",
+					["ctrl-a"] = "beginning-of-line",
+					["ctrl-e"] = "end-of-line",
+					["alt-a"] = "toggle-all",
+					["alt-g"] = "first",
+					["alt-G"] = "last",
+					-- Only valid with fzf previewers (bat/cat/git/etc)
+					["f3"] = "toggle-preview-wrap",
+					["f4"] = "toggle-preview",
+					["shift-down"] = "preview-page-down",
+					["shift-up"] = "preview-page-up",
+				},
+			},
+
+			previewers = {
+				bat = {
+					cmd = "bat",
+					args = "--color=always --style=numbers,changes",
+					theme = "tokyonight-night",
+				},
+				builtin = {
+					syntax = true,
+					treesitter = {
+						enable = true,
+						disable = {},
+						-- nvim-treesitter-context config options
+						context = { max_lines = 3, trim_scope = "inner" },
+					},
 				},
 			},
 		})

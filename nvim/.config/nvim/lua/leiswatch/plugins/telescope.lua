@@ -1,6 +1,5 @@
 return {
 	"nvim-telescope/telescope.nvim",
-	branch = "0.1.x",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
@@ -36,15 +35,15 @@ return {
 				initial_mode = "insert",
 				selection_strategy = "reset",
 				sorting_strategy = "ascending",
-				layout_strategy = "horizontal",
-				layout_config = {
-					horizontal = {
-						width = 0.9,
-						height = 0.9,
-						preview_width = 0.5,
-						prompt_position = "top",
-					},
-				},
+				-- layout_strategy = "horizontal",
+				-- layout_config = {
+				-- 	horizontal = {
+				-- 		width = 0.95,
+				-- 		height = 0.95,
+				-- 		preview_width = 0.4,
+				-- 		prompt_position = "top",
+				-- 	},
+				-- },
 				file_ignore_patterns = {
 					"%.git",
 					"%.yarn",
@@ -59,7 +58,6 @@ return {
 					"node%_modules",
 					"!.env",
 				},
-				generic_sorter = require("telescope.sorters").get_generic_fuzzy_sorter,
 				winblend = 0,
 				border = true,
 				-- borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
@@ -81,28 +79,19 @@ return {
 			},
 			pickers = {
 				find_files = {
-					find_command = {
-						"fd",
-						"--type",
-						"f",
-						"--ignore-case",
-						"--hidden",
-						"--strip-cwd-prefix=always",
-						"--color=never",
-					},
 					previewer = false,
-					prompt_title = false,
+					prompt_title = "Files",
 					results_title = false,
 					layout_config = {
 						horizontal = {
-							width = 0.6,
+							width = 0.9,
 							height = 0.6,
 							prompt_position = "top",
 						},
 					},
 				},
 				live_grep = {
-					prompt_title = false,
+					prompt_title = "Search",
 					results_title = false,
 					layout_config = {
 						horizontal = {

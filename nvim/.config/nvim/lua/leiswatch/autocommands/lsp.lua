@@ -1,8 +1,6 @@
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 	callback = function(event)
-		local fzflua = require("fzf-lua")
-
 		vim.bo[event.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 
 		local opts = { noremap = true, silent = true, buffer = event.buf }
@@ -13,10 +11,18 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
 		vim.keymap.set("n", "gl", vim.lsp.buf.references, opts)
 		vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-		vim.keymap.set("n", "<leader>lt", fzflua.lsp_typedefs, opts)
-		vim.keymap.set("n", "<leader>ld", fzflua.lsp_document_symbols, opts)
-		vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-		vim.keymap.set("n", "<leader>k", vim.lsp.buf.signature_help, opts)
+		vim.keymap.set("n", "<leader>lt", vim.lsp.buf.type_definition, opts)
+		vim.keymap.set("n", "<leader>ld", vim.lsp.buf.document_symbol, opts)
+		vim.keymap.set("n", "K", function()
+			vim.lsp.buf.hover({
+				border = "rounded",
+			})
+		end, opts)
+		vim.keymap.set("n", "<leader>k", function()
+			vim.lsp.buf.signature_help({
+				border = "rounded",
+			})
+		end, opts)
 		vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
 		vim.keymap.set({ "v", "n" }, "<leader>ca", vim.lsp.buf.code_action, opts)
 		vim.keymap.set({ "v", "n" }, "<leader>cf", function(bufnr)

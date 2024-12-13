@@ -17,7 +17,7 @@ vim.opt.autoread = true
 vim.opt.background = "dark"
 vim.opt.backspace = "indent,eol,start"
 vim.opt.backup = false
-vim.opt.cmdheight = 1
+vim.opt.cmdheight = 2
 vim.opt.colorcolumn = ""
 vim.opt.completeopt = "menuone,noinsert,noselect"
 vim.opt.cursorline = false
@@ -81,10 +81,17 @@ vim.filetype.add({ extension = { templ = "templ" } })
 vim.lsp.log.set_level(vim.log.levels.OFF)
 
 vim.diagnostic.config({
+	signs = {
+		text = {
+			[vim.diagnostic.severity.ERROR] = "",
+			[vim.diagnostic.severity.WARN] = "",
+			[vim.diagnostic.severity.HINT] = "",
+			[vim.diagnostic.severity.INFO] = "",
+		},
+	},
 	virtual_text = {
 		update_in_insert = true,
 		underline = true,
-		signs = true,
 		source = false,
 		spacing = 0,
 		format = function(diagnostic)

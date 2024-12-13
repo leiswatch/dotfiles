@@ -2,35 +2,160 @@ return {
 	"stevearc/conform.nvim",
 	enabled = true,
 	event = { "BufRead" },
-	opts = {
-		notify_on_error = false,
-		formatters_by_ft = {
-			lua = { "stylua" },
-			rust = { "rustfmt" },
-			go = { "goimports", "gofmt" },
-			templ = { "templ" },
-			c = { "clang-format" },
-			cpp = { "clang-format" },
-			python = { "black", "yapf" },
-			astro = { "prettier", "prettierd", stop_after_first = true },
-			svelte = { "prettier", "prettierd", stop_after_first = true },
-			vue = { "prettier", "prettierd", stop_after_first = true },
-			html = { "prettier", "prettierd", stop_after_first = true },
-			javascript = { "prettier", "prettierd", stop_after_first = true },
-			typescript = { "prettier", "prettierd", stop_after_first = true },
-			javacriptreact = { "prettier", "prettierd", stop_after_first = true },
-			typescriptreact = { "prettier", "prettierd", stop_after_first = true },
-			css = { "prettier", "prettierd", stop_after_first = true },
-			scss = { "prettier", "prettierd", stop_after_first = true },
-			sass = { "prettier", "prettierd", stop_after_first = true },
-			less = { "prettier", "prettierd", stop_after_first = true },
-			yaml = { "prettier", "prettierd", stop_after_first = true },
-			json = { "prettier", "prettierd", stop_after_first = true },
-			jsonc = { "prettier", "prettierd", stop_after_first = true },
-			bash = { "shfmt" },
-			zsh = { "shfmt" },
-			zig = { "zigfmt" },
-			["*"] = { "trim_newlines", "trim_whitespace" },
-		},
-	},
+	config = function()
+		local helpers = require("leiswatch.helpers")
+
+		require("conform").setup({
+			default_format_opts = { lsp_format = "never" },
+			notify_on_error = false,
+			formatters_by_ft = {
+				lua = { "stylua" },
+				rust = { "rustfmt" },
+				go = { "goimports", "gofmt" },
+				templ = { "templ" },
+				c = { "clang-format" },
+				cpp = { "clang-format" },
+				python = { "black", "yapf" },
+
+				html = {
+					"prettierd",
+					"prettier",
+					stop_after_first = true,
+					lsp_format = "never",
+				},
+				astro = {
+					"prettierd",
+					"prettier",
+					stop_after_first = true,
+					lsp_format = "first",
+					filter = function(client)
+						return client.name == "eslint"
+					end,
+				},
+				svelte = {
+					"prettierd",
+					"prettier",
+					stop_after_first = true,
+					lsp_format = "first",
+					filter = function(client)
+						return client.name == "eslint"
+					end,
+				},
+				vue = {
+					"prettierd",
+					"prettier",
+					stop_after_first = true,
+					lsp_format = "first",
+					filter = function(client)
+						return client.name == "eslint"
+					end,
+				},
+
+				javascript = {
+					"prettierd",
+					"prettier",
+					stop_after_first = true,
+					lsp_format = "first",
+					filter = function(client)
+						return client.name == "eslint"
+					end,
+				},
+				typescript = {
+					"prettierd",
+					"prettier",
+					stop_after_first = true,
+					lsp_format = "first",
+					filter = function(client)
+						return client.name == "eslint"
+					end,
+				},
+				javacriptreact = {
+					"prettierd",
+					"prettier",
+					stop_after_first = true,
+					lsp_format = "first",
+					filter = function(client)
+						return client.name == "eslint"
+					end,
+				},
+				typescriptreact = {
+					"prettierd",
+					"prettier",
+					stop_after_first = true,
+					lsp_format = "first",
+					filter = function(client)
+						return client.name == "eslint"
+					end,
+				},
+
+				css = {
+					"prettierd",
+					"prettier",
+					stop_after_first = true,
+					lsp_format = "first",
+					filter = function(client)
+						return client.name == "stylelint_lsp"
+					end,
+				},
+				scss = {
+					"prettierd",
+					"prettier",
+					stop_after_first = true,
+					lsp_format = "first",
+					filter = function(client)
+						return client.name == "stylelint_lsp"
+					end,
+				},
+				sass = {
+					"prettierd",
+					"prettier",
+					stop_after_first = true,
+					lsp_format = "first",
+					filter = function(client)
+						return client.name == "stylelint_lsp"
+					end,
+				},
+				less = {
+					"prettierd",
+					"prettier",
+					stop_after_first = true,
+					lsp_format = "first",
+					filter = function(client)
+						return client.name == "stylelint_lsp"
+					end,
+				},
+				json = {
+					"prettierd",
+					"prettier",
+					stop_after_first = true,
+					lsp_format = "first",
+					filter = function(client)
+						return client.name == "jsonls"
+					end,
+				},
+				jsonc = {
+					"prettierd",
+					"prettier",
+					stop_after_first = true,
+					lsp_format = "first",
+					filter = function(client)
+						return client.name == "jsonls"
+					end,
+				},
+				yaml = {
+					"prettierd",
+					"prettier",
+					stop_after_first = true,
+					lsp_format = "first",
+					filter = function(client)
+						return client.name == "yamlls"
+					end,
+				},
+				bash = { "shfmt" },
+				zsh = { "shfmt" },
+				zig = { "zigfmt" },
+				["*"] = { "trim_newlines", "trim_whitespace" },
+			},
+		})
+	end,
 }

@@ -9,6 +9,8 @@ vim.keymap.set("n", "H", function()
 	harpoon.ui:toggle_quick_menu(harpoon:list(), {
 		title_pos = "center",
 		border = "rounded",
+		ui_width_ratio = 0.75,
+		height_in_lines = 10,
 	})
 end, opts)
 vim.keymap.set("n", "<C-h>", function()

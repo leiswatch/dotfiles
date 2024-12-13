@@ -45,22 +45,13 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 	end,
 })
 
-vim.api.nvim_create_autocmd({ "FileType" }, {
-	pattern = { "DressingSelect" },
-	callback = function()
-		vim.b.matchup_matchparen_enabled = 0
-		vim.b.matchup_matchparen_fallback = 0
-	end,
-})
-
-vim.api.nvim_create_autocmd({ "FileType" }, {
-	group = vim.api.nvim_create_augroup("FormatOptions", { clear = true }),
-	pattern = { "*" },
-	callback = function()
-		vim.opt_local.fo:remove("o")
-		vim.opt_local.fo:remove("r")
-	end,
-})
+-- vim.api.nvim_create_autocmd({ "FileType" }, {
+-- 	pattern = { "DressingSelect" },
+-- 	callback = function()
+-- 		vim.b.matchup_matchparen_enabled = 0
+-- 		vim.b.matchup_matchparen_fallback = 0
+-- 	end,
+-- })
 
 vim.api.nvim_create_autocmd("VimResized", {
 	desc = "auto resize splited windows",
