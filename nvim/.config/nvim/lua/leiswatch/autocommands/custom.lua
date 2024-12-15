@@ -5,35 +5,9 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	pattern = "*",
 	callback = function()
 		vim.highlight.on_yank({
-			higroup = "IncSearch",
+			higroup = "HighlightYank",
 			timeout = 80,
 		})
-	end,
-})
-
-vim.api.nvim_create_autocmd("User", {
-	pattern = "MasonToolsUpdateCompleted",
-	callback = function()
-		vim.schedule(function()
-			vim.notify("mason-tool-installer has finished")
-		end)
-	end,
-})
-
-vim.api.nvim_create_autocmd("FileType", {
-	pattern = {
-		-- "alpha",
-		"lspinfo",
-		"lsp-installer",
-		"null-ls-info",
-		"harpoon",
-		"TelescopePrompt",
-		"mason",
-		"oil",
-	},
-	callback = function()
-		vim.o.relativenumber = false
-		vim.o.colorcolumn = "0"
 	end,
 })
 
@@ -44,14 +18,6 @@ vim.api.nvim_create_autocmd({ "FileType" }, {
 		vim.keymap.set("n", "<ESC>", "<cmd>ccl<CR>", opts)
 	end,
 })
-
--- vim.api.nvim_create_autocmd({ "FileType" }, {
--- 	pattern = { "DressingSelect" },
--- 	callback = function()
--- 		vim.b.matchup_matchparen_enabled = 0
--- 		vim.b.matchup_matchparen_fallback = 0
--- 	end,
--- })
 
 vim.api.nvim_create_autocmd("VimResized", {
 	desc = "auto resize splited windows",
@@ -72,3 +38,11 @@ vim.api.nvim_create_autocmd("CursorMoved", {
 		end
 	end,
 })
+
+-- vim.api.nvim_create_autocmd({ "FileType" }, {
+-- 	pattern = { "DressingSelect" },
+-- 	callback = function()
+-- 		vim.b.matchup_matchparen_enabled = 0
+-- 		vim.b.matchup_matchparen_fallback = 0
+-- 	end,
+-- })

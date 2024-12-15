@@ -1,5 +1,6 @@
 #!/usr/bin/env bash
 
+killall -q dunst
 killall -q swaync
 
 # Wait until the processes have been shut down

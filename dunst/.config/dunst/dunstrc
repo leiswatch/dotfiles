@@ -1,14 +1,14 @@
 [global]
     gap_size = 5
     monitor = 0
-    width = (100, 500)
+    width = (200, 500)
     height = (0, 500)
     notification_limit = 20
     origin = top-right
     class       = Dunst
     alignment   = left
     frame_width = 2
-    frame_color = "#7aa2f7"
+    frame_color = "#bb9af7"
     separator_color = frame
     font        = JetBrains Mono 13
     offset      = (20,20)

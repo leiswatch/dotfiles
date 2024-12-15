@@ -99,13 +99,13 @@ $reboot)
     run_cmd --reboot
     ;;
 $lock)
-    if [[ -x '/usr/bin/betterlockscreen' ]]; then
+    if [[ -x '/usr/bin/betterlockscreen' && "$DESKTOP_SESSION" != 'hyprland' && "$DESKTOP_SESSION" != 'sway' ]]; then
         betterlockscreen -l dimblur
-    elif [[ -x '/usr/bin/i3lock' ]]; then
+    elif [[ -x '/usr/bin/i3lock' && "$DESKTOP_SESSION" != 'hyprland' && "$DESKTOP_SESSION" != 'sway' ]]; then
         i3lock
-    elif [[ -x '/usr/bin/hyprlock' ]]; then
+    elif [[ -x '/usr/bin/hyprlock' && "$DESKTOP_SESSION" == 'hyprland' ]]; then
         hyprlock
-    elif [[ -x '/bin/swaylock' ]]; then
+    elif [[ -x '/bin/swaylock' && "$DESKTOP_SESSION" == 'sway' ]]; then
         swaylock -f
     fi
     ;;
