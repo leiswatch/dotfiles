@@ -88,11 +88,11 @@ function vmrss() {
     fi
 }
 
-# function set_win_title() {
-#     echo -ne "\033]0; Kitty \007"
-# }
+function set_win_title() {
+    echo -ne "\033]0; Terminal \007"
+}
 
-# precmd_functions+=(set_win_title)
+precmd_functions+=(set_win_title)
 
 # bun
 [ -s "/home/leiswatch/.bun/_bun" ] && source "/home/leiswatch/.bun/_bun"

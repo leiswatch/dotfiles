@@ -1,22 +1,31 @@
 return {
-	"hrsh7th/nvim-cmp",
-	-- "iguanacucumber/magazine.nvim",
+	-- "hrsh7th/nvim-cmp",
+	"iguanacucumber/magazine.nvim",
 	name = "nvim-cmp", -- Otherwise highlighting gets messed up
 	enabled = true,
 	dependencies = {
-		"hrsh7th/cmp-nvim-lsp",
-		"hrsh7th/cmp-buffer",
+		-- "hrsh7th/cmp-nvim-lsp",
+		-- "hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-path",
-		"hrsh7th/cmp-cmdline",
+		-- "hrsh7th/cmp-cmdline",
 		"saadparwaiz1/cmp_luasnip",
 		"rafamadriz/friendly-snippets",
 		"onsails/lspkind.nvim",
 		{ "L3MON4D3/LuaSnip", version = "v2.*", build = "make install_jsregexp" },
-		{ "https://codeberg.org/FelipeLema/cmp-async-path" },
-		-- { "iguanacucumber/mag-nvim-lsp", name = "cmp-nvim-lsp", opts = {} },
+		-- { "https://codeberg.org/FelipeLema/cmp-async-path" },
+		{ "iguanacucumber/mag-nvim-lsp", name = "cmp-nvim-lsp", opts = {} },
 		-- { "iguanacucumber/mag-nvim-lua", name = "cmp-nvim-lua" },
-		-- { "iguanacucumber/mag-buffer", name = "cmp-buffer" },
-		-- { "iguanacucumber/mag-cmdline", name = "cmp-cmdline" },
+		{ "iguanacucumber/mag-buffer", name = "cmp-buffer" },
+		{ "iguanacucumber/mag-cmdline", name = "cmp-cmdline" },
+		{
+			"philosofonusus/ecolog.nvim",
+			opts = {
+				integrations = {
+					nvim_cmp = true, -- If you dont plan to use nvim_cmp set to false, enabled by default
+				},
+			},
+		},
+		-- "Jezda1337/nvim-html-css",
 	},
 	event = { "InsertEnter", "CmdlineEnter" },
 	config = function()
@@ -99,11 +108,13 @@ return {
 				{ name = "lazydev", group_index = 0 },
 				{ name = "nvim_lsp" },
 				{ name = "luasnip" },
-				{ name = "nvim_lua" },
 				{ name = "buffer" },
 				{ name = "treesitter" },
-				{ name = "async_path" },
-				-- { name = "path" },
+				{ name = "path" },
+                { name = "ecolog" },
+                -- { name = "nvim_lua" },
+				-- { name = "async_path" },
+				-- { name = "html-css" },
 				-- { name = "css_vars" },
 				-- { name = "spell", keyword_length = 3, keyword_pattern = [[\w\+]] },
 			}),
@@ -156,6 +167,7 @@ return {
 			}, {
 				{ name = "cmdline" },
 			}),
+			matching = { disallow_symbol_nonprefix_matching = false },
 		})
 
 		-- cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())

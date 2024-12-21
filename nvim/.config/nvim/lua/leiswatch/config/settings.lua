@@ -77,6 +77,9 @@ vim.cmd("filetype indent on")
 vim.cmd("filetype plugin indent on")
 
 vim.filetype.add({ extension = { templ = "templ" } })
+vim.filetype.add({
+	pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
+})
 
 vim.lsp.log.set_level(vim.log.levels.OFF)
 

@@ -2,7 +2,6 @@
 return {
 	"saghen/blink.cmp",
 	enabled = false,
-	lazy = false, -- lazy loading handled internally
 	-- optional: provides snippets for the snippet source
 	dependencies = {
 		"rafamadriz/friendly-snippets",
@@ -24,8 +23,9 @@ return {
 		-- 'enter' for mappings similar to 'super-tab' but with 'enter' to accept
 		-- see the "default configuration" section below for full documentation on how to define
 		-- your own keymap.
-		keymap = { preset = "default" },
-
+		keymap = {
+			preset = "default",
+		},
 		appearance = {
 			-- Sets the fallback highlight groups to nvim-cmp's highlight groups
 			-- Useful for when your theme doesn't support blink.cmp

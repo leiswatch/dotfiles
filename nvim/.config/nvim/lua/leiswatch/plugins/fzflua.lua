@@ -29,7 +29,7 @@ return {
 			grep = {
 				rg_opts = "--column --line-number --no-heading --color=always --smart-case --trim --max-columns=4096 -e",
 				multiprocess = true,
-				file_ignore_patterns = {
+				ignore_patterns = {
 					"%.git",
 					"%.yarn",
 					"%.cache",
@@ -100,8 +100,8 @@ return {
 				builtin = {
 					syntax = true,
 					treesitter = {
-						enable = true,
-						disable = {},
+						enabled = true,
+						disabled = {},
 						-- nvim-treesitter-context config options
 						context = { max_lines = 3, trim_scope = "inner" },
 					},

@@ -9,8 +9,9 @@ return {
 		"nvim-treesitter/nvim-treesitter-context",
 		"JoosepAlviste/nvim-ts-context-commentstring",
 		"windwp/nvim-ts-autotag",
-		"numToStr/Comment.nvim",
+        "numToStr/Comment.nvim",
 		-- "windwp/nvim-autopairs",
+		-- "tronikelis/ts-autotag.nvim",
 		-- "andymass/vim-matchup",
 		-- "HiPhish/rainbow-delimiters.nvim",
 	},
@@ -27,6 +28,7 @@ return {
 				"go",
 				"graphql",
 				"html",
+				"hyprlang",
 				"javascript",
 				"json",
 				"lua",
@@ -82,6 +84,7 @@ return {
 		-- require("nvim-autopairs").setup({
 		-- 	disable_filetype = { "TelescopePrompt", "FzfLuaFzfPrompt" },
 		-- 	check_ts = true,
+		-- 	enable_check_bracket_line = false,
 		-- })
 
 		require("ts_context_commentstring").setup({
@@ -91,9 +94,10 @@ return {
 		---@diagnostic disable-next-line: missing-fields
 		require("Comment").setup({
 			ignore = "^$",
-			pre_hook = require('ts_context_commentstring.integrations.comment_nvim').create_pre_hook(),
+			pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
 		})
 
+		---@diagnostic disable-next-line: missing-fields
 		require("nvim-ts-autotag").setup({
 			opts = {
 				enable_close = true, -- Auto close tags

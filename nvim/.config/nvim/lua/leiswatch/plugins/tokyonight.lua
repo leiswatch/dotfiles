@@ -6,7 +6,7 @@ return {
 	config = function()
 		require("tokyonight").setup({
 			cache = true,
-			plugins ={
+			plugins = {
 				all = true,
 				auto = true,
 			},
@@ -75,10 +75,10 @@ return {
 				hl.TreesitterContextLineNumber = { fg = color.blue, bg = color.bg_dark, underline = false }
 
 				hl.Directory = { bg = color.none, fg = color.fg }
-				hl.IncSearch = { fg = color.red, bg = color.fg_gutter }
-				hl.CurSearch = { fg = color.red, bg = color.fg_gutter }
-				hl.Search = { fg = color.red, bg = color.fg_gutter }
-				hl.Substitute = { fg = color.red, bg = color.fg_gutter }
+				hl.IncSearch = { fg = color.bg, bg = color.orange }
+				hl.CurSearch = { fg = color.bg, bg = color.orange }
+				hl.Search = { fg = color.none, bg = color.fg_gutter }
+				hl.Substitute = { fg = color.bg, bg = color.orange }
 				hl.MatchWord = { bg = color.fg_gutter, fg = color.none, bold = false }
 				hl.MatchParen = { bg = color.fg_gutter, fg = color.none, bold = false }
 
@@ -105,7 +105,7 @@ return {
 				hl.HopPreview = { fg = color.red, bg = color.terminal_black }
 				hl.HopUnmatched = { fg = color.fg_gutter, bg = color.none }
 
-				hl.HighlightYank = { fg = color.bg, bg = color.blue }
+				hl.HighlightYank = { fg = color.bg, bg = color.orange }
 			end,
 		})
 

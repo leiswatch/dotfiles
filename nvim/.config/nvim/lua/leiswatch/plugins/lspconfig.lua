@@ -7,7 +7,8 @@ return {
 		"b0o/schemastore.nvim",
 		"yioneko/nvim-vtsls",
 		"esmuellert/nvim-eslint",
-		-- "saghen/blink.cmp",
+		-- "hrsh7th/cmp-nvim-lsp",
+		{ "iguanacucumber/mag-nvim-lsp", name = "cmp-nvim-lsp", opts = {} },
 		-- "pmizio/typescript-tools.nvim",
 	},
 	config = function()
@@ -257,10 +258,16 @@ return {
 		-- 		separate_diagnostic_server = false,
 		-- 	},
 		-- })
+		--
+		local handlers = {
+			["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
+			["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" }),
+		}
 
 		for server_name, _ in pairs(servers) do
 			local server = servers[server_name] or {}
 			server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
+			server.handlers = handlers
 			lspconfig[server_name].setup(server)
 		end
 

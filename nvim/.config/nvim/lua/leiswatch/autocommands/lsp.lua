@@ -5,7 +5,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 		local opts = { noremap = true, silent = true, buffer = event.buf }
 		-- local diagnostic_opts = { border = "rounded", max_width = 100, header = "", source = false, scope = "line" }
-		local diagnostic_opts = { border = "rounded", header = "", source = false, scope = "line" }
+		local diagnostic_opts = { border = "rounded", header = "", source = true, scope = "line" }
 
 		vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
 		vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
@@ -13,16 +13,18 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
 		vim.keymap.set("n", "<leader>lt", vim.lsp.buf.type_definition, opts)
 		vim.keymap.set("n", "<leader>ld", vim.lsp.buf.document_symbol, opts)
-		vim.keymap.set("n", "K", function()
-			vim.lsp.buf.hover({
-				border = "rounded",
-			})
-		end, opts)
-		vim.keymap.set("n", "<leader>k", function()
-			vim.lsp.buf.signature_help({
-				border = "rounded",
-			})
-		end, opts)
+		vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
+		vim.keymap.set("n", "<leader>k", vim.lsp.buf.signature_help, opts)
+		-- vim.keymap.set("n", "K", function()
+		-- 	vim.lsp.buf.hover({
+		-- 		border = "rounded",
+		-- 	})
+		-- end, opts)
+		-- vim.keymap.set("n", "<leader>k", function()
+		-- 	vim.lsp.buf.signature_help({
+		-- 		border = "rounded",
+		-- 	})
+		-- end, opts)
 		vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
 		vim.keymap.set({ "v", "n" }, "<leader>ca", vim.lsp.buf.code_action, opts)
 		vim.keymap.set({ "v", "n" }, "<leader>cf", function(bufnr)
@@ -46,17 +48,19 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		end, opts)
 
 		vim.keymap.set("n", "[d", function()
-			vim.diagnostic.jump({
-				count = -1,
-				float = diagnostic_opts,
-			})
+			vim.diagnostic.goto_prev({ float = diagnostic_opts })
+			-- vim.diagnostic.jump({
+			-- 	count = -1,
+			-- 	float = diagnostic_opts,
+			-- })
 		end, opts)
 
 		vim.keymap.set("n", "]d", function()
-			vim.diagnostic.jump({
-				count = 1,
-				float = diagnostic_opts,
-			})
+			vim.diagnostic.goto_next({ float = diagnostic_opts })
+			-- vim.diagnostic.jump({
+			-- 	count = 1,
+			-- 	float = diagnostic_opts,
+			-- })
 		end, opts)
 
 		vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, opts)

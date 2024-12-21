@@ -16,9 +16,9 @@ normal = { family = "JetBrainsMono Nerd Font Propo", style = "Medium" }
 bold = { family = "JetBrainsMono Nerd Font Propo", style = "SemiBold" }
 italic = { family = "JetBrainsMono Nerd Font Propo", style = "Medium Italic" }
 bold_italic = { family = "JetBrainsMono Nerd Font Propo", style = "SemiBold Italic" }
-offset = { x = 0, y = 6 }
-glyph_offset = { x = 0, y = 3 }
-size = 13
+offset = { x = 0, y = 4 }
+glyph_offset = { x = 0, y = 2 }
+size = 15
 builtin_box_drawing = true
 
 [cursor]

@@ -13,7 +13,7 @@ set $mod Mod4
 
 # Font for window titles. Will also be used by the bar unless a different font
 # is used in the bar {} block below.
-font pango:JetBrains Mono 10
+font pango:JetBrains Mono 9
 
 # This font is widely installed, provides lots of unicode glyphs, right-to-left
 # text rendering and scalability on retina/hidpi displays (thanks to pango).
@@ -35,29 +35,27 @@ exec = /usr/bin/xdg-user-dirs-update
 # NetworkManager is the most popular way to manage wireless networks on Linux,
 # and nm-applet is a desktop environment-independent system tray GUI for it.
 
-exec --no-startup-id ~/.config/polybar/tokyonight/launch.sh && sleep 1
-
-exec --no-startup-id picom --config ~/.config/picom/picom.conf
 # exec --no-startup-id /usr/bin/gnome-keyring-daemon --start --components=ssh
 exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
-exec --no-startup-id nitrogen --restore
 
 # exec --no-startup-id xautocfg
 # exec --no-startup-id /usr/lib/xfce4/notifyd/xfce4-notifyd
-exec --no-startup-id redshift
 exec --no-startup-id xfce4-power-manager --daemonize
-
-exec --no-startup-id nm-applet
-exec --no-startup-id blueman-applet
-exec --no-startup-id flameshot
 exec --no-startup-id system-config-printer-applet
-exec --no-startup-id caffeine start -a
-exec --no-startup-id solaar -w hide
-# exec --no-startup-id /usr/bin/discord --start-minimized
+
+exec --no-startup-id sh ~/.config/i3/scripts/polybar.sh
+exec --no-startup-id sh ~/.config/i3/scripts/nm.sh
+exec --no-startup-id sh ~/.config/i3/scripts/blueman.sh
+exec --no-startup-id sh ~/.config/i3/scripts/flameshot.sh
+exec --no-startup-id sh ~/.config/i3/scripts/redshift.sh
+exec --no-startup-id sh ~/.config/i3/scripts/nitrogen.sh
+exec --no-startup-id sh ~/.config/i3/scripts/picom.sh
+exec --no-startup-id sh ~/.config/i3/scripts/caffeine.sh
+exec --no-startup-id sh ~/.config/i3/scripts/solaar.sh
 
 # Use pactl to adjust volume in PulseAudio.
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +5%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -5%
+bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2%
+bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -2%
 bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
@@ -69,6 +67,7 @@ bindsym $mod+Return exec kitty
 
 # kill focused window
 bindsym $mod+Shift+q kill
+bindsym $mod+c kill
 
 # start dmenu (a program launcher)
 # bindsym $mod+d exec --no-startup-id "dmenu_run -nf '#BBBBBB' -nb '#222222' -sb '#005577' -sf '#EEEEEE' -fn 'monospace-10'"
@@ -243,30 +242,30 @@ bindsym $mod+r mode "resize"
 # client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
 # client.background       #ffffff
 
-# set $blue #3d59a1
-# set $cyan #7dcfff
-# set $base #1a1b26
-# set $surface1 #3b4261
-# set $subtext0 #a9b1d6
-# set $red #f7768e
-# set $text #c0caf5
-# set $overlay0 #545c7e
+set $blue #3d59a1
+set $cyan #7dcfff
+set $base #1a1b26
+set $surface1 #3b4261
+set $subtext0 #a9b1d6
+set $red #f7768e
+set $text #c0caf5
+set $overlay0 #545c7e
 
-# # class                  border        bground       text          indicator      child_border
-# client.focused           $blue         $blue         $text        $blue          $blue
-# client.focused_inactive  $surface1     $base         $subtext0     $surface1      $surface1
-# client.unfocused         $surface1     $base         $subtext0     $surface1      $surface1
-# client.urgent            $red          $base         $red          $overlay0      $red
-# client.placeholder       $overlay0     $base         $text         $overlay0      $overlay0
-# client.background        $base
+# class                  border        bground       text          indicator      child_border
+client.focused           $blue         $blue         $text        $blue          $blue
+client.focused_inactive  $surface1     $base         $subtext0     $surface1      $surface1
+client.unfocused         $surface1     $base         $subtext0     $surface1      $surface1
+client.urgent            $red          $base         $red          $overlay0      $red
+client.placeholder       $overlay0     $base         $text         $overlay0      $overlay0
+client.background        $base
 
-client.focused          #4c7899 #285577 #ffffff #4c7899   #285577
-client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
-client.unfocused        #333333 #222222 #888888 #292d2e   #222222
-client.urgent           #2f343a #900000 #ffffff #900000   #900000
-client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
-
-client.background       #ffffff
+#client.focused          #4c7899 #285577 #ffffff #4c7899   #285577
+#client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
+#client.unfocused        #333333 #222222 #888888 #292d2e   #222222
+#client.urgent           #2f343a #900000 #ffffff #900000   #900000
+#client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+#
+#client.background       #ffffff
 
 focus_on_window_activation focus
 focus_follows_mouse yes
