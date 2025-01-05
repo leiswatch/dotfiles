@@ -1,8 +1,5 @@
-local opts = { noremap = true, silent = true }
+local helpers = require("leiswatch.helpers")
 
--- vim.keymap.set("n", "<leader>w", "<cmd>Bdelete<CR>", opts)
-vim.keymap.set("n", "<leader>bd", function()
-	MiniBufremove.delete()
-end, opts)
-vim.keymap.set("n", "<leader>bn", vim.cmd.bnext, opts)
-vim.keymap.set("n", "<leader>bp", vim.cmd.bprev, opts)
+vim.keymap.set("n", "<leader>bd", MiniBufremove.delete, helpers.keymap_opts)
+vim.keymap.set("n", "<leader>bn", vim.cmd.bnext, helpers.keymap_opts)
+vim.keymap.set("n", "<leader>bp", vim.cmd.bprev, helpers.keymap_opts)

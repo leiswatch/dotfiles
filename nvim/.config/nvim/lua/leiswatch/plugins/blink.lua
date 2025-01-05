@@ -5,11 +5,11 @@ return {
 	-- optional: provides snippets for the snippet source
 	dependencies = {
 		"rafamadriz/friendly-snippets",
-		{ "L3MON4D3/LuaSnip", version = "v2.*", build = "make install_jsregexp" },
+		{ "L3MON4D3/LuaSnip", version = "v2.*" },
 	},
 
 	-- use a release tag to download pre-built binaries
-	version = "v0.*",
+	version = "*",
 	-- OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
 	-- build = 'cargo build --release',
 	-- If you use nix, you can build from source using latest nightly rust with:
@@ -54,21 +54,22 @@ return {
 		-- default list of enabled providers defined so that you can extend it
 		-- elsewhere in your config, without redefining it, via `opts_extend`
 		sources = {
-			completion = {
-				enabled_providers = { "lsp", "path", "snippets", "buffer", "lazydev" },
+			default = {
+				"lazydev",
+				"lsp",
+				"path",
+				"luasnip",
+				"buffer",
 			},
 			providers = {
-				-- dont show LuaLS require statements when lazydev has items
-				lsp = { fallback_for = { "lazydev" } },
-				lazydev = { name = "LazyDev", module = "lazydev.integrations.blink" },
+				lazydev = {
+					name = "LazyDev",
+					module = "lazydev.integrations.blink",
+					-- make lazydev completions top priority (see `:h blink.cmp`)
+					score_offset = 100,
+				},
 			},
 		},
-
-		-- experimental auto-brackets support
-		-- completion = { accept = { auto_brackets = { enabled = true } } }
-
-		-- experimental signature help support
-		-- signature = { enabled = true }
 
 		completion = {
 			menu = {
@@ -85,7 +86,4 @@ return {
 			},
 		},
 	},
-	-- allows extending the enabled_providers array elsewhere in your config
-	-- without having to redefine it
-	opts_extend = { "sources.completion.enabled_providers" },
 }

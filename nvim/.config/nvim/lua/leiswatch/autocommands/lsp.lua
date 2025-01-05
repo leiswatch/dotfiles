@@ -1,20 +1,23 @@
+local helpers = require("leiswatch.helpers")
+
 vim.api.nvim_create_autocmd("LspAttach", {
 	group = vim.api.nvim_create_augroup("UserLspConfig", {}),
 	callback = function(event)
 		vim.bo[event.buf].omnifunc = "v:lua.vim.lsp.omnifunc"
 
-		local opts = { noremap = true, silent = true, buffer = event.buf }
+		local keymap_opts = vim.tbl_extend("force", helpers.keymap_opts, { buffer = event.buf })
+
 		-- local diagnostic_opts = { border = "rounded", max_width = 100, header = "", source = false, scope = "line" }
 		local diagnostic_opts = { border = "rounded", header = "", source = true, scope = "line" }
 
-		vim.keymap.set("n", "gd", vim.lsp.buf.definition, opts)
-		vim.keymap.set("n", "gD", vim.lsp.buf.declaration, opts)
-		vim.keymap.set("n", "gl", vim.lsp.buf.references, opts)
-		vim.keymap.set("n", "gi", vim.lsp.buf.implementation, opts)
-		vim.keymap.set("n", "<leader>lt", vim.lsp.buf.type_definition, opts)
-		vim.keymap.set("n", "<leader>ld", vim.lsp.buf.document_symbol, opts)
-		vim.keymap.set("n", "K", vim.lsp.buf.hover, opts)
-		vim.keymap.set("n", "<leader>k", vim.lsp.buf.signature_help, opts)
+		vim.keymap.set("n", "gd", vim.lsp.buf.definition, keymap_opts)
+		vim.keymap.set("n", "gD", vim.lsp.buf.declaration, keymap_opts)
+		vim.keymap.set("n", "gl", vim.lsp.buf.references, keymap_opts)
+		vim.keymap.set("n", "gi", vim.lsp.buf.implementation, keymap_opts)
+		vim.keymap.set("n", "<leader>lt", vim.lsp.buf.type_definition, keymap_opts)
+		vim.keymap.set("n", "<leader>ld", vim.lsp.buf.document_symbol, keymap_opts)
+		vim.keymap.set("n", "K", vim.lsp.buf.hover, keymap_opts)
+		vim.keymap.set("n", "<leader>k", vim.lsp.buf.signature_help, keymap_opts)
 		-- vim.keymap.set("n", "K", function()
 		-- 	vim.lsp.buf.hover({
 		-- 		border = "rounded",
@@ -25,11 +28,11 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		-- 		border = "rounded",
 		-- 	})
 		-- end, opts)
-		vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, opts)
-		vim.keymap.set({ "v", "n" }, "<leader>ca", vim.lsp.buf.code_action, opts)
+		vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, keymap_opts)
+		vim.keymap.set({ "v", "n" }, "<leader>ca", vim.lsp.buf.code_action, keymap_opts)
 		vim.keymap.set({ "v", "n" }, "<leader>cf", function(bufnr)
 			vim.lsp.buf.format({ timeout_ms = 3000, bufnr = bufnr })
-		end, opts)
+		end, keymap_opts)
 		-- vim.keymap.set({ "v", "n" }, "<leader>ca", function()
 		-- 	fzflua.lsp_code_actions({
 		-- 		winopts = {
@@ -45,7 +48,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 		vim.keymap.set("n", "<leader>e", function()
 			vim.diagnostic.open_float(diagnostic_opts)
-		end, opts)
+		end, keymap_opts)
 
 		vim.keymap.set("n", "[d", function()
 			vim.diagnostic.goto_prev({ float = diagnostic_opts })
@@ -53,7 +56,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			-- 	count = -1,
 			-- 	float = diagnostic_opts,
 			-- })
-		end, opts)
+		end, keymap_opts)
 
 		vim.keymap.set("n", "]d", function()
 			vim.diagnostic.goto_next({ float = diagnostic_opts })
@@ -61,9 +64,9 @@ vim.api.nvim_create_autocmd("LspAttach", {
 			-- 	count = 1,
 			-- 	float = diagnostic_opts,
 			-- })
-		end, opts)
+		end, keymap_opts)
 
-		vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, opts)
+		vim.keymap.set("n", "<leader>q", vim.diagnostic.setloclist, keymap_opts)
 
 		-- vim.keymap.set({ "n", "i", "s" }, "<c-f>", function()
 		--     if not require("noice.lsp").scroll(4) then

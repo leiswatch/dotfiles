@@ -1,4 +1,4 @@
-local opts = { noremap = true, silent = true }
+local helpers = require("leiswatch.helpers")
 
-vim.keymap.set("n", "<leader>dfo", vim.cmd.DiffviewOpen, opts)
-vim.keymap.set("n", "<leader>dfc", vim.cmd.DiffviewClose, opts)
+vim.keymap.set("n", "<leader>dfo", vim.cmd.DiffviewOpen, helpers.keymap_opts)
+vim.keymap.set("n", "<leader>dfc", vim.cmd.DiffviewClose, helpers.keymap_opts)

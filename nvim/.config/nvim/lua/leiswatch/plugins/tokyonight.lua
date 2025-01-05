@@ -105,7 +105,9 @@ return {
 				hl.HopPreview = { fg = color.red, bg = color.terminal_black }
 				hl.HopUnmatched = { fg = color.fg_gutter, bg = color.none }
 
-				hl.HighlightYank = { fg = color.bg, bg = color.orange }
+				hl.HighlightYank = { fg = color.none, bg = color.bg_highlight }
+
+				hl.DashboardButtons = { fg = color.yellow, bg = color.bg }
 			end,
 		})
 

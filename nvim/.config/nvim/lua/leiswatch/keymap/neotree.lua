@@ -1,4 +1,4 @@
-local opts = { noremap = true, silent = true }
+local helpers = require("leiswatch.helpers")
 
 vim.keymap.set("n", "<C-n>", function()
 	require("neo-tree.command").execute({
@@ -7,7 +7,7 @@ vim.keymap.set("n", "<C-n>", function()
 		position = "left",
 		reveal_force_cwd = true,
 	})
-end, opts)
+end, helpers.keymap_opts)
 
 -- vim.keymap.set("n", "-", function()
 -- 	local reveal_file = vim.fn.expand("%:p")

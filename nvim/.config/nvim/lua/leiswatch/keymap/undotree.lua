@@ -1,3 +1,3 @@
-local opts = { noremap = true, silent = true }
+local helpers = require("leiswatch.helpers")
 
-vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, opts)
+vim.keymap.set("n", "<leader>u", vim.cmd.UndotreeToggle, helpers.keymap_opts)

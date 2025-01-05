@@ -27,6 +27,9 @@ window#waybar.hidden {
   /* padding: 0 8px; */
   margin: 0 6px;
   color: @fg_dark;
+  font-weight: 500;
+  font-size: 14px;
+  font-weight: 700;
   /* border-radius: 4px; */
 }
 
@@ -42,6 +45,7 @@ window#waybar.hidden {
 #workspaces button.focused {
   /* background-color: @blue; */
   color: @yellow;
+  font-weight: 700;
 }
 
 #workspaces button:hover {

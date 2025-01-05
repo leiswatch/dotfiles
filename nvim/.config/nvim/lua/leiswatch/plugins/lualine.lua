@@ -30,10 +30,10 @@ return {
 			normal = {
 				a = { fg = tokyonight_colors.bg_dark, bg = tokyonight_colors.blue },
 				b = { fg = tokyonight_colors.purple, bg = tokyonight_colors.bg_dark },
-				z = { fg = tokyonight_colors.bg_dark, bg = tokyonight_colors.blue },
 				c = { fg = tokyonight_colors.fg, bg = tokyonight_colors.bg_dark },
 				x = { fg = tokyonight_colors.fg, bg = tokyonight_colors.bg_dark },
 				y = { fg = tokyonight_colors.teal, bg = tokyonight_colors.bg_dark },
+				z = { fg = tokyonight_colors.fg, bg = tokyonight_colors.bg_highlight },
 			},
 			insert = {
 				a = { fg = tokyonight_colors.bg_dark, bg = tokyonight_colors.green },
@@ -52,7 +52,7 @@ return {
 			options = {
 				theme = tokyonight,
 				component_separators = { left = "", right = "" },
-				section_separators = { left = "", right = "" },
+				section_separators = { left = "", right = "" },
 				globalstatus = true,
 			},
 			sections = {
@@ -102,7 +102,7 @@ return {
 					{
 						"encoding",
 						-- color = { fg = mocha_colors.sapphire },
-						color = { fg = tokyonight_colors.blue5 },
+						color = { fg = tokyonight_colors.teal },
 					},
 					{
 						"fileformat",
@@ -114,10 +114,8 @@ return {
 							mac = "CR",
 						},
 						padding = { right = 0 },
-						-- color = { fg = colors.red },
+						color = { fg = tokyonight_colors.red },
 					},
-				},
-				lualine_y = {
 					{
 						"progress",
 						fmt = function()
@@ -130,8 +128,10 @@ return {
 							return chars[index]
 						end,
 						padding = { left = 1, right = 1 },
+						color = { fg = tokyonight_colors.cyan },
 					},
 				},
+				lualine_y = {},
 				lualine_z = {
 					"location",
 				},

@@ -25,7 +25,7 @@ set $gnome-schema org.gnome.desktop.interface
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /home/leiswatch/Pictures/Wallpapers/girl_in_rain_scaled.png fill
+# output * bg /home/leiswatch/Pictures/Wallpapers/girl_in_rain_scaled.png fill
 
 font pango:Ubuntu 10
 
@@ -70,22 +70,19 @@ seat seat0 xcursor_theme Simp1e-Dark 24
 
 include /home/leiswatch/.config/sway/config.d/*
 
-exec /usr/bin/gnome-keyring-daemon --start --components=ssh
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+# XDG directories
 exec /usr/bin/xdg-user-dirs-update
+exec hypridle
 
-# exec sh /home/leiswatch/.config/sway/scripts/nm.sh
-# exec sh /home/leiswatch/.config/sway/scripts/blueman.sh
-# exec sh /home/leiswatch/.config/sway/scripts/gammastep.sh
-# exec sh /home/leiswatch/.config/sway/scripts/solaar.sh
-# exec sh /home/leiswatch/.config/sway/scripts/octopi.sh
-exec sh /home/leiswatch/.config/sway/scripts/waybar.sh
-exec sh /home/leiswatch/.config/sway/scripts/nm.sh
+# Scripts
+exec sh /home/leiswatch/.config/sway/scripts/swww.sh
 exec sh /home/leiswatch/.config/sway/scripts/dunst.sh
+exec sh /home/leiswatch/.config/sway/scripts/nm.sh
 exec sh /home/leiswatch/.config/sway/scripts/solaar.sh
 exec sh /home/leiswatch/.config/sway/scripts/gammastep.sh
 exec sh /home/leiswatch/.config/sway/scripts/blueman.sh
-exec sh /home/leiswatch/.config/sway/scripts/hypridle.sh
+exec sh /home/leiswatch/.config/sway/scripts/waybar.sh
 
 ### Idle configuration
 #
@@ -129,6 +126,8 @@ exec sh /home/leiswatch/.config/sway/scripts/hypridle.sh
     # bindsym $mod+d exec $menu
     bindsym $mod+d exec /home/leiswatch/.config/rofi/launchers/launcher.sh
     bindsym $mod+n exec /home/leiswatch/.config/rofi/launchers/vpn.sh
+    bindsym $mod+Shift+n exec /home/leiswatch/.config/rofi/launchers/nordvpn.sh
+    bindsym $mod+Shift+p exec /home/leiswatch/.config/rofi/powermenu/powermenu.sh
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -142,7 +141,6 @@ exec sh /home/leiswatch/.config/sway/scripts/hypridle.sh
 
     # Exit sway (logs you out of your Wayland session)
     # bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
-    bindsym $mod+Shift+p exec /home/leiswatch/.config/rofi/powermenu/powermenu.sh
 
     bindsym $mod+Shift+s exec grim -g "$(slurp)" - | swappy -f -
     bindsym Print exec grim - | swappy -f -
@@ -267,6 +265,7 @@ mode "resize" {
     bindsym Return mode "default"
     bindsym Escape mode "default"
 }
+
 bindsym $mod+r mode "resize"
 
 #
@@ -288,7 +287,8 @@ bindsym $mod+r mode "resize"
 # }
 
 # Tokyonight
-set $blue #3d59a1
+set $dark_blue #3d59a1
+set $blue #7aa2f7
 set $cyan #7dcfff
 set $base #1a1b26
 set $surface1 #3b4261
@@ -298,7 +298,7 @@ set $text #c0caf5
 set $overlay0 #545c7e
 
 # class                  border        bground       text          indicator      child_border
-client.focused           $blue         $blue         $text        $blue          $blue
+client.focused           $dark_blue    $dark_blue    $text         $dark_blue     $dark_blue
 client.focused_inactive  $surface1     $base         $subtext0     $surface1      $surface1
 client.unfocused         $surface1     $base         $subtext0     $surface1      $surface1
 client.urgent            $red          $base         $red          $overlay0      $red

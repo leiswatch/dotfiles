@@ -1,6 +1,6 @@
-local opts = { noremap = true, silent = true }
+local helpers = require("leiswatch.helpers")
 
-vim.keymap.set("n", "<leader>tj", require("treesj").toggle, opts)
+vim.keymap.set("n", "<leader>tj", require("treesj").toggle, helpers.keymap_opts)
 vim.keymap.set("n", "<leader>tJ", function()
 	require("treesj").toggle({ split = { recursive = true } })
-end, opts)
+end, helpers.keymap_opts)

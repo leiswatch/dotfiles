@@ -1,4 +1,4 @@
-local opts = { noremap = true, silent = true }
+local helpers = require("leiswatch.helpers")
 
 vim.api.nvim_create_autocmd("TextYankPost", {
 	group = vim.api.nvim_create_augroup("HighlightYank", { clear = true }),
@@ -14,8 +14,8 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 vim.api.nvim_create_autocmd({ "FileType" }, {
 	pattern = { "qf" },
 	callback = function()
-		vim.keymap.set("n", "q", "<cmd>ccl<CR>", opts)
-		vim.keymap.set("n", "<ESC>", "<cmd>ccl<CR>", opts)
+		vim.keymap.set("n", "q", "<cmd>ccl<CR>", helpers.keymap_opts)
+		vim.keymap.set("n", "<ESC>", "<cmd>ccl<CR>", helpers.keymap_opts)
 	end,
 })
 

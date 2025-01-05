@@ -1,4 +1,4 @@
-local opts = { noremap = true, silent = true }
+local helpers = require("leiswatch.helpers")
 -- local helpers = require("leiswatch.helpers")
 
 -- local eslint_filetypes = {
@@ -24,4 +24,4 @@ local format = function(bufnr)
 	})
 end
 
-vim.keymap.set({ "n", "v" }, "<C-i>", format, opts)
+vim.keymap.set({ "n", "v" }, "<C-i>", format, helpers.keymap_opts)

@@ -5,11 +5,11 @@ return {
 		"WhoIsSethDaniel/mason-tool-installer.nvim",
 		"williamboman/mason-lspconfig.nvim",
 		"b0o/schemastore.nvim",
-		"yioneko/nvim-vtsls",
 		"esmuellert/nvim-eslint",
-		-- "hrsh7th/cmp-nvim-lsp",
 		{ "iguanacucumber/mag-nvim-lsp", name = "cmp-nvim-lsp", opts = {} },
+		"yioneko/nvim-vtsls",
 		-- "pmizio/typescript-tools.nvim",
+		-- "hrsh7th/cmp-nvim-lsp",
 	},
 	config = function()
 		local servers = {
@@ -203,8 +203,6 @@ return {
 		capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 		-- capabilities = vim.tbl_deep_extend("force", capabilities, require("blink.cmp").get_lsp_capabilities(capabilities))
 
-		require("lspconfig.configs").vtsls = require("vtsls").lspconfig
-
 		local mason_config = require("leiswatch.lsp.mason_config")
 
 		-- local handlers = {
@@ -241,35 +239,12 @@ return {
 			automatic_installation = true,
 		})
 
-		-- require("typescript-tools").setup({
-		-- 	capabilities = capabilities,
-		-- 	filetypes = {
-		-- 		"javascript",
-		-- 		"javascriptreact",
-		-- 		"javascript.jsx",
-		-- 		"typescript",
-		-- 		"typescriptreact",
-		-- 		"typescript.tsx",
-		-- 		"vue",
-		-- 		"svelte",
-		-- 		-- "astro",
-		-- 	},
-		-- 	settings = {
-		-- 		separate_diagnostic_server = false,
-		-- 	},
-		-- })
-		--
 		local handlers = {
 			["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
 			["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" }),
 		}
 
-		for server_name, _ in pairs(servers) do
-			local server = servers[server_name] or {}
-			server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
-			server.handlers = handlers
-			lspconfig[server_name].setup(server)
-		end
+		require("lspconfig.configs").vtsls = require("vtsls").lspconfig
 
 		eslint.setup({
 			root_dir = function(bufnr)
@@ -304,5 +279,30 @@ return {
 				end,
 			},
 		})
+
+		for server_name, _ in pairs(servers) do
+			local server = servers[server_name] or {}
+			server.capabilities = vim.tbl_deep_extend("force", {}, capabilities, server.capabilities or {})
+			server.handlers = handlers
+			lspconfig[server_name].setup(server)
+		end
+
+		-- require("typescript-tools").setup({
+		-- 	capabilities = capabilities,
+		-- 	filetypes = {
+		-- 		"javascript",
+		-- 		"javascriptreact",
+		-- 		"javascript.jsx",
+		-- 		"typescript",
+		-- 		"typescriptreact",
+		-- 		"typescript.tsx",
+		-- 		"vue",
+		-- 		"svelte",
+		-- 		-- "astro",
+		-- 	},
+		-- 	settings = {
+		-- 		separate_diagnostic_server = false,
+		-- 	},
+		-- })
 	end,
 }

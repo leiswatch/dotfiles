@@ -43,15 +43,15 @@ exec --no-startup-id /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec --no-startup-id xfce4-power-manager --daemonize
 exec --no-startup-id system-config-printer-applet
 
-exec --no-startup-id sh ~/.config/i3/scripts/polybar.sh
-exec --no-startup-id sh ~/.config/i3/scripts/nm.sh
-exec --no-startup-id sh ~/.config/i3/scripts/blueman.sh
-exec --no-startup-id sh ~/.config/i3/scripts/flameshot.sh
-exec --no-startup-id sh ~/.config/i3/scripts/redshift.sh
-exec --no-startup-id sh ~/.config/i3/scripts/nitrogen.sh
-exec --no-startup-id sh ~/.config/i3/scripts/picom.sh
-exec --no-startup-id sh ~/.config/i3/scripts/caffeine.sh
-exec --no-startup-id sh ~/.config/i3/scripts/solaar.sh
+exec --no-startup-id sh /home/leiswatch/.config/i3/scripts/polybar.sh
+exec --no-startup-id sh /home/leiswatch/.config/i3/scripts/nm.sh
+exec --no-startup-id sh /home/leiswatch/.config/i3/scripts/blueman.sh
+exec --no-startup-id sh /home/leiswatch/.config/i3/scripts/flameshot.sh
+exec --no-startup-id sh /home/leiswatch/.config/i3/scripts/redshift.sh
+exec --no-startup-id sh /home/leiswatch/.config/i3/scripts/nitrogen.sh
+exec --no-startup-id sh /home/leiswatch/.config/i3/scripts/picom.sh
+exec --no-startup-id sh /home/leiswatch/.config/i3/scripts/caffeine.sh
+exec --no-startup-id sh /home/leiswatch/.config/i3/scripts/solaar.sh
 
 # Use pactl to adjust volume in PulseAudio.
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +2%
@@ -280,7 +280,7 @@ for_window [all] border normal
 for_window [class=".*"] title_format " %title "
 # for_window [class="pavucontrol"] floating enable, move center
 # for_window [class="Blueman-manager"] floating enable, move center
-# for_window [class="Gnome-calculator"] floating enable, move center
+for_window [class="Gnome-calculator"] floating enable, move center
 for_window [title="Picture-in-Picture"] floating enable, sticky enable, border pixel 2
 for_window [title="Picture in picture"] floating enable, sticky enable, border pixel 2
 gaps inner 0

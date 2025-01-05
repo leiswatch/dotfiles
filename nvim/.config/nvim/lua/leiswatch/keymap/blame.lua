@@ -1,3 +1,3 @@
-local opts = { noremap = true, silent = true }
+local helpers = require("leiswatch.helpers")
 
-vim.keymap.set("n", "<leader>gt", vim.cmd.BlameToggle, opts)
+vim.keymap.set("n", "<leader>gt", vim.cmd.BlameToggle, helpers.keymap_opts)

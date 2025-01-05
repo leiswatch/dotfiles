@@ -51,5 +51,6 @@ end
 M.contains = contains
 M.use_eslint_flat_config = use_eslint_flat_config
 M.get_first_formatter = get_first_formatter
+M.keymap_opts = { silent = true }
 
 return M

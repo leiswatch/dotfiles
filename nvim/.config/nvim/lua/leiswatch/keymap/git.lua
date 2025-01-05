@@ -1,9 +1,9 @@
-local opts = { noremap = true, silent = true }
+local helpers = require("leiswatch.helpers")
 
-vim.keymap.set("n", "<leader>gd", "<cmd>Gdiffsplit!<CR>", opts)
-vim.keymap.set("n", "<leader>gg", "<cmd>tab G<CR>", opts)
-vim.keymap.set("n", "dgh", "<cmd>diffget //2<CR>", opts)
-vim.keymap.set("n", "dgl", "<cmd>diffget //3<CR>", opts)
+vim.keymap.set("n", "<leader>gd", "<cmd>Gdiffsplit!<CR>", helpers.keymap_opts)
+vim.keymap.set("n", "<leader>gg", "<cmd>tab G<CR>", helpers.keymap_opts)
+vim.keymap.set("n", "dgh", "<cmd>diffget //2<CR>", helpers.keymap_opts)
+vim.keymap.set("n", "dgl", "<cmd>diffget //3<CR>", helpers.keymap_opts)
 
 -- vim.keymap.set('n', '<leader>co', '<Plug>(git-conflict-ours)')
 -- vim.keymap.set('n', '<leader>ct', '<Plug>(git-conflict-theirs)')
