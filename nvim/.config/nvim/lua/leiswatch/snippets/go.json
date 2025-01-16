@@ -1,0 +1,10 @@
+{
+  "err nil": {
+    "prefix": "errnil",
+    "body": [
+      "if err != nil {",
+      "    $1",
+      "}"
+    ]
+  }
+}

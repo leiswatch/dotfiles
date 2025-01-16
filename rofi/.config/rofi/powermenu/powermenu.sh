@@ -103,7 +103,7 @@ $lock)
         betterlockscreen -l dimblur
     elif [[ -x '/usr/bin/i3lock' && "$DESKTOP_SESSION" != 'hyprland' && "$DESKTOP_SESSION" != 'sway' ]]; then
         i3lock
-    elif [[ -x '/usr/bin/hyprlock' ]]; then
+    elif [[ -x '/bin/hyprlock' ]]; then
         hyprlock
     elif [[ -x '/bin/swaylock' ]]; then
         swaylock -f

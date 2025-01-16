@@ -63,6 +63,23 @@ setopt hist_ignore_dups
 setopt hist_find_no_dups
 setopt promptsubst
 
+export FZF_DEFAULT_OPTS=" \
+--color=bg+:#3b4261,spinner:#2ac3de,hl:#f7768e \
+--color=fg:#c0caf5,header:#f7768e,info:#cba6f7,pointer:#2ac3de \
+--color=marker:#2ac3de,fg+:#c0caf5,prompt:#cba6f7,hl+:#f7768e \
+--color=separator:#3b4261,scrollbar:#2ac3de,border:#3b4261,label:#c0caf5 \
+--prompt='  ' \
+--info=right \
+-i \
+--reverse \
+--padding 0,1"
+export PNPM_HOME="$HOME/.local/share/pnpm"
+export GOPATH="$HOME/.go"
+export DENO_INSTALL="$HOME/.deno"
+export BUN_INSTALL="$HOME/.bun"
+export FNM_COREPACK_ENABLED=true
+export ASDF_NODEJS_AUTO_ENABLE_COREPACK=true
+
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' menu no
 zstyle ':fzf-tab:*' fzf-flags --color=bg+:#3b4261,spinner:#2ac3de,hl:#f7768e,fg:#c0caf5,header:#f7768e,info:#cba6f7,pointer:#2ac3de,marker:#2ac3de,fg+:#c0caf5,prompt:#cba6f7,hl+:#f7768e,separator:#3b4261,scrollbar:#2ac3de,border:#3b4261,label:#c0caf5 --prompt='  ' --info=right -i --reverse --padding 0,1

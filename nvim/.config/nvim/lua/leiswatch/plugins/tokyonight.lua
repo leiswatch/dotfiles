@@ -16,7 +16,7 @@ return {
 			terminal_colors = true, -- Configure the colors used when opening a `:terminal` in [Neovim](https://github.com/neovim/neovim)
 			styles = {
 				comments = { italic = true },
-				keywords = { italic = false },
+				keywords = { italic = true },
 				functions = { italic = false },
 				variables = { italic = false },
 				sidebars = "transparent", -- style for sidebars, see below
@@ -87,10 +87,10 @@ return {
 				hl.CmpItemAbbrMatch = { bg = color.none, fg = color.red }
 				hl.CmpItemAbbrMatchFuzzy = { bg = color.none, fg = color.red }
 
-				hl.DiagnosticUnderlineError = { underline = true, sp = color.red }
-				hl.DiagnosticUnderlineWarn = { underline = true, sp = color.yellow }
-				hl.DiagnosticUnderlineInfo = { underline = true, sp = color.blue2 }
-				hl.DiagnosticUnderlineHint = { underline = true, sp = color.teal }
+				hl.DiagnosticUnderlineError = { undercurl = true, sp = color.red }
+				hl.DiagnosticUnderlineWarn = { undercurl = true, sp = color.yellow }
+				hl.DiagnosticUnderlineInfo = { undercurl = true, sp = color.blue2 }
+				hl.DiagnosticUnderlineHint = { undercurl = true, sp = color.teal }
 
 				hl.FzfLuaBackdrop = { fg = color.none, bg = color.bg }
 				hl.FzfLuaBorder = { fg = color.fg_gutter, bg = color.none }
@@ -105,7 +105,7 @@ return {
 				hl.HopPreview = { fg = color.red, bg = color.terminal_black }
 				hl.HopUnmatched = { fg = color.fg_gutter, bg = color.none }
 
-				hl.HighlightYank = { fg = color.none, bg = color.bg_highlight }
+				hl.HighlightYank = { fg = color.bg, bg = color.orange }
 
 				hl.DashboardButtons = { fg = color.yellow, bg = color.bg }
 			end,

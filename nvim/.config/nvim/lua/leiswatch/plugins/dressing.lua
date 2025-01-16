@@ -1,5 +1,6 @@
 return {
 	"stevearc/dressing.nvim",
+	enabled = false,
 	opts = {
 		input = {
 			enabled = true,
@@ -40,7 +41,7 @@ return {
 					-- Window transparency (0-100)
 					winblend = 0,
 				},
-				width = 0.3,
+				width = 0.5,
 
 				-- Set to `false` to disable
 				mappings = {

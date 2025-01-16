@@ -17,14 +17,7 @@ return {
 		-- { "iguanacucumber/mag-nvim-lua", name = "cmp-nvim-lua" },
 		{ "iguanacucumber/mag-buffer", name = "cmp-buffer" },
 		{ "iguanacucumber/mag-cmdline", name = "cmp-cmdline" },
-		{
-			"philosofonusus/ecolog.nvim",
-			opts = {
-				integrations = {
-					nvim_cmp = true, -- If you dont plan to use nvim_cmp set to false, enabled by default
-				},
-			},
-		},
+		{ "philosofonusus/ecolog.nvim", opts = { integrations = { nvim_cmp = true } } },
 		-- "Jezda1337/nvim-html-css",
 	},
 	event = { "InsertEnter", "CmdlineEnter" },
@@ -41,11 +34,10 @@ return {
 		end
 
 		require("luasnip.loaders.from_vscode").lazy_load()
+		require("luasnip.loaders.from_vscode").lazy_load({ paths = "~/.config/nvim/lua/leiswatch/snippets" })
 
 		cmp.setup({
-			view = {
-				entries = "custom",
-			},
+			view = { entries = "custom" },
 			snippet = {
 				expand = function(args)
 					luasnip.lsp_expand(args.body)
@@ -111,8 +103,8 @@ return {
 				{ name = "buffer" },
 				{ name = "treesitter" },
 				{ name = "path" },
-                { name = "ecolog" },
-                -- { name = "nvim_lua" },
+				{ name = "ecolog" },
+				-- { name = "nvim_lua" },
 				-- { name = "async_path" },
 				-- { name = "html-css" },
 				-- { name = "css_vars" },

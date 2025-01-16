@@ -13,6 +13,7 @@ return {
 			},
 			files = {
 				multiprocess = true,
+				-- formatter = "path.filename_first",
 				winopts = {
 					width = 0.9,
 					height = 0.6,

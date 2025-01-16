@@ -4,4 +4,6 @@ killall -q flameshot
 # Wait until the processes have been shut down
 while pgrep -u $UID -x flameshot >/dev/null; do sleep 1; done
 
+sleep 2
+
 (/bin/flameshot &) &> /dev/null

@@ -31,15 +31,15 @@ while true; do
         else
             echo "None"
         fi
-        sleep 1800 # 30 minutes
+        sleep 60 # 1 minute
         get_total_updates
     done
 
     # when no updates are available, use a longer loop, this saves on CPU
     # and network uptime, only checking once every 30 min for new updates
-    # while ((UPDATES == 0)); do
-    #     echo "None"
-    #     sleep 1800
-    #     get_total_updates
-    # done
+    while ((UPDATES == 0)); do
+        echo "None"
+        sleep 1800 # 30 minutes
+        get_total_updates
+    done
 done

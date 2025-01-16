@@ -20,14 +20,14 @@ set $term kitty
 # on the original workspace that the command was run on.
 set $menu dmenu_path | wmenu | xargs swaymsg exec --
 
-set $gnome-schema org.gnome.desktop.interface
+# set $gnome-schema org.gnome.desktop.interface
 
 ### Output configuration
 #
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 # output * bg /home/leiswatch/Pictures/Wallpapers/girl_in_rain_scaled.png fill
 
-font pango:Ubuntu 10
+font pango:Ubuntu 9
 
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 output "DP-1" {
@@ -71,15 +71,17 @@ seat seat0 xcursor_theme Simp1e-Dark 24
 include /home/leiswatch/.config/sway/config.d/*
 
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
+
 # XDG directories
 exec /usr/bin/xdg-user-dirs-update
-exec hypridle
 
 # Scripts
 exec sh /home/leiswatch/.config/sway/scripts/swww.sh
 exec sh /home/leiswatch/.config/sway/scripts/dunst.sh
 exec sh /home/leiswatch/.config/sway/scripts/nm.sh
 exec sh /home/leiswatch/.config/sway/scripts/solaar.sh
+exec sh /home/leiswatch/.config/sway/scripts/flameshot.sh
+exec sh /home/leiswatch/.config/sway/scripts/hypridle.sh
 exec sh /home/leiswatch/.config/sway/scripts/gammastep.sh
 exec sh /home/leiswatch/.config/sway/scripts/blueman.sh
 exec sh /home/leiswatch/.config/sway/scripts/waybar.sh
@@ -120,7 +122,8 @@ exec sh /home/leiswatch/.config/sway/scripts/waybar.sh
 
     # Kill focused window
     bindsym $mod+Shift+q kill
-    bindsym $mod+c kill
+    bindsym $mod+q kill
+    # bindsym $mod+c kill
 
     # Start your launcher
     # bindsym $mod+d exec $menu
@@ -142,11 +145,12 @@ exec sh /home/leiswatch/.config/sway/scripts/waybar.sh
     # Exit sway (logs you out of your Wayland session)
     # bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 
-    bindsym $mod+Shift+s exec grim -g "$(slurp)" - | swappy -f -
+    # bindsym $mod+Shift+s exec grim -g "$(slurp)" - | swappy -f -
+    bindsym $mod+Shift+s exec flameshot gui
     bindsym Print exec grim - | swappy -f -
 
-    bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%+
-    bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 5%-
+    bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+
+    bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-
     bindsym XF86AudioMute exec wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle
     bindsym XF86AudioMicMute exec wpctl set-mute @DEFAULT_AUDIO_SOURCE@ toggle
     bindsym XF86MonBrightnessDown exec brightnessctl set 5%-
@@ -287,7 +291,7 @@ bindsym $mod+r mode "resize"
 # }
 
 # Tokyonight
-set $dark_blue #3d59a1
+set $dark_blue #394b70
 set $blue #7aa2f7
 set $cyan #7dcfff
 set $base #1a1b26
@@ -297,8 +301,17 @@ set $red #f7768e
 set $text #c0caf5
 set $overlay0 #545c7e
 
+# DEFAULTS
+# class                 border  backgr. text    indicator child_border
+# client.focused          #4c7899 #285577 #ffffff #2e9ef4   #285577
+# client.focused_inactive #333333 #5f676a #ffffff #484e50   #5f676a
+# client.unfocused        #333333 #222222 #888888 #292d2e   #222222
+# client.urgent           #2f343a #900000 #ffffff #900000   #900000
+# client.placeholder      #000000 #0c0c0c #ffffff #000000   #0c0c0c
+# client.background       #ffffff
+
 # class                  border        bground       text          indicator      child_border
-client.focused           $dark_blue    $dark_blue    $text         $dark_blue     $dark_blue
+client.focused           $dark_blue         $dark_blue    $text         $dark_blue     $dark_blue
 client.focused_inactive  $surface1     $base         $subtext0     $surface1      $surface1
 client.unfocused         $surface1     $base         $subtext0     $surface1      $surface1
 client.urgent            $red          $base         $red          $overlay0      $red
@@ -311,9 +324,11 @@ focus_follows_mouse yes
 default_border normal
 default_floating_border pixel 2
 hide_edge_borders --i3 none
+# for_window [all] title_format " %title "
+title_align left
 
 for_window [all] border normal
-for_window [all] titlebar_border_thickness 2
+for_window [all] titlebar_border_thickness 1
 
 for_window [title="Picture-in-Picture"] floating enable, sticky enable, border pixel 2
 for_window [title="Picture in picture"] floating enable, sticky enable, border pixel 2
@@ -321,3 +336,4 @@ for_window [title="Picture in picture"] floating enable, sticky enable, border p
 # for_window [title="Open File"] floating enable, border none
 
 gaps inner 0
+focus_on_window_activation focus
