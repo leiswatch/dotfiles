@@ -1,7 +1,6 @@
 return {
 	"ibhagwan/fzf-lua",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
-	enabled = true,
 	config = function()
 		local actions = require("fzf-lua.actions")
 
@@ -18,10 +17,11 @@ return {
 					width = 0.9,
 					height = 0.6,
 					preview = { hidden = "hidden" },
-					border = "rounded",
+					border = "single",
 					col = 0.5,
 					row = 0.1,
 					title = "Files",
+					title_flags = false,
 					title_pos = "center",
 				},
 				cwd_prompt = false,
@@ -45,14 +45,15 @@ return {
 					"!.env",
 				},
 				winopts = {
+					border = "single",
 					width = 0.95,
 					height = 0.95,
 					title = "Search",
 					title_pos = "center",
 					preview = {
 						horizontal = "right:50%", -- right|left:size
+						border = "single",
 					},
-					border = "rounded",
 				},
 				cwd_prompt = false,
 				prompt = "  ",
@@ -100,6 +101,7 @@ return {
 				},
 				builtin = {
 					syntax = true,
+					border = "single",
 					treesitter = {
 						enabled = true,
 						disabled = {},

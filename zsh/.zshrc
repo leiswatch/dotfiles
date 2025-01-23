@@ -92,6 +92,7 @@ alias cat='bat'
 alias tksv='/usr/bin/tmux kill-server'
 alias tmux='tmux a || tmux'
 alias gcwtc='git commit -m "$(curl -s https://whatthecommit.com/index.txt)"'
+alias gcwip='git commit -m "WIP: $(date)"'
 alias fsb='git switch $(git branch | grep -v \"^\*\" | fzf --height=30% --reverse --info=inline)'
 
 # Functions
@@ -106,7 +107,7 @@ function vmrss() {
 }
 
 function set_win_title() {
-    echo -ne "\033]0; Terminal \007"
+    echo -ne "\033]0; Kitty \007"
 }
 
 precmd_functions+=(set_win_title)

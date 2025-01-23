@@ -29,7 +29,7 @@
 # Tokyonight
 gui:
   nerdFontsVersion: "3"
-  border: rounded
+  border: single
   showIcons: false
   theme:
     activeBorderColor:

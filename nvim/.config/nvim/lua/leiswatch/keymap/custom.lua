@@ -1,5 +1,7 @@
 local helpers = require("leiswatch.helpers")
 
+vim.keymap.set("n", "P", "]P", helpers.keymap_opts)
+vim.keymap.set("n", "p", "]p", helpers.keymap_opts)
 vim.keymap.set("n", "<leader>vv", "<C-^>", helpers.keymap_opts)
 vim.keymap.set("n", "<leader>ss", ":split<Return><C-w>w", helpers.keymap_opts)
 vim.keymap.set("n", "<leader>sv", ":vsplit<Return><C-w>w", helpers.keymap_opts)

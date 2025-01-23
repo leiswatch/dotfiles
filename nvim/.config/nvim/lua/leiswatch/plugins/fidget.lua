@@ -19,7 +19,7 @@ return {
 		notification = {
 			window = {
 				winblend = 0, -- Background color opacity in the notification window
-				border = "rounded", -- Border around the notification window
+				border = "single", -- Border around the notification window
 				-- max_width = 150, -- Maximum width of the notification window
 				x_padding = 0, -- Padding from right edge of window boundary
 				align = "bottom",

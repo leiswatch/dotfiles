@@ -45,13 +45,13 @@ return {
 			},
 			window = {
 				completion = {
-					border = "rounded",
+					border = "single",
 					winhighlight = "Normal:Normal,FloatBorder:FloatBorder,CursorLine:CursorLine,Search:Search",
 					col_offset = -3,
 					side_padding = 0,
 				},
 				documentation = {
-					border = "rounded",
+					border = "single",
 					-- max_width = 120,
 					-- max_height = 20,
 					winhighlight = "Normal:Normal,FloatBorder:FloatBorder",

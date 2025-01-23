@@ -1,6 +1,5 @@
 return {
 	"nvim-neo-tree/neo-tree.nvim",
-	enabled = true,
 	branch = "v3.x",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
@@ -23,7 +22,7 @@ return {
 	},
 	opts = {
 		close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
-		popup_border_style = "rounded",
+		popup_border_style = "single",
 		enable_git_status = false,
 		enable_diagnostics = false,
 		window = {

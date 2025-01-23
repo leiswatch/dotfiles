@@ -1,6 +1,5 @@
 return {
 	"stevearc/conform.nvim",
-	enabled = true,
 	event = { "BufRead" },
 	config = function()
 		local helpers = require("leiswatch.helpers")

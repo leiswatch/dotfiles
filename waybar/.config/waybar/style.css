@@ -30,7 +30,8 @@ window#waybar.hidden {
   font-weight: 500;
   font-size: 14px;
   font-weight: 700;
-  /* border-radius: 4px; */
+  border-radius: 4px;
+  padding: 0 2px;
 }
 
 #workspaces button.empty {

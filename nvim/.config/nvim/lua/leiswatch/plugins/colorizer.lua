@@ -4,7 +4,7 @@ return {
 	opts = {
 		filetypes = { "css", "less", "sass", "scss", "html" },
 		user_default_options = {
-			names = true, -- "Name" codes like Blue or blue
+			names = false, -- "Name" codes like Blue or blue
 			RGB = true, -- #RGB hex codes
 			RRGGBB = true, -- #RRGGBB hex codes
 			RRGGBBAA = true, -- #RRGGBBAA hex codes

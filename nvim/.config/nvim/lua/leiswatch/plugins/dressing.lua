@@ -4,7 +4,7 @@ return {
 	opts = {
 		input = {
 			enabled = true,
-			border = "rounded",
+			border = "single",
 			title_pos = "center",
 			win_options = {
 				winblend = 0,
@@ -33,7 +33,7 @@ return {
 			builtin = {
 				-- These are passed to nvim_open_win
 				-- anchor = "NW",
-				border = "rounded",
+				border = "single",
 				-- 'editor' and 'win' will default to being centered
 				relative = "cursor",
 				buf_options = {},

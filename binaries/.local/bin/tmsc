@@ -3,7 +3,7 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    selected=$(tmux list-sessions | awk -F: '{ print $1 }' | sort | fzf --tmux --reverse --border=rounded --no-info --padding 0)
+    selected=$(tmux list-sessions | awk -F: '{ print $1 }' | sort | fzf --tmux --reverse --border=sharp --no-info --padding 0)
 fi
 
 if [[ -z $selected ]]; then

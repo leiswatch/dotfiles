@@ -7,8 +7,8 @@ vim.api.nvim_create_autocmd("LspAttach", {
 
 		local keymap_opts = vim.tbl_extend("force", helpers.keymap_opts, { buffer = event.buf })
 
-		-- local diagnostic_opts = { border = "rounded", max_width = 100, header = "", source = false, scope = "line" }
-		local diagnostic_opts = { border = "rounded", header = "", source = true, scope = "line" }
+		-- local diagnostic_opts = { border = "single", max_width = 100, header = "", source = false, scope = "line" }
+		local diagnostic_opts = { border = "single", header = "", source = true, scope = "line" }
 
 		vim.keymap.set("n", "gd", vim.lsp.buf.definition, keymap_opts)
 		vim.keymap.set("n", "gD", vim.lsp.buf.declaration, keymap_opts)
@@ -20,14 +20,14 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set("n", "<leader>k", vim.lsp.buf.signature_help, keymap_opts)
 		-- vim.keymap.set("n", "K", function()
 		-- 	vim.lsp.buf.hover({
-		-- 		border = "rounded",
+		-- 		border = "single",
 		-- 	})
-		-- end, opts)
+		-- end, keyamp_opts)
 		-- vim.keymap.set("n", "<leader>k", function()
 		-- 	vim.lsp.buf.signature_help({
-		-- 		border = "rounded",
+		-- 		border = "single",
 		-- 	})
-		-- end, opts)
+		-- end, keyamp_opts)
 		vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, keymap_opts)
 		vim.keymap.set({ "v", "n" }, "<leader>ca", vim.lsp.buf.code_action, keymap_opts)
 		vim.keymap.set({ "v", "n" }, "<leader>cf", function(bufnr)

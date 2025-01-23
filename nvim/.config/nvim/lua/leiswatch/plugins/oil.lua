@@ -16,7 +16,7 @@ return {
 			"icon",
 		},
 		keymaps_help = {
-			border = "rounded",
+			border = "single",
 		},
 		skip_confirm_for_simple_edits = true,
 		win_options = {
@@ -34,7 +34,7 @@ return {
 			padding = 2,
 			max_width = 150,
 			max_height = 30,
-			border = "rounded",
+			border = "single",
 			win_options = {
 				winblend = 0,
 			},
@@ -52,7 +52,7 @@ return {
 			},
 		},
 		preview = {
-			border = "rounded",
+			border = "single",
 		},
 		keymaps = {
 			["g?"] = "actions.show_help",

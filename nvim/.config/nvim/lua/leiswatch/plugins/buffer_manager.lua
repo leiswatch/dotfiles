@@ -15,9 +15,11 @@ return {
 		short_term_names = true,
 		width = 0.75,
 		height = 10,
-		-- borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+		border = "single",
 		highlight = "Normal:FloatBorder",
 		win_extra_options = {
+			-- border = "single",
+			-- borderchars = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
 			relativenumber = false,
 		},
 	},

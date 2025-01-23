@@ -6,8 +6,9 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		"b0o/schemastore.nvim",
 		"esmuellert/nvim-eslint",
-		{ "iguanacucumber/mag-nvim-lsp", name = "cmp-nvim-lsp", opts = {} },
 		"yioneko/nvim-vtsls",
+		{ "iguanacucumber/mag-nvim-lsp", name = "cmp-nvim-lsp", opts = {} },
+		-- "saghen/blink.cmp",
 		-- "pmizio/typescript-tools.nvim",
 		-- "hrsh7th/cmp-nvim-lsp",
 	},
@@ -183,7 +184,7 @@ return {
 
 		local helpers = require("leiswatch.helpers")
 		local lspconfig = require("lspconfig")
-		require("lspconfig.ui.windows").default_options.border = "rounded"
+		require("lspconfig.ui.windows").default_options.border = "single"
 
 		local eslint = require("nvim-eslint")
 
@@ -220,7 +221,7 @@ return {
 		require("mason").setup({
 			max_concurrent_installers = 1,
 			ui = {
-				border = "rounded",
+				border = "single",
 				height = 0.8,
 			},
 		})
@@ -240,8 +241,8 @@ return {
 		})
 
 		local handlers = {
-			["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "rounded" }),
-			["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "rounded" }),
+			["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" }),
+			["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single" }),
 		}
 
 		require("lspconfig.configs").vtsls = require("vtsls").lspconfig

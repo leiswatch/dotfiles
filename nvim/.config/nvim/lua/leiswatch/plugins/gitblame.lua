@@ -3,5 +3,6 @@ return {
 	keys = {
 		{ "<leader>gt", vim.cmd.BlameToggle, { noremap = true, silent = true } },
 	},
-	opts = {},
+	event = { "BufRead" },
+	config = true,
 }
