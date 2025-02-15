@@ -6,6 +6,7 @@ return {
 		"williamboman/mason-lspconfig.nvim",
 		"b0o/schemastore.nvim",
 		"esmuellert/nvim-eslint",
+		"soulsam480/nvim-oxlint",
 		"yioneko/nvim-vtsls",
 		{ "iguanacucumber/mag-nvim-lsp", name = "cmp-nvim-lsp", opts = {} },
 		-- "saghen/blink.cmp",
@@ -187,6 +188,7 @@ return {
 		require("lspconfig.ui.windows").default_options.border = "single"
 
 		local eslint = require("nvim-eslint")
+		local oxlint = require("nvim-oxlint")
 
 		local capabilities = vim.lsp.protocol.make_client_capabilities()
 		capabilities.textDocument.completion.completionItem.snippetSupport = true
@@ -246,6 +248,20 @@ return {
 		}
 
 		require("lspconfig.configs").vtsls = require("vtsls").lspconfig
+
+		oxlint.setup({
+			filetypes = {
+				"javascript",
+				"javascriptreact",
+				"javascript.jsx",
+				"typescript",
+				"typescriptreact",
+				"typescript.tsx",
+				"vue",
+				"svelte",
+				-- "astro",
+			},
+		})
 
 		eslint.setup({
 			root_dir = function(bufnr)

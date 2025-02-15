@@ -1,23 +1,33 @@
 return {
-	-- "hrsh7th/nvim-cmp",
-	"iguanacucumber/magazine.nvim",
-	name = "nvim-cmp", -- Otherwise highlighting gets messed up
-	enabled = true,
+	"hrsh7th/nvim-cmp",
+	-- "iguanacucumber/magazine.nvim",
+	-- name = "nvim-cmp", -- Otherwise highlighting gets messed up
 	dependencies = {
-		-- "hrsh7th/cmp-nvim-lsp",
-		-- "hrsh7th/cmp-buffer",
+		"hrsh7th/cmp-nvim-lsp",
+		"hrsh7th/cmp-buffer",
 		"hrsh7th/cmp-path",
-		-- "hrsh7th/cmp-cmdline",
+		"hrsh7th/cmp-cmdline",
+		"hrsh7th/cmp-nvim-lua",
 		"saadparwaiz1/cmp_luasnip",
 		"rafamadriz/friendly-snippets",
 		"onsails/lspkind.nvim",
 		{ "L3MON4D3/LuaSnip", version = "v2.*", build = "make install_jsregexp" },
-		-- { "https://codeberg.org/FelipeLema/cmp-async-path" },
-		{ "iguanacucumber/mag-nvim-lsp", name = "cmp-nvim-lsp", opts = {} },
-		-- { "iguanacucumber/mag-nvim-lua", name = "cmp-nvim-lua" },
-		{ "iguanacucumber/mag-buffer", name = "cmp-buffer" },
-		{ "iguanacucumber/mag-cmdline", name = "cmp-cmdline" },
 		{ "philosofonusus/ecolog.nvim", opts = { integrations = { nvim_cmp = true } } },
+		{
+			"folke/lazydev.nvim",
+			ft = "lua", -- only load on lua files
+			dependencies = { "Bilal2453/luvit-meta" },
+			opts = {
+				library = {
+					{ path = "luvit-meta/library", words = { "vim%.uv" } },
+				},
+			},
+		},
+		{ "https://codeberg.org/FelipeLema/cmp-async-path" },
+		-- { "iguanacucumber/mag-nvim-lsp", name = "cmp-nvim-lsp", opts = {} },
+		-- { "iguanacucumber/mag-nvim-lua", name = "cmp-nvim-lua" },
+		-- { "iguanacucumber/mag-buffer", name = "cmp-buffer" },
+		-- { "iguanacucumber/mag-cmdline", name = "cmp-cmdline" },
 		-- "Jezda1337/nvim-html-css",
 	},
 	event = { "InsertEnter", "CmdlineEnter" },
@@ -62,50 +72,53 @@ return {
 				["<C-f>"] = cmp.mapping.scroll_docs(4),
 				["<C-Space>"] = cmp.mapping.complete(),
 				["<C-e>"] = cmp.mapping.abort(),
-				-- ["<CR>"] = cmp.mapping.confirm({ select = true }),
+				["<CR>"] = cmp.mapping.confirm({ select = true }),
 				["<C-y>"] = cmp.mapping.confirm({ select = true }),
-				["<C-l>"] = cmp.mapping(function()
+				["<C-l>"] = cmp.mapping(function(fallback)
 					if luasnip.expand_or_locally_jumpable() then
 						luasnip.expand_or_jump()
+					else
+						fallback()
 					end
 				end, { "i", "s" }),
-				["<C-h>"] = cmp.mapping(function()
+				["<C-h>"] = cmp.mapping(function(fallback)
 					if luasnip.locally_jumpable(-1) then
 						luasnip.jump(-1)
-					end
-				end, { "i", "s" }),
-				["<Tab>"] = cmp.mapping(function(fallback)
-					if cmp.visible() then
-						cmp.select_next_item()
-					elseif luasnip.expand_or_jumpable() then
-						luasnip.expand_or_jump()
-					elseif has_words_before() then
-						cmp.complete()
 					else
 						fallback()
 					end
 				end, { "i", "s" }),
-
-				["<S-Tab>"] = cmp.mapping(function(fallback)
-					if cmp.visible() then
-						cmp.select_prev_item()
-					elseif luasnip.jumpable(-1) then
-						luasnip.jump(-1)
-					else
-						fallback()
-					end
-				end, { "i", "s" }),
+				-- ["<Tab>"] = cmp.mapping(function(fallback)
+				-- 	if cmp.visible() then
+				-- 		cmp.select_next_item()
+				-- 	elseif luasnip.expand_or_jumpable() then
+				-- 		luasnip.expand_or_jump()
+				-- 	elseif has_words_before() then
+				-- 		cmp.complete()
+				-- 	else
+				-- 		fallback()
+				-- 	end
+				-- end, { "i", "s" }),
+				-- ["<S-Tab>"] = cmp.mapping(function(fallback)
+				-- 	if cmp.visible() then
+				-- 		cmp.select_prev_item()
+				-- 	elseif luasnip.jumpable(-1) then
+				-- 		luasnip.jump(-1)
+				-- 	else
+				-- 		fallback()
+				-- 	end
+				-- end, { "i", "s" }),
 			}),
 			sources = cmp.config.sources({
-				{ name = "lazydev", group_index = 0 },
 				{ name = "nvim_lsp" },
 				{ name = "luasnip" },
 				{ name = "buffer" },
 				{ name = "treesitter" },
-				{ name = "path" },
+				{ name = "async_path" },
+				-- { name = "path" },
 				{ name = "ecolog" },
-				-- { name = "nvim_lua" },
-				-- { name = "async_path" },
+				{ name = "nvim_lua" },
+				{ name = "lazydev", group_index = 0 },
 				-- { name = "html-css" },
 				-- { name = "css_vars" },
 				-- { name = "spell", keyword_length = 3, keyword_pattern = [[\w\+]] },
@@ -159,6 +172,7 @@ return {
 			}, {
 				{ name = "cmdline" },
 			}),
+			---@diagnostic disable-next-line: missing-fields
 			matching = { disallow_symbol_nonprefix_matching = false },
 		})
 

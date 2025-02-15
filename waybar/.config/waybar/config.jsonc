@@ -3,23 +3,21 @@
     "layer": "bottom", // Waybar at bottom layer
     "position": "top", // Waybar position (top|bottom|left|right)
     "height": 40, // Waybar height (to be removed for auto height)
-    "spacing": 10, // Gaps between modules (4px)
+    "spacing": 8, // Gaps between modules (8px)
     // Choose the order of the modules
     "reload_style_on_change": true,
     "modules-left": [
-        // "hyprland/workspaces",
-        // "hyprland/submap"
-        "sway/workspaces",
-        "sway/mode",
-        "sway/scratchpad"
+        "hyprland/workspaces",
+        "hyprland/submap"
+        // "sway/workspaces",
+        // "sway/mode",
+        // "sway/scratchpad"
+        // "hyprland/window"
     ],
     "modules-center": [
         "clock"
     ],
     "modules-right": [
-        // "keyboard-state",
-        // "sway/language",
-        // "custom/notifications",
         "cpu",
         "memory",
         "disk",
@@ -28,6 +26,9 @@
         "pulseaudio",
         "idle_inhibitor",
         "tray"
+        // "keyboard-state",
+        // "sway/language",
+        // "custom/notifications",
     ],
     // Modules configuration
     "sway/workspaces": {
@@ -76,7 +77,8 @@
     "hyprland/window": {
         "tooltip": false,
         "icon": true,
-        "icon-size": 22,
+        "icon-size": 18,
+        "max-length": 20,
     },
     "hyprland/language": {
         "format": " {}",

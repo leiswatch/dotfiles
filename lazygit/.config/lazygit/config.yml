@@ -30,7 +30,7 @@
 gui:
   nerdFontsVersion: "3"
   border: single
-  showIcons: false
+  showIcons: true
   theme:
     activeBorderColor:
       - "#9ece6a"

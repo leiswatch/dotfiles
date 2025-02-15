@@ -40,7 +40,7 @@ return {
 
 				hl.NeotreeNormal = { fg = color.fg, bg = color.none }
 				hl.Neotree = { fg = color.fg, bg = color.none }
-				hl.NeotreeDirectoryIcon = { bg = color.none, fg = color.blue }
+				hl.NeotreeDirectoryIcon = { bg = color.none, fg = color.yellow }
 
 				-- hl.TelescopeBorder = { fg = color.fg_gutter, bg = color.none }
 				-- hl.TelescopePreviewBorder = { fg = color.fg_gutter, bg = color.none }
@@ -87,10 +87,10 @@ return {
 				hl.CmpItemAbbrMatch = { bg = color.none, fg = color.red }
 				hl.CmpItemAbbrMatchFuzzy = { bg = color.none, fg = color.red }
 
-				hl.DiagnosticUnderlineError = { undercurl = true, sp = color.red }
-				hl.DiagnosticUnderlineWarn = { undercurl = true, sp = color.yellow }
-				hl.DiagnosticUnderlineInfo = { undercurl = true, sp = color.blue2 }
-				hl.DiagnosticUnderlineHint = { undercurl = true, sp = color.teal }
+				hl.DiagnosticUnderlineError = { underline = true, sp = color.red }
+				hl.DiagnosticUnderlineWarn = { underline = true, sp = color.yellow }
+				hl.DiagnosticUnderlineInfo = { underline = true, sp = color.blue2 }
+				hl.DiagnosticUnderlineHint = { underline = true, sp = color.teal }
 
 				hl.FzfLuaBackdrop = { fg = color.none, bg = color.bg }
 				hl.FzfLuaBorder = { fg = color.fg_gutter, bg = color.none }
@@ -108,6 +108,9 @@ return {
 				hl.HighlightYank = { fg = color.bg, bg = color.orange }
 
 				hl.DashboardButtons = { fg = color.yellow, bg = color.bg }
+
+				hl.SnacksInputTitle = { fg = color.fg, bg = color.none }
+				hl.SnacksIndent = { fg = color.bg_highlight, bg = color.none }
 			end,
 		})
 

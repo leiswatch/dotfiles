@@ -4,7 +4,7 @@ return {
 		local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
 		ts_update()
 	end,
-	event = { "BufRead" },
+	event = { "BufReadPost" },
 	dependencies = {
 		"nvim-treesitter/nvim-treesitter-context",
 		"JoosepAlviste/nvim-ts-context-commentstring",
@@ -137,7 +137,7 @@ return {
 		---@diagnostic disable-next-line: missing-fields
 		require("nvim-ts-autotag").setup({
 			opts = {
-				enable_close = true, -- Auto close tags
+				enable_close = false, -- Auto close tags
 				enable_rename = true, -- Auto rename pairs of tags
 				enable_close_on_slash = false, -- Auto close on trailing </
 			},

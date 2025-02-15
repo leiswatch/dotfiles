@@ -15,11 +15,11 @@ return {
 				-- formatter = "path.filename_first",
 				winopts = {
 					width = 0.9,
-					height = 0.6,
+					height = 0.75,
 					preview = { hidden = "hidden" },
 					border = "single",
 					col = 0.5,
-					row = 0.1,
+					row = 0.25,
 					title = "Files",
 					title_flags = false,
 					title_pos = "center",
@@ -105,8 +105,9 @@ return {
 					treesitter = {
 						enabled = true,
 						disabled = {},
+						context = false,
 						-- nvim-treesitter-context config options
-						context = { max_lines = 3, trim_scope = "inner" },
+						-- context = { enabled = false, max_lines = 3, trim_scope = "inner" },
 					},
 				},
 			},

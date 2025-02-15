@@ -27,7 +27,7 @@ zinit snippet OMZP::archlinux
 zinit snippet OMZP::command-not-found
 zinit snippet OMZP::docker
 zinit snippet OMZP::docker-compose
-zinit snippet OMZP::fzf
+zinit snippet OMZP::fnm
 zinit snippet OMZP::git
 zinit snippet OMZP::golang
 zinit snippet OMZP::kubectl
@@ -41,7 +41,10 @@ zinit snippet OMZP::zoxide
 zinit snippet OMZL::directories.zsh
 zinit snippet OMZL::git.zsh
 
-autoload -Uz compinit && compinit
+fpath+="$ZSH_CACHE_DIR/completions"
+
+autoload -Uz compinit
+compinit
 
 zinit cdreplay -q
 
@@ -78,7 +81,6 @@ export GOPATH="$HOME/.go"
 export DENO_INSTALL="$HOME/.deno"
 export BUN_INSTALL="$HOME/.bun"
 export FNM_COREPACK_ENABLED=true
-export ASDF_NODEJS_AUTO_ENABLE_COREPACK=true
 
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' menu no
@@ -107,7 +109,7 @@ function vmrss() {
 }
 
 function set_win_title() {
-    echo -ne "\033]0; Kitty \007"
+    echo -ne "\033]0;Kitty\007"
 }
 
 precmd_functions+=(set_win_title)
@@ -115,11 +117,11 @@ precmd_functions+=(set_win_title)
 # bun
 [ -s "/home/leiswatch/.bun/_bun" ] && source "/home/leiswatch/.bun/_bun"
 
-# fzf
-# source <(fzf --zsh)
-
 # fnm
 eval "$(fnm env --shell zsh --use-on-cd --version-file-strategy=recursive --corepack-enabled --resolve-engines)"
+
+# fzf
+source <(fzf --zsh)
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
 # [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

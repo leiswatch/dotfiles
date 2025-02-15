@@ -2,9 +2,9 @@ return {
 	"stevearc/conform.nvim",
 	event = { "BufRead" },
 	config = function()
-		local helpers = require("leiswatch.helpers")
+		local conform = require("conform")
 
-		require("conform").setup({
+		conform.setup({
 			default_format_opts = { lsp_format = "never" },
 			notify_on_error = false,
 			formatters_by_ft = {
@@ -17,14 +17,14 @@ return {
 				python = { "black", "yapf" },
 
 				html = {
-					"prettierd",
 					"prettier",
+					"prettierd",
 					stop_after_first = true,
 					lsp_format = "never",
 				},
 				astro = {
-					"prettierd",
 					"prettier",
+					"prettierd",
 					stop_after_first = true,
 					lsp_format = "first",
 					filter = function(client)
@@ -32,8 +32,8 @@ return {
 					end,
 				},
 				svelte = {
-					"prettierd",
 					"prettier",
+					"prettierd",
 					stop_after_first = true,
 					lsp_format = "first",
 					filter = function(client)
@@ -41,8 +41,8 @@ return {
 					end,
 				},
 				vue = {
-					"prettierd",
 					"prettier",
+					"prettierd",
 					stop_after_first = true,
 					lsp_format = "first",
 					filter = function(client)
@@ -51,8 +51,8 @@ return {
 				},
 
 				javascript = {
-					"prettierd",
 					"prettier",
+					"prettierd",
 					stop_after_first = true,
 					lsp_format = "first",
 					filter = function(client)
@@ -60,8 +60,8 @@ return {
 					end,
 				},
 				typescript = {
-					"prettierd",
 					"prettier",
+					"prettierd",
 					stop_after_first = true,
 					lsp_format = "first",
 					filter = function(client)
@@ -69,8 +69,8 @@ return {
 					end,
 				},
 				javacriptreact = {
-					"prettierd",
 					"prettier",
+					"prettierd",
 					stop_after_first = true,
 					lsp_format = "first",
 					filter = function(client)
@@ -78,8 +78,8 @@ return {
 					end,
 				},
 				typescriptreact = {
-					"prettierd",
 					"prettier",
+					"prettierd",
 					stop_after_first = true,
 					lsp_format = "first",
 					filter = function(client)
@@ -88,8 +88,8 @@ return {
 				},
 
 				css = {
-					"prettierd",
 					"prettier",
+					"prettierd",
 					stop_after_first = true,
 					lsp_format = "first",
 					filter = function(client)
@@ -97,8 +97,8 @@ return {
 					end,
 				},
 				scss = {
-					"prettierd",
 					"prettier",
+					"prettierd",
 					stop_after_first = true,
 					lsp_format = "first",
 					filter = function(client)
@@ -106,8 +106,8 @@ return {
 					end,
 				},
 				sass = {
-					"prettierd",
 					"prettier",
+					"prettierd",
 					stop_after_first = true,
 					lsp_format = "first",
 					filter = function(client)
@@ -115,8 +115,8 @@ return {
 					end,
 				},
 				less = {
-					"prettierd",
 					"prettier",
+					"prettierd",
 					stop_after_first = true,
 					lsp_format = "first",
 					filter = function(client)
@@ -124,8 +124,8 @@ return {
 					end,
 				},
 				json = {
-					"prettierd",
 					"prettier",
+					"prettierd",
 					stop_after_first = true,
 					lsp_format = "first",
 					filter = function(client)
@@ -133,8 +133,8 @@ return {
 					end,
 				},
 				jsonc = {
-					"prettierd",
 					"prettier",
+					"prettierd",
 					stop_after_first = true,
 					lsp_format = "first",
 					filter = function(client)
@@ -142,8 +142,8 @@ return {
 					end,
 				},
 				yaml = {
-					"prettierd",
 					"prettier",
+					"prettierd",
 					stop_after_first = true,
 					lsp_format = "first",
 					filter = function(client)

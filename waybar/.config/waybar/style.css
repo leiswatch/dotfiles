@@ -17,8 +17,9 @@ window#waybar.hidden {
 #workspaces {
   background-color: @bg_dark_alt;
   border-radius: 4px;
-  margin: 6px 0 6px 8px;
+  margin: 6px 0;
   padding: 0 4px;
+  /* border: 1px solid @fg_gutter; */
 }
 
 #workspaces button {
@@ -59,6 +60,14 @@ window#waybar.hidden {
   color: @red;
 }
 
+.modules-left {
+  padding-left: 8px;
+}
+
+.modules-right {
+  padding-right: 8px;
+}
+
 #bluetooth,
 #memory,
 #pulseaudio,
@@ -76,8 +85,8 @@ window#waybar.hidden {
 #custom-notifications,
 #spotify,
 #window {
-  border-radius: 4px;
   /* border: 1px solid @fg_gutter; */
+  border-radius: 4px;
   padding: 0 8px;
   background-color: @bg_dark_alt;
   margin: 6px 0;
@@ -94,6 +103,10 @@ window#waybar.hidden {
 
 #window {
   color: #c0caf5;
+}
+
+window#waybar.empty #window {
+  background-color: transparent;
 }
 
 #spotify {
@@ -117,7 +130,7 @@ window#waybar.hidden {
   background-color: @bg_dark_alt;
   border-radius: 4px;
   padding: 0 8px;
-  margin: 6px 8px 6px 0;
+  margin: 6px 0;
 }
 
 #tray menu {

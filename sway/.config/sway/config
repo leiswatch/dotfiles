@@ -27,7 +27,7 @@ set $menu dmenu_path | wmenu | xargs swaymsg exec --
 # Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
 # output * bg /home/leiswatch/Pictures/Wallpapers/girl_in_rain_scaled.png fill
 
-font pango:Ubuntu 10
+font pango:Ubuntu 9
 
 # You can get the names of your outputs by running: swaymsg -t get_outputs
 output "DP-1" {
@@ -129,8 +129,10 @@ exec sh /home/leiswatch/.config/sway/scripts/waybar.sh
     # bindsym $mod+d exec $menu
     bindsym $mod+d exec /home/leiswatch/.config/rofi/launchers/launcher.sh
     bindsym $mod+n exec /home/leiswatch/.config/rofi/launchers/vpn.sh
+    bindsym $mod+u exec /home/leiswatch/.config/rofi/launchers/pactl.sh
     bindsym $mod+Shift+n exec /home/leiswatch/.config/rofi/launchers/nordvpn.sh
     bindsym $mod+Shift+p exec /home/leiswatch/.config/rofi/powermenu/powermenu.sh
+    # bindsym $mod+Shift+p exec wlogout
 
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
@@ -227,7 +229,7 @@ exec sh /home/leiswatch/.config/sway/scripts/waybar.sh
     bindsym $mod+f fullscreen
 
     # Toggle the current focus between tiling and floating mode
-    bindsym $mod+Shift+space floating toggle
+    bindsym $mod+Shift+space floating toggle, move position center, resize set 80ppt 80ppt
 
     # Swap focus between the tiling area and the floating area
     bindsym $mod+space focus mode_toggle
@@ -272,24 +274,6 @@ mode "resize" {
 
 bindsym $mod+r mode "resize"
 
-#
-# Status Bar:
-#
-# Read `man 5 sway-bar` for more information about this section.
-# bar {
-#     position bottom
-#
-#     # When the status_command prints a new line to stdout, swaybar updates.
-#     # The default just shows the current date and time.
-#     status_command while date +'%Y-%m-%d %X'; do sleep 1; done
-#
-#     colors {
-#         statusline #ffffff
-#         background #323232
-#         inactive_workspace #32323200 #32323200 #5c5c5c
-#     }
-# }
-
 # Tokyonight
 set $dark_blue #394b70
 set $blue #7aa2f7
@@ -311,29 +295,25 @@ set $overlay0 #545c7e
 # client.background       #ffffff
 
 # class                  border        bground       text          indicator      child_border
-client.focused           $dark_blue         $dark_blue    $text         $dark_blue     $dark_blue
+client.focused           $dark_blue    $dark_blue    $text         $dark_blue     $dark_blue
 client.focused_inactive  $surface1     $base         $subtext0     $surface1      $surface1
 client.unfocused         $surface1     $base         $subtext0     $surface1      $surface1
 client.urgent            $red          $base         $red          $overlay0      $red
 client.placeholder       $overlay0     $base         $text         $overlay0      $overlay0
 client.background        $base
 
-focus_on_window_activation smart
+gaps inner 5
+focus_on_window_activation focus
+smart_borders off
+smart_gaps on
 focus_follows_mouse yes
+titlebar_padding 2
 
-default_border normal
+default_border normal 2
 default_floating_border pixel 2
-hide_edge_borders --i3 none
-# for_window [all] title_format " %title "
 title_align left
 
-for_window [all] border normal
-for_window [all] titlebar_border_thickness 1
-
-for_window [title="Picture-in-Picture"] floating enable, sticky enable, border pixel 2
-for_window [title="Picture in picture"] floating enable, sticky enable, border pixel 2
-# for_window [app_id="kitty"] blur enable
-# for_window [title="Open File"] floating enable, border none
-
-gaps inner 0
-focus_on_window_activation focus
+for_window [all] border normal, titlebar_border_thickness 2, title_format " %title "
+for_window [title="Picture-in-Picture"] floating enable, sticky enable, border pixel 2, resize set 30ppt 30ppt
+for_window [title="Picture in picture"] floating enable, sticky enable, border pixel 2, resize set 30ppt 30ppt
+for_window [app_id="org.pulseaudio.pavucontrol"] floating enable, resize set 60ppt 60ppt

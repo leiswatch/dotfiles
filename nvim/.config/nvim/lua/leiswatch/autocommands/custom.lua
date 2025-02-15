@@ -1,5 +1,3 @@
-local helpers = require("leiswatch.helpers")
-
 vim.api.nvim_create_autocmd("TextYankPost", {
 	group = vim.api.nvim_create_augroup("HighlightYank", { clear = true }),
 	pattern = "*",
@@ -8,14 +6,6 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 			higroup = "HighlightYank",
 			timeout = 80,
 		})
-	end,
-})
-
-vim.api.nvim_create_autocmd({ "FileType" }, {
-	pattern = { "qf" },
-	callback = function()
-		vim.keymap.set("n", "q", "<cmd>ccl<CR>", helpers.keymap_opts)
-		vim.keymap.set("n", "<ESC>", "<cmd>ccl<CR>", helpers.keymap_opts)
 	end,
 })
 
@@ -36,6 +26,39 @@ vim.api.nvim_create_autocmd("CursorMoved", {
 				vim.cmd.nohlsearch()
 			end)
 		end
+	end,
+})
+
+vim.api.nvim_create_autocmd("BufEnter", {
+	group = vim.api.nvim_create_augroup("auto-hlsearch", { clear = true }),
+	callback = function()
+		if vim.bo.filetype == "help" then
+			vim.schedule(function()
+				vim.cmd.nohlsearch()
+			end)
+		end
+	end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = {
+		"html",
+		"javascript",
+		"typescript",
+		"javascriptreact",
+		"typescriptreact",
+		"vue",
+		"astro",
+		"svelte",
+		"css",
+		"scss",
+		"sass",
+		"yaml",
+	},
+	callback = function()
+		vim.opt_local.shiftwidth = 2
+		vim.opt_local.tabstop = 2
+		vim.opt_local.softtabstop = 2
 	end,
 })
 
