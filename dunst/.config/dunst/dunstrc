@@ -11,7 +11,7 @@
     frame_color = "#bb9af7"
     separator_color = frame
     font        = JetBrains Mono 13
-    offset      = (15,30)
+    offset      = (15,15)
     min_icon_size = 32
     max_icon_size = 64
     show_age_threshold = -1
@@ -27,7 +27,7 @@
     indicate_hidden = yes
     show_indicators = no
     separator_color= frame
-    corner_radius = 0
+    corner_radius = 4
     highlight = "#7dcfff"
     sticky_history = yes
     mouse_left_click = do_action, open_url, close_current

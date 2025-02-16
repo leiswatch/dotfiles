@@ -220,11 +220,24 @@ return {
 		-- 	end,
 		-- }
 
+		---@diagnostic disable-next-line: missing-fields
 		require("mason").setup({
 			max_concurrent_installers = 1,
 			ui = {
 				border = "single",
 				height = 0.8,
+				backdrop = 100,
+				icons = {
+					---@since 1.0.0
+					-- The list icon to use for installed packages.
+					package_installed = " ",
+					---@since 1.0.0
+					-- The list icon to use for packages that are installing, or queued for installation.
+					package_pending = " ",
+					---@since 1.0.0
+					-- The list icon to use for packages that are not installed.
+					package_uninstalled = " ",
+				},
 			},
 		})
 
