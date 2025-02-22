@@ -4,6 +4,8 @@ vim.keymap.set("n", "<leader>gd", "<cmd>Gdiffsplit!<CR>", helpers.keymap_opts)
 vim.keymap.set("n", "<leader>gg", "<cmd>tab G<CR>", helpers.keymap_opts)
 vim.keymap.set("n", "dgh", "<cmd>diffget //2<CR>", helpers.keymap_opts)
 vim.keymap.set("n", "dgl", "<cmd>diffget //3<CR>", helpers.keymap_opts)
+vim.keymap.set("n", "<leader>gff", vim.cmd.Flog, helpers.keymap_opts)
+vim.keymap.set("n", "<leader>gfs", vim.cmd.Flogsplit, helpers.keymap_opts)
 
 -- vim.keymap.set('n', '<leader>co', '<Plug>(git-conflict-ours)')
 -- vim.keymap.set('n', '<leader>ct', '<Plug>(git-conflict-theirs)')

@@ -1,11 +1,23 @@
 return {
 	"saghen/blink.cmp",
 	enabled = false,
-	-- optional: provides snippets for the snippet source
-	dependencies = { "rafamadriz/friendly-snippets", { "L3MON4D3/LuaSnip", version = "v2.*" } },
+	dependencies = {
+		"rafamadriz/friendly-snippets",
+		{ "L3MON4D3/LuaSnip", version = "v2.*" },
+		{
+			"folke/lazydev.nvim",
+			ft = "lua", -- only load on lua files
+			dependencies = { "Bilal2453/luvit-meta" },
+			opts = {
+				library = {
+					{ path = "luvit-meta/library", words = { "vim%.uv" } },
+				},
+			},
+		},
+	},
 
 	-- use a release tag to download pre-built binaries
-	version = "0.10.0",
+	version = "*",
 	-- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
 	-- build = 'cargo build --release',
 	-- If you use nix, you can build from source using latest nightly rust with:
@@ -55,7 +67,15 @@ return {
 		-- Default list of enabled providers defined so that you can extend it
 		-- elsewhere in your config, without redefining it, due to `opts_extend`
 		sources = {
-			default = { "lsp", "path", "snippets", "buffer" },
+			default = { "lazydev", "lsp", "path", "snippets", "buffer" },
+			providers = {
+				lazydev = {
+					name = "LazyDev",
+					module = "lazydev.integrations.blink",
+					-- make lazydev completions top priority (see `:h blink.cmp`)
+					score_offset = 100,
+				},
+			},
 		},
 	},
 	opts_extend = { "sources.default" },

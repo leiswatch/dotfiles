@@ -17,10 +17,8 @@ return {
 			{ noremap = true, silent = true },
 		},
 	},
-	config = function()
-		require("treesj").setup({
-			use_default_keymaps = false,
-			notify = false,
-		})
-	end,
+	opts = {
+		use_default_keymaps = false,
+		notify = false,
+	},
 }

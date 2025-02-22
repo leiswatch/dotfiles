@@ -41,6 +41,7 @@ local M = {
 		"prettier",
 		"prettierd",
 		"pylint",
+		"selene",
 		"shellcheck",
 		"shfmt",
 		"stylua",

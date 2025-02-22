@@ -1,5 +1,8 @@
+local auto_hl_group = vim.api.nvim_create_augroup("auto-hlsearch", { clear = true })
+local hl_yank_group = vim.api.nvim_create_augroup("HighlightYank", { clear = true })
+
 vim.api.nvim_create_autocmd("TextYankPost", {
-	group = vim.api.nvim_create_augroup("HighlightYank", { clear = true }),
+	group = hl_yank_group,
 	pattern = "*",
 	callback = function()
 		vim.highlight.on_yank({
@@ -18,8 +21,8 @@ vim.api.nvim_create_autocmd("VimResized", {
 	end,
 })
 
-vim.api.nvim_create_autocmd("CursorMoved", {
-	group = vim.api.nvim_create_augroup("auto-hlsearch", { clear = true }),
+vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
+	group = auto_hl_group,
 	callback = function()
 		if vim.v.hlsearch == 1 and vim.fn.searchcount().exact_match == 0 then
 			vim.schedule(function()
@@ -30,9 +33,9 @@ vim.api.nvim_create_autocmd("CursorMoved", {
 })
 
 vim.api.nvim_create_autocmd("BufEnter", {
-	group = vim.api.nvim_create_augroup("auto-hlsearch", { clear = true }),
+	group = auto_hl_group,
 	callback = function()
-		if vim.bo.filetype == "help" then
+		if vim.api.nvim_get_option_value("filetype", { buf = 0 }) == "help" then
 			vim.schedule(function()
 				vim.cmd.nohlsearch()
 			end)
@@ -62,10 +65,10 @@ vim.api.nvim_create_autocmd("FileType", {
 	end,
 })
 
--- vim.api.nvim_create_autocmd({ "FileType" }, {
--- 	pattern = { "DressingSelect" },
--- 	callback = function()
--- 		vim.b.matchup_matchparen_enabled = 0
--- 		vim.b.matchup_matchparen_fallback = 0
--- 	end,
--- })
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "qf" },
+	callback = function(buf)
+		vim.keymap.set("n", "q", ":ccl<cr>", { buffer = buf.buf, silent = true, noremap = true, nowait = true })
+		vim.keymap.set("n", "<ESC>", ":ccl<cr>", { buffer = buf.buf, silent = true, noremap = true })
+	end,
+})

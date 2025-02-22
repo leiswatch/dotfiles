@@ -1,5 +1,6 @@
 return {
 	"sindrets/diffview.nvim",
+	cmd = { "DiffviewOpen" },
 	config = function()
 		local actions = require("diffview.actions")
 

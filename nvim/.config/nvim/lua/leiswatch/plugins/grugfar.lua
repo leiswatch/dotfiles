@@ -3,14 +3,14 @@ return {
 	keys = {
 		{
 			"<leader>go",
-			vim.cmd.GrugFar,
+			function()
+				require("grug-far").open()
+			end,
 			{ noremap = true, silent = true },
 		},
 	},
-	config = function()
-		require("grug-far").setup({
-			windowCreationCommand = "tab split",
-			startInInsertMode = false,
-		})
-	end,
+	opts = {
+		windowCreationCommand = "vsplit",
+		startInInsertMode = false,
+	},
 }

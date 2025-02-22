@@ -11,7 +11,7 @@
     frame_color = "#bb9af7"
     separator_color = frame
     font        = JetBrains Mono 13
-    offset      = (15,15)
+    offset      = (10,10)
     min_icon_size = 32
     max_icon_size = 64
     show_age_threshold = -1

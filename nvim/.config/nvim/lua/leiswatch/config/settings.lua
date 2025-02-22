@@ -18,7 +18,7 @@ vim.opt.background = "dark"
 vim.opt.backspace = "indent,eol,start"
 vim.opt.backup = false
 vim.opt.cmdheight = 2
-vim.opt.colorcolumn = ""
+vim.opt.colorcolumn = "80"
 vim.opt.completeopt = "menuone,noinsert,noselect"
 vim.opt.cursorline = false
 vim.opt.encoding = "utf-8"
@@ -58,7 +58,7 @@ vim.opt.timeoutlen = 300
 vim.opt.ttyfast = true
 vim.opt.undodir = vim.fn.stdpath("config") .. "/undodir"
 vim.opt.undofile = true
-vim.opt.undolevels = 1000
+vim.opt.undolevels = 500
 vim.opt.updatetime = 250
 vim.opt.wrap = true
 vim.opt.wildignore:append("*/node_modules/**")

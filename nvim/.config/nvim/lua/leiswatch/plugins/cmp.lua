@@ -5,7 +5,8 @@ return {
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-buffer",
-		"hrsh7th/cmp-path",
+		-- "hrsh7th/cmp-path",
+		"https://codeberg.org/FelipeLema/cmp-async-path",
 		"hrsh7th/cmp-cmdline",
 		"hrsh7th/cmp-nvim-lua",
 		"saadparwaiz1/cmp_luasnip",
@@ -16,14 +17,14 @@ return {
 		{
 			"folke/lazydev.nvim",
 			ft = "lua", -- only load on lua files
-			dependencies = { "Bilal2453/luvit-meta" },
 			opts = {
 				library = {
-					{ path = "luvit-meta/library", words = { "vim%.uv" } },
+					-- See the configuration section for more details
+					-- Load luvit types when the `vim.uv` word is found
+					{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
 				},
 			},
 		},
-		{ "https://codeberg.org/FelipeLema/cmp-async-path" },
 		-- { "iguanacucumber/mag-nvim-lsp", name = "cmp-nvim-lsp", opts = {} },
 		-- { "iguanacucumber/mag-nvim-lua", name = "cmp-nvim-lua" },
 		-- { "iguanacucumber/mag-buffer", name = "cmp-buffer" },
@@ -37,11 +38,11 @@ return {
 		local luasnip = require("luasnip")
 		-- local cmp_autopairs = require("nvim-autopairs.completion.cmp")
 
-		local has_words_before = function()
-			unpack = unpack or table.unpack
-			local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-			return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-		end
+		-- local has_words_before = function()
+		-- 	unpack = unpack or table.unpack
+		-- 	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
+		-- 	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
+		-- end
 
 		require("luasnip.loaders.from_vscode").lazy_load()
 		require("luasnip.loaders.from_vscode").lazy_load({ paths = "~/.config/nvim/lua/leiswatch/snippets" })
@@ -110,15 +111,15 @@ return {
 				-- end, { "i", "s" }),
 			}),
 			sources = cmp.config.sources({
+				{ name = "lazydev", group_index = 0 },
 				{ name = "nvim_lsp" },
 				{ name = "luasnip" },
 				{ name = "buffer" },
 				{ name = "treesitter" },
 				{ name = "async_path" },
-				-- { name = "path" },
 				{ name = "ecolog" },
 				{ name = "nvim_lua" },
-				{ name = "lazydev", group_index = 0 },
+				-- { name = "path" },
 				-- { name = "html-css" },
 				-- { name = "css_vars" },
 				-- { name = "spell", keyword_length = 3, keyword_pattern = [[\w\+]] },
@@ -168,7 +169,7 @@ return {
 		cmp.setup.cmdline(":", {
 			mapping = cmp.mapping.preset.cmdline(),
 			sources = cmp.config.sources({
-				{ name = "path" },
+				{ name = "async_path" },
 			}, {
 				{ name = "cmdline" },
 			}),

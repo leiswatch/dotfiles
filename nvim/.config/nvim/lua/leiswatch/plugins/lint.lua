@@ -5,8 +5,9 @@ return {
 		local lint = require("lint")
 
 		lint.linters_by_ft = {
-			python = { "pylint" },
 			go = { "golangcilint" },
+			lua = { "selene" },
+			python = { "pylint" },
 			yaml = { "yamllint" },
 			zsh = { "zsh" },
 		}

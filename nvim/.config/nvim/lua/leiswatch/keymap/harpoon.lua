@@ -5,10 +5,22 @@ vim.keymap.set("n", "<leader>m", function()
 	harpoon:list():add()
 end, helpers.keymap_opts)
 vim.keymap.set("n", "H", function()
+	local buffers = vim.api.nvim_list_bufs()
+
+	if #buffers > 0 then
+		for i = 1, #buffers do
+			local filetype = vim.api.nvim_get_option_value("filetype", { buf = buffers[i] })
+
+			if filetype == "bufaroo" then
+				vim.api.nvim_buf_delete(buffers[i], { force = true })
+			end
+		end
+	end
+
 	harpoon.ui:toggle_quick_menu(harpoon:list(), {
 		title_pos = "center",
 		border = "single",
-		ui_width_ratio = 0.75,
+		ui_width_ratio = 0.6,
 		height_in_lines = 10,
 	})
 end, helpers.keymap_opts)

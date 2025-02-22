@@ -7,11 +7,11 @@ return {
 		"b0o/schemastore.nvim",
 		"esmuellert/nvim-eslint",
 		"soulsam480/nvim-oxlint",
-		"yioneko/nvim-vtsls",
-		{ "iguanacucumber/mag-nvim-lsp", name = "cmp-nvim-lsp", opts = {} },
+		"hrsh7th/cmp-nvim-lsp",
+		"pmizio/typescript-tools.nvim",
+		-- "yioneko/nvim-vtsls",
 		-- "saghen/blink.cmp",
-		-- "pmizio/typescript-tools.nvim",
-		-- "hrsh7th/cmp-nvim-lsp",
+		-- { "iguanacucumber/mag-nvim-lsp", name = "cmp-nvim-lsp", opts = {} },
 	},
 	config = function()
 		local servers = {
@@ -126,27 +126,27 @@ return {
 			-- 		workingDirectory = { mode = "location" },
 			-- 	},
 			-- },
-			vtsls = {
-				settings = {
-					vtsls = {
-						autoUseWorkspaceTsdk = true,
-						experimental = {
-							completion = {
-								enableServerSideFuzzyMatch = true,
-							},
-						},
-					},
-					typescript = {
-						preferGoToSourceDefinition = true,
-						tsserver = {
-							maxTsServerMemory = "auto",
-						},
-					},
-					javascript = {
-						preferGoToSourceDefinition = true,
-					},
-				},
-			},
+			-- vtsls = {
+			-- 	settings = {
+			-- 		vtsls = {
+			-- 			autoUseWorkspaceTsdk = true,
+			-- 			experimental = {
+			-- 				completion = {
+			-- 					enableServerSideFuzzyMatch = true,
+			-- 				},
+			-- 			},
+			-- 		},
+			-- 		typescript = {
+			-- 			preferGoToSourceDefinition = true,
+			-- 			tsserver = {
+			-- 				maxTsServerMemory = "auto",
+			-- 			},
+			-- 		},
+			-- 		javascript = {
+			-- 			preferGoToSourceDefinition = true,
+			-- 		},
+			-- 	},
+			-- },
 			zls = {},
 
 			-- ts_ls = {
@@ -260,7 +260,28 @@ return {
 			["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single" }),
 		}
 
-		require("lspconfig.configs").vtsls = require("vtsls").lspconfig
+		require("typescript-tools").setup({
+			on_attach = function(client)
+				client.capabilities = vim.tbl_deep_extend("force", {}, capabilities, client.capabilities or {})
+			end,
+			handlers = handlers,
+			filetypes = {
+				"javascript",
+				"javascriptreact",
+				"javascript.jsx",
+				"typescript",
+				"typescriptreact",
+				"typescript.tsx",
+				"vue",
+				"svelte",
+				-- "astro",
+			},
+			settings = {
+				separate_diagnostic_server = false,
+			},
+		})
+
+		-- require("lspconfig.configs").vtsls = require("vtsls").lspconfig
 
 		oxlint.setup({
 			filetypes = {
@@ -316,23 +337,5 @@ return {
 			server.handlers = handlers
 			lspconfig[server_name].setup(server)
 		end
-
-		-- require("typescript-tools").setup({
-		-- 	capabilities = capabilities,
-		-- 	filetypes = {
-		-- 		"javascript",
-		-- 		"javascriptreact",
-		-- 		"javascript.jsx",
-		-- 		"typescript",
-		-- 		"typescriptreact",
-		-- 		"typescript.tsx",
-		-- 		"vue",
-		-- 		"svelte",
-		-- 		-- "astro",
-		-- 	},
-		-- 	settings = {
-		-- 		separate_diagnostic_server = false,
-		-- 	},
-		-- })
 	end,
 }

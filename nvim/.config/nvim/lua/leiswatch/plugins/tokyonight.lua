@@ -27,7 +27,9 @@ return {
 			hide_inactive_statusline = false, -- Enabling this option, will hide inactive statuslines and replace them with a thin border instead. Should work with the standard **StatusLine** and **LuaLine**.
 			dim_inactive = false, -- dims inactive windows
 			lualine_bold = false, -- When `true`, section headers in the lualine theme will be bold
-			on_colors = function() end,
+			on_colors = function(colors)
+				colors.bg_dark_alt = "#1f2335"
+			end,
 			on_highlights = function(hl, color)
 				hl.FloatBorder = { fg = color.fg_gutter, bg = color.none }
 				hl.FloatTitle = { fg = color.fg, bg = color.none }
@@ -42,18 +44,6 @@ return {
 				hl.Neotree = { fg = color.fg, bg = color.none }
 				hl.NeotreeDirectoryIcon = { bg = color.none, fg = color.yellow }
 
-				-- hl.TelescopeBorder = { fg = color.fg_gutter, bg = color.none }
-				-- hl.TelescopePreviewBorder = { fg = color.fg_gutter, bg = color.none }
-				-- hl.TelescopeResultsBorder = { fg = color.fg_gutter, bg = color.none }
-				-- hl.TelescopePromptBorder = { fg = color.fg_gutter, bg = color.none }
-				-- hl.TelescopePromptTitle = { fg = color.fg, bg = color.none }
-				-- hl.TelescopePreviewTitle = { fg = color.fg, bg = color.none }
-				-- hl.TelescopeResultsTitle = { fg = color.fg, bg = color.none }
-				-- hl.TelescopePromptPrefix = { fg = color.fg, bg = color.none }
-				-- hl.TelescopeSelection = { fg = color.fg, bg = color.fg_gutter }
-				-- hl.TelescopeSelectionCaret = { fg = color.fg, bg = color.fg_gutter }
-				-- hl.TelescopeMatching = { fg = color.red, bg = color.none }
-
 				hl.CodeActionNormal = { fg = color.fg, bg = color.none }
 				hl.CodeActionBorder = { fg = color.fg_gutter, bg = color.none }
 				hl.CodeActionText = { fg = color.fg, bg = color.none }
@@ -67,7 +57,7 @@ return {
 				hl.LineNr = { fg = color.blue, bg = color.none }
 				hl.LineNrAbove = { fg = color.fg_gutter, bg = color.none }
 				hl.LineNrBelow = { fg = color.fg_gutter, bg = color.none }
-				hl.ColorColumn = { fg = color.none, bg = color.bg_highlight }
+				hl.ColorColumn = { fg = color.none, bg = color.bg_dark_alt }
 
 				hl.TreesitterContext = { fg = color.none, bg = color.bg_dark }
 				hl.TreesitterContextBottom = { bg = color.none, sp = color.none, underline = false }
@@ -99,11 +89,11 @@ return {
 
 				hl.LazyGitBorder = { fg = color.fg_gutter, bg = color.none }
 
-				hl.HopNextKey = { fg = color.red, bg = color.terminal_black }
-				hl.HopNextKey1 = { fg = color.red, bg = color.terminal_black }
-				hl.HopNextKey2 = { fg = color.red, bg = color.terminal_black }
-				hl.HopPreview = { fg = color.red, bg = color.terminal_black }
-				hl.HopUnmatched = { fg = color.fg_gutter, bg = color.none }
+				hl.MiniJump = { fg = color.red, bg = color.fg_gutter }
+
+				hl.PounceMatch = { fg = color.fg, bg = color.fg_gutter }
+				hl.PounceAcceptBest = { fg = color.bg, bg = color.red }
+				hl.PounceGap = { fg = color.bg, bg = color.green2 }
 
 				hl.HighlightYank = { fg = color.bg, bg = color.orange }
 
@@ -111,6 +101,18 @@ return {
 
 				hl.SnacksInputTitle = { fg = color.fg, bg = color.none }
 				hl.SnacksIndent = { fg = color.bg_highlight, bg = color.none }
+
+				-- hl.TelescopeBorder = { fg = color.fg_gutter, bg = color.none }
+				-- hl.TelescopePreviewBorder = { fg = color.fg_gutter, bg = color.none }
+				-- hl.TelescopeResultsBorder = { fg = color.fg_gutter, bg = color.none }
+				-- hl.TelescopePromptBorder = { fg = color.fg_gutter, bg = color.none }
+				-- hl.TelescopePromptTitle = { fg = color.fg, bg = color.none }
+				-- hl.TelescopePreviewTitle = { fg = color.fg, bg = color.none }
+				-- hl.TelescopeResultsTitle = { fg = color.fg, bg = color.none }
+				-- hl.TelescopePromptPrefix = { fg = color.fg, bg = color.none }
+				-- hl.TelescopeSelection = { fg = color.fg, bg = color.fg_gutter }
+				-- hl.TelescopeSelectionCaret = { fg = color.fg, bg = color.fg_gutter }
+				-- hl.TelescopeMatching = { fg = color.red, bg = color.none }
 			end,
 		})
 

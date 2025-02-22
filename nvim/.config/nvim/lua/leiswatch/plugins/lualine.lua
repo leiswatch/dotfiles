@@ -1,5 +1,6 @@
 return {
 	"nvim-lualine/lualine.nvim",
+	event = { "BufEnter" },
 	config = function()
 		-- local mocha_colors = require("catppuccin.palettes").get_palette("mocha")
 

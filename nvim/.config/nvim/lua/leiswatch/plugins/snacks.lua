@@ -21,18 +21,18 @@ return {
 				pick = "fzf-lua",
 				keys = {
 					{ icon = " ", key = "e", desc = "New File", action = ":ene | startinsert" },
-					{ icon = " ", key = "f", desc = "Find File", action = ":lua Snacks.dashboard.pick('files')" },
+					{ icon = " ", key = "f", desc = "Find File", action = ":FzfLua files" },
 					{
 						icon = " ",
 						key = "g",
 						desc = "Find Text",
-						action = ":lua Snacks.dashboard.pick('live_grep')",
+						action = ":FzfLua live_grep ",
 					},
 					{
 						icon = " ",
 						key = "c",
 						desc = "Config",
-						action = ":lua Snacks.dashboard.pick('files', {cwd = vim.fn.stdpath('config')})",
+						action = ':lua require("fzf-lua").files({ cwd = vim.fn.stdpath("config") })',
 					},
 					{
 						icon = "󰒲 ",
@@ -87,8 +87,10 @@ return {
 			},
 
 			lazygit = {
+				border = "single",
 				width = 0,
-				height = 0.99,
+				height = 0,
+				zindex = 250,
 			},
 		},
 	},

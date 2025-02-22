@@ -11,7 +11,7 @@ local helpers = require("leiswatch.helpers")
 -- }
 
 local format = function(bufnr)
-	local filetype = vim.api.nvim_get_option_value("filetype", { buf = bufnr })
+	-- local filetype = vim.api.nvim_get_option_value("filetype", { buf = bufnr })
 
 	-- if vim.fn.exists(":EslintFixAll") ~= 0 and helpers.contains(eslint_filetypes, filetype) then
 	-- 	vim.cmd.EslintFixAll()
