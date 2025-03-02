@@ -27,8 +27,41 @@ return {
 			vim.keymap.set("v", "<leader>gs", function()
 				gitsigns.stage_hunk({ vim.fn.line("."), vim.fn.line("v") })
 			end, opts)
-			vim.keymap.set({ "n", "v" }, "<leader>gu", gitsigns.undo_stage_hunk, opts)
 			vim.keymap.set({ "n", "v" }, "<leader>gp", gitsigns.preview_hunk, opts)
+			vim.keymap.set("n", "<leader>gb", function()
+				gitsigns.blame_line()
+			end, opts)
+			vim.keymap.set("n", "<leader>gt", function()
+				local buffers = vim.api.nvim_list_bufs()
+
+				if #buffers > 0 then
+					for i = 1, #buffers do
+						local filetype = vim.api.nvim_get_option_value("filetype", { buf = buffers[i] })
+
+						if filetype == "gitsigns-blame" then
+							vim.api.nvim_buf_delete(buffers[i], { force = true })
+
+							return
+						end
+					end
+				end
+
+				gitsigns.blame()
+			end, opts)
+			vim.keymap.set("n", "]c", function()
+				if vim.wo.diff then
+					vim.cmd.normal({ "]c", bang = true })
+				else
+					gitsigns.nav_hunk("next")
+				end
+			end, opts)
+			vim.keymap.set("n", "[c", function()
+				if vim.wo.diff then
+					vim.cmd.normal({ "[c", bang = true })
+				else
+					gitsigns.nav_hunk("prev")
+				end
+			end, opts)
 		end,
 	},
 }

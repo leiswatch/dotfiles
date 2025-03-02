@@ -302,10 +302,10 @@ client.urgent            $red          $base         $red          $overlay0    
 client.placeholder       $overlay0     $base         $text         $overlay0      $overlay0
 client.background        $base
 
-gaps inner 5
+gaps inner 0
 focus_on_window_activation focus
 smart_borders off
-smart_gaps on
+smart_gaps off
 focus_follows_mouse yes
 titlebar_padding 4
 

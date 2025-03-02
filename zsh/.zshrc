@@ -1,9 +1,9 @@
 # Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
 # Initialization code that may require console input (password prompts, [y/n]
 # confirmations, etc.) must go above this block; everything else may go below.
-# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-# fi
+if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
+  source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
+fi
 
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
@@ -15,8 +15,8 @@ source "${ZINIT_HOME}/zinit.zsh"
 
 ZOXIDE_CMD_OVERRIDE="cd"
 
-# zinit ice depth=1
-# zinit light romkatv/powerlevel10k
+zinit ice depth=1
+zinit light romkatv/powerlevel10k
 
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
@@ -34,14 +34,18 @@ zinit snippet OMZP::kubectl
 zinit snippet OMZP::node
 zinit snippet OMZP::npm
 zinit snippet OMZP::rust
-zinit snippet OMZP::starship
+# zinit snippet OMZP::starship
 zinit snippet OMZP::yarn
 zinit snippet OMZP::zoxide
 
 zinit snippet OMZL::directories.zsh
 zinit snippet OMZL::git.zsh
 
-fpath+="$ZSH_CACHE_DIR/completions"
+if [ ! -f "$ZSH_CACHE_DIR/completions/_deno" ]; then
+    deno completions zsh > "$ZSH_CACHE_DIR/completions/_deno"
+fi
+
+fpath=("$ZSH_CACHE_DIR/completions" $fpath)
 
 autoload -Uz compinit
 compinit
@@ -96,6 +100,8 @@ alias tmux='tmux a || tmux'
 alias gcwtc='git commit -m "$(curl -s https://whatthecommit.com/index.txt)"'
 alias gcwip='git commit -m "WIP: $(date)"'
 alias fsb='git switch $(git branch | grep -v \"^\*\" | fzf --height=30% --reverse --info=inline)'
+alias rmr='rm -r'
+alias v='nvim'
 
 # Functions
 function vmrss() {
@@ -108,12 +114,6 @@ function vmrss() {
     fi
 }
 
-function set_win_title() {
-    echo -ne "\033]0;Kitty\007"
-}
-
-precmd_functions+=(set_win_title)
-
 # bun
 [ -s "/home/leiswatch/.bun/_bun" ] && source "/home/leiswatch/.bun/_bun"
 
@@ -124,4 +124,4 @@ eval "$(fnm env --shell zsh --use-on-cd --version-file-strategy=recursive --core
 source <(fzf --zsh)
 
 # To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh
+[[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

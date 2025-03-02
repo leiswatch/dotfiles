@@ -30,19 +30,19 @@ return {
 			grep = {
 				rg_opts = "--column --line-number --no-heading --color=always --smart-case --trim --max-columns=4096 -e",
 				multiprocess = true,
-				ignore_patterns = {
+				file_ignore_patterns = {
 					"%.git",
 					"%.yarn",
 					"%.cache",
 					"%.DS_STORE",
 					"%.next",
-					"%.md",
 					"%.nx",
 					"%.keystone",
-					"yarn%.lock",
-					"package%-lock%.json",
+					"CHANGELOG.*%.md",
 					"node%_modules",
-					"!.env",
+					"package%-lock%.json",
+					"yarn%.lock",
+					"pnpm%-lock%.yaml",
 				},
 				winopts = {
 					border = "single",

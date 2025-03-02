@@ -58,7 +58,7 @@ vim.opt.timeoutlen = 300
 vim.opt.ttyfast = true
 vim.opt.undodir = vim.fn.stdpath("config") .. "/undodir"
 vim.opt.undofile = true
-vim.opt.undolevels = 500
+vim.opt.undolevels = 1000
 vim.opt.updatetime = 250
 vim.opt.wrap = true
 vim.opt.wildignore:append("*/node_modules/**")
@@ -81,7 +81,7 @@ vim.filetype.add({
 	pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
 })
 
-vim.lsp.log.set_level(vim.log.levels.OFF)
+vim.lsp.log.set_level(vim.log.levels.ERROR)
 
 vim.diagnostic.config({
 	signs = {
@@ -106,24 +106,20 @@ vim.diagnostic.config({
 				sourceCapitalized = source:lower() .. ": "
 			end
 
-			if diagnostic.severity == vim.diagnostic.severity.ERROR then
-				-- return " " .. sourceCapitalized .. diagnostic.message .. " "
-				return " " .. sourceCapitalized .. diagnostic.message .. " "
-			end
-			if diagnostic.severity == vim.diagnostic.severity.WARN then
-				-- return " " .. sourceCapitalized .. diagnostic.message .. " "
-				return " " .. sourceCapitalized .. diagnostic.message .. " "
-			end
-			if diagnostic.severity == vim.diagnostic.severity.HINT then
-				-- return " " .. sourceCapitalized .. diagnostic.message .. " "
-				return " " .. sourceCapitalized .. diagnostic.message .. " "
-			end
-			if diagnostic.severity == vim.diagnostic.severity.INFO then
-				-- return " " .. sourceCapitalized .. diagnostic.message .. " "
-				return " " .. sourceCapitalized .. diagnostic.message .. " "
-			end
+			-- if diagnostic.severity == vim.diagnostic.severity.ERROR then
+			-- 	return " " .. sourceCapitalized .. diagnostic.message .. " "
+			-- end
+			-- if diagnostic.severity == vim.diagnostic.severity.WARN then
+			-- 	return " " .. sourceCapitalized .. diagnostic.message .. " "
+			-- end
+			-- if diagnostic.severity == vim.diagnostic.severity.HINT then
+			-- 	return " " .. sourceCapitalized .. diagnostic.message .. " "
+			-- end
+			-- if diagnostic.severity == vim.diagnostic.severity.INFO then
+			-- 	return " " .. sourceCapitalized .. diagnostic.message .. " "
+			-- end
 
-			return " " .. sourceCapitalized .. diagnostic.message .. " "
+			return " " .. sourceCapitalized .. diagnostic.message .. " "
 		end,
 		prefix = "",
 	},

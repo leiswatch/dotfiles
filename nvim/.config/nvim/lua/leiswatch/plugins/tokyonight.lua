@@ -57,7 +57,7 @@ return {
 				hl.LineNr = { fg = color.blue, bg = color.none }
 				hl.LineNrAbove = { fg = color.fg_gutter, bg = color.none }
 				hl.LineNrBelow = { fg = color.fg_gutter, bg = color.none }
-				hl.ColorColumn = { fg = color.none, bg = color.bg_dark_alt }
+				hl.ColorColumn = { fg = color.none, bg = color.bg_highlight }
 
 				hl.TreesitterContext = { fg = color.none, bg = color.bg_dark }
 				hl.TreesitterContextBottom = { bg = color.none, sp = color.none, underline = false }
@@ -69,8 +69,8 @@ return {
 				hl.CurSearch = { fg = color.bg, bg = color.orange }
 				hl.Search = { fg = color.none, bg = color.fg_gutter }
 				hl.Substitute = { fg = color.bg, bg = color.orange }
-				hl.MatchWord = { bg = color.fg_gutter, fg = color.none, bold = false }
-				hl.MatchParen = { bg = color.fg_gutter, fg = color.none, bold = false }
+				hl.MatchWord = { bg = color.blue7, fg = color.none, bold = false }
+				hl.MatchParen = { bg = color.blue7, fg = color.none, bold = false }
 
 				hl.CmpNormal = { bg = color.black }
 				hl.CmpItemKindVariable = { bg = color.none, fg = color.magenta }

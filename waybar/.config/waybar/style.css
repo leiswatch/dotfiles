@@ -3,7 +3,7 @@
 
 window#waybar {
   font-family: "JetBrainsMono Nerd Font Propo";
-  background-color: @bg;
+  background-color: @bg_dark;
   transition-property: background-color;
   transition-duration: 0.5s;
   font-size: 14px;
@@ -15,10 +15,9 @@ window#waybar.hidden {
 }
 
 #workspaces {
-  background-color: @bg_dark_alt;
-  border-radius: 4px;
+  /* background-color: @bg_dark_alt; */
+  /* border-radius: 4px; */
   margin: 6px 0;
-  padding: 0 4px;
   /* border: 1px solid @fg_gutter; */
 }
 
@@ -26,46 +25,48 @@ window#waybar.hidden {
   all: initial; /* Remove GTK theme values (waybar #1351) */
   min-width: 0; /* Fix weird spacing in materia (waybar #450) */
   /* padding: 0 8px; */
-  margin: 0 6px;
+  margin: 0 2px;
   color: @fg_dark;
-  font-weight: 500;
   font-size: 14px;
   font-weight: 700;
   border-radius: 4px;
-  padding: 0 2px;
+  padding: 0 8px;
 }
 
 #workspaces button.empty {
-  color: @comment;
+  color: @fg_gutter;
 }
 
 #workspaces button.active {
-  /* background-color: @blue; */
-  color: @yellow;
+  background-color: @blue7;
+  color: @fg;
 }
 
 #workspaces button.focused {
-  /* background-color: @blue; */
-  color: @yellow;
+  background-color: @blue7;
+  color: @fg;
   font-weight: 700;
 }
 
 #workspaces button:hover {
   box-shadow: inherit;
   text-shadow: inherit;
-  color: @orange;
+  background-color: @blue;
+  color: @bg_dark_alt;
 }
 
 #workspaces button.urgent {
-  color: @red;
+  color: @fg;
+  background-color: @delete;
 }
 
 .modules-left {
-  padding-left: 8px;
+  margin-left: 6px;
 }
 
 .modules-right {
-  padding-right: 8px;
+  margin-right: 6px;
+  /* border-radius: 4px; */
 }
 
 #bluetooth,
@@ -85,15 +86,18 @@ window#waybar.hidden {
 #custom-notifications,
 #spotify,
 #window {
-  /* border: 1px solid @fg_gutter; */
   border-radius: 4px;
-  padding: 0 8px;
-  background-color: @bg_dark_alt;
-  margin: 6px 0;
+  padding: 0;
+  /* margin: 6px 0; */
   color: @fg;
+  /* border: 1px solid @fg_gutter; */
+  /* background-color: @bg_dark_alt; */
+  /* margin: 6px 0; */
 }
 
 #bluetooth {
+  padding: 0;
+  margin: 0;
   color: @blue6;
 }
 
@@ -127,10 +131,10 @@ window#waybar.empty #window {
 }
 
 #tray {
-  background-color: @bg_dark_alt;
+  /* background-color: @bg_dark_alt; */
   border-radius: 4px;
-  padding: 0 8px;
-  margin: 6px 0;
+  /* padding: 0 8px; */
+  /* margin: 6px 0; */
 }
 
 #tray menu {
@@ -164,6 +168,7 @@ window#waybar.empty #window {
 }
 
 #idle_inhibitor {
+  /* padding: 0 4px; */
   color: @fg;
 }
 
@@ -181,6 +186,7 @@ window#waybar.empty #window {
 
 #clock {
   color: @fg;
+  /* padding: 0 6px 0 8px; */
 }
 
 #mode {

@@ -3,7 +3,7 @@
     "layer": "bottom", // Waybar at bottom layer
     "position": "top", // Waybar position (top|bottom|left|right)
     "height": 40, // Waybar height (to be removed for auto height)
-    "spacing": 8, // Gaps between modules (8px)
+    "spacing": 16, // Gaps between modules (16px)
     // Choose the order of the modules
     "reload_style_on_change": true,
     "modules-left": [
@@ -22,10 +22,10 @@
         "memory",
         "disk",
         "custom/updates",
-        "bluetooth",
         "pulseaudio",
         "idle_inhibitor",
         "tray"
+        // "bluetooth"
         // "keyboard-state",
         // "sway/language",
         // "custom/notifications",
@@ -119,7 +119,7 @@
         "start-activated": true,
     },
     "tray": {
-        "icon-size": 22,
+        "icon-size": 24,
         "spacing": 12,
         "show-passive-items": true,
     },

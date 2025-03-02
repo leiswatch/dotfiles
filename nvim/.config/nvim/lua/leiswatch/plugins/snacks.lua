@@ -49,8 +49,8 @@ return {
 		input = { enabled = true, icon = "" },
 		lazygit = { configure = false },
 		picker = {
-			enabled = true,
-			ui_select = true,
+			enabled = false,
+			ui_select = false,
 			preview = false,
 			layouts = {
 				select = {
@@ -87,7 +87,7 @@ return {
 			},
 
 			lazygit = {
-				border = "single",
+				-- border = "single",
 				width = 0,
 				height = 0,
 				zindex = 250,

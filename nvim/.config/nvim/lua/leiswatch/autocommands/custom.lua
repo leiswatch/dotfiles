@@ -44,31 +44,25 @@ vim.api.nvim_create_autocmd("BufEnter", {
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = {
-		"html",
-		"javascript",
-		"typescript",
-		"javascriptreact",
-		"typescriptreact",
-		"vue",
-		"astro",
-		"svelte",
-		"css",
-		"scss",
-		"sass",
-		"yaml",
-	},
-	callback = function()
-		vim.opt_local.shiftwidth = 2
-		vim.opt_local.tabstop = 2
-		vim.opt_local.softtabstop = 2
+	pattern = { "qf" },
+	callback = function(buf)
+		vim.opt_local.colorcolumn = ""
+		vim.keymap.set("n", "q", ":ccl<cr>", { buffer = buf.buf, silent = true, noremap = true, nowait = true })
+		vim.keymap.set("n", "<ESC>", ":ccl<cr>", { buffer = buf.buf, silent = true, noremap = true })
 	end,
 })
 
 vim.api.nvim_create_autocmd("FileType", {
-	pattern = { "qf" },
-	callback = function(buf)
-		vim.keymap.set("n", "q", ":ccl<cr>", { buffer = buf.buf, silent = true, noremap = true, nowait = true })
-		vim.keymap.set("n", "<ESC>", ":ccl<cr>", { buffer = buf.buf, silent = true, noremap = true })
+	pattern = { "gitsigns-blame" },
+	callback = function()
+		local width = math.floor(vim.o.columns * 0.2)
+		vim.cmd("vertical resize " .. tostring(width))
+	end,
+})
+
+vim.api.nvim_create_autocmd("FileType", {
+	pattern = { "oil", "neo-tree", "help", "grug-far", "fugitive" },
+	callback = function()
+		vim.opt_local.colorcolumn = ""
 	end,
 })

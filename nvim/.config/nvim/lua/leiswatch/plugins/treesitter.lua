@@ -111,7 +111,7 @@ return {
 		})
 
 		require("treesitter-context").setup({
-			enable = true,
+			enable = false,
 			multiline_threshold = 3,
 			max_lines = 3,
 			separator = nil,

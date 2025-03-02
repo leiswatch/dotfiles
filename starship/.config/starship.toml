@@ -2,10 +2,13 @@ add_newline = false
 command_timeout = 3000
 
 # [character]
-# success_symbol = "[󰁔](bold green)"
-# error_symbol = "[󰁔](bold red)"
+# success_symbol = "[󱐋](bold green)"
+# error_symbol = "[󱐋](bold red)"
 # success_symbol = '[](bold green)'
 # error_symbol = '[](bold red)'
+
+[username]
+show_always = false
 
 [os]
 disabled = true
@@ -19,9 +22,6 @@ disabled = true
 [package]
 symbol = "󰏗 "
 disabled = true
-
-[username]
-show_always = false
 
 [aws]
 symbol = "  "
