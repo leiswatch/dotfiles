@@ -1,3 +1,9 @@
+local loaded = pcall(require, "harpoon")
+
+if not loaded then
+	return
+end
+
 local helpers = require("leiswatch.helpers")
 local harpoon = require("harpoon")
 

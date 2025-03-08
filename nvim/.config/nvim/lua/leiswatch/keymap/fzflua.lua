@@ -1,3 +1,9 @@
+local loaded = pcall(require, "fzf-lua")
+
+if not loaded then
+	return
+end
+
 local helpers = require("leiswatch.helpers")
 local fzf = require("fzf-lua")
 

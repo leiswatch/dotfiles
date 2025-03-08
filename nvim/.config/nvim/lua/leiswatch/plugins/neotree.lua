@@ -83,7 +83,7 @@ return {
 			},
 			indent = {
 				with_expanders = true,
-				with_markers = false,
+				with_markers = true,
 				-- indent_marker = "╎",
 			},
 			file_size = {

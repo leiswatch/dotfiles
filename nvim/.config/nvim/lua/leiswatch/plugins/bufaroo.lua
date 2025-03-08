@@ -12,6 +12,7 @@ return {
 	},
 	opts = {
 		win_opts = {
+			title = "Buffers",
 			width = 0.6,
 		},
 	},

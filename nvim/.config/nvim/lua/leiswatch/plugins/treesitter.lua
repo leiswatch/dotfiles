@@ -4,7 +4,7 @@ return {
 		local ts_update = require("nvim-treesitter.install").update({ with_sync = true })
 		ts_update()
 	end,
-	event = { "BufReadPost" },
+	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
 		"nvim-treesitter/nvim-treesitter-context",
 		"JoosepAlviste/nvim-ts-context-commentstring",
@@ -111,7 +111,7 @@ return {
 		})
 
 		require("treesitter-context").setup({
-			enable = false,
+			enable = true,
 			multiline_threshold = 3,
 			max_lines = 3,
 			separator = nil,

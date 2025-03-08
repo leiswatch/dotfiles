@@ -8,8 +8,8 @@ return {
 		"esmuellert/nvim-eslint",
 		"soulsam480/nvim-oxlint",
 		"hrsh7th/cmp-nvim-lsp",
-		"pmizio/typescript-tools.nvim",
-		-- "yioneko/nvim-vtsls",
+		"yioneko/nvim-vtsls",
+		-- "pmizio/typescript-tools.nvim",
 		-- "saghen/blink.cmp",
 		-- { "iguanacucumber/mag-nvim-lsp", name = "cmp-nvim-lsp", opts = {} },
 	},
@@ -80,7 +80,9 @@ return {
 			cssls = {},
 			somesass_ls = {},
 			cssmodules_ls = {},
-			-- tailwindcss = {},
+			tailwindcss = {
+				filetypes = { "templ" },
+			},
 			-- css_variables = {},
 
 			stylelint_lsp = {
@@ -126,27 +128,27 @@ return {
 			-- 		workingDirectory = { mode = "location" },
 			-- 	},
 			-- },
-			-- vtsls = {
-			-- 	settings = {
-			-- 		vtsls = {
-			-- 			autoUseWorkspaceTsdk = true,
-			-- 			experimental = {
-			-- 				completion = {
-			-- 					enableServerSideFuzzyMatch = true,
-			-- 				},
-			-- 			},
-			-- 		},
-			-- 		typescript = {
-			-- 			preferGoToSourceDefinition = true,
-			-- 			tsserver = {
-			-- 				maxTsServerMemory = "auto",
-			-- 			},
-			-- 		},
-			-- 		javascript = {
-			-- 			preferGoToSourceDefinition = true,
-			-- 		},
-			-- 	},
-			-- },
+			vtsls = {
+				settings = {
+					vtsls = {
+						autoUseWorkspaceTsdk = true,
+						experimental = {
+							completion = {
+								enableServerSideFuzzyMatch = true,
+							},
+						},
+					},
+					typescript = {
+						preferGoToSourceDefinition = true,
+						tsserver = {
+							maxTsServerMemory = "auto",
+						},
+					},
+					javascript = {
+						preferGoToSourceDefinition = true,
+					},
+				},
+			},
 			zls = {},
 
 			-- ts_ls = {
@@ -220,6 +222,27 @@ return {
 		-- 	end,
 		-- }
 
+		-- require("typescript-tools").setup({
+		-- 	on_attach = function(client)
+		-- 		client.capabilities = vim.tbl_deep_extend("force", {}, capabilities, client.capabilities or {})
+		-- 	end,
+		-- 	handlers = handlers,
+		-- 	filetypes = {
+		-- 		"javascript",
+		-- 		"javascriptreact",
+		-- 		"javascript.jsx",
+		-- 		"typescript",
+		-- 		"typescriptreact",
+		-- 		"typescript.tsx",
+		-- 		"vue",
+		-- 		"svelte",
+		-- 		-- "astro",
+		-- 	},
+		-- 	settings = {
+		-- 		separate_diagnostic_server = false,
+		-- 	},
+		-- })
+
 		---@diagnostic disable-next-line: missing-fields
 		require("mason").setup({
 			max_concurrent_installers = 1,
@@ -260,28 +283,7 @@ return {
 			["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single" }),
 		}
 
-		require("typescript-tools").setup({
-			on_attach = function(client)
-				client.capabilities = vim.tbl_deep_extend("force", {}, capabilities, client.capabilities or {})
-			end,
-			handlers = handlers,
-			filetypes = {
-				"javascript",
-				"javascriptreact",
-				"javascript.jsx",
-				"typescript",
-				"typescriptreact",
-				"typescript.tsx",
-				"vue",
-				"svelte",
-				-- "astro",
-			},
-			settings = {
-				separate_diagnostic_server = false,
-			},
-		})
-
-		-- require("lspconfig.configs").vtsls = require("vtsls").lspconfig
+		require("lspconfig.configs").vtsls = require("vtsls").lspconfig
 
 		oxlint.setup({
 			filetypes = {

@@ -1,3 +1,9 @@
+local loaded = pcall(require, "supermaven-nvim")
+
+if not loaded then
+	return
+end
+
 local helpers = require("leiswatch.helpers")
 
 vim.keymap.set({ "i" }, "<C-l>", function()

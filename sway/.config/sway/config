@@ -80,7 +80,7 @@ exec sh /home/leiswatch/.config/sway/scripts/swww.sh
 exec sh /home/leiswatch/.config/sway/scripts/dunst.sh
 exec sh /home/leiswatch/.config/sway/scripts/nm.sh
 exec sh /home/leiswatch/.config/sway/scripts/solaar.sh
-# exec sh /home/leiswatch/.config/sway/scripts/flameshot.sh
+exec sh /home/leiswatch/.config/sway/scripts/flameshot.sh
 exec sh /home/leiswatch/.config/sway/scripts/hypridle.sh
 exec sh /home/leiswatch/.config/sway/scripts/gammastep.sh
 exec sh /home/leiswatch/.config/sway/scripts/blueman.sh
@@ -147,8 +147,8 @@ exec sh /home/leiswatch/.config/sway/scripts/waybar.sh
     # Exit sway (logs you out of your Wayland session)
     # bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 
-    bindsym $mod+Shift+s exec grim -g "$(slurp)" - | swappy -f -
-    # bindsym $mod+Shift+s exec flameshot gui
+    # bindsym $mod+Shift+s exec grim -g "$(slurp)" - | swappy -f -
+    bindsym $mod+Shift+s exec flameshot gui
     bindsym Print exec grim - | swappy -f -
 
     bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+

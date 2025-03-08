@@ -1,3 +1,9 @@
+local loaded = pcall(require, "conform")
+
+if not loaded then
+	return
+end
+
 local helpers = require("leiswatch.helpers")
 -- local helpers = require("leiswatch.helpers")
 

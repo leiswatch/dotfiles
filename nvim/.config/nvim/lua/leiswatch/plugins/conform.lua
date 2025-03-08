@@ -39,7 +39,7 @@ return {
 				"prettier",
 				"prettierd",
 				stop_after_first = true,
-				lsp_format = "first",
+				lsp_format = "never",
 				filter = function(client)
 					return client.name == "eslint"
 				end,
@@ -48,7 +48,7 @@ return {
 				"prettier",
 				"prettierd",
 				stop_after_first = true,
-				lsp_format = "first",
+				lsp_format = "never",
 				filter = function(client)
 					return client.name == "eslint"
 				end,
@@ -57,7 +57,7 @@ return {
 				"prettier",
 				"prettierd",
 				stop_after_first = true,
-				lsp_format = "first",
+				lsp_format = "never",
 				filter = function(client)
 					return client.name == "eslint"
 				end,
@@ -67,7 +67,7 @@ return {
 				"prettier",
 				"prettierd",
 				stop_after_first = true,
-				lsp_format = "first",
+				lsp_format = "never",
 				filter = function(client)
 					return client.name == "eslint"
 				end,
@@ -76,7 +76,7 @@ return {
 				"prettier",
 				"prettierd",
 				stop_after_first = true,
-				lsp_format = "first",
+				lsp_format = "never",
 				filter = function(client)
 					return client.name == "eslint"
 				end,
@@ -85,7 +85,7 @@ return {
 				"prettier",
 				"prettierd",
 				stop_after_first = true,
-				lsp_format = "first",
+				lsp_format = "never",
 				filter = function(client)
 					return client.name == "eslint"
 				end,
@@ -94,7 +94,7 @@ return {
 				"prettier",
 				"prettierd",
 				stop_after_first = true,
-				lsp_format = "first",
+				lsp_format = "never",
 				filter = function(client)
 					return client.name == "eslint"
 				end,
@@ -140,7 +140,7 @@ return {
 				"prettier",
 				"prettierd",
 				stop_after_first = true,
-				lsp_format = "first",
+				lsp_format = "never",
 				filter = function(client)
 					return client.name == "jsonls"
 				end,
@@ -149,7 +149,7 @@ return {
 				"prettier",
 				"prettierd",
 				stop_after_first = true,
-				lsp_format = "first",
+				lsp_format = "never",
 				filter = function(client)
 					return client.name == "jsonls"
 				end,
@@ -158,7 +158,7 @@ return {
 				"prettier",
 				"prettierd",
 				stop_after_first = true,
-				lsp_format = "first",
+				lsp_format = "never",
 				filter = function(client)
 					return client.name == "yamlls"
 				end,

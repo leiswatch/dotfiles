@@ -1,5 +1,6 @@
 return {
 	"supermaven-inc/supermaven-nvim",
+	enabled = false,
 	event = { "InsertEnter" },
 	opts = {
 		disable_keymaps = true,
@@ -11,6 +12,7 @@ return {
 			oil = true,
 			snacks_input = true,
 			help = true,
+			["neo-tree-popup"] = true
 		},
 	},
 }
