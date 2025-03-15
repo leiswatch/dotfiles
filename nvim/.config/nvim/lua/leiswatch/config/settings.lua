@@ -76,10 +76,10 @@ vim.cmd("filetype plugin on")
 vim.cmd("filetype indent on")
 vim.cmd("filetype plugin indent on")
 
-vim.filetype.add({ extension = { templ = "templ" } })
 vim.filetype.add({
 	pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
 })
+vim.g.vim_matchtag_files = "*.html,*.xml,*.js,*.jsx,*.ts,*.tsx,*.vue,*.svelte,*.jsp,*.php,*.erb,*.astro,*.templ,*.tmpl"
 
 vim.lsp.log.set_level(vim.log.levels.ERROR)
 

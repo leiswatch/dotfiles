@@ -11,9 +11,8 @@ return {
 		"windwp/nvim-ts-autotag",
 		"numToStr/Comment.nvim",
 		"nvim-treesitter/nvim-treesitter-textobjects",
-		-- "windwp/nvim-autopairs",
+		"leafOfTree/vim-matchtag",
 		-- "tronikelis/ts-autotag.nvim",
-		-- "andymass/vim-matchup",
 		-- "HiPhish/rainbow-delimiters.nvim",
 	},
 	config = function()
@@ -55,11 +54,6 @@ return {
 			},
 			indent = {
 				enable = true,
-			},
-			matchup = {
-				enable = false,
-				include_match_words = false,
-				disable_virtual_text = true,
 			},
 			incremental_selection = {
 				enable = true,
@@ -118,12 +112,6 @@ return {
 			mode = "topline",
 		})
 
-		-- require("nvim-autopairs").setup({
-		-- 	disable_filetype = { "TelescopePrompt", "FzfLuaFzfPrompt" },
-		-- 	check_ts = true,
-		-- 	enable_check_bracket_line = false,
-		-- })
-
 		require("ts_context_commentstring").setup({
 			enable_autocmd = false,
 		})
@@ -140,6 +128,9 @@ return {
 				enable_close = false, -- Auto close tags
 				enable_rename = true, -- Auto rename pairs of tags
 				enable_close_on_slash = false, -- Auto close on trailing </
+				aliases = {
+					["templ"] = "html",
+				},
 			},
 		})
 	end,

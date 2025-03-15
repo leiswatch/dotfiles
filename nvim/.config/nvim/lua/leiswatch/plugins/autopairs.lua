@@ -1,6 +1,7 @@
 return {
 	"windwp/nvim-autopairs",
 	event = "InsertEnter",
+	enabled = false,
 	opts = {
 		disable_filetype = { "TelescopePrompt", "spectre_panel", "neo-tree" },
 		disable_in_macro = true, -- disable when recording or executing a macro

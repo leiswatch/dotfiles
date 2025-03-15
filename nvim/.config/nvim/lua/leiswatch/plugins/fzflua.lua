@@ -9,6 +9,7 @@ return {
 				file_icons = true,
 				color_icons = true,
 				git_icons = false,
+				prompt = "❯ ",
 			},
 			files = {
 				multiprocess = true,
@@ -25,7 +26,7 @@ return {
 					title_pos = "center",
 				},
 				cwd_prompt = false,
-				prompt = "  ",
+				prompt = "❯ ",
 			},
 			grep = {
 				rg_opts = "--column --line-number --no-heading --color=always --smart-case --trim --max-columns=4096 -e",
@@ -56,11 +57,25 @@ return {
 					},
 				},
 				cwd_prompt = false,
-				prompt = "  ",
+				input_prompt = "❯ ",
+				prompt = "❯ ",
 				actions = {
 					["ctrl-q"] = {
 						fn = actions.file_edit_or_qf,
 						prefix = "select-all+",
+					},
+				},
+			},
+			lsp = {
+				code_actions = {
+					winopts = {
+						relative = "cursor",
+						row = 1.01,
+						col = 0,
+						height = 0.3,
+						width = 0.3,
+						preview = { hidden = true },
+						border = "single",
 					},
 				},
 			},

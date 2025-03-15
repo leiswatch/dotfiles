@@ -100,6 +100,11 @@ return {
 				hl.DashboardButtons = { fg = color.yellow, bg = color.bg }
 
 				hl.SnacksInputTitle = { fg = color.fg, bg = color.none }
+				hl.SnacksPickerTitle = { fg = color.fg, bg = color.none }
+				hl.SnacksPickerIdx = { fg = color.blue, bg = color.none }
+				hl.SnacksPickerPrompt = { fg = color.magenta, bg = color.none }
+				hl.SnacksPickerInputBorder = { fg = color.fg_gutter , bg = color.none }
+				hl.SnacksPickerBoxTitle = { fg = color.fg, bg = color.none }
 				hl.SnacksIndent = { fg = color.bg_highlight, bg = color.none }
 
 				-- hl.TelescopeBorder = { fg = color.fg_gutter, bg = color.none }

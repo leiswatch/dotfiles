@@ -39,7 +39,7 @@ return {
 				"prettier",
 				"prettierd",
 				stop_after_first = true,
-				lsp_format = "never",
+				lsp_format = "first",
 				filter = function(client)
 					return client.name == "eslint"
 				end,
@@ -48,7 +48,7 @@ return {
 				"prettier",
 				"prettierd",
 				stop_after_first = true,
-				lsp_format = "never",
+				lsp_format = "first",
 				filter = function(client)
 					return client.name == "eslint"
 				end,
@@ -57,7 +57,7 @@ return {
 				"prettier",
 				"prettierd",
 				stop_after_first = true,
-				lsp_format = "never",
+				lsp_format = "first",
 				filter = function(client)
 					return client.name == "eslint"
 				end,
@@ -67,7 +67,7 @@ return {
 				"prettier",
 				"prettierd",
 				stop_after_first = true,
-				lsp_format = "never",
+				lsp_format = "first",
 				filter = function(client)
 					return client.name == "eslint"
 				end,
@@ -76,7 +76,7 @@ return {
 				"prettier",
 				"prettierd",
 				stop_after_first = true,
-				lsp_format = "never",
+				lsp_format = "first",
 				filter = function(client)
 					return client.name == "eslint"
 				end,
@@ -85,7 +85,7 @@ return {
 				"prettier",
 				"prettierd",
 				stop_after_first = true,
-				lsp_format = "never",
+				lsp_format = "first",
 				filter = function(client)
 					return client.name == "eslint"
 				end,
@@ -94,7 +94,7 @@ return {
 				"prettier",
 				"prettierd",
 				stop_after_first = true,
-				lsp_format = "never",
+				lsp_format = "first",
 				filter = function(client)
 					return client.name == "eslint"
 				end,

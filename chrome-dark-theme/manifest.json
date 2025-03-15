@@ -1,0 +1,29 @@
+{
+    "manifest_version": 2,
+    "version": "1.1",
+    "name": "Custom Dark Theme",
+    "theme": {
+        "colors": {
+            "frame": [28, 27, 34],
+            "frame_inactive": [31, 30, 37],
+            "toolbar": [43, 42, 51],
+            "tab_text": [255, 255, 255],
+            "tab_background_text": [251, 251, 254],
+            "bookmark_text": [251, 251, 254],
+            "ntp_background": [43, 42, 51],
+            "ntp_text": [251, 251, 254],
+            "ntp_card_background": [66, 65, 77],
+            "ntp_link": [0, 221, 255],
+            "ntp_link_visited": [128, 235, 255],
+            "button_background": [0, 0, 0, 33],
+            "button_background_hover": [207, 207, 216, 20],
+            "button_background_active": [207, 207, 216, 40],
+            "toolbar_text": [251, 251, 254],
+            "toolbar_field": [0, 0, 0, 77],
+            "toolbar_field_text": [251, 251, 254],
+            "toolbar_field_border": [82, 82, 94],
+            "toolbar_field_focus": [66, 65, 77],
+            "toolbar_field_text_focus": [251, 251, 254]
+        }
+    }
+}

@@ -49,8 +49,8 @@ return {
 		input = { enabled = true, icon = "" },
 		lazygit = { configure = false },
 		picker = {
-			enabled = false,
-			ui_select = false,
+			enabled = true,
+			ui_select = true,
 			preview = false,
 			layouts = {
 				select = {

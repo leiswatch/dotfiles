@@ -1,14 +1,12 @@
 return {
 	"neovim/nvim-lspconfig",
+	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
-		"williamboman/mason.nvim",
-		"WhoIsSethDaniel/mason-tool-installer.nvim",
-		"williamboman/mason-lspconfig.nvim",
-		"b0o/schemastore.nvim",
+		"hrsh7th/cmp-nvim-lsp",
 		"esmuellert/nvim-eslint",
 		"soulsam480/nvim-oxlint",
-		"hrsh7th/cmp-nvim-lsp",
 		"yioneko/nvim-vtsls",
+		"b0o/schemastore.nvim",
 		-- "pmizio/typescript-tools.nvim",
 		-- "saghen/blink.cmp",
 		-- { "iguanacucumber/mag-nvim-lsp", name = "cmp-nvim-lsp", opts = {} },
@@ -208,8 +206,6 @@ return {
 		capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 		-- capabilities = vim.tbl_deep_extend("force", capabilities, require("blink.cmp").get_lsp_capabilities(capabilities))
 
-		local mason_config = require("leiswatch.lsp.mason_config")
-
 		-- local handlers = {
 		-- 	function(server_name)
 		-- 		if not servers[server_name] then
@@ -243,41 +239,6 @@ return {
 		-- 	},
 		-- })
 
-		---@diagnostic disable-next-line: missing-fields
-		require("mason").setup({
-			max_concurrent_installers = 1,
-			ui = {
-				border = "single",
-				height = 0.8,
-				backdrop = 100,
-				icons = {
-					---@since 1.0.0
-					-- The list icon to use for installed packages.
-					package_installed = " ",
-					---@since 1.0.0
-					-- The list icon to use for packages that are installing, or queued for installation.
-					package_pending = " ",
-					---@since 1.0.0
-					-- The list icon to use for packages that are not installed.
-					package_uninstalled = " ",
-				},
-			},
-		})
-
-		require("mason-tool-installer").setup({
-			ensure_installed = mason_config.ensure_installed_tools,
-			auto_update = false,
-			run_on_start = true,
-			start_delay = 10000, -- 10 seconds delay
-			debounce_hours = 5, -- at least 5 hours between attempts to install/update
-		})
-
-		require("mason-lspconfig").setup({
-			-- handlers = handlers,
-			ensure_installed = mason_config.ensure_installed,
-			automatic_installation = true,
-		})
-
 		local handlers = {
 			["textDocument/hover"] = vim.lsp.with(vim.lsp.handlers.hover, { border = "single" }),
 			["textDocument/signatureHelp"] = vim.lsp.with(vim.lsp.handlers.signature_help, { border = "single" }),
@@ -286,6 +247,10 @@ return {
 		require("lspconfig.configs").vtsls = require("vtsls").lspconfig
 
 		oxlint.setup({
+			root_dir = function(bufnr)
+				return oxlint.resolve_git_dir(bufnr) or vim.uv.cwd()
+			end,
+			capabilities = capabilities,
 			filetypes = {
 				"javascript",
 				"javascriptreact",
@@ -301,8 +266,7 @@ return {
 
 		eslint.setup({
 			root_dir = function(bufnr)
-				local dir = eslint.resolve_git_dir(bufnr) or vim.uv.cwd()
-				return dir
+				return eslint.resolve_git_dir(bufnr) or vim.uv.cwd()
 			end,
 			capabilities = capabilities,
 			settings = {

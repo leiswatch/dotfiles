@@ -1,3 +1,4 @@
+local fzflua = require("fzf-lua")
 local helpers = require("leiswatch.helpers")
 
 vim.api.nvim_create_autocmd("LspAttach", {
@@ -33,18 +34,7 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set({ "v", "n" }, "<leader>cf", function(bufnr)
 			vim.lsp.buf.format({ timeout_ms = 3000, bufnr = bufnr })
 		end, keymap_opts)
-		-- vim.keymap.set({ "v", "n" }, "<leader>ca", function()
-		-- 	fzflua.lsp_code_actions({
-		-- 		winopts = {
-		-- 			relative = "cursor",
-		-- 			row = 1.01,
-		-- 			col = 0,
-		-- 			height = 0.3,
-		-- 			width = 0.3,
-		-- 			preview = { hidden = "hidden" },
-		-- 		},
-		-- 	})
-		-- end, opts)
+		-- vim.keymap.set({ "v", "n" }, "<leader>ca", fzflua.lsp_code_actions, keymap_opts)
 
 		vim.keymap.set("n", "<leader>e", function()
 			vim.diagnostic.open_float(diagnostic_opts)

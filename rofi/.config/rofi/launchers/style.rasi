@@ -237,7 +237,7 @@ element alternate.active {
 element-icon {
     background-color:            transparent;
     text-color:                  inherit;
-    size:                        24px;
+    size:                        28px;
     cursor:                      inherit;
 }
 element-text {

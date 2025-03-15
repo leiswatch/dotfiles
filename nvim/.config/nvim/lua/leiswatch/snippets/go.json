@@ -1,6 +1,6 @@
 {
   "err nil": {
-    "prefix": "errnil",
+    "prefix": "iferr",
     "body": [
       "if err != nil {",
       "    $1",
