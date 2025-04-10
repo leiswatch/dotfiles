@@ -6,3 +6,4 @@ ssh/.ssh/
 !ssh/.ssh/config
 home/.librewolf/*
 !home/.librewolf/librewolf.overrides.cfg
+**/boldvpn

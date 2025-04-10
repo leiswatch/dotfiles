@@ -128,9 +128,9 @@ exec sh /home/leiswatch/.config/sway/scripts/waybar.sh
     # Start your launcher
     # bindsym $mod+d exec $menu
     bindsym $mod+d exec /home/leiswatch/.config/rofi/launchers/launcher.sh
-    bindsym $mod+n exec /home/leiswatch/.config/rofi/launchers/vpn.sh
+    # bindsym $mod+n exec /home/leiswatch/.config/rofi/launchers/vpn.sh
     bindsym $mod+u exec /home/leiswatch/.config/rofi/launchers/pactl.sh
-    bindsym $mod+Shift+n exec /home/leiswatch/.config/rofi/launchers/nordvpn.sh
+    bindsym $mod+n exec /home/leiswatch/.config/rofi/launchers/nordvpn.sh
     bindsym $mod+Shift+p exec /home/leiswatch/.config/rofi/powermenu/powermenu.sh
     # bindsym $mod+Shift+p exec wlogout
 
@@ -316,6 +316,6 @@ title_align left
 for_window [all] border normal 2, titlebar_border_thickness 2, title_format " %title "
 for_window [floating] move position center, resize set 80ppt 80ppt
 
-for_window [title="Picture-in-Picture"] floating enable, sticky enable, border pixel 2, resize set 25ppt 25ppt
-for_window [title="Picture in picture"] floating enable, sticky enable, border pixel 2, resize set 25ppt 25ppt
+for_window [title="Picture-in-Picture"] floating enable, sticky enable, resize set 25ppt 25ppt
+for_window [title="Picture in picture"] floating enable, sticky enable, resize set 25ppt 25ppt
 for_window [app_id="org.pulseaudio.pavucontrol"] floating enable, move position center, resize set 80ppt 80ppt

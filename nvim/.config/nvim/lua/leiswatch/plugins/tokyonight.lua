@@ -34,10 +34,6 @@ return {
 				hl.FloatBorder = { fg = color.fg_gutter, bg = color.none }
 				hl.FloatTitle = { fg = color.fg, bg = color.none }
 
-				hl.BufferManagerNormal = { fg = color.fg, bg = color.none }
-				hl.BufferManagerBorder = { fg = color.fg_gutter, bg = color.none }
-				hl.BufferManagerFloatTitle = { fg = color.fg, bg = color.none }
-
 				hl.HarpoonBorder = { fg = color.fg_gutter, bg = color.none }
 
 				hl.NeotreeNormal = { fg = color.fg, bg = color.none }
@@ -103,9 +99,12 @@ return {
 				hl.SnacksPickerTitle = { fg = color.fg, bg = color.none }
 				hl.SnacksPickerIdx = { fg = color.blue, bg = color.none }
 				hl.SnacksPickerPrompt = { fg = color.magenta, bg = color.none }
-				hl.SnacksPickerInputBorder = { fg = color.fg_gutter , bg = color.none }
+				hl.SnacksPickerInputBorder = { fg = color.fg_gutter, bg = color.none }
 				hl.SnacksPickerBoxTitle = { fg = color.fg, bg = color.none }
 				hl.SnacksIndent = { fg = color.bg_highlight, bg = color.none }
+
+				hl.MatchTag = { bg = color.bg_highlight, fg = color.none, bold = false }
+				hl.MatchTagError = { fg = color.none, bg = color.none }
 
 				-- hl.TelescopeBorder = { fg = color.fg_gutter, bg = color.none }
 				-- hl.TelescopePreviewBorder = { fg = color.fg_gutter, bg = color.none }
@@ -121,6 +120,8 @@ return {
 			end,
 		})
 
+		vim.cmd("highlight link matchTag MatchTag")
+		vim.cmd("highlight link matchTagError MatchTagError")
 		vim.cmd("colorscheme tokyonight")
 	end,
 }

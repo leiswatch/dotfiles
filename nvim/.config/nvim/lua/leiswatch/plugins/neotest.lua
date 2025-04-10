@@ -30,6 +30,13 @@ return {
 			end,
 			{ noremap = true, silent = true },
 		},
+		{
+			"<leader>to",
+			function()
+				require("neotest").output_panel.toggle()
+			end,
+			{ noremap = true, silent = true },
+		},
 	},
 	config = function()
 		---@diagnostic disable-next-line: missing-fields

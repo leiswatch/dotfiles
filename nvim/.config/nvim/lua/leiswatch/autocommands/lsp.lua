@@ -17,18 +17,16 @@ vim.api.nvim_create_autocmd("LspAttach", {
 		vim.keymap.set("n", "gi", vim.lsp.buf.implementation, keymap_opts)
 		vim.keymap.set("n", "<leader>lt", vim.lsp.buf.type_definition, keymap_opts)
 		vim.keymap.set("n", "<leader>ld", vim.lsp.buf.document_symbol, keymap_opts)
-		vim.keymap.set("n", "K", vim.lsp.buf.hover, keymap_opts)
-		vim.keymap.set("n", "<leader>k", vim.lsp.buf.signature_help, keymap_opts)
-		-- vim.keymap.set("n", "K", function()
-		-- 	vim.lsp.buf.hover({
-		-- 		border = "single",
-		-- 	})
-		-- end, keyamp_opts)
-		-- vim.keymap.set("n", "<leader>k", function()
-		-- 	vim.lsp.buf.signature_help({
-		-- 		border = "single",
-		-- 	})
-		-- end, keyamp_opts)
+		vim.keymap.set("n", "K", function()
+			vim.lsp.buf.hover({
+				border = "single",
+			})
+		end, keymap_opts)
+		vim.keymap.set("n", "<leader>k", function()
+			vim.lsp.buf.signature_help({
+				border = "single",
+			})
+		end, keymap_opts)
 		vim.keymap.set("n", "<leader>rn", vim.lsp.buf.rename, keymap_opts)
 		vim.keymap.set({ "v", "n" }, "<leader>ca", vim.lsp.buf.code_action, keymap_opts)
 		vim.keymap.set({ "v", "n" }, "<leader>cf", function(bufnr)

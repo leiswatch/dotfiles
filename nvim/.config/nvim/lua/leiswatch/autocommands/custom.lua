@@ -47,16 +47,26 @@ vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "qf" },
 	callback = function(buf)
 		vim.opt_local.colorcolumn = ""
-		vim.keymap.set("n", "q", ":ccl<cr>", { buffer = buf.buf, silent = true, noremap = true, nowait = true })
-		vim.keymap.set("n", "<ESC>", ":ccl<cr>", { buffer = buf.buf, silent = true, noremap = true })
+		vim.keymap.set("n", "q", function()
+			vim.cmd.cclose()
+			vim.cmd.lclose()
+		end, { buffer = buf.buf, silent = true, noremap = true, nowait = true })
+		vim.keymap.set("n", "<ESC>", function()
+			vim.cmd.cclose()
+			vim.cmd.lclose()
+		end, { buffer = buf.buf, silent = true, noremap = true })
 	end,
 })
 
 vim.api.nvim_create_autocmd("FileType", {
 	pattern = { "gitsigns-blame" },
-	callback = function()
+	callback = function(buf)
 		local width = math.floor(vim.o.columns * 0.2)
 		vim.cmd("vertical resize " .. tostring(width))
+
+		vim.keymap.set("n", "q", function()
+			vim.api.nvim_buf_delete(buf.buf, { force = true })
+		end, { buffer = buf.buf, silent = true, noremap = true, nowait = true })
 	end,
 })
 

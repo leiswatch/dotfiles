@@ -9,6 +9,7 @@ return {
 				c = false,
 			},
 		})
+
 		require("mini.jump").setup({
 			delay = {
 				-- Delay between jump and highlighting all possible jumps

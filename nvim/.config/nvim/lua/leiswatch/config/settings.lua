@@ -123,4 +123,35 @@ vim.diagnostic.config({
 		end,
 		prefix = "",
 	},
+	-- virtual_lines = {
+	-- 	update_in_insert = true,
+	-- 	underline = true,
+	-- 	source = false,
+	-- 	spacing = 0,
+	-- 	format = function(diagnostic)
+	-- 		local source = ""
+	-- 		local sourceCapitalized = ""
+
+	-- 		if diagnostic.source ~= nil then
+	-- 			source = diagnostic.source:gsub("%.", "")
+	-- 			sourceCapitalized = source:lower() .. ": "
+	-- 		end
+
+	-- 		-- if diagnostic.severity == vim.diagnostic.severity.ERROR then
+	-- 		-- 	return " " .. sourceCapitalized .. diagnostic.message .. " "
+	-- 		-- end
+	-- 		-- if diagnostic.severity == vim.diagnostic.severity.WARN then
+	-- 		-- 	return " " .. sourceCapitalized .. diagnostic.message .. " "
+	-- 		-- end
+	-- 		-- if diagnostic.severity == vim.diagnostic.severity.HINT then
+	-- 		-- 	return " " .. sourceCapitalized .. diagnostic.message .. " "
+	-- 		-- end
+	-- 		-- if diagnostic.severity == vim.diagnostic.severity.INFO then
+	-- 		-- 	return " " .. sourceCapitalized .. diagnostic.message .. " "
+	-- 		-- end
+
+	-- 		return sourceCapitalized .. diagnostic.message .. " "
+	-- 	end,
+	-- 	prefix = "",
+	-- },
 })
