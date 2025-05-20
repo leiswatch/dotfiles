@@ -5,7 +5,7 @@ return {
 	---@type snacks.Config
 	opts = {
 		indent = {
-			enabled = true,
+			enabled = false,
 			scope = { enabled = false },
 			indent = {
 				only_current = false,
@@ -41,7 +41,24 @@ return {
 						action = ":Lazy",
 						enabled = package.loaded.lazy ~= nil,
 					},
+					{
+						icon = " ",
+						key = "m",
+						desc = "Mason",
+						action = ":Mason",
+						enabled = package.loaded.lazy ~= nil,
+					},
 					{ icon = " ", key = "q", desc = "Quit", action = ":qa" },
+				},
+			},
+		},
+		gitbrowse = {
+			url_patterns = {
+				["bitbucket%.org"] = {
+					branch = "/src/{branch}",
+					file = "/src/{branch}/{file}#lines-{line_start}:{line_end}",
+					permalink = "/src/{commit}/{file}#lines-{line_start}:{line_end}",
+					commit = "/commits/{commit}",
 				},
 			},
 		},

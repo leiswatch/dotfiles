@@ -66,8 +66,8 @@ local function get_servers(schemastore)
 			filetypes = { "graphql" },
 		},
 
-		cssls = {},
-		somesass_ls = {},
+		cssls = { filetypes = { "css", "less" } },
+		somesass_ls = { filetypes = { "scss", "sass" } },
 		cssmodules_ls = {},
 		tailwindcss = {
 			filetypes = { "templ" },
@@ -75,6 +75,7 @@ local function get_servers(schemastore)
 		-- css_variables = {},
 
 		stylelint_lsp = {
+			filetypes = { "css", "less", "scss", "sugarss", "sass" },
 			settings = {
 				stylelintplus = {
 					autoFixOnFormat = true,
@@ -85,28 +86,30 @@ local function get_servers(schemastore)
 			},
 		},
 
-		vtsls = {
-			settings = {
-				vtsls = {
-					autoUseWorkspaceTsdk = true,
-					experimental = {
-						completion = {
-							enableServerSideFuzzyMatch = true,
-						},
-					},
-				},
-				typescript = {
-					preferGoToSourceDefinition = true,
-					tsserver = {
-						maxTsServerMemory = "auto",
-					},
-				},
-				javascript = {
-					preferGoToSourceDefinition = true,
-				},
-			},
-		},
+		-- vtsls = {
+		-- 	settings = {
+		-- 		vtsls = {
+		-- 			autoUseWorkspaceTsdk = true,
+		-- 			experimental = {
+		-- 				completion = {
+		-- 					enableServerSideFuzzyMatch = true,
+		-- 				},
+		-- 			},
+		-- 		},
+		-- 		typescript = {
+		-- 			preferGoToSourceDefinition = true,
+		-- 			tsserver = {
+		-- 				maxTsServerMemory = "auto",
+		-- 			},
+		-- 		},
+		-- 		javascript = {
+		-- 			preferGoToSourceDefinition = true,
+		-- 		},
+		-- 	},
+		-- },
 		zls = {},
+
+		-- oxlint = {},
 
 		-- eslint = {
 		-- 	settings = {
@@ -149,17 +152,17 @@ local function get_servers(schemastore)
 		-- 		--     importModuleSpecifierPreference = "relative",
 		-- 		-- },
 		-- 	},
-		-- filetypes = {
-		-- 	"javascript",
-		-- 	"javascriptreact",
-		-- 	"javascript.jsx",
-		-- 	"typescript",
-		-- 	"typescriptreact",
-		-- 	"typescript.tsx",
-		-- 	"vue",
-		-- 	"svelte",
-		-- 	-- "astro",
-		-- },
+		-- 	filetypes = {
+		-- 		"javascript",
+		-- 		"javascriptreact",
+		-- 		"javascript.jsx",
+		-- 		"typescript",
+		-- 		"typescriptreact",
+		-- 		"typescript.tsx",
+		-- 		"vue",
+		-- 		"svelte",
+		-- 		-- "astro",
+		-- 	},
 		-- },
 
 		-- emmet_ls = {
@@ -183,9 +186,9 @@ local M = {
 		"hrsh7th/cmp-nvim-lsp",
 		"esmuellert/nvim-eslint",
 		"soulsam480/nvim-oxlint",
-		"yioneko/nvim-vtsls",
 		"b0o/schemastore.nvim",
-		-- "pmizio/typescript-tools.nvim",
+		"pmizio/typescript-tools.nvim",
+		-- "yioneko/nvim-vtsls",
 		-- "saghen/blink.cmp",
 		-- { "iguanacucumber/mag-nvim-lsp", name = "cmp-nvim-lsp", opts = {} },
 	},
@@ -215,28 +218,29 @@ local M = {
 		capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
 		-- capabilities = vim.tbl_deep_extend("force", capabilities, require("blink.cmp").get_lsp_capabilities(capabilities))
 
-		-- require("typescript-tools").setup({
-		-- 	on_attach = function(client)
-		-- 		client.capabilities = vim.tbl_deep_extend("force", {}, capabilities, client.capabilities or {})
-		-- 	end,
-		-- 	handlers = handlers,
-		-- 	filetypes = {
-		-- 		"javascript",
-		-- 		"javascriptreact",
-		-- 		"javascript.jsx",
-		-- 		"typescript",
-		-- 		"typescriptreact",
-		-- 		"typescript.tsx",
-		-- 		"vue",
-		-- 		"svelte",
-		-- 		-- "astro",
-		-- 	},
-		-- 	settings = {
-		-- 		separate_diagnostic_server = false,
-		-- 	},
-		-- })
+		require("typescript-tools").setup({
+			on_attach = function(client)
+				client.capabilities = vim.tbl_deep_extend("force", {}, capabilities, client.capabilities or {})
 
-		require("lspconfig.configs").vtsls = require("vtsls").lspconfig
+				return client
+			end,
+			filetypes = {
+				"javascript",
+				"javascriptreact",
+				"javascript.jsx",
+				"typescript",
+				"typescriptreact",
+				"typescript.tsx",
+				"vue",
+				"svelte",
+				-- "astro",
+			},
+			settings = {
+				separate_diagnostic_server = false,
+			},
+		})
+
+		-- require("lspconfig.configs").vtsls = require("vtsls").lspconfig
 
 		oxlint.setup({
 			root_dir = function(bufnr)

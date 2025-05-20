@@ -38,6 +38,7 @@ local ensure_installed_tools = {
 	"goimports",
 	"golangci-lint",
 	"luacheck",
+	"oxlint",
 	"prettier",
 	"prettierd",
 	"pylint",
@@ -82,8 +83,8 @@ local M = {
 		})
 
 		require("mason-lspconfig").setup({
+			automatic_enable = false,
 			ensure_installed = ensure_installed,
-			automatic_installation = true,
 		})
 	end,
 }

@@ -3,7 +3,7 @@
 
 window#waybar {
   font-family: "JetBrainsMono Nerd Font Propo";
-  background-color: @bg_dark;
+  background-color: @bg;
   transition-property: background-color;
   transition-duration: 0.5s;
   font-size: 14px;
@@ -127,7 +127,10 @@ window#waybar.empty #window {
 }
 
 #scratchpad {
-  background-color: @orange;
+  padding: 0 8px;
+  margin: 6px 0;
+  color: @fg_dark;
+  background-color: @bg_dark_alt;
 }
 
 #tray {

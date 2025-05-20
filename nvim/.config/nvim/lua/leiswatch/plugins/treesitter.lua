@@ -11,7 +11,7 @@ return {
 		"windwp/nvim-ts-autotag",
 		"numToStr/Comment.nvim",
 		"nvim-treesitter/nvim-treesitter-textobjects",
-		"leafOfTree/vim-matchtag",
+		-- "leafOfTree/vim-matchtag",
 		-- "tronikelis/ts-autotag.nvim",
 		-- "HiPhish/rainbow-delimiters.nvim",
 	},

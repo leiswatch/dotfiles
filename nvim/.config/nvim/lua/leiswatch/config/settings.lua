@@ -35,7 +35,7 @@ vim.opt.inccommand = "split"
 vim.opt.incsearch = true
 vim.opt.laststatus = 3
 vim.opt.list = false
--- vim.opt.listchars:append("tab:› ,trail:•,extends:#,nbsp:.,eol:↴,space:⋅")
+vim.opt.listchars:append("tab:› ,trail:•,extends:#,nbsp:.,eol:↴,space:⋅")
 vim.opt.number = true
 vim.opt.relativenumber = true
 vim.opt.pumheight = 10

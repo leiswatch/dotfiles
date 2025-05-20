@@ -1,12 +1,13 @@
 {
-  "timeStamp": 1726996637756,
-  "version": "1.59.0",
+  "timeStamp": 1747254558966,
+  "version": "1.63.2",
   "userSettings": {
     "advancedUserEnabled": true,
     "uiTheme": "dark",
-    "externalLists": "https://raw.githubusercontent.com/DandelionSprout/adfilt/master/LegitimateURLShortener.txt",
+    "externalLists": "https://raw.githubusercontent.com/DandelionSprout/adfilt/master/LegitimateURLShortener.txt\nhttps://raw.githubusercontent.com/olegwukr/polish-privacy-filters/master/anti-adblock.txt",
     "importedLists": [
-      "https://raw.githubusercontent.com/DandelionSprout/adfilt/master/LegitimateURLShortener.txt"
+      "https://raw.githubusercontent.com/DandelionSprout/adfilt/master/LegitimateURLShortener.txt",
+      "https://raw.githubusercontent.com/olegwukr/polish-privacy-filters/master/anti-adblock.txt"
     ],
     "popupPanelSections": 31
   },
@@ -18,13 +19,20 @@
     "ublock-quick-fixes",
     "ublock-unbreak",
     "easylist",
+    "adguard-generic",
     "easyprivacy",
+    "adguard-spyware",
     "adguard-spyware-url",
+    "block-lan",
     "urlhaus-1",
     "plowe-0",
+    "fanboy-social",
+    "adguard-social",
+    "fanboy-thirdparty_social",
+    "POL-3",
     "POL-0",
-    "POL-2",
-    "https://raw.githubusercontent.com/DandelionSprout/adfilt/master/LegitimateURLShortener.txt"
+    "https://raw.githubusercontent.com/DandelionSprout/adfilt/master/LegitimateURLShortener.txt",
+    "https://raw.githubusercontent.com/olegwukr/polish-privacy-filters/master/anti-adblock.txt"
   ],
   "hiddenSettings": {},
   "whitelist": [
