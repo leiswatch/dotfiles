@@ -10,4 +10,5 @@ return {
 			{ noremap = true, silent = true },
 		},
 	},
+	opts = {},
 }

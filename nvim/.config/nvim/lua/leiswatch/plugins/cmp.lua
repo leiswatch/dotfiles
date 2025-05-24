@@ -32,7 +32,7 @@ return {
 		-- "Jezda1337/nvim-html-css",
 	},
 	event = { "InsertEnter", "CmdlineEnter" },
-	config = function()
+	opts = function()
 		local cmp = require("cmp")
 		local lspkind = require("lspkind")
 		local luasnip = require("luasnip")
@@ -47,7 +47,27 @@ return {
 		require("luasnip.loaders.from_vscode").lazy_load()
 		require("luasnip.loaders.from_vscode").lazy_load({ paths = "~/.config/nvim/lua/leiswatch/snippets" })
 
-		cmp.setup({
+		cmp.setup.cmdline({ "/", "?" }, {
+			mapping = cmp.mapping.preset.cmdline(),
+			sources = {
+				{ name = "buffer" },
+			},
+		})
+
+		cmp.setup.cmdline(":", {
+			mapping = cmp.mapping.preset.cmdline(),
+			sources = cmp.config.sources({
+				{ name = "async_path" },
+			}, {
+				{ name = "cmdline" },
+			}),
+			---@diagnostic disable-next-line: missing-fields
+			matching = { disallow_symbol_nonprefix_matching = false },
+		})
+
+		-- cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+
+		return {
 			view = { entries = "custom" },
 			snippet = {
 				expand = function(args)
@@ -157,26 +177,6 @@ return {
 					return kind
 				end,
 			},
-		})
-
-		cmp.setup.cmdline({ "/", "?" }, {
-			mapping = cmp.mapping.preset.cmdline(),
-			sources = {
-				{ name = "buffer" },
-			},
-		})
-
-		cmp.setup.cmdline(":", {
-			mapping = cmp.mapping.preset.cmdline(),
-			sources = cmp.config.sources({
-				{ name = "async_path" },
-			}, {
-				{ name = "cmdline" },
-			}),
-			---@diagnostic disable-next-line: missing-fields
-			matching = { disallow_symbol_nonprefix_matching = false },
-		})
-
-		-- cmp.event:on("confirm_done", cmp_autopairs.on_confirm_done())
+		}
 	end,
 }

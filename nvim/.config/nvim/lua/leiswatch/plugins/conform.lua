@@ -4,22 +4,27 @@ return {
 		{
 			"<C-i>",
 			function()
-				local bufnr = vim.api.nvim_get_current_buf()
-
 				require("conform").format({
 					timeout_ms = 3000,
 					async = true,
-					bufnr = bufnr,
+					quiet = false,
 				})
 			end,
 			{ noremap = true, silent = true },
 		},
 	},
 	opts = {
+		formatters = {
+			["biome-check"] = {
+				require_cwd = true,
+			},
+		},
 		default_format_opts = {
 			lsp_format = "never",
 		},
-		notify_on_error = false,
+		log_level = vim.log.levels.DEBUG,
+		notify_on_error = true,
+		notify_no_formatters = true,
 		formatters_by_ft = {
 			lua = { "stylua" },
 			rust = { "rustfmt" },
@@ -28,17 +33,11 @@ return {
 			c = { "clang-format" },
 			cpp = { "clang-format" },
 			python = { "black", "yapf" },
+			zig = { "zigfmt" },
 
-			html = {
-				"prettier",
-				"prettierd",
-				stop_after_first = true,
-				lsp_format = "never",
-			},
+			html = { "prettier", stop_after_first = true },
 			astro = {
 				"prettier",
-				"prettierd",
-				stop_after_first = true,
 				lsp_format = "first",
 				filter = function(client)
 					return client.name == "eslint"
@@ -46,8 +45,6 @@ return {
 			},
 			svelte = {
 				"prettier",
-				"prettierd",
-				stop_after_first = true,
 				lsp_format = "first",
 				filter = function(client)
 					return client.name == "eslint"
@@ -55,17 +52,14 @@ return {
 			},
 			vue = {
 				"prettier",
-				"prettierd",
-				stop_after_first = true,
 				lsp_format = "first",
 				filter = function(client)
 					return client.name == "eslint"
 				end,
 			},
-
 			javascript = {
+				"biome-check",
 				"prettier",
-				"prettierd",
 				stop_after_first = true,
 				lsp_format = "first",
 				filter = function(client)
@@ -73,17 +67,17 @@ return {
 				end,
 			},
 			typescript = {
+				"biome-check",
 				"prettier",
-				"prettierd",
 				stop_after_first = true,
 				lsp_format = "first",
 				filter = function(client)
 					return client.name == "eslint"
 				end,
 			},
-			javacriptreact = {
+			javascriptreact = {
+				"biome-check",
 				"prettier",
-				"prettierd",
 				stop_after_first = true,
 				lsp_format = "first",
 				filter = function(client)
@@ -91,18 +85,17 @@ return {
 				end,
 			},
 			typescriptreact = {
+				"biome-check",
 				"prettier",
-				"prettierd",
 				stop_after_first = true,
 				lsp_format = "first",
 				filter = function(client)
 					return client.name == "eslint"
 				end,
 			},
-
 			css = {
+				"biome-check",
 				"prettier",
-				"prettierd",
 				stop_after_first = true,
 				lsp_format = "first",
 				filter = function(client)
@@ -110,8 +103,8 @@ return {
 				end,
 			},
 			scss = {
+				"biome-check",
 				"prettier",
-				"prettierd",
 				stop_after_first = true,
 				lsp_format = "first",
 				filter = function(client)
@@ -119,8 +112,8 @@ return {
 				end,
 			},
 			sass = {
+				"biome-check",
 				"prettier",
-				"prettierd",
 				stop_after_first = true,
 				lsp_format = "first",
 				filter = function(client)
@@ -128,45 +121,25 @@ return {
 				end,
 			},
 			less = {
+				"biome-check",
 				"prettier",
-				"prettierd",
 				stop_after_first = true,
 				lsp_format = "first",
 				filter = function(client)
 					return client.name == "stylelint_lsp"
 				end,
 			},
-			json = {
-				"prettier",
-				"prettierd",
-				stop_after_first = true,
-				lsp_format = "never",
-				filter = function(client)
-					return client.name == "jsonls"
-				end,
-			},
-			jsonc = {
-				"prettier",
-				"prettierd",
-				stop_after_first = true,
-				lsp_format = "never",
-				filter = function(client)
-					return client.name == "jsonls"
-				end,
-			},
-			yaml = {
-				"prettier",
-				"prettierd",
-				stop_after_first = true,
-				lsp_format = "never",
-				filter = function(client)
-					return client.name == "yamlls"
-				end,
-			},
+			json = { "biome-check", "prettier", stop_after_first = true },
+			jsonc = { "biome-check", "prettier", stop_after_first = true },
+			graphql = { "biome-check", "prettier", stop_after_first = true },
+
+			yaml = { "prettier" },
+			markdown = { "prettier" },
+
 			bash = { "shfmt" },
 			zsh = { "shfmt" },
-			zig = { "zigfmt" },
-			["*"] = { "trim_newlines", "trim_whitespace" },
+
+			["_"] = { "trim_newlines", "trim_whitespace" },
 		},
 	},
 }

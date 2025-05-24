@@ -6,16 +6,47 @@ return {
 	end,
 	event = { "BufReadPre", "BufNewFile" },
 	dependencies = {
-		"nvim-treesitter/nvim-treesitter-context",
+		{
+			"nvim-treesitter/nvim-treesitter-context",
+			opts = {
+				enable = true,
+				multiline_threshold = 3,
+				max_lines = 3,
+				separator = nil,
+				mode = "topline",
+			},
+		},
+		{
+			"windwp/nvim-ts-autotag",
+			opts = {
+				opts = {
+					enable_close = false, -- Auto close tags
+					enable_rename = true, -- Auto rename pairs of tags
+					enable_close_on_slash = false, -- Auto close on trailing </
+					aliases = {
+						["templ"] = "html",
+					},
+				},
+			},
+		},
 		"JoosepAlviste/nvim-ts-context-commentstring",
-		"windwp/nvim-ts-autotag",
 		"numToStr/Comment.nvim",
 		"nvim-treesitter/nvim-treesitter-textobjects",
-		-- "leafOfTree/vim-matchtag",
-		-- "tronikelis/ts-autotag.nvim",
-		-- "HiPhish/rainbow-delimiters.nvim",
+		{
+			"leafOfTree/vim-matchtag",
+			init = function()
+				vim.g.vim_matchtag_files = "*.html,*.xml,*.jsx,*.tsx,*.vue,*.svelte,*.jsp,*.php,*.erb,*.astro"
+				vim.g.vim_matchtag_highlight_cursor_on = 1
+			end,
+		},
 	},
 	config = function()
+		---@diagnostic disable-next-line: missing-fields
+		require("Comment").setup({
+			ignore = "^$",
+			pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
+		})
+
 		require("nvim-treesitter.configs").setup({
 			ensure_installed = {
 				"astro",
@@ -102,36 +133,6 @@ return {
 			},
 			modules = {},
 			ignore_install = {},
-		})
-
-		require("treesitter-context").setup({
-			enable = true,
-			multiline_threshold = 3,
-			max_lines = 3,
-			separator = nil,
-			mode = "topline",
-		})
-
-		require("ts_context_commentstring").setup({
-			enable_autocmd = false,
-		})
-
-		---@diagnostic disable-next-line: missing-fields
-		require("Comment").setup({
-			ignore = "^$",
-			pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
-		})
-
-		---@diagnostic disable-next-line: missing-fields
-		require("nvim-ts-autotag").setup({
-			opts = {
-				enable_close = false, -- Auto close tags
-				enable_rename = true, -- Auto rename pairs of tags
-				enable_close_on_slash = false, -- Auto close on trailing </
-				aliases = {
-					["templ"] = "html",
-				},
-			},
 		})
 	end,
 }

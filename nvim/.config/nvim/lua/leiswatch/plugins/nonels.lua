@@ -4,10 +4,10 @@ return {
 		"nvimtools/none-ls-extras.nvim",
 	},
 	enabled = false,
-	config = function()
+	opts = function()
 		local null_ls = require("null-ls")
 
-		null_ls.setup({
+		return {
 			sources = {
 				-- Python
 				null_ls.builtins.diagnostics.pylint,
@@ -41,6 +41,6 @@ return {
 				require("none-ls.formatting.trim_newlines"),
 				require("none-ls.formatting.trim_whitespace"),
 			},
-		})
+		}
 	end,
 }

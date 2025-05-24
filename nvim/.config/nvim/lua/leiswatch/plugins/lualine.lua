@@ -1,7 +1,7 @@
 return {
 	"nvim-lualine/lualine.nvim",
 	event = { "BufEnter" },
-	config = function()
+	opts = function()
 		-- local mocha_colors = require("catppuccin.palettes").get_palette("mocha")
 
 		-- local catppuccin = {
@@ -49,7 +49,7 @@ return {
 			},
 		}
 
-		require("lualine").setup({
+		return {
 			options = {
 				theme = tokyonight,
 				component_separators = { left = "", right = "" },
@@ -138,6 +138,6 @@ return {
 				},
 			},
 			extensions = { "neo-tree", "quickfix", "fzf" },
-		})
+		}
 	end,
 }

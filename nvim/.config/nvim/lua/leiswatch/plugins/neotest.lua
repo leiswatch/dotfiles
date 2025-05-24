@@ -38,9 +38,8 @@ return {
 			{ noremap = true, silent = true },
 		},
 	},
-	config = function()
-		---@diagnostic disable-next-line: missing-fields
-		require("neotest").setup({
+	opts = function()
+		return {
 			adapters = {
 				require("neotest-vitest")({
 					cwd = function(file)
@@ -62,6 +61,6 @@ return {
 				}),
 				require("neotest-golang")({}),
 			},
-		})
+		}
 	end,
 }

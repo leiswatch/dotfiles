@@ -147,9 +147,9 @@ exec sh /home/leiswatch/.config/sway/scripts/waybar.sh
     # Exit sway (logs you out of your Wayland session)
     # bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 
-    bindsym $mod+Shift+s exec grim -g "$(slurp)" - | satty -f -
-    # bindsym $mod+Shift+s exec flameshot gui
-    bindsym Print exec grim - | swappy -f -
+    bindsym $mod+Shift+s exec hyprshot -m region --raw | satty -f -
+    bindsym Shift+Print exec hyprshot -m window --raw | satty -f -
+    bindsym Print exec hyprshot -m output -m DP-1 --raw | satty -f -
 
     bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+
     bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-
@@ -229,7 +229,7 @@ exec sh /home/leiswatch/.config/sway/scripts/waybar.sh
     bindsym $mod+f fullscreen
 
     # Toggle the current focus between tiling and floating mode
-    bindsym $mod+Shift+space floating toggle, move position center, resize set 80ppt 80ppt
+    bindsym $mod+Shift+space floating toggle, move position center
 
     # Swap focus between the tiling area and the floating area
     bindsym $mod+space focus mode_toggle
@@ -316,21 +316,20 @@ default_floating_border pixel 2
 title_align left
 
 for_window [all] border normal 2, titlebar_border_thickness 2, title_format " %title "
-for_window [floating] move position center, resize set 80ppt 80ppt
-
+for_window [floating] move position center 
 # for_window [title="Picture-in-Picture"] floating enable, sticky enable, resize set 25ppt 25ppt
 # for_window [title="Picture in picture"] floating enable, sticky enable, resize set 25ppt 25ppt
 
 for_window [title="Battle.net"] floating enable, resize set 70ppt 70ppt, move position center
 for_window [app_id="org.pulseaudio.pavucontrol"] floating enable, move position center, resize set 80ppt 80ppt
-for_window [title="^([Pp]icture[-\s]?[Ii]n[-\s]?[Pp]icture)(.*)$"] floating enable, sticky enable, resize set 25ppt 25ppt
+for_window [title="^([Pp]icture[-\s]?[Ii]n[-\s]?[Pp]icture)(.*)$"] floating enable, sticky enable, border pixel 2, resize set 25ppt 25ppt
 
-for_window [title="^(Open File)(.*)$"] border normal
-for_window [title="^(Select a File)(.*)$"] border normal
-for_window [title="^(Choose wallpaper)(.*)$"] border normal
-for_window [title="^(Open Folder)(.*)$"] border normal
-for_window [title="^(Save As)(.*)$"] border normal
-for_window [title="^(Library)(.*)$"] border normal
-for_window [title="^(File Upload)(.*)$"] border normal
-for_window [title="^(Print)(.*)$"] border normal
-for_window [title="^(All Files)(.*)$"] border normal
+for_window [title="^(Open File)(.*)$"] resize set 70ppt 70ppt
+for_window [title="^(Select a File)(.*)$"] resize set 70ppt 70ppt
+for_window [title="^(Choose wallpaper)(.*)$"] resize set 70ppt 70ppt
+for_window [title="^(Open Folder)(.*)$"] resize set 70ppt 70ppt
+for_window [title="^(Save As)(.*)$"] resize set 70ppt 70ppt
+for_window [title="^(Library)(.*)$"] resize set 70ppt 70ppt
+for_window [title="^(File Upload)(.*)$"] resize set 70ppt 70ppt
+for_window [title="^(Print)(.*)$"] resize set 70ppt 70ppt
+for_window [title="^(All Files)(.*)$"] resize set 70ppt 70ppt

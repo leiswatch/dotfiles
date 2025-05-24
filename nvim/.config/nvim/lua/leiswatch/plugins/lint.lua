@@ -7,7 +7,7 @@ return {
 		lint.linters_by_ft = {
 			go = { "golangcilint" },
 			templ = { "golangcilint" },
-			lua = { "selene" },
+			lua = { "luacheck" },
 			python = { "pylint" },
 			yaml = { "yamllint" },
 			zsh = { "zsh" },

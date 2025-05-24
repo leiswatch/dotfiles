@@ -1,10 +1,10 @@
 return {
 	"ibhagwan/fzf-lua",
 	dependencies = { "nvim-tree/nvim-web-devicons" },
-	config = function()
+	opts = function()
 		local actions = require("fzf-lua.actions")
 
-		require("fzf-lua").setup({
+		return {
 			defaults = {
 				file_icons = true,
 				color_icons = true,
@@ -126,6 +126,6 @@ return {
 					},
 				},
 			},
-		})
+		}
 	end,
 }

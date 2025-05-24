@@ -81,6 +81,7 @@ window#waybar.hidden {
 #keyboard-state,
 #scratchpad,
 #custom-updates,
+#custom-boldvpn,
 #language,
 #submap,
 #custom-notifications,
@@ -119,6 +120,10 @@ window#waybar.empty #window {
 
 #custom-updates {
   color: @yellow;
+}
+
+#custom-boldvpn {
+  color: @blue6;
 }
 
 #custom-notifications {

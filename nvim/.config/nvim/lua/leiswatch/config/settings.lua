@@ -1,8 +1,5 @@
 vim.g.mapleader = " "
 vim.g.maplocalleader = " "
-vim.g.skip_ts_context_commentstring_module = true
-vim.g.tagalong_mappings = { "c", "C", "i", "a" }
-vim.g.undotree_WindowLayout = 2
 vim.g.loaded_netrw = 1
 vim.g.loaded_netrwPlugin = 1
 -- vim.g.virtcolumn_char = "▕" -- by default

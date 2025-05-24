@@ -7,17 +7,16 @@
     // Choose the order of the modules
     "reload_style_on_change": true,
     "modules-left": [
-        "hyprland/workspaces",
-        "hyprland/submap"
-        // "sway/workspaces",
-        // "sway/mode",
-        // "sway/scratchpad"
+        "sway/workspaces",
+        "sway/mode",
+        "sway/scratchpad"
+        // "hyprland/workspaces",
+        // "hyprland/submap"
         // "hyprland/window"
     ],
-    "modules-center": [
-        "clock"
-    ],
+    "modules-center": ["clock"],
     "modules-right": [
+        "custom/boldvpn",
         "cpu",
         "memory",
         "disk",
@@ -104,9 +103,7 @@
     "sway/scratchpad": {
         "format": "{icon} {count}",
         "show-empty": false,
-        "format-icons": [
-            ""
-        ],
+        "format-icons": [""],
         "tooltip": true,
         "tooltip-format": "{app}: {title}",
     },
@@ -169,14 +166,7 @@
             "phone": "",
             "portable": "",
             "car": "",
-            "default": [
-                "",
-                "",
-                "",
-                "",
-                "",
-                ""
-            ],
+            "default": ["", "", "", "", "", ""],
         },
         "on-click": "wpctl set-mute @DEFAULT_AUDIO_SINK@ toggle",
         "on-click-right": "pavucontrol",
@@ -194,6 +184,11 @@
     //     "on-click": "swaync-client -t",
     //     "tooltip": false,
     // },
+    "custom/boldvpn": {
+        "exec": "sh ~/.config/waybar/scripts/boldvpn_status.sh",
+        "format": "{} BOLD",
+        "interval": 5,
+    },
     "custom/notifications": {
         "tooltip": false,
         "format": "{icon}",

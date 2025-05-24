@@ -4,11 +4,13 @@ return {
 	lazy = false,
 	priority = 1000,
 	enabled = false,
-	config = function()
+	opts = function()
 		local darken = require("catppuccin.utils.colors").darken
 		local darkening_percentage = 0.095
 
-		require("catppuccin").setup({
+		vim.cmd.colorscheme("catppuccin")
+
+		return {
 			flavour = "mocha",
 			transparent_background = true,
 			term_colors = true,
@@ -132,8 +134,6 @@ return {
 					},
 				},
 			},
-		})
-
-		vim.cmd.colorscheme("catppuccin")
+		}
 	end,
 }

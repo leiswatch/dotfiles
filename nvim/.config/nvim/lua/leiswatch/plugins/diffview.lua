@@ -1,10 +1,10 @@
 return {
 	"sindrets/diffview.nvim",
 	cmd = { "DiffviewOpen" },
-	config = function()
+	opts = function()
 		local actions = require("diffview.actions")
 
-		require("diffview").setup({
+		return {
 			view = {
 				default = {
 					-- Config for changed files, and staged files in diff views.
@@ -55,6 +55,6 @@ return {
 					},
 				},
 			},
-		})
+		}
 	end,
 }
