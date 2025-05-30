@@ -130,7 +130,8 @@ exec sh /home/leiswatch/.config/sway/scripts/waybar.sh
     bindsym $mod+d exec /home/leiswatch/.config/rofi/launchers/launcher.sh
     # bindsym $mod+n exec /home/leiswatch/.config/rofi/launchers/vpn.sh
     bindsym $mod+u exec /home/leiswatch/.config/rofi/launchers/pactl.sh
-    bindsym $mod+n exec /home/leiswatch/.config/rofi/launchers/nordvpn.sh
+    bindsym $mod+n exec sh /home/leiswatch/.local/bin/boldvpn
+    bindsym $mod+Shift+n exec /home/leiswatch/.config/rofi/launchers/nordvpn.sh
     bindsym $mod+Shift+p exec /home/leiswatch/.config/rofi/powermenu/powermenu.sh
     # bindsym $mod+Shift+p exec wlogout
 
@@ -324,12 +325,13 @@ for_window [title="Battle.net"] floating enable, resize set 70ppt 70ppt, move po
 for_window [app_id="org.pulseaudio.pavucontrol"] floating enable, move position center, resize set 80ppt 80ppt
 for_window [title="^([Pp]icture[-\s]?[Ii]n[-\s]?[Pp]icture)(.*)$"] floating enable, sticky enable, border pixel 2, resize set 25ppt 25ppt
 
-for_window [title="^(Open File)(.*)$"] resize set 70ppt 70ppt
-for_window [title="^(Select a File)(.*)$"] resize set 70ppt 70ppt
-for_window [title="^(Choose wallpaper)(.*)$"] resize set 70ppt 70ppt
-for_window [title="^(Open Folder)(.*)$"] resize set 70ppt 70ppt
-for_window [title="^(Save As)(.*)$"] resize set 70ppt 70ppt
-for_window [title="^(Library)(.*)$"] resize set 70ppt 70ppt
-for_window [title="^(File Upload)(.*)$"] resize set 70ppt 70ppt
-for_window [title="^(Print)(.*)$"] resize set 70ppt 70ppt
-for_window [title="^(All Files)(.*)$"] resize set 70ppt 70ppt
+for_window [title="^(Open File)(.*)$"] resize set 70ppt 70ppt, border pixel 2
+for_window [title="^(Select a File)(.*)$"] resize set 70ppt 70ppt, border pixel 2
+for_window [title="^(Choose wallpaper)(.*)$"] resize set 70ppt 70ppt, border pixel 2
+for_window [title="^(Open Folder)(.*)$"] resize set 70ppt 70ppt, border pixel 2
+for_window [title="^(Save As)(.*)$"] resize set 70ppt 70ppt, border pixel 2
+for_window [title="^(Library)(.*)$"] resize set 70ppt 70ppt, border pixel 2
+for_window [title="^(File Upload)(.*)$"] resize set 70ppt 70ppt, border pixel 2
+for_window [title="^(Print)(.*)$"] resize set 70ppt 70ppt, border pixel 2
+for_window [title="^(All Files)(.*)$"] resize set 70ppt 70ppt, border pixel 2
+for_window [title="^(Pick Files)(.*)$"] resize set 70ppt 70ppt, border pixel 2

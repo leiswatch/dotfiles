@@ -27,6 +27,10 @@ return {
 				},
 				cwd_prompt = false,
 				prompt = "❯ ",
+				actions = {
+					["ctrl-h"] = { actions.toggle_hidden },
+					["ctrl-g"] = { actions.toggle_ignore },
+				},
 			},
 			grep = {
 				rg_opts = "--column --line-number --no-heading --color=always --smart-case --trim --max-columns=4096 -e",
@@ -64,6 +68,9 @@ return {
 						fn = actions.file_edit_or_qf,
 						prefix = "select-all+",
 					},
+					["ctrl-l"] = { actions.grep_lgrep },
+					["ctrl-g"] = { actions.toggle_ignore },
+					["ctrl-h"] = { actions.toggle_hidden },
 				},
 			},
 			lsp = {

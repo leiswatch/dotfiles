@@ -42,7 +42,7 @@ zinit snippet OMZL::directories.zsh
 zinit snippet OMZL::git.zsh
 
 if [ ! -f "$ZSH_CACHE_DIR/completions/_deno" ]; then
-    deno completions zsh > "$ZSH_CACHE_DIR/completions/_deno"
+    deno completions zsh >"$ZSH_CACHE_DIR/completions/_deno"
 fi
 
 fpath=("$ZSH_CACHE_DIR/completions" $fpath)
@@ -95,13 +95,30 @@ zstyle ':fzf-tab:*' fzf-flags --color=bg+:#3b4261,spinner:#2ac3de,hl:#f7768e,fg:
 # Aliases
 alias ls='eza'
 alias cat='bat'
-alias tksv='/usr/bin/tmux kill-server'
-alias tmux='tmux a || tmux'
+alias tksv='tmux kill-server'
+# alias tmux='tmux a || tmux'
 alias gcwtc='git commit -m "$(curl -s https://whatthecommit.com/index.txt)"'
 alias gcwip='git commit -m "WIP: $(date)"'
 alias fsb='git switch $(git branch | grep -v \"^\*\" | fzf --height=30% --reverse --info=inline)'
 alias rmr='rm -r'
 alias v='nvim'
+
+function tx() {
+    # Check if a tmux session is running
+    if ! tmux has-session -t leiswatch 2>/dev/null; then
+        # Create a new tmux session if it doesn't exist
+        tmux new-session -d -s leiswatch
+        tmux new-window -t leiswatch
+        tmux new-window -t leiswatch
+        tmux new-window -t leiswatch
+        tmux select-window -t leiswatch:1
+        tmux attach-session -t leiswatch
+
+        exit 0
+    fi
+
+    tmux attach-session -t leiswatch
+}
 
 # Functions
 function vmrss() {

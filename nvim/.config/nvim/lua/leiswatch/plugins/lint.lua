@@ -18,5 +18,12 @@ return {
 				lint.try_lint()
 			end,
 		})
+
+		vim.api.nvim_create_autocmd({ "BufWritePost" }, {
+			pattern = { ".env*" },
+			callback = function()
+				lint.try_lint("dotenv_linter")
+			end,
+		})
 	end,
 }

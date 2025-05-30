@@ -1,0 +1,81 @@
+return {
+	-- "nvim-treesitter/nvim-treesitter",
+	-- lazy = false,
+	-- branch = "main",
+	-- build = ":TSUpdate",
+	-- dependencies = {
+	-- 	{
+	-- 		"nvim-treesitter/nvim-treesitter-context",
+	-- 		opts = {
+	-- 			enable = true,
+	-- 			multiline_threshold = 3,
+	-- 			max_lines = 3,
+	-- 			separator = nil,
+	-- 			mode = "topline",
+	-- 		},
+	-- 	},
+	-- 	{
+	-- 		"windwp/nvim-ts-autotag",
+	-- 		opts = {
+	-- 			opts = {
+	-- 				enable_close = false, -- Auto close tags
+	-- 				enable_rename = true, -- Auto rename pairs of tags
+	-- 				enable_close_on_slash = false, -- Auto close on trailing </
+	-- 				aliases = {
+	-- 					["templ"] = "html",
+	-- 				},
+	-- 			},
+	-- 		},
+	-- 	},
+	-- 	{
+	-- 		"leafOfTree/vim-matchtag",
+	-- 		init = function()
+	-- 			vim.g.vim_matchtag_files = "*.html,*.xml,*.jsx,*.tsx,*.vue,*.svelte,*.jsp,*.php,*.erb,*.astro"
+	-- 			vim.g.vim_matchtag_highlight_cursor_on = 1
+	-- 		end,
+	-- 	},
+	-- 	"JoosepAlviste/nvim-ts-context-commentstring",
+	-- 	"nvim-treesitter/nvim-treesitter-textobjects",
+	-- 	"numToStr/Comment.nvim",
+	-- },
+	-- opts = function()
+	-- 	require("Comment").setup({
+	-- 		ignore = "^$",
+	-- 		pre_hook = require("ts_context_commentstring.integrations.comment_nvim").create_pre_hook(),
+	-- 	})
+
+	-- 	require("nvim-treesitter").install({
+	-- 		"astro",
+	-- 		"bash",
+	-- 		"css",
+	-- 		"git_config",
+	-- 		"git_rebase",
+	-- 		"gitcommit",
+	-- 		"gitignore",
+	-- 		"go",
+	-- 		"graphql",
+	-- 		"html",
+	-- 		"hyprlang",
+	-- 		"javascript",
+	-- 		"json",
+	-- 		"lua",
+	-- 		"markdown",
+	-- 		"markdown_inline",
+	-- 		"python",
+	-- 		"query",
+	-- 		"regex",
+	-- 		"rust",
+	-- 		"scss",
+	-- 		"templ",
+	-- 		"tsx",
+	-- 		"typescript",
+	-- 		"vim",
+	-- 		"vimdoc",
+	-- 		"zig",
+	-- 	})
+
+	-- 	return {
+	-- 		install_dir = vim.fn.stdpath("data") .. "/site",
+	-- 	}
+	-- end,
+}

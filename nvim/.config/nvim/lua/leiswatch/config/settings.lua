@@ -76,7 +76,10 @@ vim.cmd("filetype plugin indent on")
 vim.filetype.add({
 	pattern = { [".*/hypr/.*%.conf"] = "hyprlang" },
 })
-vim.g.vim_matchtag_files = "*.html,*.xml,*.js,*.jsx,*.ts,*.tsx,*.vue,*.svelte,*.jsp,*.php,*.erb,*.astro,*.templ,*.tmpl"
+vim.filetype.add({
+	pattern = { [".env*"] = "env" },
+})
+vim.treesitter.language.register("bash", "env")
 
 vim.lsp.log.set_level(vim.log.levels.ERROR)
 

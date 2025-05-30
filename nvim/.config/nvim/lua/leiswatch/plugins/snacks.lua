@@ -4,13 +4,14 @@ return {
 	lazy = false,
 	opts = {
 		indent = {
-			enabled = false,
+			enabled = true,
 			scope = { enabled = false },
 			indent = {
-				only_current = false,
-				-- char = "╎",
+				only_current = true,
+				char = "╎",
 			},
 			animate = { enabled = false },
+			chunk = { enabled = false },
 		},
 		bigfile = { enabled = true },
 		dashboard = {
@@ -62,12 +63,27 @@ return {
 			},
 		},
 		statuscolumn = { enabled = true },
-		input = { enabled = true, icon = "" },
+		input = {
+			enabled = true,
+			icon = "",
+		},
 		lazygit = { configure = false },
 		picker = {
 			enabled = true,
 			ui_select = true,
 			preview = false,
+			win = {
+				input = {
+					keys = {
+						["<Esc>"] = { "close", mode = { "n", "i" } },
+					},
+				},
+				list = {
+					keys = {
+						["<Esc>"] = { "close", mode = { "n", "i" } },
+					},
+				},
+			},
 			layouts = {
 				select = {
 					preview = false,
@@ -99,6 +115,10 @@ return {
 				wo = {
 					winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder,FloatTitle:FloatTitle",
 					cursorline = false,
+				},
+				keys = {
+					n_esc = { "<esc>", { "cmp_close", "cancel" }, mode = "n", expr = true },
+					i_esc = { "<esc>", { "cmp_close", "stopinsert", "cancel" }, mode = "i", expr = true },
 				},
 			},
 

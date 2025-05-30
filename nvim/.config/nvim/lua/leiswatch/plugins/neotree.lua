@@ -21,6 +21,24 @@ return {
 		},
 	},
 	opts = {
+		event_handlers = {
+			{
+				event = "neo_tree_window_after_open",
+				handler = function(args)
+					if args.position == "left" or args.position == "right" then
+						vim.cmd("wincmd =")
+					end
+				end,
+			},
+			{
+				event = "neo_tree_window_after_close",
+				handler = function(args)
+					if args.position == "left" or args.position == "right" then
+						vim.cmd("wincmd =")
+					end
+				end,
+			},
+		},
 		close_if_last_window = true, -- Close Neo-tree if it is the last window left in the tab
 		popup_border_style = "single",
 		enable_git_status = false,
@@ -84,7 +102,7 @@ return {
 			indent = {
 				with_expanders = true,
 				with_markers = true,
-				-- indent_marker = "╎",
+				indent_marker = "╎",
 			},
 			file_size = {
 				enabled = false,

@@ -4,11 +4,14 @@ return {
 	lazy = false,
 	priority = 1000,
 	enabled = false,
+	init = function()
+		vim.cmd("highlight link matchTagError MatchTagError")
+		vim.cmd("highlight link matchTag MatchTag")
+		vim.cmd.colorscheme("catppuccin")
+	end,
 	opts = function()
 		local darken = require("catppuccin.utils.colors").darken
 		local darkening_percentage = 0.095
-
-		vim.cmd.colorscheme("catppuccin")
 
 		return {
 			flavour = "mocha",
