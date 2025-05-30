@@ -132,7 +132,7 @@ function vmrss() {
 }
 
 # bun
-[ -s "/home/leiswatch/.bun/_bun" ] && source "/home/leiswatch/.bun/_bun"
+[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
 # fnm
 eval "$(fnm env --shell zsh --use-on-cd --version-file-strategy=recursive --corepack-enabled --resolve-engines)"
