@@ -1,5 +1,6 @@
 return {
 	"nvim-treesitter/nvim-treesitter",
+	lazy = false,
 	branch = "master",
 	build = function()
 		local ts_update = require("nvim-treesitter.install").update({ with_sync = true })

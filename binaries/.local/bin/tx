@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+
+# Check if a tmux session is running
+if ! tmux has-session -t leiswatch 2>/dev/null; then
+    # Create a new tmux session if it doesn't exist
+    tmux new-session -d -s leiswatch
+    tmux new-window -t leiswatch
+    tmux new-window -t leiswatch
+    tmux new-window -t leiswatch
+    tmux select-window -t leiswatch:1
+    tmux attach-session -t leiswatch
+
+    exit 0
+fi
+
+tmux attach-session -t leiswatch

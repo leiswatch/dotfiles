@@ -103,23 +103,6 @@ alias fsb='git switch $(git branch | grep -v \"^\*\" | fzf --height=30% --revers
 alias rmr='rm -r'
 alias v='nvim'
 
-function tx() {
-    # Check if a tmux session is running
-    if ! tmux has-session -t leiswatch 2>/dev/null; then
-        # Create a new tmux session if it doesn't exist
-        tmux new-session -d -s leiswatch
-        tmux new-window -t leiswatch
-        tmux new-window -t leiswatch
-        tmux new-window -t leiswatch
-        tmux select-window -t leiswatch:1
-        tmux attach-session -t leiswatch
-
-        exit 0
-    fi
-
-    tmux attach-session -t leiswatch
-}
-
 # Functions
 function vmrss() {
     if [ -n "$1" ]; then
@@ -135,7 +118,7 @@ function vmrss() {
 [ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
 
 # fnm
-eval "$(fnm env --shell zsh --use-on-cd --version-file-strategy=recursive --corepack-enabled --resolve-engines)"
+eval "$(fnm env --shell zsh --use-on-cd --version-file-strategy=recursive --corepack-enabled --resolve-engines --log-level error)"
 
 # fzf
 source <(fzf --zsh)

@@ -136,6 +136,7 @@ return {
 			yaml = { "prettier" },
 			markdown = { "prettier" },
 
+			sh = { "shfmt" },
 			bash = { "shfmt" },
 			zsh = { "shfmt" },
 
