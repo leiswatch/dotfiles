@@ -76,14 +76,14 @@ exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec /usr/bin/xdg-user-dirs-update
 
 # Scripts
-exec $HOME/.config/sway/scripts/swww.sh
-exec $HOME/.config/sway/scripts/dunst.sh
-exec $HOME/.config/sway/scripts/nm.sh
-exec $HOME/.config/sway/scripts/solaar.sh
-exec $HOME/.config/sway/scripts/hypridle.sh
-exec $HOME/.config/sway/scripts/gammastep.sh
-exec $HOME/.config/sway/scripts/blueman.sh
-exec $HOME/.config/sway/scripts/waybar.sh
+exec sh $HOME/.config/sway/scripts/swww.sh
+exec sh $HOME/.config/sway/scripts/dunst.sh
+exec sh $HOME/.config/sway/scripts/nm.sh
+exec sh $HOME/.config/sway/scripts/solaar.sh
+exec sh $HOME/.config/sway/scripts/hypridle.sh
+exec sh $HOME/.config/sway/scripts/gammastep.sh
+exec sh $HOME/.config/sway/scripts/blueman.sh
+exec sh $HOME/.config/sway/scripts/waybar.sh
 # exec sh $HOME/.config/sway/scripts/flameshot.sh
 
 ### Idle configuration

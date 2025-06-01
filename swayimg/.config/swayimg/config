@@ -1,0 +1,38 @@
+[viewer]
+window = #1a1b26
+
+[gallery]
+size = 300
+preload = yes
+pstore = yes
+window = #1a1b26
+
+[keys.viewer]
+Shift+Return = mode
+
+[keys.gallery]
+F1 = help
+Home = first_file
+End = last_file
+h = step_left
+l = step_right
+k = step_up
+j = step_down
+Prior = page_up
+Next = page_down
+c = skip_file
+f = fullscreen
+Shift+Return = mode
+Return = exec echo '%'; exit
+a = antialiasing next
+Shift+a = antialiasing prev
+r = reload
+i = info
+Shift+Delete = exec rm -f '%' && echo "File removed: %"; skip_file
+Escape = exit
+q = exit
+# Mouse related
+ScrollLeft = step_right
+ScrollRight = step_left
+ScrollUp = step_up
+ScrollDown = step_down
