@@ -13,13 +13,14 @@ return {
 				require("neo-tree.command").execute({
 					action = "focus",
 					toggle = true,
-					position = "left",
 					reveal_force_cwd = true,
 				})
 			end,
 			{ noremap = true, silent = true },
 		},
 	},
+	---@module "neo-tree"
+	---@type neotree.Config?
 	opts = {
 		event_handlers = {
 			{
@@ -46,6 +47,7 @@ return {
 		window = {
 			position = "left",
 			width = "30%",
+			auto_expand_width = false,
 			mapping_options = {
 				noremap = true,
 				nowait = true,

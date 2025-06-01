@@ -14,10 +14,15 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 
 vim.api.nvim_create_autocmd("VimResized", {
 	desc = "auto resize splited windows",
-	pattern = "*",
 	callback = function()
 		vim.cmd("tabdo wincmd =")
 		require("fzf-lua").redraw()
+		require("neo-tree.command").execute({
+			action = "close",
+		})
+		require("neo-tree.command").execute({
+			action = "focus",
+		})
 	end,
 })
 

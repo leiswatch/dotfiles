@@ -80,6 +80,7 @@ vim.filetype.add({
 	pattern = { [".env*"] = "env" },
 })
 vim.treesitter.language.register("bash", "env")
+vim.treesitter.language.register("bash", "cfg")
 
 vim.lsp.log.set_level(vim.log.levels.ERROR)
 

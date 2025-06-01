@@ -17,6 +17,7 @@
     "modules-center": ["clock"],
     "modules-right": [
         "custom/boldvpn",
+        "custom/weather",
         "cpu",
         "memory",
         "disk",
@@ -176,7 +177,7 @@
     },
     "custom/updates": {
         "format": "<span font=\"11\"> </span>{}",
-        "exec": "sh /home/leiswatch/.config/waybar/scripts/updates.sh",
+        "exec": "sh ${HOME}/.config/waybar/scripts/updates.sh",
         "tooltip": false,
     },
     // "custom/notifications": {
@@ -218,5 +219,12 @@
         "tooltip-format-connected": "{controller_alias}\t{controller_address}\n\n{num_connections} connected\n\n{device_enumerate}",
         "tooltip-format-enumerate-connected": "{device_alias}\t{device_address}",
         "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
+    },
+    "custom/weather": {
+        "exec": "sh ${HOME}/.config/waybar/scripts/get_weather.sh Gdansk+Poland",
+        "return-type": "json",
+        "format": "{}",
+        "tooltip": true,
+        "interval": 3600,
     },
 }

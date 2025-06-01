@@ -14,7 +14,7 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term kitty
+set $term kitty -T kitty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
@@ -76,15 +76,15 @@ exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec /usr/bin/xdg-user-dirs-update
 
 # Scripts
-exec sh $HOME/.config/sway/scripts/swww.sh
-exec sh $HOME/.config/sway/scripts/dunst.sh
-exec sh $HOME/.config/sway/scripts/nm.sh
-exec sh $HOME/.config/sway/scripts/solaar.sh
+exec $HOME/.config/sway/scripts/swww.sh
+exec $HOME/.config/sway/scripts/dunst.sh
+exec $HOME/.config/sway/scripts/nm.sh
+exec $HOME/.config/sway/scripts/solaar.sh
+exec $HOME/.config/sway/scripts/hypridle.sh
+exec $HOME/.config/sway/scripts/gammastep.sh
+exec $HOME/.config/sway/scripts/blueman.sh
+exec $HOME/.config/sway/scripts/waybar.sh
 # exec sh $HOME/.config/sway/scripts/flameshot.sh
-exec sh $HOME/.config/sway/scripts/hypridle.sh
-exec sh $HOME/.config/sway/scripts/gammastep.sh
-exec sh $HOME/.config/sway/scripts/blueman.sh
-exec sh $HOME/.config/sway/scripts/waybar.sh
 
 ### Idle configuration
 #
@@ -127,13 +127,13 @@ exec sh $HOME/.config/sway/scripts/waybar.sh
 
     # Start your launcher
     # bindsym $mod+d exec $menu
-    bindsym $mod+d exec sh $HOME/.config/rofi/launchers/launcher.sh
+    bindsym $mod+d exec $HOME/.config/rofi/launchers/launcher.sh
     # bindsym $mod+n exec $HOME/.config/rofi/launchers/vpn.sh
-    bindsym $mod+u exec sh $HOME/.config/rofi/launchers/pactl.sh
-    bindsym $mod+n exec sh $HOME/.local/bin/boldvpn
-    bindsym $mod+Shift+n exec sh $HOME/.config/rofi/launchers/nordvpn.sh
-    bindsym $mod+Shift+p exec sh $HOME/.config/rofi/powermenu/powermenu.sh
-    bindsym $mod+o exec sh $HOME/.config/sway/scripts/work.sh
+    bindsym $mod+u exec $HOME/.config/rofi/launchers/pactl.sh
+    bindsym $mod+n exec $HOME/.local/bin/boldvpn
+    bindsym $mod+Shift+n exec $HOME/.config/rofi/launchers/nordvpn.sh
+    bindsym $mod+Shift+p exec $HOME/.config/rofi/powermenu/powermenu.sh
+    bindsym $mod+Shift+o exec $HOME/.config/rofi/launchers/sway_setup.sh
     # bindsym $mod+Shift+p exec wlogout
 
     # Drag floating windows by holding down $mod and left mouse button.
@@ -149,9 +149,9 @@ exec sh $HOME/.config/sway/scripts/waybar.sh
     # Exit sway (logs you out of your Wayland session)
     # bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 
-    bindsym $mod+Shift+s exec hyprshot -m region --raw | satty -f -
-    bindsym Shift+Print exec hyprshot -m window --raw | satty -f -
-    bindsym Print exec hyprshot -m output -m DP-1 --raw | satty -f -
+    bindsym $mod+Shift+s exec grim -g "$(slurp)" - | satty -f -
+    bindsym Shift+Print exec $HOME/.config/sway/scripts/window_screenshot.sh
+    bindsym Print exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') - | satty -f -
 
     bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+
     bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-
@@ -298,27 +298,28 @@ set $overlay0 #545c7e
 # client.background       #ffffff
 
 # class                  border        bground       text          indicator      child_border
-client.focused           $dark_blue    $dark_blue    $text         $dark_blue     $dark_blue
+client.focused           $blue         $blue         $base         $blue          $blue
 client.focused_inactive  $surface1     $base         $subtext0     $surface1      $surface1
 client.unfocused         $surface1     $base         $subtext0     $surface1      $surface1
 client.urgent            $red          $base         $red          $overlay0      $red
 client.placeholder       $overlay0     $base         $text         $overlay0      $overlay0
 client.background        $base
 
-gaps inner 5
+gaps inner 10
 focus_on_window_activation focus
 smart_borders off
-smart_gaps on
+smart_gaps off
 focus_follows_mouse yes
 titlebar_padding 4
 mouse_warping none
 tiling_drag disable
+hide_edge_borders --i3 none
 
-default_border normal 2
+default_border pixel 2
 default_floating_border pixel 2
 title_align left
 
-for_window [all] border normal 2, titlebar_border_thickness 2, title_format " %title "
+for_window [all] border pixel 2, titlebar_border_thickness 2, title_format " %title "
 for_window [floating] move position center
 # for_window [title="Picture-in-Picture"] floating enable, sticky enable, resize set 25ppt 25ppt
 # for_window [title="Picture in picture"] floating enable, sticky enable, resize set 25ppt 25ppt

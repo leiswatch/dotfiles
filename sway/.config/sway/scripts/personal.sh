@@ -21,16 +21,14 @@ focus() {
     return 1
 }
 
-swaymsg workspace 2 && swaymsg exec "google-chrome-stable"
+swaymsg workspace 9 && swaymsg exec "spotify"
 
-sleep_until "chrome"
-
-swaymsg workspace 8 && swaymsg exec "slack"
-
-sleep_until "slack"
+sleep_until "spotify"
 
 swaymsg workspace 3 && swaymsg exec "kitty -e $HOME/.local/bin/tx -T kitty"
 
 sleep_until "kitty"
 
-swaymsg workspace 1
+swaymsg workspace 1 && swaymsg exec "librewolf"
+
+sleep_until "librewolf"
