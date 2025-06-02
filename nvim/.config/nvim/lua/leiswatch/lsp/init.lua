@@ -215,7 +215,7 @@ local mason_lsp = {
 local mason_tools = {
 	"black",
 	"clang-format",
-	"dotenv_linter",
+	"dotenv-linter",
 	"gofumpt",
 	"goimports",
 	"golangci-lint",
