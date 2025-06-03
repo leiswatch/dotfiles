@@ -1,10 +1,3 @@
-# Enable Powerlevel10k instant prompt. Should stay close to the top of ~/.zshrc.
-# Initialization code that may require console input (password prompts, [y/n]
-# confirmations, etc.) must go above this block; everything else may go below.
-# if [[ -r "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh" ]]; then
-#   source "${XDG_CACHE_HOME:-$HOME/.cache}/p10k-instant-prompt-${(%):-%n}.zsh"
-# fi
-
 ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 
 [ ! -d $ZINIT_HOME ] && mkdir -p "$(dirname $ZINIT_HOME)"
@@ -14,9 +7,6 @@ ZINIT_HOME="${XDG_DATA_HOME:-${HOME}/.local/share}/zinit/zinit.git"
 source "${ZINIT_HOME}/zinit.zsh"
 
 ZOXIDE_CMD_OVERRIDE="cd"
-
-# zinit ice depth=1
-# zinit light romkatv/powerlevel10k
 
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
@@ -47,50 +37,54 @@ fi
 
 fpath=("$ZSH_CACHE_DIR/completions" $fpath)
 
-autoload -Uz compinit
-compinit
+autoload -Uz compinit && compinit
 
 zinit cdreplay -q
 
-bindkey -e
-bindkey '^p' history-search-backward
-bindkey '^n' history-search-forward
+# Options
+# setopt INC_APPEND_HISTORY
+setopt APPEND_HISTORY 
+setopt SHARE_HISTORY 
+setopt HIST_IGNORE_SPACE
+setopt HIST_IGNORE_ALL_DUPS
+setopt HIST_SAVE_NO_DUPS
+setopt HIST_IGNORE_DUPS
+setopt HIST_FIND_NO_DUPS
+setopt PROMPT_SUBST
 
 # History
-HISTSIZE=5000
-HISTFILE=~/.zsh_history
-SAVEHIST=$HISTSIZE
-HISTDUP=erase
-setopt appendhistory
-setopt sharehistory
-setopt hist_ignore_space
-setopt hist_ignore_all_dups
-setopt hist_save_no_dups
-setopt hist_ignore_dups
-setopt hist_find_no_dups
-setopt promptsubst
+HISTSIZE=100000
+SAVEHIST=100000
+HISTFILE="$XDG_CACHE_HOME/zsh_history"
 
-export FZF_DEFAULT_OPTS=" \
---color=bg+:#3b4261,spinner:#2ac3de,hl:#f7768e \
---color=fg:#c0caf5,header:#f7768e,info:#cba6f7,pointer:#2ac3de \
---color=marker:#2ac3de,fg+:#c0caf5,prompt:#cba6f7,hl+:#f7768e \
---color=separator:#3b4261,scrollbar:#2ac3de,border:#3b4261,label:#c0caf5 \
---prompt='  ' \
---info=right \
--i \
---reverse \
---padding 0,1"
-export PNPM_HOME="$HOME/.local/share/pnpm"
-export GOPATH="$HOME/.go"
-export DENO_INSTALL="$HOME/.deno"
-export BUN_INSTALL="$HOME/.bun"
-export FNM_COREPACK_ENABLED=true
-
+# Styles
 zstyle ':completion:*' matcher-list 'm:{a-z}={A-Za-z}'
 zstyle ':completion:*' menu no
 zstyle ':fzf-tab:*' fzf-flags --color=bg+:#3b4261,spinner:#2ac3de,hl:#f7768e,fg:#c0caf5,header:#f7768e,info:#cba6f7,pointer:#2ac3de,marker:#2ac3de,fg+:#c0caf5,prompt:#cba6f7,hl+:#f7768e,separator:#3b4261,scrollbar:#2ac3de,border:#3b4261,label:#c0caf5 --prompt='  ' --info=right -i --reverse --padding 0,1
 # zstyle ':fzf-tab:complete:cd:*' fzf-preview 'eza --color=always -x $realpath'
 # zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'eza --color=always -x $realpath'
+
+# Bindings
+bindkey '^A' beginning-of-line
+bindkey '^E' end-of-line
+bindkey '^P' history-search-backward
+bindkey '^N' history-search-forward
+bindkey '^W' forward-word
+bindkey '^B' backward-word
+bindkey '^J' forward-char
+bindkey '^K' backward-char
+bindkey '^ ' fzf-completion
+bindkey '^Y' accept-line
+bindkey 'Tab' fzf-completion
+bindkey '^L' clear-screen
+bindkey '^R' fzf-history-widget
+bindkey '^T' fzf-file-widget
+bindkey '^H' backward-kill-word
+bindkey '^G' kill-word
+bindkey '^O' kill-line
+# bindkey '^L' kill-word
+# bindkey '^<' backward-delete-char
+# bindkey '^>' delete-char
 
 # Aliases
 alias ls='eza'
@@ -115,13 +109,10 @@ function vmrss() {
 }
 
 # bun
-[ -s "$HOME/.bun/_bun" ] && source "$HOME/.bun/_bun"
+[ -s "$XDG_DATA_HOME/.bun/_bun" ] && source "$XDG_DATA_HOME/.bun/_bun"
 
 # fnm
 eval "$(fnm env --shell zsh --use-on-cd --version-file-strategy=recursive --corepack-enabled --resolve-engines --log-level error)"
 
 # fzf
 source <(fzf --zsh)
-
-# To customize prompt, run `p10k configure` or edit ~/.p10k.zsh.
-# [[ ! -f ~/.p10k.zsh ]] || source ~/.p10k.zsh

@@ -17,12 +17,25 @@ vim.api.nvim_create_autocmd("VimResized", {
 	callback = function()
 		vim.cmd("tabdo wincmd =")
 		require("fzf-lua").redraw()
-		require("neo-tree.command").execute({
-			action = "close",
-		})
-		require("neo-tree.command").execute({
-			action = "focus",
-		})
+
+		local buffers = vim.api.nvim_list_bufs()
+
+		if #buffers > 0 then
+			for i = 1, #buffers do
+				local filetype = vim.api.nvim_get_option_value("filetype", { buf = buffers[i] })
+
+				if filetype == "neo-tree" then
+					require("neo-tree.command").execute({
+						action = "close",
+					})
+					require("neo-tree.command").execute({
+						action = "show",
+					})
+
+					return
+				end
+			end
+		end
 	end,
 })
 

@@ -68,7 +68,7 @@ input "type:pointer" {
 
 seat seat0 xcursor_theme Simp1e-Dark 24
 
-include $HOME/.config/sway/config.d/*
+include $XDG_CONFIG_HOME/sway/config.d/*
 
 exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 
@@ -76,14 +76,14 @@ exec /usr/lib/polkit-gnome/polkit-gnome-authentication-agent-1
 exec /usr/bin/xdg-user-dirs-update
 
 # Scripts
-exec sh $HOME/.config/sway/scripts/swww.sh
-exec sh $HOME/.config/sway/scripts/dunst.sh
-exec sh $HOME/.config/sway/scripts/nm.sh
-exec sh $HOME/.config/sway/scripts/solaar.sh
-exec sh $HOME/.config/sway/scripts/hypridle.sh
-exec sh $HOME/.config/sway/scripts/gammastep.sh
-exec sh $HOME/.config/sway/scripts/blueman.sh
-exec sh $HOME/.config/sway/scripts/waybar.sh
+exec sh $XDG_CONFIG_HOME/sway/scripts/swww.sh
+exec sh $XDG_CONFIG_HOME/sway/scripts/dunst.sh
+exec sh $XDG_CONFIG_HOME/sway/scripts/nm.sh
+exec sh $XDG_CONFIG_HOME/sway/scripts/solaar.sh
+exec sh $XDG_CONFIG_HOME/sway/scripts/hypridle.sh
+exec sh $XDG_CONFIG_HOME/sway/scripts/gammastep.sh
+exec sh $XDG_CONFIG_HOME/sway/scripts/blueman.sh
+exec sh $XDG_CONFIG_HOME/sway/scripts/waybar.sh
 # exec sh $HOME/.config/sway/scripts/flameshot.sh
 
 ### Idle configuration
@@ -127,13 +127,15 @@ exec sh $HOME/.config/sway/scripts/waybar.sh
 
     # Start your launcher
     # bindsym $mod+d exec $menu
-    bindsym $mod+d exec $HOME/.config/rofi/launchers/launcher.sh
     # bindsym $mod+n exec $HOME/.config/rofi/launchers/vpn.sh
-    bindsym $mod+u exec $HOME/.config/rofi/launchers/pactl.sh
-    bindsym $mod+n exec $HOME/.local/bin/boldvpn
-    bindsym $mod+Shift+n exec $HOME/.config/rofi/launchers/nordvpn.sh
-    bindsym $mod+Shift+p exec $HOME/.config/rofi/powermenu/powermenu.sh
-    bindsym $mod+Shift+o exec $HOME/.config/rofi/launchers/sway_setup.sh
+    bindsym $mod+n exec sh $HOME/.local/bin/boldvpn
+    bindsym $mod+d exec sh $XDG_CONFIG_HOME/rofi/launchers/launcher.sh
+    bindsym $mod+u exec sh $XDG_CONFIG_HOME/rofi/launchers/pactl.sh
+    bindsym $mod+Shift+n exec sh $XDG_CONFIG_HOME/rofi/launchers/nordvpn.sh
+    bindsym $mod+Shift+m exec sh $XDG_CONFIG_HOME/rofi/launchers/bitwarden.sh -C --auto-lock -1
+    bindsym $mod+Shift+p exec sh $XDG_CONFIG_HOME/rofi/powermenu/powermenu.sh
+    bindsym $mod+Shift+o exec sh $XDG_CONFIG_HOME/rofi/launchers/sway_setup.sh
+    bindsym $mod+Shift+e exec thunar
     # bindsym $mod+Shift+p exec wlogout
 
     # Drag floating windows by holding down $mod and left mouse button.
@@ -150,7 +152,7 @@ exec sh $HOME/.config/sway/scripts/waybar.sh
     # bindsym $mod+Shift+e exec swaynag -t warning -m 'You pressed the exit shortcut. Do you really want to exit sway? This will end your Wayland session.' -B 'Yes, exit sway' 'swaymsg exit'
 
     bindsym $mod+Shift+s exec grim -g "$(slurp)" - | satty -f -
-    bindsym Shift+Print exec sh $HOME/.config/sway/scripts/window_screenshot.sh
+    bindsym Shift+Print exec sh $XDG_CONFIG_HOME/sway/scripts/window_screenshot.sh
     bindsym Print exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') - | satty -f -
 
     bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+
@@ -214,9 +216,10 @@ exec sh $HOME/.config/sway/scripts/waybar.sh
     bindsym $mod+Shift+0 move container to workspace number 10
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
-#
-# Layout stuff:
-#
+
+    #
+    # Layout stuff:
+    #
     # You can "split" the current object of your focus with
     # $mod+b or $mod+v, for horizontal and vertical splits
     # respectively.
