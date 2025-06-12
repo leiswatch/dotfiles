@@ -221,10 +221,10 @@
         "tooltip-format-enumerate-connected-battery": "{device_alias}\t{device_address}\t{device_battery_percentage}%",
     },
     "custom/weather": {
-        "exec": "sh ${HOME}/.config/waybar/scripts/get_weather.sh Gdańsk+Poland",
+        "exec": "sh ${HOME}/.config/waybar/scripts/get_weather.sh Gdańsk,Poland",
         "return-type": "json",
         "format": "{}",
         "tooltip": true,
-        "interval": 3600,
+        "interval": 600,
     },
 }

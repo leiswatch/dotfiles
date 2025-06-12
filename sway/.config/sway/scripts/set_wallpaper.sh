@@ -1,8 +1,6 @@
 #!/usr/bin/env bash
 
-selected=$(
-    swayimg --gallery "$HOME"/Pictures/Wallpapers
-)
+selected=$(swayimg --gallery "$HOME"/Pictures/Wallpapers)
 
 if [[ -z $selected ]]; then
     exit 1
@@ -15,4 +13,5 @@ sed -i "s/\(wallpaper =\).*/\1 \,$escaped_path/g" "$HOME"/.config/hypr/hyprpaper
 sed -i "s/\(path = \).*/\1$escaped_path/g" "$HOME"/.config/hypr/hyprlock.conf
 
 # sh /home/leiswatch/.config/hypr/scripts/hyprpaper.sh
-swww img "$selected" --transition-type center
+# swww img "$selected" --transition-type center
+swaybg -i "$selected" -m "fill"

@@ -1,3 +1,9 @@
+local loaded = pcall(require, "neo-tree.command")
+
+if not loaded then
+	return
+end
+
 local helpers = require("leiswatch.helpers")
 
 vim.keymap.set("n", "<C-n>", function()

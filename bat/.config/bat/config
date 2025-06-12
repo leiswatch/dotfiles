@@ -1,3 +1,4 @@
 --theme="tokyonight-night"
---style="numbers,header,changes"
+--style="numbers,changes"
 --map-syntax "*.astro:HTML"
+--pager=never

@@ -10,6 +10,10 @@ export FFMPEG_DATADIR="$XDG_CONFIG_HOME/ffmpeg"
 export GOCACHE="$XDG_CACHE_HOME/go-build"
 export GOMODCACHE="$XDG_CACHE_HOME/go/mod"
 export GOPATH="$XDG_DATA_HOME/go"
+export JULIAUP_DEPOT_PATH="$XDG_DATA_HOME/julia"
+export JULIA_DEPOT_PATH="$XDG_DATA_HOME/julia:$JULIA_DEPOT_PATH"
+export KUBECACHEDIR="$XDG_CACHE_HOME/kube"
+export KUBECONFIG="$XDG_CONFIG_HOME/kube" 
 export PNPM_HOME="$XDG_DATA_HOME/pnpm"
 export REDISCLI_HISTFILE="$XDG_DATA_HOME/redis/rediscli_history"
 export REDISCLI_RCFILE="$XDG_CONFIG_HOME/redis/redisclirc"
@@ -17,8 +21,17 @@ export RUSTUP_HOME="$XDG_DATA_HOME/rustup"
 export SQLITE_HISTORY="$XDG_STATE_HOME/sqlite_history"
 export STARSHIP_CACHE="$XDG_CACHE_HOME/starship"
 export STARSHIP_CONFIG="$XDG_CONFIG_HOME/starship.toml"
+export WORKON_HOME="$XDG_DATA_HOME/virtualenvs"
 
+# man colors
 export MANPAGER="less -R --use-color -Dd+r -Du+b"
+export LESS_TERMCAP_mb=$'\e[01;31m'       # begin blinking
+export LESS_TERMCAP_md=$'\e[01;37m'       # begin bold
+export LESS_TERMCAP_me=$'\e[0m'           # end all mode like so, us, mb, md, mr
+export LESS_TERMCAP_se=$'\e[0m'           # end standout-mode
+export LESS_TERMCAP_so=$'\e[45;93m'       # start standout mode
+export LESS_TERMCAP_ue=$'\e[0m'           # end underline
+export LESS_TERMCAP_us=$'\e[4;93m'        # start underlining
 
 export EDITOR=nvim
 export FNM_COREPACK_ENABLED=true

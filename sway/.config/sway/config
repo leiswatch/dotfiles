@@ -77,12 +77,14 @@ exec /usr/bin/xdg-user-dirs-update
 
 # Scripts
 exec sh $XDG_CONFIG_HOME/sway/scripts/swww.sh
+# exec sh $XDG_CONFIG_HOME/sway/scripts/hyprpaper.sh
 exec sh $XDG_CONFIG_HOME/sway/scripts/dunst.sh
 exec sh $XDG_CONFIG_HOME/sway/scripts/nm.sh
 exec sh $XDG_CONFIG_HOME/sway/scripts/solaar.sh
 exec sh $XDG_CONFIG_HOME/sway/scripts/hypridle.sh
 exec sh $XDG_CONFIG_HOME/sway/scripts/gammastep.sh
 exec sh $XDG_CONFIG_HOME/sway/scripts/blueman.sh
+exec sh $XDG_CONFIG_HOME/sway/scripts/copyq.sh
 exec sh $XDG_CONFIG_HOME/sway/scripts/waybar.sh
 # exec sh $HOME/.config/sway/scripts/flameshot.sh
 
@@ -122,7 +124,8 @@ exec sh $XDG_CONFIG_HOME/sway/scripts/waybar.sh
 
     # Kill focused window
     bindsym $mod+Shift+q kill
-    bindsym $mod+q kill
+    bindsym $mod+c kill
+    # bindsym $mod+q kill
     # bindsym $mod+c kill
 
     # Start your launcher
@@ -132,10 +135,10 @@ exec sh $XDG_CONFIG_HOME/sway/scripts/waybar.sh
     bindsym $mod+d exec sh $XDG_CONFIG_HOME/rofi/launchers/launcher.sh
     bindsym $mod+u exec sh $XDG_CONFIG_HOME/rofi/launchers/pactl.sh
     bindsym $mod+Shift+n exec sh $XDG_CONFIG_HOME/rofi/launchers/nordvpn.sh
-    bindsym $mod+Shift+m exec sh $XDG_CONFIG_HOME/rofi/launchers/bitwarden.sh -C --auto-lock -1
     bindsym $mod+Shift+p exec sh $XDG_CONFIG_HOME/rofi/powermenu/powermenu.sh
     bindsym $mod+Shift+o exec sh $XDG_CONFIG_HOME/rofi/launchers/sway_setup.sh
-    bindsym $mod+Shift+e exec thunar
+    bindsym $mod+Shift+w exec sh $XDG_CONFIG_HOME/sway/scripts/set_wallpaper.sh
+    bindsym $mod+Shift+e exec nautilus
     # bindsym $mod+Shift+p exec wlogout
 
     # Drag floating windows by holding down $mod and left mouse button.
@@ -153,7 +156,7 @@ exec sh $XDG_CONFIG_HOME/sway/scripts/waybar.sh
 
     bindsym $mod+Shift+s exec grim -g "$(slurp)" - | satty -f -
     bindsym Shift+Print exec sh $XDG_CONFIG_HOME/sway/scripts/window_screenshot.sh
-    bindsym Print exec grim -o $(swaymsg -t get_outputs | jq -r '.[] | select(.focused) | .name') - | satty -f -
+    bindsym Print exec sh $XDG_CONFIG_HOME/sway/scripts/display_screenshot.sh
 
     bindsym XF86AudioRaiseVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%+
     bindsym XF86AudioLowerVolume exec wpctl set-volume @DEFAULT_AUDIO_SINK@ 2%-
@@ -329,6 +332,7 @@ for_window [floating] move position center
 
 for_window [title="Battle.net"] floating enable, resize set 70ppt 70ppt, move position center
 for_window [app_id="org.pulseaudio.pavucontrol"] floating enable, move position center, resize set 80ppt 80ppt
+for_window [app_id="com.github.hluk.copyq"] floating enable, move position center, resize set 50ppt 50ppt
 for_window [title="^([Pp]icture[-\s]?[Ii]n[-\s]?[Pp]icture)(.*)$"] floating enable, sticky enable, border pixel 2, resize set 25ppt 25ppt
 
 for_window [title="^(Open File)(.*)$"] resize set 70ppt 70ppt, border pixel 2

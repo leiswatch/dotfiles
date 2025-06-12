@@ -1,17 +1,16 @@
 #!/usr/bin/env bash
-for i in {1..5}; do
-    text=$(curl -s "https://wttr.in/$1?format=1" | sed s/+//g)
 
-    if [[ $? == 0 ]]; then
-        text=$(echo "$text" | sed -E "s/\s+/ /g")
-        tooltip=$(curl -s "https://wttr.in/$1?format=4")
+text=$(curl -s "https://wttr.in/$1?m&format=1" | sed s/+//g)
 
-        if [[ $? == 0 ]]; then
-            tooltip=$(echo "$tooltip" | sed -E "s/\s+/ /g")
-            echo "{\"text\":\"$text\", \"tooltip\":\"$tooltip\"}"
-            exit
-        fi
+if [[ -n "$text" && "$text" != *"Unknown location"* ]]; then
+    text=$(echo "$text" | sed -E "s/\s+/ /g")
+    tooltip=$(curl -s "https://wttr.in/$1?m&format=4")
+
+    if [[ -n "$tooltip" ]]; then
+        tooltip=$(echo "$tooltip" | sed -E "s/\s+/ /g")
+        echo "{\"text\":\"$text\", \"tooltip\":\"$tooltip\"}"
+        exit
     fi
-    sleep 2
-done
-echo "{\"text\":\"error\", \"tooltip\":\"error\"}"
+fi
+
+echo "{\"text\":\"\", \"tooltip\":\"\"}"

@@ -109,6 +109,8 @@ return {
 
 			hl.MatchTag = { bg = color.bg_highlight, fg = color.none, bold = false }
 			hl.MatchTagError = { fg = color.none, bg = color.none }
+
+			hl.BufferOffset = { bg = color.bg }
 		end,
 	},
 }

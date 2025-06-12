@@ -8,10 +8,20 @@ source "${ZINIT_HOME}/zinit.zsh"
 
 ZOXIDE_CMD_OVERRIDE="cd"
 
+ZVM_KEYTIMEOUT=0
+ZVM_CURSOR_STYLE_ENABLED=false
+ZVM_INIT_MODE=sourcing
+ZVM_VI_HIGHLIGHT_FOREGROUND=#1a1b26
+ZVM_VI_HIGHLIGHT_BACKGROUND=#7aa2f7
+ZVM_VI_HIGHLIGHT_EXTRASTYLE=bold
+
 zinit light zsh-users/zsh-syntax-highlighting
 zinit light zsh-users/zsh-completions
 zinit light Aloxaf/fzf-tab
 zinit light MichaelAquilina/zsh-you-should-use
+
+zinit ice depth=1
+zinit light jeffreytse/zsh-vi-mode
 
 zinit snippet OMZP::archlinux
 zinit snippet OMZP::command-not-found
@@ -23,6 +33,7 @@ zinit snippet OMZP::golang
 zinit snippet OMZP::kubectl
 zinit snippet OMZP::node
 zinit snippet OMZP::npm
+zinit snippet OMZP::podman
 zinit snippet OMZP::rust
 zinit snippet OMZP::starship
 zinit snippet OMZP::yarn
@@ -43,8 +54,8 @@ zinit cdreplay -q
 
 # Options
 # setopt INC_APPEND_HISTORY
-setopt APPEND_HISTORY 
-setopt SHARE_HISTORY 
+setopt APPEND_HISTORY
+setopt SHARE_HISTORY
 setopt HIST_IGNORE_SPACE
 setopt HIST_IGNORE_ALL_DUPS
 setopt HIST_SAVE_NO_DUPS
@@ -65,6 +76,7 @@ zstyle ':fzf-tab:*' fzf-flags --color=bg+:#3b4261,spinner:#2ac3de,hl:#f7768e,fg:
 # zstyle ':fzf-tab:complete:__zoxide_z:*' fzf-preview 'eza --color=always -x $realpath'
 
 # Bindings
+bindkey -v
 bindkey '^A' beginning-of-line
 bindkey '^E' end-of-line
 bindkey '^P' history-search-backward

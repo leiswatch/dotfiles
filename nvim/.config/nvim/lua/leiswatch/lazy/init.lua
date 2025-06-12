@@ -1,4 +1,5 @@
 local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+
 if not vim.loop.fs_stat(lazypath) then
 	vim.fn.system({
 		"git",
@@ -20,7 +21,11 @@ require("lazy").setup({
 		size = { width = 0.75, height = 0.75 },
 		wrap = true,
 		border = "single",
-        backdrop = 100,
+		backdrop = 100,
+		icons = {
+			loaded = " ",
+			not_loaded = " ",
+		},
 	},
 	install = {
 		missing = true,

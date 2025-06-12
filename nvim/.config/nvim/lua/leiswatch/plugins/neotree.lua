@@ -1,23 +1,11 @@
 return {
 	"nvim-neo-tree/neo-tree.nvim",
+	lazy = false,
 	branch = "v3.x",
 	dependencies = {
 		"nvim-lua/plenary.nvim",
 		"nvim-tree/nvim-web-devicons", -- not strictly required, but recommended
 		"MunifTanjim/nui.nvim",
-	},
-	keys = {
-		{
-			"<C-n>",
-			function()
-				require("neo-tree.command").execute({
-					action = "focus",
-					toggle = true,
-					reveal_force_cwd = true,
-				})
-			end,
-			{ noremap = true, silent = true },
-		},
 	},
 	---@module "neo-tree"
 	---@type neotree.Config?
@@ -104,7 +92,7 @@ return {
 			indent = {
 				with_expanders = true,
 				with_markers = true,
-				indent_marker = "╎",
+				-- indent_marker = "╎",
 			},
 			file_size = {
 				enabled = false,

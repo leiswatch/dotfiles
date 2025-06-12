@@ -4,7 +4,7 @@ return {
 	lazy = false,
 	opts = {
 		indent = {
-			enabled = true,
+			enabled = false,
 			scope = { enabled = false },
 			indent = {
 				only_current = true,
