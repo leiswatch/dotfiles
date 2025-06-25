@@ -8,3 +8,4 @@ home/.librewolf/*
 !home/.librewolf/librewolf.overrides.cfg
 **/boldvpn
 tmux/**/plugins
+**/bunx

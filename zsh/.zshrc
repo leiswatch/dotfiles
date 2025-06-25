@@ -28,6 +28,7 @@ zinit snippet OMZP::command-not-found
 zinit snippet OMZP::docker
 zinit snippet OMZP::docker-compose
 zinit snippet OMZP::fnm
+zinit snippet OMZP::fzf
 zinit snippet OMZP::git
 zinit snippet OMZP::golang
 zinit snippet OMZP::kubectl
@@ -105,6 +106,7 @@ alias tksv='tmux kill-server'
 # alias tmux='tmux a || tmux'
 alias gcwtc='git commit -m "$(curl -s https://whatthecommit.com/index.txt)"'
 alias gcwip='git commit -m "WIP: $(date)"'
+alias gmd='git merge develop'
 alias fsb='git switch $(git branch | grep -v \"^\*\" | fzf --height=30% --reverse --info=inline)'
 alias rmr='rm -r'
 alias v='nvim'
@@ -121,10 +123,10 @@ function vmrss() {
 }
 
 # bun
-[ -s "$XDG_DATA_HOME/.bun/_bun" ] && source "$XDG_DATA_HOME/.bun/_bun"
+# [ -s "$XDG_DATA_HOME/.bun/_bun" ] && source "$XDG_DATA_HOME/.bun/_bun"
 
 # fnm
 eval "$(fnm env --shell zsh --use-on-cd --version-file-strategy=recursive --corepack-enabled --resolve-engines --log-level error)"
 
 # fzf
-source <(fzf --zsh)
+# source <(fzf --zsh)

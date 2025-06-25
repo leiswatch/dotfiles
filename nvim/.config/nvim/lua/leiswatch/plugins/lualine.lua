@@ -60,11 +60,11 @@ return {
 				lualine_a = {
 					{
 						"mode",
-						fmt = function(s)
-							return s:sub(1, 1) .. s:sub(2):lower()
-						end,
+						-- fmt = function(s)
+						-- 	return s:sub(1, 1) .. s:sub(2):lower()
+						-- end,
 						icons_enabled = true,
-						icon = "",
+						icon = "",
 					},
 				},
 				lualine_b = {

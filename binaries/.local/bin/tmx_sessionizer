@@ -6,7 +6,7 @@ else
 	path=$( (
 		fd . "$HOME/Projects/dev" "$HOME/Projects/bold" --type d --exact-depth 1
 		echo "leiswatch"
-	) | sed "s|^$HOME/||" | sort | fzf --tmux --reverse --border=sharp --no-info --padding 0)
+	) | sed "s|^$HOME/||g" | sed "s/\/$//g" | sort | fzf --tmux --reverse --border=sharp --no-info --padding 0)
 fi
 
 if [[ -z $path ]]; then

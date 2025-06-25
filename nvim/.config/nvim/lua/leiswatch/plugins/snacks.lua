@@ -4,7 +4,7 @@ return {
 	lazy = false,
 	opts = {
 		indent = {
-			enabled = false,
+			enabled = true,
 			scope = { enabled = false },
 			indent = {
 				only_current = true,
@@ -13,7 +13,7 @@ return {
 			animate = { enabled = false },
 			chunk = { enabled = false },
 		},
-		bigfile = { enabled = true },
+		bigfile = { enabled = false },
 		dashboard = {
 			row = 4,
 			enabled = true,

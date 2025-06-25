@@ -18,24 +18,24 @@ return {
 					winbar_info = true, -- See ':h diffview-config-view.x.winbar_info'
 				},
 			},
-			hooks = {
-				view_opened = function()
-					if vim.fn.exists(":TSContextDisable") ~= 0 then
-						vim.api.nvim_exec2(":TSContextDisable", {})
-					end
-					if vim.fn.exists(":LspStop") ~= 0 then
-						vim.api.nvim_exec2(":LspStop", {})
-					end
-				end,
-				view_closed = function()
-					if vim.fn.exists(":TSContextEnable") ~= 0 then
-						vim.api.nvim_exec2(":TSContextEnable", {})
-					end
-					if vim.fn.exists(":LspStart") ~= 0 then
-						vim.api.nvim_exec2(":LspStart", {})
-					end
-				end,
-			},
+			-- hooks = {
+			-- 	view_opened = function()
+			-- 		if vim.fn.exists(":TSContextDisable") ~= 0 then
+			-- 			vim.api.nvim_exec2(":TSContextDisable", {})
+			-- 		end
+			-- 		if vim.fn.exists(":LspStop") ~= 0 then
+			-- 			vim.api.nvim_exec2(":LspStop", {})
+			-- 		end
+			-- 	end,
+			-- 	view_closed = function()
+			-- 		if vim.fn.exists(":TSContextEnable") ~= 0 then
+			-- 			vim.api.nvim_exec2(":TSContextEnable", {})
+			-- 		end
+			-- 		if vim.fn.exists(":LspStart") ~= 0 then
+			-- 			vim.api.nvim_exec2(":LspStart", {})
+			-- 		end
+			-- 	end,
+			-- },
 			keymaps = {
 				disable_defaults = false, -- Disable the default keymaps
 				view = {

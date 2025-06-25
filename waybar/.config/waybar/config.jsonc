@@ -177,8 +177,9 @@
     },
     "custom/updates": {
         "format": "<span font=\"11\"> </span>{}",
-        "exec": "sh ${HOME}/.config/waybar/scripts/updates.sh",
+        "exec": "sh ${HOME}/.config/waybar/scripts/custom_updates.sh",
         "tooltip": false,
+        "interval": 600,
     },
     // "custom/notifications": {
     //     "format": "<span font=\"12\"></span>",

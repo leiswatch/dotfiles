@@ -19,6 +19,9 @@ disabled = false
 [time]
 disabled = true
 
+[battery]
+disabled = true
+
 [package]
 symbol = "󰏗 "
 disabled = true

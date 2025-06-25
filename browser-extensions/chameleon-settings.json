@@ -1,0 +1,159 @@
+{
+  "config": {
+    "enabled": true,
+    "notificationsEnabled": false,
+    "theme": "dark",
+    "reloadIPStartupDelay": 0,
+    "hasPrivacyPermission": false
+  },
+  "excluded": [],
+  "headers": {
+    "blockEtag": true,
+    "enableDNT": true,
+    "referer": {
+      "disabled": false,
+      "xorigin": 0,
+      "trimming": 0
+    },
+    "spoofAcceptLang": {
+      "enabled": true,
+      "value": "en-US"
+    },
+    "spoofIP": {
+      "enabled": true,
+      "option": 0,
+      "rangeFrom": "",
+      "rangeTo": ""
+    }
+  },
+  "ipRules": [],
+  "options": {
+    "cookieNotPersistent": false,
+    "cookiePolicy": "allow_all",
+    "blockMediaDevices": false,
+    "blockCSSExfil": false,
+    "disableWebRTC": false,
+    "firstPartyIsolate": false,
+    "limitHistory": false,
+    "protectKBFingerprint": {
+      "enabled": false,
+      "delay": 1
+    },
+    "protectWinName": true,
+    "resistFingerprinting": false,
+    "screenSize": "1920x1080",
+    "spoofAudioContext": true,
+    "spoofClientRects": true,
+    "spoofFontFingerprint": true,
+    "spoofMediaDevices": true,
+    "timeZone": "Europe/Amsterdam",
+    "trackingProtectionMode": "always",
+    "webRTCPolicy": "default",
+    "webSockets": "allow_all"
+  },
+  "profile": {
+    "selected": "win4-gcr",
+    "interval": {
+      "option": 0,
+      "min": 1,
+      "max": 1
+    },
+    "showProfileOnIcon": true
+  },
+  "version": "0.22.73.1",
+  "whitelist": {
+    "enabledContextMenu": false,
+    "defaultProfile": "none",
+    "rules": [
+      {
+        "id": "a3b550a8-214d-4896-b0e8-cb5b23069143",
+        "name": "www.youtube.com",
+        "sites": [
+          {
+            "domain": "www.youtube.com"
+          }
+        ],
+        "lang": "en-US",
+        "profile": "none",
+        "spoofIP": "",
+        "options": {
+          "audioContext": true,
+          "clientRects": true,
+          "cssExfil": false,
+          "mediaDevices": false,
+          "name": true,
+          "ref": false,
+          "tz": false,
+          "ws": false
+        }
+      },
+      {
+        "id": "de3453c4-eddc-4277-b66a-3a7c187e0860",
+        "name": "www.netflix.com",
+        "sites": [
+          {
+            "domain": "netflix.com"
+          }
+        ],
+        "lang": "en-US",
+        "profile": "none",
+        "spoofIP": "",
+        "options": {
+          "audioContext": true,
+          "clientRects": true,
+          "cssExfil": false,
+          "mediaDevices": false,
+          "name": true,
+          "ref": false,
+          "tz": true,
+          "ws": false
+        }
+      },
+      {
+        "id": "9b8039e8-131b-4409-8a7d-f3f927428aa8",
+        "name": "www.twitch.tv",
+        "sites": [
+          {
+            "domain": "www.twitch.tv"
+          }
+        ],
+        "lang": "en-US",
+        "profile": "lin2-ff",
+        "spoofIP": "",
+        "options": {
+          "audioContext": true,
+          "clientRects": true,
+          "cssExfil": false,
+          "mediaDevices": false,
+          "name": true,
+          "ref": false,
+          "tz": true,
+          "ws": false
+        }
+      },
+      {
+        "id": "5a828caf-2940-405a-bc5a-108c7060b0b2",
+        "name": "www.google.com/maps",
+        "sites": [
+          {
+            "domain": "google.com",
+            "pattern": "maps"
+          }
+        ],
+        "lang": "en-US",
+        "profile": "none",
+        "spoofIP": "",
+        "options": {
+          "audioContext": true,
+          "clientRects": true,
+          "cssExfil": false,
+          "mediaDevices": false,
+          "name": true,
+          "ref": false,
+          "tz": true,
+          "ws": false
+        }
+      }
+    ]
+  }
+}

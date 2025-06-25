@@ -32,6 +32,6 @@ swaymsg workspace 3 && swaymsg exec "kitty -e $HOME/.local/bin/tx -T kitty"
 
 sleep_until "kitty"
 
-swaymsg workspace 1 && swyamsg exec "librewolf"
+swaymsg workspace 1 && swyamsg exec "firefox"
 
-sleep_until "librewolf"
+sleep_until "firefox"

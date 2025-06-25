@@ -1,5 +1,5 @@
 {
-  "err nil": {
+  "err_nil": {
     "prefix": "iferr",
     "body": [
       "if err != nil {",

@@ -111,6 +111,9 @@ return {
 			hl.MatchTagError = { fg = color.none, bg = color.none }
 
 			hl.BufferOffset = { bg = color.bg }
+
+			hl.BlinkCmpKindVariable = { fg = color.magenta }
+			hl.BlinkCmpLabelMatch = { fg = color.red }
 		end,
 	},
 }

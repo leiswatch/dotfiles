@@ -77,7 +77,6 @@ exec /usr/bin/xdg-user-dirs-update
 
 # Scripts
 exec sh $XDG_CONFIG_HOME/sway/scripts/swww.sh
-# exec sh $XDG_CONFIG_HOME/sway/scripts/hyprpaper.sh
 exec sh $XDG_CONFIG_HOME/sway/scripts/dunst.sh
 exec sh $XDG_CONFIG_HOME/sway/scripts/nm.sh
 exec sh $XDG_CONFIG_HOME/sway/scripts/solaar.sh
@@ -86,6 +85,7 @@ exec sh $XDG_CONFIG_HOME/sway/scripts/gammastep.sh
 exec sh $XDG_CONFIG_HOME/sway/scripts/blueman.sh
 exec sh $XDG_CONFIG_HOME/sway/scripts/copyq.sh
 exec sh $XDG_CONFIG_HOME/sway/scripts/waybar.sh
+# exec sh $XDG_CONFIG_HOME/sway/scripts/hyprpaper.sh
 # exec sh $HOME/.config/sway/scripts/flameshot.sh
 
 ### Idle configuration
@@ -138,7 +138,7 @@ exec sh $XDG_CONFIG_HOME/sway/scripts/waybar.sh
     bindsym $mod+Shift+p exec sh $XDG_CONFIG_HOME/rofi/powermenu/powermenu.sh
     bindsym $mod+Shift+o exec sh $XDG_CONFIG_HOME/rofi/launchers/sway_setup.sh
     bindsym $mod+Shift+w exec sh $XDG_CONFIG_HOME/sway/scripts/set_wallpaper.sh
-    bindsym $mod+Shift+e exec nautilus
+    bindsym $mod+Shift+e exec thunar
     # bindsym $mod+Shift+p exec wlogout
 
     # Drag floating windows by holding down $mod and left mouse button.
@@ -333,7 +333,7 @@ for_window [floating] move position center
 for_window [title="Battle.net"] floating enable, resize set 70ppt 70ppt, move position center
 for_window [app_id="org.pulseaudio.pavucontrol"] floating enable, move position center, resize set 80ppt 80ppt
 for_window [app_id="com.github.hluk.copyq"] floating enable, move position center, resize set 50ppt 50ppt
-for_window [title="^([Pp]icture[-\s]?[Ii]n[-\s]?[Pp]icture)(.*)$"] floating enable, sticky enable, border pixel 2, resize set 25ppt 25ppt
+for_window [title="^([Pp]icture[-\s]?[Ii]n[-\s]?[Pp]icture)(.*)$"] floating enable, sticky enable, border pixel 2, resize set 34.5ppt 35ppt
 
 for_window [title="^(Open File)(.*)$"] resize set 70ppt 70ppt, border pixel 2
 for_window [title="^(Select a File)(.*)$"] resize set 70ppt 70ppt, border pixel 2

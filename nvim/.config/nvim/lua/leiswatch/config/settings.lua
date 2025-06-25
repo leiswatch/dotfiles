@@ -24,7 +24,7 @@ vim.opt.errorbells = false
 vim.opt.expandtab = true
 vim.opt.exrc = true
 vim.opt.fillchars = "eob: "
-vim.opt.guicursor = ""
+-- vim.opt.guicursor = ""
 vim.opt.hidden = true
 vim.opt.hlsearch = true
 vim.opt.ignorecase = true
@@ -57,7 +57,7 @@ vim.opt.undodir = vim.fn.stdpath("config") .. "/undodir"
 vim.opt.undofile = true
 vim.opt.undolevels = 1000
 vim.opt.updatetime = 250
-vim.opt.wrap = true
+vim.opt.wrap = false
 vim.opt.wildignore:append("*/node_modules/**")
 vim.opt.matchpairs:append("<:>")
 vim.opt.mouse = "a"

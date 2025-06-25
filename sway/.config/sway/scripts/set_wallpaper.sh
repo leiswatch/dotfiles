@@ -13,5 +13,6 @@ sed -i "s/\(wallpaper =\).*/\1 \,$escaped_path/g" "$HOME"/.config/hypr/hyprpaper
 sed -i "s/\(path = \).*/\1$escaped_path/g" "$HOME"/.config/hypr/hyprlock.conf
 
 # sh /home/leiswatch/.config/hypr/scripts/hyprpaper.sh
-# swww img "$selected" --transition-type center
-swaybg -i "$selected" -m "fill"
+swww img "$selected" --transition-type center
+# killall swaybg
+# swaybg -i "$selected" -m "fill"

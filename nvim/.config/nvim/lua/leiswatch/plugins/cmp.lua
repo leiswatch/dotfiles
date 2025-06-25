@@ -2,29 +2,30 @@ return {
 	"hrsh7th/nvim-cmp",
 	-- "iguanacucumber/magazine.nvim",
 	-- name = "nvim-cmp", -- Otherwise highlighting gets messed up
+	enabled = false,
 	dependencies = {
 		"hrsh7th/cmp-nvim-lsp",
 		"hrsh7th/cmp-buffer",
-		-- "hrsh7th/cmp-path",
-		"https://codeberg.org/FelipeLema/cmp-async-path",
+		"hrsh7th/cmp-path",
 		"hrsh7th/cmp-cmdline",
 		"hrsh7th/cmp-nvim-lua",
 		"saadparwaiz1/cmp_luasnip",
+		{ "L3MON4D3/LuaSnip", version = "v2.*", build = "make install_jsregexp" },
 		"rafamadriz/friendly-snippets",
 		"onsails/lspkind.nvim",
-		{ "L3MON4D3/LuaSnip", version = "v2.*", build = "make install_jsregexp" },
 		{ "philosofonusus/ecolog.nvim", opts = { integrations = { nvim_cmp = true } } },
 		{
 			"folke/lazydev.nvim",
 			ft = "lua", -- only load on lua files
 			opts = {
 				library = {
-					-- See the configuration section for more details
-					-- Load luvit types when the `vim.uv` word is found
 					{ path = "${3rd}/luv/library", words = { "vim%.uv" } },
 				},
 			},
 		},
+
+		-- "https://codeberg.org/FelipeLema/cmp-async-path",
+
 		-- { "iguanacucumber/mag-nvim-lsp", name = "cmp-nvim-lsp", opts = {} },
 		-- { "iguanacucumber/mag-nvim-lua", name = "cmp-nvim-lua" },
 		-- { "iguanacucumber/mag-buffer", name = "cmp-buffer" },
@@ -35,14 +36,7 @@ return {
 	opts = function()
 		local cmp = require("cmp")
 		local lspkind = require("lspkind")
-		local luasnip = require("luasnip")
 		-- local cmp_autopairs = require("nvim-autopairs.completion.cmp")
-
-		-- local has_words_before = function()
-		-- 	unpack = unpack or table.unpack
-		-- 	local line, col = unpack(vim.api.nvim_win_get_cursor(0))
-		-- 	return col ~= 0 and vim.api.nvim_buf_get_lines(0, line - 1, line, true)[1]:sub(col, col):match("%s") == nil
-		-- end
 
 		require("luasnip.loaders.from_vscode").lazy_load()
 		require("luasnip.loaders.from_vscode").lazy_load({ paths = "~/.config/nvim/lua/leiswatch/snippets" })
@@ -71,7 +65,8 @@ return {
 			view = { entries = "custom" },
 			snippet = {
 				expand = function(args)
-					luasnip.lsp_expand(args.body)
+					-- vim.snippet.expand(args.body)
+					require("luasnip").lsp_expand(args.body)
 				end,
 			},
 			window = {
@@ -95,50 +90,15 @@ return {
 				["<C-e>"] = cmp.mapping.abort(),
 				["<CR>"] = cmp.mapping.confirm({ select = true }),
 				["<C-y>"] = cmp.mapping.confirm({ select = true }),
-				-- ["<C-l>"] = cmp.mapping(function(fallback)
-				-- 	if luasnip.expand_or_locally_jumpable() then
-				-- 		luasnip.expand_or_jump()
-				-- 	else
-				-- 		fallback()
-				-- 	end
-				-- end, { "i", "s" }),
-				-- ["<C-h>"] = cmp.mapping(function(fallback)
-				-- 	if luasnip.locally_jumpable(-1) then
-				-- 		luasnip.jump(-1)
-				-- 	else
-				-- 		fallback()
-				-- 	end
-				-- end, { "i", "s" }),
-				-- ["<Tab>"] = cmp.mapping(function(fallback)
-				-- 	if cmp.visible() then
-				-- 		cmp.select_next_item()
-				-- 	elseif luasnip.expand_or_jumpable() then
-				-- 		luasnip.expand_or_jump()
-				-- 	elseif has_words_before() then
-				-- 		cmp.complete()
-				-- 	else
-				-- 		fallback()
-				-- 	end
-				-- end, { "i", "s" }),
-				-- ["<S-Tab>"] = cmp.mapping(function(fallback)
-				-- 	if cmp.visible() then
-				-- 		cmp.select_prev_item()
-				-- 	elseif luasnip.jumpable(-1) then
-				-- 		luasnip.jump(-1)
-				-- 	else
-				-- 		fallback()
-				-- 	end
-				-- end, { "i", "s" }),
 			}),
 			sources = cmp.config.sources({
-				{ name = "lazydev", group_index = 0 },
 				{ name = "nvim_lsp" },
-				{ name = "luasnip" },
 				{ name = "buffer" },
-				{ name = "treesitter" },
-				{ name = "async_path" },
+				{ name = "path" },
+				{ name = "luasnip", option = { use_show_condition = false } },
+				{ name = "lazydev", group_index = 0 },
 				{ name = "ecolog" },
-				{ name = "nvim_lua" },
+				-- { name = "nvim_lua" },
 				-- { name = "path" },
 				-- { name = "html-css" },
 				-- { name = "css_vars" },

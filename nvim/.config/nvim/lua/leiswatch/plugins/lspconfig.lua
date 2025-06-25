@@ -4,13 +4,12 @@ local lsp = require("leiswatch.lsp")
 return {
 	"neovim/nvim-lspconfig",
 	dependencies = {
-		"hrsh7th/cmp-nvim-lsp",
 		"esmuellert/nvim-eslint",
 		"yioneko/nvim-vtsls",
 		"b0o/schemastore.nvim",
+		"saghen/blink.cmp",
+		-- "hrsh7th/cmp-nvim-lsp",
 		-- "pmizio/typescript-tools.nvim",
-		-- "saghen/blink.cmp",
-		-- { "iguanacucumber/mag-nvim-lsp", name = "cmp-nvim-lsp", opts = {} },
 	},
 	config = function()
 		local buf_number = vim.api.nvim_get_current_buf()
@@ -34,8 +33,8 @@ return {
 			dynamicRegistration = false,
 			lineFoldingOnly = true,
 		}
-		capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
-		-- capabilities = vim.tbl_deep_extend("force", capabilities, require("blink.cmp").get_lsp_capabilities(capabilities))
+		-- capabilities = vim.tbl_deep_extend("force", capabilities, require("cmp_nvim_lsp").default_capabilities())
+		capabilities = vim.tbl_deep_extend("force", capabilities, require("blink.cmp").get_lsp_capabilities(capabilities))
 
 		-- require("typescript-tools").setup({
 		-- 	on_attach = function(client)
